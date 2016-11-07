@@ -10,7 +10,7 @@ CircuitItem::CircuitItem():IC::Items("ic.circuit",IC::Items::ID::mCircuit-0x100)
 	circuitTextures[0]=getTextureUVCoordinateSet("circuit",0);
 	circuitTextures[1]=getTextureUVCoordinateSet("advanced_circuit",0);
 }
-const std::string CircuitItem::buildDescriptionName(const ItemInstance&i) const
+std::string CircuitItem::buildDescriptionName(const ItemInstance&i) const
 {
 	switch(i.aux)
 	{

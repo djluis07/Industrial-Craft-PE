@@ -26,7 +26,7 @@ PlateItem::PlateItem():IC::Items("ic.plate.tin",IC::Items::ID::mPlate-0x100)
 	plateTextures[16]=getTextureUVCoordinateSet("dense_steel",0);
 	plateTextures[17]=getTextureUVCoordinateSet("dense_tin",0);
 }
-const std::string PlateItem::buildDescriptionName(const ItemInstance&i) const
+std::string PlateItem::buildDescriptionName(const ItemInstance&i) const
 {
 	switch(i.aux)
 	{

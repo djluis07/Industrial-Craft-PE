@@ -48,7 +48,8 @@ obj/local/armeabi-v7a/objs/com.ICPE.main/ic/ui/screen/BaseContainerScreen.o: \
  jni/mcpe/util/ResourceLocation.h jni/mcpe/block/material/Material.h \
  jni/mcpe/block/material/MaterialType.h jni/mcpe/block/BlockShape.h \
  jni/mcpe/blockentity/BlockEntityType.h \
- jni/mcpe/item/CreativeItemCategory.h jni/mcpe/block/BlockSoundType.h
+ jni/mcpe/item/CreativeItemCategory.h jni/mcpe/block/BlockSoundType.h \
+ jni/mcpe/block/BlockSupportType.h
 
 jni/ic/ui/screen/BaseContainerScreen.h:
 
@@ -187,3 +188,5 @@ jni/mcpe/blockentity/BlockEntityType.h:
 jni/mcpe/item/CreativeItemCategory.h:
 
 jni/mcpe/block/BlockSoundType.h:
+
+jni/mcpe/block/BlockSupportType.h:

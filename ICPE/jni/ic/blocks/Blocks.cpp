@@ -19,7 +19,7 @@ namespace IC
 {
 void Blocks::initICBlocks()
 {
-	/*Block::mBlocks[ID::mIronFurnace]=new IronFurnaceBlock();
+	Block::mBlocks[ID::mIronFurnace]=new IronFurnaceBlock();
 	Block::mBlocks[ID::mCable]=new CableBlock();
 	Block::mBlocks[ID::mRubberLeaves]=new RubberLeavesBlock();
 	Block::mBlocks[ID::mResin]=new ResinBlock();
@@ -28,7 +28,7 @@ void Blocks::initICBlocks()
 	Block::mBlocks[ID::mRubberSapling]=new RubberSaplingBlock();
 	Block::mBlocks[ID::mOre]=new ICOreBlock();
 	Block::mBlocks[ID::mIronFence]=new IronFenceBlock();
-*/}
+}
 bool Blocks::isElectronicBlock()const
 {
 	return false;

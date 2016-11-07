@@ -2,6 +2,7 @@
 
 #include "mcpe/level/BlockSource.h"
 #include "mcpe/item/ItemInstance.h"
+#include "mcpe/block/blocks/FireBlock.h"
 
 #include "ic/client/ICClient.h"
 #include "ic/util/ICRandom.h"

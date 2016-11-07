@@ -14,7 +14,7 @@ obj/local/armeabi-v7a/objs/com.ICPE.main/ic/blocks/block/IronFenceBlock.o: \
  jni/mcpe/block/material/MaterialType.h jni/mcpe/block/BlockShape.h \
  jni/mcpe/blockentity/BlockEntityType.h \
  jni/mcpe/item/CreativeItemCategory.h jni/mcpe/block/BlockSoundType.h \
- jni/ic/blocks/Blocks.h
+ jni/mcpe/block/BlockSupportType.h jni/ic/blocks/Blocks.h
 
 jni/ic/blocks/block/IronFenceBlock.h:
 
@@ -57,5 +57,7 @@ jni/mcpe/blockentity/BlockEntityType.h:
 jni/mcpe/item/CreativeItemCategory.h:
 
 jni/mcpe/block/BlockSoundType.h:
+
+jni/mcpe/block/BlockSupportType.h:
 
 jni/ic/blocks/Blocks.h:

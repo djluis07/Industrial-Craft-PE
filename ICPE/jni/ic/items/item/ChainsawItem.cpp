@@ -17,7 +17,7 @@ ChainsawItem::ChainsawItem():IC::Items("ic.electric.chainsaw",ID::mChainsaw-0x10
 	setCategory(CreativeItemCategory::TOOLS);
 	setMaxDamage(501);
 }
-const std::string ChainsawItem::buildEffectDescriptionName(const ItemInstance&i) const
+std::string ChainsawItem::buildEffectDescriptionName(const ItemInstance&i) const
 {
 	return "§7"+I18n::get("ic.effectname.lastectricity")+Util::toString((500-i.aux)*50)+"EU/25000EU";
 }

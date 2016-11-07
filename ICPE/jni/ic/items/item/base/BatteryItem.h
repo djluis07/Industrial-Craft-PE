@@ -8,5 +8,5 @@ public:
 	BatteryItem(std::string const&,short);
 public:
 	virtual bool isBatteryItem()const;
-	virtual const std::string buildEffectDescriptionName(const ItemInstance&) const;
+	virtual std::string buildEffectDescriptionName(const ItemInstance&) const;
 };

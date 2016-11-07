@@ -25,7 +25,7 @@ UraniumItem::UraniumItem():IC::Items("ic.uranium.0",IC::Items::ID::mUranium-0x10
 	uraniumTextures[15]=getTextureUVCoordinateSet("small_uranium",238);
 	uraniumTextures[16]=getTextureUVCoordinateSet("uranium_pellet",0);
 }
-const std::string UraniumItem::buildDescriptionName(const ItemInstance&i) const
+std::string UraniumItem::buildDescriptionName(const ItemInstance&i) const
 {
 	switch(i.aux)
 	{

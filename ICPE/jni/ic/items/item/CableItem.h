@@ -13,8 +13,8 @@ private:
 public:
 	CableItem();
 public:
-	virtual const std::string buildEffectDescriptionName(const ItemInstance&) const;
-	virtual const std::string buildDescriptionName(const ItemInstance&) const;
+	virtual std::string buildEffectDescriptionName(const ItemInstance&) const;
+	virtual std::string buildDescriptionName(const ItemInstance&) const;
 	virtual const TextureUVCoordinateSet& getIcon(int, int, bool) const;
-	virtual bool useOn(ItemInstance*instance, Player*p, int x, int y, int z, signed char side, float pixelx, float pixely, float pixelz);
+	virtual void useOn(ItemInstance*instance, Player*p, int x, int y, int z, signed char side, float pixelx, float pixely, float pixelz);
 };

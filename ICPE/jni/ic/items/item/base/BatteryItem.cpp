@@ -11,7 +11,7 @@ bool BatteryItem::isBatteryItem()const
 {
 	return true;
 }
-const std::string BatteryItem::buildEffectDescriptionName(const ItemInstance&i) const
+std::string BatteryItem::buildEffectDescriptionName(const ItemInstance&i) const
 {
 	return "§7"+I18n::get("ic.effectname.lastectricity")+Util::toString(getEU(i))+"EU/"+Util::toString(getMaxEU())+"EU";
 }

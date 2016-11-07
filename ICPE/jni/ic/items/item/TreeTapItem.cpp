@@ -18,10 +18,10 @@ TreeTapItem::TreeTapItem():IC::Items("ic.treetap",IC::Items::ID::mTreeTap-0x100)
 	setCategory(CreativeItemCategory::TOOLS);
 	setMaxDamage(128);
 }
-bool TreeTapItem::useOn(ItemInstance*instance, Player*p, int x, int y, int z, signed char side, float, float, float)
+void TreeTapItem::useOn(ItemInstance*instance, Player*p, int x, int y, int z, signed char side, float, float, float)
 {
 	if(!(instance&&p))
-		return false;
+		return;
 	if(p->getRegion().getBlock(x,y,z)==Block::mBlocks[IC::Blocks::ID::mRubberWood]&&p->getRegion().getData(x,y,z)>0)
 	{
 		p->getRegion().setBlockAndData(x,y,z,FullBlock(IC::Blocks::ID::mRubberWood,p->getRegion().getData(x,y,z)-1),3);
@@ -48,5 +48,4 @@ bool TreeTapItem::useOn(ItemInstance*instance, Player*p, int x, int y, int z, si
 		break;
 		}
 	}
-	return true;
 }

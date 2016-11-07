@@ -7,6 +7,7 @@
 #include "mcpe/level/BlockSource.h"
 #include "mcpe/item/ItemInstance.h"
 #include "mcpe/util/FullBlock.h"
+#include "mcpe/block/blocks/FireBlock.h"
 
 RubberWoodBlock::RubberWoodBlock():IC::Blocks("ic.rubber.wood",IC::Blocks::ID::mRubberWood,Material::getMaterial(MaterialType::WOOD))
 {

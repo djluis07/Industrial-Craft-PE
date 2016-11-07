@@ -34,17 +34,16 @@ obj/local/armeabi-v7a/objs/com.ICPE.main/ic/ICPE.o: jni/ic/ICPE.cpp \
  /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/sources/cxx-stl/gnu-libstdc++/4.9/include/fstream \
  /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/sources/cxx-stl/gnu-libstdc++/4.9/include/memory \
  jni/mcpe/item/Item.h jni/mcpe/item/CreativeItemCategory.h \
- jni/mcpe/item/../util/BlockID.h \
- jni/mcpe/item/../util/../block/BlockProperty.h \
- jni/mcpe/item/UseAnimation.h \
- jni/mcpe/item/../client/renderer/texture/TextureUVCoordinateSet.h \
- jni/mcpe/util/ResourceLocation.h jni/mcpe/item/ItemInstance.h \
- jni/mcpe/block/Block.h jni/mcpe/util/Color.h jni/mcpe/util/AABB.h \
- jni/mcpe/util/Vec3.h jni/mcpe/util/BlockPos.h \
- jni/mcpe/block/material/Material.h \
+ jni/mcpe/item/UseAnimation.h jni/mcpe/item/ItemInstance.h \
+ jni/mcpe/item/../Util/BlockID.h \
+ jni/mcpe/item/../Util/../block/BlockProperty.h \
+ jni/mcpe/client/renderer/texture/TextureUVCoordinateSet.h \
+ jni/mcpe/util/ResourceLocation.h jni/mcpe/block/Block.h \
+ jni/mcpe/util/Color.h jni/mcpe/util/AABB.h jni/mcpe/util/Vec3.h \
+ jni/mcpe/util/BlockPos.h jni/mcpe/block/material/Material.h \
  jni/mcpe/block/material/MaterialType.h jni/mcpe/block/BlockShape.h \
  jni/mcpe/blockentity/BlockEntityType.h jni/mcpe/block/BlockSoundType.h \
- jni/mcpe/block/BlockGraphics.h \
+ jni/mcpe/block/BlockSupportType.h jni/mcpe/block/BlockGraphics.h \
  jni/mcpe/block/../client/renderer/texture/TextureAtlasTextureItem.h \
  jni/mcpe/client/MinecraftClient.h jni/mcpe/client/App.h \
  jni/mcpe/client/AppPlatformListener.h \
@@ -167,17 +166,17 @@ jni/mcpe/item/Item.h:
 
 jni/mcpe/item/CreativeItemCategory.h:
 
-jni/mcpe/item/../util/BlockID.h:
-
-jni/mcpe/item/../util/../block/BlockProperty.h:
-
 jni/mcpe/item/UseAnimation.h:
 
-jni/mcpe/item/../client/renderer/texture/TextureUVCoordinateSet.h:
+jni/mcpe/item/ItemInstance.h:
+
+jni/mcpe/item/../Util/BlockID.h:
+
+jni/mcpe/item/../Util/../block/BlockProperty.h:
+
+jni/mcpe/client/renderer/texture/TextureUVCoordinateSet.h:
 
 jni/mcpe/util/ResourceLocation.h:
-
-jni/mcpe/item/ItemInstance.h:
 
 jni/mcpe/block/Block.h:
 
@@ -198,6 +197,8 @@ jni/mcpe/block/BlockShape.h:
 jni/mcpe/blockentity/BlockEntityType.h:
 
 jni/mcpe/block/BlockSoundType.h:
+
+jni/mcpe/block/BlockSupportType.h:
 
 jni/mcpe/block/BlockGraphics.h:
 

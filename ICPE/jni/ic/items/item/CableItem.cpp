@@ -25,7 +25,7 @@ CableItem::CableItem():IC::Items("ic.cable.tin.0",IC::Items::ID::mCable-256)
 	utilTextures[1]=getTextureUVCoordinateSet("glass_cable",0);
 	utilTextures[2]=getTextureUVCoordinateSet("splitter_cable",0);
 }
-const std::string CableItem::buildDescriptionName(const ItemInstance&i) const
+std::string CableItem::buildDescriptionName(const ItemInstance&i) const
 {
 	switch(i.aux)
 	{
@@ -60,7 +60,7 @@ const std::string CableItem::buildDescriptionName(const ItemInstance&i) const
 		return I18n::get("ic.cable.splitter");
 	}
 }
-const TextureUVCoordinateSet& CableItem::getIcon(int aux, int, bool) const
+TextureUVCoordinateSet const& CableItem::getIcon(int aux, int, bool) const
 {
 	switch(aux)
 	{
@@ -95,7 +95,7 @@ const TextureUVCoordinateSet& CableItem::getIcon(int aux, int, bool) const
 		return utilTextures[2];
 	}
 }
-const std::string CableItem::buildEffectDescriptionName(const ItemInstance&i) const
+std::string CableItem::buildEffectDescriptionName(const ItemInstance&i) const
 {
 	switch(i.aux)
 	{
@@ -130,9 +130,9 @@ const std::string CableItem::buildEffectDescriptionName(const ItemInstance&i) co
 		return "§78192EU/t\n-0.025EU/m";
 	}
 }
-bool CableItem::useOn(ItemInstance*instance, Player*p, int x, int y, int z, signed char side, float pixelx, float pixely, float pixelz)
+void CableItem::useOn(ItemInstance*instance, Player*p, int x, int y, int z, signed char side, float pixelx, float pixely, float pixelz)
 {
-	if(!p||!instance)return false;
+	if(!p||!instance)return;
 	
 	ItemInstance cableItem(IC::Blocks::ID::mCable,instance->count,instance->aux);
 	cableItem.useOn(p,x,y,z,side,pixelx,pixely,pixelz);
@@ -140,5 +140,5 @@ bool CableItem::useOn(ItemInstance*instance, Player*p, int x, int y, int z, sign
 	instance->count=cableItem.count;
 	if(instance->count==0)
 		instance->setNull();
-	return true;
+	return;
 }

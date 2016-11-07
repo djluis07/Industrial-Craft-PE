@@ -12,7 +12,8 @@ obj/local/armeabi-v7a/objs/com.ICPE.main/ic/blocks/Blocks.o: \
  jni/mcpe/block/material/MaterialType.h jni/mcpe/block/BlockShape.h \
  jni/mcpe/blockentity/BlockEntityType.h \
  jni/mcpe/item/CreativeItemCategory.h jni/mcpe/block/BlockSoundType.h \
- jni/mcpe/client/resources/I18n.h jni/ic/blocks/block/ICOreBlock.h \
+ jni/mcpe/block/BlockSupportType.h jni/mcpe/client/resources/I18n.h \
+ jni/ic/blocks/block/ICOreBlock.h \
  jni/ic/blocks/block/RubberSaplingBlock.h \
  jni/ic/blocks/block/MetalBlock.h jni/ic/blocks/block/ITNTBlock.h \
  jni/ic/blocks/block/base/TntBlock.h \
@@ -63,6 +64,8 @@ jni/mcpe/blockentity/BlockEntityType.h:
 jni/mcpe/item/CreativeItemCategory.h:
 
 jni/mcpe/block/BlockSoundType.h:
+
+jni/mcpe/block/BlockSupportType.h:
 
 jni/mcpe/client/resources/I18n.h:
 

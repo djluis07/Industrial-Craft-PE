@@ -20,14 +20,14 @@ ElectricTreeTapItem::ElectricTreeTapItem():IC::Items("ic.electric.treetap",IC::I
 	setCategory(CreativeItemCategory::TOOLS);
 	setMaxDamage(201);
 }
-const std::string ElectricTreeTapItem::buildEffectDescriptionName(const ItemInstance&i) const
+std::string ElectricTreeTapItem::buildEffectDescriptionName(const ItemInstance&i) const
 {
 	return "§7"+I18n::get("ic.effectname.lastectricity")+Util::toString((200-i.aux)*50)+"EU/10000EU";
 }
-bool ElectricTreeTapItem::useOn(ItemInstance*instance, Player*p, int x, int y, int z, signed char side, float, float, float)
+void ElectricTreeTapItem::useOn(ItemInstance*instance, Player*p, int x, int y, int z, signed char side, float, float, float)
 {
 	if(!(instance&&p)||instance->aux>=getMaxDamage()-1)
-		return false;
+		return;
 	if(p->getRegion().getBlock(x,y,z)==Block::mBlocks[IC::Blocks::ID::mRubberWood]&&p->getRegion().getData(x,y,z)>0)
 	{
 		p->getRegion().setBlockAndData(x,y,z,FullBlock(IC::Blocks::ID::mRubberWood,p->getRegion().getData(x,y,z)-1),3);
@@ -54,5 +54,5 @@ bool ElectricTreeTapItem::useOn(ItemInstance*instance, Player*p, int x, int y, i
 		break;
 		}
 	}
-	return true;
+	return;
 }

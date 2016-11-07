@@ -14,13 +14,15 @@ obj/local/armeabi-v7a/objs/com.ICPE.main/ic/blocks/block/RubberLeavesBlock.o: \
  jni/mcpe/block/material/MaterialType.h jni/mcpe/block/BlockShape.h \
  jni/mcpe/blockentity/BlockEntityType.h \
  jni/mcpe/item/CreativeItemCategory.h jni/mcpe/block/BlockSoundType.h \
- jni/mcpe/level/BlockSource.h jni/mcpe/level/../blockentity/BlockEntity.h \
+ jni/mcpe/block/BlockSupportType.h jni/mcpe/level/BlockSource.h \
+ jni/mcpe/level/../blockentity/BlockEntity.h \
  jni/mcpe/level/../blockentity/../inventory/FillingContainer.h \
  jni/mcpe/level/../blockentity/../inventory/Container.h \
  jni/mcpe/level/../blockentity/../inventory/../item/ItemInstance.h \
  jni/mcpe/level/../blockentity/../inventory/../item/UseAnimation.h \
  jni/mcpe/level/../util/Brightness.h jni/mcpe/level/LightLayer.h \
- jni/mcpe/level/DimensionId.h jni/ic/client/ICClient.h \
+ jni/mcpe/level/DimensionId.h jni/mcpe/block/blocks/FireBlock.h \
+ jni/ic/client/ICClient.h \
  jni/ic/blocks/blockentity/ICBlockEntityManager.h jni/ic/util/ICRandom.h \
  jni/ic/client/ICOptions.h jni/ic/util/MCADataBase.h \
  /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/sources/cxx-stl/gnu-libstdc++/4.9/include/iostream \
@@ -73,6 +75,8 @@ jni/mcpe/item/CreativeItemCategory.h:
 
 jni/mcpe/block/BlockSoundType.h:
 
+jni/mcpe/block/BlockSupportType.h:
+
 jni/mcpe/level/BlockSource.h:
 
 jni/mcpe/level/../blockentity/BlockEntity.h:
@@ -90,6 +94,8 @@ jni/mcpe/level/../util/Brightness.h:
 jni/mcpe/level/LightLayer.h:
 
 jni/mcpe/level/DimensionId.h:
+
+jni/mcpe/block/blocks/FireBlock.h:
 
 jni/ic/client/ICClient.h:
 

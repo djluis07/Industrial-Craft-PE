@@ -17,7 +17,8 @@ obj/local/armeabi-v7a/objs/com.ICPE.main/ic/blocks/tessellator/CableTessellator.
  jni/mcpe/block/material/MaterialType.h jni/mcpe/block/BlockShape.h \
  jni/mcpe/blockentity/BlockEntityType.h \
  jni/mcpe/item/CreativeItemCategory.h jni/mcpe/block/BlockSoundType.h \
- jni/mcpe/level/BlockSource.h jni/mcpe/level/../blockentity/BlockEntity.h \
+ jni/mcpe/block/BlockSupportType.h jni/mcpe/level/BlockSource.h \
+ jni/mcpe/level/../blockentity/BlockEntity.h \
  jni/mcpe/level/../blockentity/../inventory/FillingContainer.h \
  jni/mcpe/level/../blockentity/../inventory/Container.h \
  jni/mcpe/level/../blockentity/../inventory/../item/ItemInstance.h \
@@ -72,6 +73,8 @@ jni/mcpe/blockentity/BlockEntityType.h:
 jni/mcpe/item/CreativeItemCategory.h:
 
 jni/mcpe/block/BlockSoundType.h:
+
+jni/mcpe/block/BlockSupportType.h:
 
 jni/mcpe/level/BlockSource.h:
 

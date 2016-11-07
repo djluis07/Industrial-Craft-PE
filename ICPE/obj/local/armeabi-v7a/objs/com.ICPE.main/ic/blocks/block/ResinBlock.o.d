@@ -13,7 +13,8 @@ obj/local/armeabi-v7a/objs/com.ICPE.main/ic/blocks/block/ResinBlock.o: \
  jni/mcpe/block/material/MaterialType.h jni/mcpe/block/BlockShape.h \
  jni/mcpe/blockentity/BlockEntityType.h \
  jni/mcpe/item/CreativeItemCategory.h jni/mcpe/block/BlockSoundType.h \
- jni/ic/items/Items.h jni/mcpe/item/Item.h jni/mcpe/item/UseAnimation.h \
+ jni/mcpe/block/BlockSupportType.h jni/ic/items/Items.h \
+ jni/mcpe/item/Item.h jni/mcpe/item/UseAnimation.h \
  jni/mcpe/item/ItemInstance.h jni/mcpe/level/BlockSource.h \
  jni/mcpe/level/../blockentity/BlockEntity.h \
  jni/mcpe/level/../blockentity/../inventory/FillingContainer.h \
@@ -62,6 +63,8 @@ jni/mcpe/blockentity/BlockEntityType.h:
 jni/mcpe/item/CreativeItemCategory.h:
 
 jni/mcpe/block/BlockSoundType.h:
+
+jni/mcpe/block/BlockSupportType.h:
 
 jni/ic/items/Items.h:
 

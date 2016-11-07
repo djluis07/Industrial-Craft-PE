@@ -9,7 +9,7 @@ namespace IC
 {
 void BlockGraphics::initBlockGraphics()
 {
-	/*MCPEBlockGraphics::mBlocks[IC::Blocks::ID::mOre]=new MCPEBlockGraphics("diamond_ore");
+	MCPEBlockGraphics::mBlocks[IC::Blocks::ID::mOre]=new MCPEBlockGraphics("diamond_ore");
 	MCPEBlockGraphics::mBlocks[IC::Blocks::ID::mOre]->setTextureItem("icore");
 	
 	MCPEBlockGraphics::mBlocks[IC::Blocks::ID::mRubberSapling]=new MCPEBlockGraphics("sapling");
@@ -42,5 +42,5 @@ void BlockGraphics::initBlockGraphics()
 	MCPEBlockGraphics::mBlocks[IC::Blocks::ID::mIronFence]=new MCPEBlockGraphics("portal");
 	MCPEBlockGraphics::mBlocks[IC::Blocks::ID::mIronFence]->setTextureItem("fence_iron");
 	MCPEBlockGraphics::mBlocks[IC::Blocks::ID::mIronFence]->setBlockShape(BlockShape::FENCE);
-*/}
+}
 }

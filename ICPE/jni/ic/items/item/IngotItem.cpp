@@ -14,7 +14,7 @@ IngotItem::IngotItem():IC::Items("ic.ingot.tin",IC::Items::ID::mIngot-0x100)
 	ingotTextures[4]=getTextureUVCoordinateSet("bronze",0);
 	ingotTextures[5]=getTextureUVCoordinateSet("alloy",0);
 }
-const std::string IngotItem::buildDescriptionName(const ItemInstance&i) const
+std::string IngotItem::buildDescriptionName(const ItemInstance&i) const
 {
 	switch(i.aux)
 	{

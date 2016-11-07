@@ -31,7 +31,7 @@ BrokenItem::BrokenItem():IC::Items("ic.crushed.copper",IC::Items::ID::mBroken-0x
 	brokenTextures[19]=getTextureUVCoordinateSet("ca_steel",0);
 	brokenTextures[20]=getTextureUVCoordinateSet("ca_tin",0);
 }
-const std::string BrokenItem::buildDescriptionName(const ItemInstance&i) const
+std::string BrokenItem::buildDescriptionName(const ItemInstance&i) const
 {
 	switch(i.aux)
 	{

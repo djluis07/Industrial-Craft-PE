@@ -14,6 +14,7 @@ obj/local/armeabi-v7a/objs/com.ICPE.main/ic/blocks/block/base/ICEntityBlock.o: \
  jni/mcpe/block/material/MaterialType.h jni/mcpe/block/BlockShape.h \
  jni/mcpe/blockentity/BlockEntityType.h \
  jni/mcpe/item/CreativeItemCategory.h jni/mcpe/block/BlockSoundType.h \
+ jni/mcpe/block/BlockSupportType.h \
  jni/ic/blocks/blockentity/ICBlockEntity.h \
  jni/ic/blocks/blockentity/ICBlockEntityManager.h \
  jni/ic/client/ICClient.h jni/ic/util/ICRandom.h \
@@ -67,6 +68,8 @@ jni/mcpe/blockentity/BlockEntityType.h:
 jni/mcpe/item/CreativeItemCategory.h:
 
 jni/mcpe/block/BlockSoundType.h:
+
+jni/mcpe/block/BlockSupportType.h:
 
 jni/ic/blocks/blockentity/ICBlockEntity.h:
 

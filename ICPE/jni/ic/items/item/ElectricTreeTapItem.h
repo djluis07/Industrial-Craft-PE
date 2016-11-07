@@ -7,6 +7,6 @@ class ElectricTreeTapItem : public IC::Items
 public:
 	ElectricTreeTapItem();
 public:
-	virtual const std::string buildEffectDescriptionName(const ItemInstance&) const;
-	virtual bool useOn(ItemInstance*, Player*, int, int, int, signed char, float, float, float);
+	virtual std::string buildEffectDescriptionName(const ItemInstance&) const;
+	virtual void useOn(ItemInstance*, Player*, int, int, int, signed char, float, float, float);
 };

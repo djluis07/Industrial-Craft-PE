@@ -7,6 +7,6 @@ class ElectricHoeItem : public IC::Items
 public:
 	ElectricHoeItem();
 public:
-	virtual const std::string buildEffectDescriptionName(const ItemInstance&) const;
-	virtual bool useOn(ItemInstance*, Player*, int, int, int, signed char, float, float, float);
+	virtual std::string buildEffectDescriptionName(const ItemInstance&) const;
+	virtual void useOn(ItemInstance*, Player*, int, int, int, signed char, float, float, float);
 };

@@ -47,7 +47,5 @@ public:
 	virtual bool isBatteryItem()const;
 	virtual unsigned int getEU(ItemInstance const&)const;
 	virtual unsigned int getMaxEU()const;
-public:
-	static void registerCommonItem(std::string const&,short,std::string const&,int,CreativeItemCategory);
 };
 }

@@ -15,7 +15,7 @@ TFBPItem::TFBPItem():IC::Items("ic.tfbp.tin",IC::Items::ID::mTFBP-0x100)
 	tfbpTextures[5]=getTextureUVCoordinateSet("tfbp_irrigation",0);
 	tfbpTextures[6]=getTextureUVCoordinateSet("tfbp_mushroom",0);
 }
-const std::string TFBPItem::buildDescriptionName(const ItemInstance&i) const
+std::string TFBPItem::buildDescriptionName(const ItemInstance&i) const
 {
 	switch(i.aux)
 	{

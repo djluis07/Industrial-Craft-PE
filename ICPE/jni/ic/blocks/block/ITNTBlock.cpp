@@ -2,6 +2,8 @@
 
 #include "ic/blocks/Blocks.h"
 
+#include "mcpe/block/blocks/FireBlock.h"
+
 ITNTBlock::ITNTBlock():TntBlock("ic.itnt",IC::Blocks::ID::mITNT)
 {
 	setCategory(CreativeItemCategory::TOOLS);

@@ -37,7 +37,7 @@ DustItem::DustItem():IC::Items("ic.dust.copper",IC::Items::ID::mDust-0x100)
 	dustTextures[27]=getTextureUVCoordinateSet("small_du_sulfur",0);
 	dustTextures[28]=getTextureUVCoordinateSet("small_du_tin",0);
 }
-const std::string DustItem::buildDescriptionName(const ItemInstance&i) const
+std::string DustItem::buildDescriptionName(const ItemInstance&i) const
 {
 	switch(i.aux)
 	{

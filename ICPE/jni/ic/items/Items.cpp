@@ -36,7 +36,7 @@ void Items::initICAllItems()
 void Items::addICCreativeItems()
 {
 	Item::addCreativeItem(ID::mGuideBook,0);
-	/*Item::addCreativeItem(IC::Blocks::ID::mOre,0);
+	Item::addCreativeItem(IC::Blocks::ID::mOre,0);
 	Item::addCreativeItem(IC::Blocks::ID::mOre,1);
 	Item::addCreativeItem(IC::Blocks::ID::mOre,2);
 	Item::addCreativeItem(IC::Blocks::ID::mOre,3);
@@ -179,19 +179,17 @@ void Items::addICCreativeItems()
 	Item::addCreativeItem(ID::mCoil,0);
 	Item::addCreativeItem(ID::mPowerUnitSmall,0);
 	Item::addCreativeItem(ID::mElectricMotor,0);
-	Item::addCreativeItem(ID::mSingleUseBattery,0);*/
+	Item::addCreativeItem(ID::mSingleUseBattery,0);
 }
 void Items::initICItems()
 {
-	//registerCommonItem("ic.electricmotor",ID::mElectricMotor,"electric_motor",0,CreativeItemCategory::ITEMS);
-	registerCommonItem("guide_book",ID::mGuideBook,"alloy",0,CreativeItemCategory::ITEMS);
-	
-	/*Item::mItems[ID::mElectricMotor]=new ICDefaultItem("ic.electricmotor",ID::mElectricMotor-0x100,"electric_motor",0);
+	Item::mItems[ID::mGuideBook]=new ICDefaultItem("ic.guide_book",ID::mGuideBook-0x100,"guide_book",0);
+	Item::mItems[ID::mElectricMotor]=new ICDefaultItem("ic.electricmotor",ID::mElectricMotor-0x100,"electric_motor",0);
 	Item::mItems[ID::mPowerUnitSmall]=new ICDefaultItem("ic.power.unit.small",ID::mPowerUnitSmall-0x100,"small_power_unit",0);
 	Item::mItems[ID::mCoil]=new ICDefaultItem("ic.coil",ID::mCoil-0x100,"coil",0);
 	Item::mItems[ID::mScrap]=new ICDefaultItem("ic.scrap",ID::mScrap-0x100,"scrap",0);
 	Item::mItems[ID::mSlag]=new ICDefaultItem("ic.slag",ID::mSlag-0x100,"slag",0);
-	Item::mItems[ID::mAlloyPlate]=new ICDefaultItem("ic.plate.alloy",ID::mAlloyPlate-0x100,"apple",0);
+	Item::mItems[ID::mAlloyPlate]=new ICDefaultItem("ic.plate.alloy",ID::mAlloyPlate-0x100,"alloy",0);
 	
 	Item::mItems[ID::mSingleUseBattery]=new SingleUseBatteryItem();
 	Item::mItems[ID::mChainsaw]=new ChainsawItem();
@@ -207,11 +205,11 @@ void Items::initICItems()
 	Item::mItems[ID::mTreeTap]=new TreeTapItem();
 	Item::mItems[ID::mCable]=new CableItem();
 	Item::mItems[ID::mCircuit]=new CircuitItem();
-	Item::mItems[ID::mPlate]=new PlateItem();*/
+	Item::mItems[ID::mPlate]=new PlateItem();
 }
 void Items::initICBlockItems()
 {
-	/*Item::mItems[IC::Blocks::ID::mIronFence]=new BlockItem("ic.ironfence",IC::Blocks::ID::mIronFence-0x100);
+	Item::mItems[IC::Blocks::ID::mIronFence]=new BlockItem("ic.ironfence",IC::Blocks::ID::mIronFence-0x100);
 	Item::mItems[IC::Blocks::ID::mIronFurnace]=new AuxDataBlockItem("ic.ironfurnace",IC::Blocks::ID::mIronFurnace-0x100,Block::mBlocks[IC::Blocks::ID::mIronFurnace]);;
 	Item::mItems[IC::Blocks::ID::mCable]=new AuxDataBlockItem("ic.cable",IC::Blocks::ID::mCable-0x100,Block::mBlocks[IC::Blocks::ID::mCable]);
 	Item::mItems[IC::Blocks::ID::mRubberLeaves]=new BlockItem("ic.rubber.leaves",IC::Blocks::ID::mRubberLeaves-0x100);
@@ -220,7 +218,7 @@ void Items::initICBlockItems()
 	Item::mItems[IC::Blocks::ID::mITNT]=new BlockItem("ic.itnt",IC::Blocks::ID::mITNT-0x100);
 	Item::mItems[IC::Blocks::ID::mRubberSapling]=new BlockItem("ic.rubber.sapling",IC::Blocks::ID::mRubberSapling-0x100);
 	Item::mItems[IC::Blocks::ID::mOre]=new AuxDataBlockItem("ic.ore.tin",IC::Blocks::ID::mOre-0x100,Block::mBlocks[IC::Blocks::ID::mOre]);
-*/}
+}
 Items::Items(std::string const&name,short id):Item(name,id)
 {
 	mICItems[id]=true;
@@ -236,11 +234,5 @@ unsigned int Items::getEU(ItemInstance const&)const
 unsigned int Items::getMaxEU()const
 {
 	return 0;
-}
-void Items::registerCommonItem(std::string const&name,short id,std::string const&icon,int iconIndex,CreativeItemCategory category)
-{
-	Item::mItems[id]=new Item(name,id-256);
-	Item::mItems[id]->setIcon(icon,iconIndex);
-	Item::mItems[id]->setCategory(category);
 }
 }
