@@ -16,5 +16,13 @@
 		
 		<meta-data android:name="net.zhuoweizhang.mcpelauncher.api.targetmcpeversion"
 			android:value="0.16.1.0"/>
+		<activity
+			android:theme="@style/AppTheme"
+			android:name=".Mainctivity" >
+			<intent-filter >
+				<action android:name="android.intent.action.MAIN" />
+				<category android:name="android.intent.category.LAUNCHER" />
+			</intent-filter>
+		</activity>
 	</application>
 </manifest> 
