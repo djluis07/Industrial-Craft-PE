@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+	package="com.ICPE.main"
+        android:versionCode="1"
+        android:versionName="0.1">
+	<permission android:name="com.ICPE.permission.Copyright"
+				android:label="Industrial Craft : PE"
+				android:description="@string/Copyright"/>
+	<uses-permission android:name="com.ICPE.permission.Copyright"/>
+	<uses-permission android:name="net.zhuoweizhang.mcpelauncher.ADDON"/>
+	<uses-sdk android:minSdkVersion="14" />
+    <application android:icon="@drawable/logo" android:label="Industrial Craft : PE">
+		
+		<meta-data android:name="net.zhuoweizhang.mcpelauncher.api.nativelibname"
+			android:value="com.ICPE.main"/>
+		
+		<meta-data android:name="net.zhuoweizhang.mcpelauncher.api.targetmcpeversion"
+			android:value="0.16.1.0"/>
+	</application>
+</manifest> 

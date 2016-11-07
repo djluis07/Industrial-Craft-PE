@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">MaterialDesignNDK</string>
+	
+	<string name="error">噢噢，程序出了点小错误，是否发送错误至服务器，以便我们对bug的修复！</string>
+</resources>
