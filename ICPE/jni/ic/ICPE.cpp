@@ -118,13 +118,6 @@ static void onNewChunkFor(Level*self,Player &p, LevelChunk &chunk)
 		p.getRegion().setBlockAndData(chunk.getPosition().x*16,0,chunk.getPosition().z,FullBlock(7,1),3);
 		IC::FeatureGen::decorateChunk(p.getRegion(),chunk.getPosition());
 	}
-	static unsigned char count=1;
-	++count;
-	if(count==0)
-	{
-		UIScreenChooser chooser(*ICClient::mInstance.getMinecraftClient());
-		chooser.pushBatteryBlockScreen(p.getRegion(),BlockPos(0,0,0),p);
-	}
 }
 static void (*loadLocalization_)(Localization*, const std::string&);
 static void loadLocalization(Localization *self, const std::string &languageName)

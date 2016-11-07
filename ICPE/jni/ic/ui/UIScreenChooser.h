@@ -13,5 +13,6 @@ public:
 	UIScreenChooser(MinecraftClient&);
 	~UIScreenChooser()=default;
 public:
+	void pushGuideBookScreen();
 	void pushBatteryBlockScreen(BlockSource&,BlockPos const&,Player&);
 };
