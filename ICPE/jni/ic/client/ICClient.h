@@ -5,6 +5,7 @@
 #include "ic/blocks/blockentity/ICBlockEntityManager.h"
 #include "ic/util/ICRandom.h"
 #include "ic/client/ICOptions.h"
+#include "ic/ui/UIScreenChooser.h"
 
 class MinecraftClient;
 class Level;
@@ -18,6 +19,7 @@ protected:
 	ICBlockEntityManager currentICBlockEntityManager;
 	ICOptions icOptions;
 	ICRandom clientRandom;
+	UIScreenChooser chooser;
 public:
 	static ICClient mInstance;
 public:
@@ -26,6 +28,7 @@ public:
 public:
 	ICRandom& getRandom();
 	ICOptions& getOptions();
+	UIScreenChooser* getScreenChooser();
 	ICBlockEntityManager& getBlockEntityManager();
 	std::string getCurrentLevelFolder();
 	Level* getCurrentLevel();

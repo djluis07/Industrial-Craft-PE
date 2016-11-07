@@ -10,6 +10,7 @@ class UIScreenChooser
 private:
 	MinecraftClient* client;
 public:
+	UIScreenChooser()=default;
 	UIScreenChooser(MinecraftClient&);
 	~UIScreenChooser()=default;
 public:

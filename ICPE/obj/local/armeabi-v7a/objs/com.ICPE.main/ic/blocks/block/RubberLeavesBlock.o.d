@@ -31,7 +31,8 @@ obj/local/armeabi-v7a/objs/com.ICPE.main/ic/blocks/block/RubberLeavesBlock.o: \
  /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/platforms/android-14/arch-arm/usr/include/alloca.h \
  /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/platforms/android-14/arch-arm/usr/include/strings.h \
  /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/platforms/android-14/arch-arm/usr/include/memory.h \
- /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/sources/cxx-stl/gnu-libstdc++/4.9/include/sstream
+ /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/sources/cxx-stl/gnu-libstdc++/4.9/include/sstream \
+ jni/ic/ui/UIScreenChooser.h
 
 jni/ic/blocks/block/RubberLeavesBlock.h:
 
@@ -120,3 +121,5 @@ jni/ic/util/MCADataBase.h:
 /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/platforms/android-14/arch-arm/usr/include/memory.h:
 
 /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/sources/cxx-stl/gnu-libstdc++/4.9/include/sstream:
+
+jni/ic/ui/UIScreenChooser.h:

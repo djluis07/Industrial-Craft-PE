@@ -20,6 +20,10 @@ ICOptions& ICClient::getOptions()
 {
 	return icOptions;
 }
+UIScreenChooser* ICClient::getScreenChooser()
+{
+	return &chooser;
+}
 ICBlockEntityManager& ICClient::getBlockEntityManager()
 {
 	return currentICBlockEntityManager;
@@ -51,4 +55,5 @@ void ICClient::setCurrentLevel(Level*l)
 void ICClient::setMinecraftClient(MinecraftClient*c)
 {
 	mcClient=c;
+	chooser=UIScreenChooser(*c);
 }

@@ -89,7 +89,7 @@ obj/local/armeabi-v7a/objs/com.ICPE.main/ic/ICPE.o: jni/ic/ICPE.cpp \
  jni/ic/client/ICOptions.h jni/ic/util/MCADataBase.h \
  /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/sources/cxx-stl/gnu-libstdc++/4.9/include/iostream \
  /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/sources/cxx-stl/gnu-libstdc++/4.9/include/sstream \
- jni/ic/ui/uilib/UILib.h jni/ic/ui/UIScreenChooser.h \
+ jni/ic/ui/UIScreenChooser.h jni/ic/ui/uilib/UILib.h \
  jni/ic/util/language/zh_CN.h jni/ic/util/language/en_US.h
 
 jni/ic/ICPE.h:
@@ -340,9 +340,9 @@ jni/ic/util/MCADataBase.h:
 
 /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/sources/cxx-stl/gnu-libstdc++/4.9/include/sstream:
 
-jni/ic/ui/uilib/UILib.h:
-
 jni/ic/ui/UIScreenChooser.h:
+
+jni/ic/ui/uilib/UILib.h:
 
 jni/ic/util/language/zh_CN.h:
 

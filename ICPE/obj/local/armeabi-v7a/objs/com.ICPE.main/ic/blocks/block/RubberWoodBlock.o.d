@@ -25,7 +25,8 @@ obj/local/armeabi-v7a/objs/com.ICPE.main/ic/blocks/block/RubberWoodBlock.o: \
  /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/platforms/android-14/arch-arm/usr/include/strings.h \
  /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/platforms/android-14/arch-arm/usr/include/memory.h \
  /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/sources/cxx-stl/gnu-libstdc++/4.9/include/sstream \
- jni/mcpe/level/BlockSource.h jni/mcpe/level/../blockentity/BlockEntity.h \
+ jni/ic/ui/UIScreenChooser.h jni/mcpe/level/BlockSource.h \
+ jni/mcpe/level/../blockentity/BlockEntity.h \
  jni/mcpe/level/../blockentity/../inventory/FillingContainer.h \
  jni/mcpe/level/../blockentity/../inventory/Container.h \
  jni/mcpe/level/../blockentity/../inventory/../item/ItemInstance.h \
@@ -101,6 +102,8 @@ jni/ic/util/MCADataBase.h:
 /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/platforms/android-14/arch-arm/usr/include/memory.h:
 
 /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/sources/cxx-stl/gnu-libstdc++/4.9/include/sstream:
+
+jni/ic/ui/UIScreenChooser.h:
 
 jni/mcpe/level/BlockSource.h:
 

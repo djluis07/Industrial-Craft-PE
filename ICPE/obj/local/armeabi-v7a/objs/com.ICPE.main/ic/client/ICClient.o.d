@@ -12,7 +12,7 @@ obj/local/armeabi-v7a/objs/com.ICPE.main/ic/client/ICClient.o: \
  /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/platforms/android-14/arch-arm/usr/include/strings.h \
  /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/platforms/android-14/arch-arm/usr/include/memory.h \
  /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/sources/cxx-stl/gnu-libstdc++/4.9/include/sstream \
- jni/mcpe/client/MinecraftClient.h \
+ jni/ic/ui/UIScreenChooser.h jni/mcpe/client/MinecraftClient.h \
  /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/sources/cxx-stl/gnu-libstdc++/4.9/include/functional \
  /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/sources/cxx-stl/gnu-libstdc++/4.9/include/memory \
  jni/mcpe/client/App.h jni/mcpe/client/AppPlatformListener.h \
@@ -48,6 +48,8 @@ jni/ic/util/MCADataBase.h:
 /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/platforms/android-14/arch-arm/usr/include/memory.h:
 
 /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/sources/cxx-stl/gnu-libstdc++/4.9/include/sstream:
+
+jni/ic/ui/UIScreenChooser.h:
 
 jni/mcpe/client/MinecraftClient.h:
 
