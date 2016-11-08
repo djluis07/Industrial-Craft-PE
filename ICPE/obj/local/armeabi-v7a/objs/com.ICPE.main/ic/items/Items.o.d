@@ -25,7 +25,7 @@ obj/local/armeabi-v7a/objs/com.ICPE.main/ic/items/Items.o: \
  jni/ic/items/item/ForgeHammerItem.h \
  jni/ic/items/item/ElectricTreeTapItem.h \
  jni/ic/items/item/ElectricHoeItem.h jni/ic/items/item/TFBPItem.h \
- jni/ic/items/item/ChainsawItem.h
+ jni/ic/items/item/ChainsawItem.h jni/ic/items/item/GuideBookItem.h
 
 jni/ic/items/Items.h:
 
@@ -116,3 +116,5 @@ jni/ic/items/item/ElectricHoeItem.h:
 jni/ic/items/item/TFBPItem.h:
 
 jni/ic/items/item/ChainsawItem.h:
+
+jni/ic/items/item/GuideBookItem.h:

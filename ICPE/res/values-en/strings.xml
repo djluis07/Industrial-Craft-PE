@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="main_activity_title">
+		Industrial Craft PE
+	</string>
+	<string name="Copyright">
+		Copyright © 2016 MCAL Team
+	</string>
+	<string name="app_name">
+		Industrial Craft PE
+	</string>
+	<string name="main_activity_insall_title">
+		Installer
+	</string>
+	<string name="main_activity_util_title">
+		Utils
+	</string>
+	<string name="main_activity_install_button">
+		Install Industrial Craft PE
+	</string>
+	<string name="main_activity_check_updata">
+		Check Updatas
+	</string>
+	<string name="main_activity_github">
+		Github Page
+	</string>
+	<string name="main_activity_settings">
+		Settings
+	</string>
+</resources>

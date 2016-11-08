@@ -23,6 +23,7 @@
 #include "item/ElectricHoeItem.h"
 #include "item/TFBPItem.h"
 #include "item/ChainsawItem.h"
+#include "item/GuideBookItem.h"
 
 bool IC::Items::mICItems[4096];
 
@@ -183,7 +184,6 @@ void Items::addICCreativeItems()
 }
 void Items::initICItems()
 {
-	Item::mItems[ID::mGuideBook]=new ICDefaultItem("ic.guide_book",ID::mGuideBook-0x100,"guide_book",0);
 	Item::mItems[ID::mElectricMotor]=new ICDefaultItem("ic.electricmotor",ID::mElectricMotor-0x100,"electric_motor",0);
 	Item::mItems[ID::mPowerUnitSmall]=new ICDefaultItem("ic.power.unit.small",ID::mPowerUnitSmall-0x100,"small_power_unit",0);
 	Item::mItems[ID::mCoil]=new ICDefaultItem("ic.coil",ID::mCoil-0x100,"coil",0);
@@ -191,6 +191,7 @@ void Items::initICItems()
 	Item::mItems[ID::mSlag]=new ICDefaultItem("ic.slag",ID::mSlag-0x100,"slag",0);
 	Item::mItems[ID::mAlloyPlate]=new ICDefaultItem("ic.plate.alloy",ID::mAlloyPlate-0x100,"alloy",0);
 	
+	Item::mItems[ID::mGuideBook]=new GuideBookItem();
 	Item::mItems[ID::mSingleUseBattery]=new SingleUseBatteryItem();
 	Item::mItems[ID::mChainsaw]=new ChainsawItem();
 	Item::mItems[ID::mElectricHoe]=new ElectricHoeItem();

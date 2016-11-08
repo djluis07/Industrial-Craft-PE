@@ -10,7 +10,6 @@ public:
 	class ID
 	{
 	public:
-		static const unsigned short mGuideBook=550;
 		static const unsigned short mUranium=2000;
 		static const unsigned short mIngot=2001;
 		static const unsigned short mRubber=2002;
@@ -32,6 +31,7 @@ public:
 		static const unsigned short mElectricHoe=2018;
 		static const unsigned short mChainsaw=2019;
 		static const unsigned short mSingleUseBattery=2020;
+		static const unsigned short mGuideBook=2021;
 	};
 public:
 	static void initICAllItems();
