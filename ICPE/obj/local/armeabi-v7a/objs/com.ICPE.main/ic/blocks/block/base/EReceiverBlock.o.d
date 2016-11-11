@@ -1,7 +1,7 @@
 obj/local/armeabi-v7a/objs/com.ICPE.main/ic/blocks/block/base/EReceiverBlock.o: \
  jni/ic/blocks/block/base/EReceiverBlock.cpp \
  jni/ic/blocks/block/base/EReceiverBlock.h \
- jni/ic/blocks/block/base/EAbleBlock.h jni/ic/blocks/Blocks.h \
+ jni/ic/blocks/block/base/ElectricBlock.h jni/ic/blocks/Blocks.h \
  jni/mcpe/block/Block.h \
  /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/sources/cxx-stl/gnu-libstdc++/4.9/include/string \
  /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/sources/cxx-stl/gnu-libstdc++/4.9/include/vector \
@@ -19,7 +19,7 @@ obj/local/armeabi-v7a/objs/com.ICPE.main/ic/blocks/block/base/EReceiverBlock.o: 
 
 jni/ic/blocks/block/base/EReceiverBlock.h:
 
-jni/ic/blocks/block/base/EAbleBlock.h:
+jni/ic/blocks/block/base/ElectricBlock.h:
 
 jni/ic/blocks/Blocks.h:
 

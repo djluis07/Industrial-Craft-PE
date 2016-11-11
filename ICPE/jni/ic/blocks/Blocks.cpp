@@ -29,11 +29,11 @@ void Blocks::initICBlocks()
 	Block::mBlocks[ID::mOre]=new ICOreBlock();
 	Block::mBlocks[ID::mIronFence]=new IronFenceBlock();
 }
-bool Blocks::isElectronicBlock()const
+bool Blocks::isElectricBlock()const
 {
 	return false;
 }
-bool Blocks::isElectronicConductor()const
+bool Blocks::isElectricConductor()const
 {
 	return false;
 }
@@ -41,7 +41,7 @@ bool Blocks::shouldExplodeOutOfVoltage()const
 {
 	return false;
 }
-int Blocks::getElectronicResistance()const
+int Blocks::getElectricResistance()const
 {
 	return 0;
 }
@@ -49,11 +49,11 @@ int Blocks::getMaxVoltage()const
 {
 	return INT_MAX;
 }
-bool Blocks::isElectronicProvider()const
+bool Blocks::isElectricProvider()const
 {
 	return false;
 }
-bool Blocks::isElectronicRecevier()const
+bool Blocks::isElectricRecevier()const
 {
 	return false;
 }

@@ -1,11 +1,11 @@
 #pragma once
 
-#include "EAbleBlock.h"
+#include "ElectricBlock.h"
 
-class EReceiverBlock : public EAbleBlock
+class EReceiverBlock : public ElectricBlock
 {
 public:
 	EReceiverBlock(const std::string&, int, const Material&);
 public:
-	virtual bool isElectronicRecevier()const;
+	virtual bool isElectricRecevier()const;
 };

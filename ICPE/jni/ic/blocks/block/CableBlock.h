@@ -1,8 +1,8 @@
 #pragma once
 
-#include "base/ESpreadBlock.h"
+#include "base/ElectricConductorBlock.h"
 
-class CableBlock : public ESpreadBlock
+class CableBlock : public ElectricConductorBlock
 {
 public:
 	CableBlock();

@@ -13,7 +13,7 @@
 #include "ic/client/ICClient.h"
 #include "ic/client/ICOptions.h"
 
-CableBlock::CableBlock():ESpreadBlock("ic.cable.tin",IC::Blocks::ID::mCable,Material::getMaterial(MaterialType::DEVICE))
+CableBlock::CableBlock():ElectricConductorBlock("ic.cable.tin",IC::Blocks::ID::mCable,Material::getMaterial(MaterialType::DEVICE))
 {
 	init();
 	setSolid(false);

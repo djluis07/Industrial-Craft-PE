@@ -29,12 +29,12 @@ public:
 public:
 	Blocks(std::string const&,int,Material const&);
 public:
-	virtual bool isElectronicBlock()const;
-	virtual bool isElectronicProvider()const;
-	virtual bool isElectronicRecevier()const;
-	virtual bool isElectronicConductor()const;
+	virtual bool isElectricBlock()const;
+	virtual bool isElectricProvider()const;
+	virtual bool isElectricRecevier()const;
+	virtual bool isElectricConductor()const;
 	virtual bool shouldExplodeOutOfVoltage()const;
-	virtual int getElectronicResistance()const;
+	virtual int getElectricResistance()const;
 	virtual int getMaxVoltage()const;
 	virtual int getNowVoltage(BlockSource&,BlockPos const&);
 };

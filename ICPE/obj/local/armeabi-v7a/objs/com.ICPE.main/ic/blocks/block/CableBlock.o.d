@@ -1,7 +1,7 @@
 obj/local/armeabi-v7a/objs/com.ICPE.main/ic/blocks/block/CableBlock.o: \
  jni/ic/blocks/block/CableBlock.cpp jni/ic/blocks/block/CableBlock.h \
- jni/ic/blocks/block/base/ESpreadBlock.h \
- jni/ic/blocks/block/base/EAbleBlock.h jni/ic/blocks/Blocks.h \
+ jni/ic/blocks/block/base/ElectricConductorBlock.h \
+ jni/ic/blocks/block/base/ElectricBlock.h jni/ic/blocks/Blocks.h \
  jni/mcpe/block/Block.h \
  /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/sources/cxx-stl/gnu-libstdc++/4.9/include/string \
  /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/sources/cxx-stl/gnu-libstdc++/4.9/include/vector \
@@ -41,9 +41,9 @@ obj/local/armeabi-v7a/objs/com.ICPE.main/ic/blocks/block/CableBlock.o: \
 
 jni/ic/blocks/block/CableBlock.h:
 
-jni/ic/blocks/block/base/ESpreadBlock.h:
+jni/ic/blocks/block/base/ElectricConductorBlock.h:
 
-jni/ic/blocks/block/base/EAbleBlock.h:
+jni/ic/blocks/block/base/ElectricBlock.h:
 
 jni/ic/blocks/Blocks.h:
 
