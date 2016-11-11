@@ -18,7 +18,7 @@ obj/local/armeabi-v7a/objs/com.ICPE.main/ic/items/item/GuideBookItem.o: \
  /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/platforms/android-14/arch-arm/usr/include/strings.h \
  /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/platforms/android-14/arch-arm/usr/include/memory.h \
  /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/sources/cxx-stl/gnu-libstdc++/4.9/include/sstream \
- jni/ic/ui/UIScreenChooser.h
+ jni/ic/ui/UIScreenChooser.h jni/mcpe/client/resources/I18n.h
 
 jni/ic/items/item/GuideBookItem.h:
 
@@ -71,3 +71,5 @@ jni/ic/util/MCADataBase.h:
 /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/sources/cxx-stl/gnu-libstdc++/4.9/include/sstream:
 
 jni/ic/ui/UIScreenChooser.h:
+
+jni/mcpe/client/resources/I18n.h:

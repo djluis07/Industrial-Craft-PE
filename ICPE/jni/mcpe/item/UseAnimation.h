@@ -2,10 +2,10 @@
 
 enum class UseAnimation : unsigned char
 {
-	None,
-	Eat,
-	Drink,
-	Block,
-	Bow,
-	Camera
+	NOME,
+	EAT,
+	DRINK,
+	BLOCK,
+	BOW,
+	CAMERA
 };

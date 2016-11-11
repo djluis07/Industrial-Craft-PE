@@ -7,7 +7,7 @@ class GuideBookItem : public IC::Items
 public:
 	GuideBookItem();
 public:
-    virtual void use(ItemInstance&, Player&);
-    virtual std::string getInteractText(Player const&) const;
-    virtual bool requiresInteract() const;
+    virtual std::string buildEffectDescriptionName(ItemInstance const&) const;
+    virtual bool isEmissive(int) const;
+    virtual void useOn(ItemInstance*, Player*, int, int, int, signed char, float, float, float);
 };

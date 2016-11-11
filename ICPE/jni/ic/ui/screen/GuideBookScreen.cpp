@@ -26,7 +26,7 @@ void GuideBookScreen::init()
 	guideBookBackground->yPosition=height/2-184;
 	guideBookBackground->setBackground(scr->mcClient,"textures/gui/book",{8,0,152,184},0,0);
 }
-void GuideBookScreen::render(int,int,float,void (*)(int,int,float))
+void GuideBookScreen::render(int,int,float,void (*)(Screen*,int,int,float))
 {
 	guideBookBackground->render(scr->mcClient,guideBookBackground->xPosition,guideBookBackground->yPosition);
 }

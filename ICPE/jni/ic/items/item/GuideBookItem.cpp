@@ -2,21 +2,24 @@
 
 #include "ic/client/ICClient.h"
 
+#include "mcpe/client/resources/I18n.h"
+
 GuideBookItem::GuideBookItem():IC::Items("guide_book",IC::Items::ID::mGuideBook-256)
 {
 	setCategory(CreativeItemCategory::ITEMS);
 	setIcon("book_written",0);
 	setMaxStackSize(1);
+	setIsGlint(true);
 }
-std::string GuideBookItem::getInteractText(Player const&) const
+std::string GuideBookItem::buildEffectDescriptionName(ItemInstance const&) const
 {
-	return "open";
+	return "§7"+I18n::get("ic.guidebook.effect");
 }
-bool GuideBookItem::requiresInteract() const
-{
-	return true;
-}
-void GuideBookItem::use(ItemInstance&, Player&)
+void GuideBookItem::useOn(ItemInstance*, Player*, int, int, int, signed char, float, float, float)
 {
 	ICClient::mInstance.getScreenChooser()->pushGuideBookScreen();
+}
+bool GuideBookItem::isEmissive(int) const
+{
+	return true;
 }

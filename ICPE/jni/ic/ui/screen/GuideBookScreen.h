@@ -16,8 +16,8 @@ public:
 	GuideBookScreen();
 	~GuideBookScreen()=default;
 public:
+	virtual void buttonClicked(Button&);
+	virtual void render(int,int,float,void (*)(Screen*,int,int,float));
 	virtual std::string getScreenName()const;
 	virtual void init();
-	virtual void buttonClicked(Button&);
-	virtual void render(int,int,float,void (*)(int,int,float));
 };
