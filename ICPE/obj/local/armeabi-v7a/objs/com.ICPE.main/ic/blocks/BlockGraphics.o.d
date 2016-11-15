@@ -16,7 +16,9 @@ obj/local/armeabi-v7a/objs/com.ICPE.main/ic/blocks/BlockGraphics.o: \
  jni/mcpe/item/CreativeItemCategory.h jni/mcpe/block/BlockSoundType.h \
  jni/mcpe/block/BlockSupportType.h \
  jni/mcpe/block/../client/renderer/texture/TextureAtlasTextureItem.h \
- jni/ic/ICPE.h jni/ic/blocks/Blocks.h
+ jni/ic/ICPE.h \
+ /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/platforms/android-14/arch-arm/usr/include/jni.h \
+ jni/ic/blocks/Blocks.h
 
 jni/ic/blocks/BlockGraphics.h:
 
@@ -65,5 +67,7 @@ jni/mcpe/block/BlockSupportType.h:
 jni/mcpe/block/../client/renderer/texture/TextureAtlasTextureItem.h:
 
 jni/ic/ICPE.h:
+
+/data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/platforms/android-14/arch-arm/usr/include/jni.h:
 
 jni/ic/blocks/Blocks.h:
