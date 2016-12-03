@@ -75,13 +75,17 @@ import java.util.UUID;
 import net.hockeyapp.android.Constants;
 import net.hockeyapp.android.CrashManager;
 import net.hockeyapp.android.CrashManagerListener;
-import net.hockeyapp.android.NativeCrashManager;
+//import net.hockeyapp.android.NativeCrashManager;
 import net.hockeyapp.android.metrics.MetricsManager;
 import org.fmod.FMOD;
+import android.widget.*;
+import android.content.pm.PackageManager.*;
+import java.io.*;
+import android.graphics.*;
 
-public class MainActivity
-extends NativeActivity
-implements View.OnKeyListener {
+public class MainActivity extends NativeActivity implements View.OnKeyListener 
+{
+	//mcpe members
     public static int RESULT_GOOGLEPLAY_PURCHASE = 0;
     public static int RESULT_PICK_IMAGE = 0;
     private static boolean _isPowerVr = false;
@@ -107,36 +111,23 @@ implements View.OnKeyListener {
     TextInputProxyEditTextbox textInputWidget;
     private TextToSpeech textToSpeechManager;
     public int virtualKeyboardHeight = 0;
-
-    /*
-     * Enabled aggressive block sorting
-     * Enabled unnecessary exception pruning
-     * Enabled aggressive exception aggregation
-     */
-    static {
+	//launcher
+	String MC_LIBRARY_DIR="";
+	String MC_LIBRARY_LOCATION="";
+	Context mcpeContext;
+    static 
+	{
         _isPowerVr = false;
         RESULT_PICK_IMAGE = 1;
         RESULT_GOOGLEPLAY_PURCHASE = 2;
-        try {
-            System.loadLibrary((String)"ovrfmod");
-        }
-        catch (UnsatisfiedLinkError var0) {
-            Log.d((String)"MCPE", (String)"OVRfmod library not found");
-        }
-        try {
-            System.loadLibrary((String)"ovrplatformloader");
-        }
-        catch (UnsatisfiedLinkError var2_1) {
-            Log.d((String)"MCPE", (String)"OVRplatform library not found");
-        }
-        System.loadLibrary((String)"fmod");
-        System.loadLibrary((String)"minecraftpe");
     }
 
-    private void createAlertDialog(boolean bl, boolean bl2, boolean bl3) {
+    private void createAlertDialog(boolean bl, boolean bl2, boolean bl3) 
+	{
         AlertDialog.Builder builder = new AlertDialog.Builder((Context)this);
         builder.setTitle((CharSequence)"");
-        if (bl3) {
+        if (bl3)
+		{
             builder.setCancelable(false);
         }
         builder.setOnCancelListener(new DialogInterface.OnCancelListener(){
@@ -165,51 +156,41 @@ implements View.OnKeyListener {
         this.mDialog.setOwnerActivity((Activity)this);
     }
 
-    public static boolean isPowerVR() {
+    public static boolean isPowerVR() 
+	{
         return _isPowerVr;
     }
 
-    private void onDialogCanceled() {
+    private void onDialogCanceled() 
+	{
         this._userInputStatus = 0;
     }
 
-    private void onDialogCompleted() {
+    private void onDialogCompleted() 
+	{
         int n = this._userInputValues.size();
         this._userInputText = new String[n];
-        for (int i = 0; i < n; ++i) {
+        for (int i = 0; i < n; ++i) 
+		{
             this._userInputText[i] = ((StringValue)this._userInputValues.get(i)).getStringValue();
         }
-        for (String string2 : this._userInputText) {
+        for (String string2 : this._userInputText) 
+		{
             System.out.println("js: " + string2);
         }
         this._userInputStatus = 1;
         ((InputMethodManager)this.getSystemService("input_method")).showSoftInput(this.getCurrentFocus(), 1);
     }
 
-    /*
-     * Exception decompiling
-     */
-    private void processIntent(Intent var1_1) {
-        // This method has failed to decompile.  When submitting a bug report, please provide this stack trace, and (if you hold appropriate legal rights) the relevant class file.
-        // org.benf.cfr.reader.util.ConfusedCFRException: Tried to end blocks [3[TRYBLOCK]], but top level block is 11[CATCHBLOCK]
-        // org.benf.cfr.reader.bytecode.analysis.opgraph.Op04StructuredStatement.processEndingBlocks(Op04StructuredStatement.java:394)
-        // org.benf.cfr.reader.bytecode.analysis.opgraph.Op04StructuredStatement.buildNestedBlocks(Op04StructuredStatement.java:446)
-        // org.benf.cfr.reader.bytecode.analysis.opgraph.Op03SimpleStatement.createInitialStructuredBlock(Op03SimpleStatement.java:2859)
-        // org.benf.cfr.reader.bytecode.CodeAnalyser.getAnalysisInner(CodeAnalyser.java:805)
-        // org.benf.cfr.reader.bytecode.CodeAnalyser.getAnalysisOrWrapFail(CodeAnalyser.java:220)
-        // org.benf.cfr.reader.bytecode.CodeAnalyser.getAnalysis(CodeAnalyser.java:165)
-        // org.benf.cfr.reader.entities.attributes.AttributeCode.analyse(AttributeCode.java:91)
-        // org.benf.cfr.reader.entities.Method.analyse(Method.java:354)
-        // org.benf.cfr.reader.entities.ClassFile.analyseMid(ClassFile.java:751)
-        // org.benf.cfr.reader.entities.ClassFile.analyseTop(ClassFile.java:683)
-        // org.benf.cfr.reader.Main.doJar(Main.java:128)
-        // com.njlabs.showjava.processor.JavaExtractor$1.run(JavaExtractor.java:100)
-        // java.lang.Thread.run(Thread.java:856)
-        throw new IllegalStateException("Decompilation failed");
-    }
+   
+    private void processIntent(Intent var1_1) 
+	{
+		
+	}
 
-    private void registerCrashManager() {
-        CrashManager.register((Context)this, (String)"3db796c2fc084bbc907764b7deb378c5", (CrashManagerListener)new CrashManagerListener(){
+    private void registerCrashManager() 
+	{
+        CrashManager.register((Context)this, "3db796c2fc084bbc907764b7deb378c5", (CrashManagerListener)new CrashManagerListener(){
 
 								  public boolean shouldAutoUploadCrashes() {
 									  return true;
@@ -217,46 +198,32 @@ implements View.OnKeyListener {
 							  });
     }
 
-    /*
-     * Exception decompiling
-     */
-    public static void saveScreenshot(String var0, int var1_1, int var2_2, int[] var3_3) {
-        // This method has failed to decompile.  When submitting a bug report, please provide this stack trace, and (if you hold appropriate legal rights) the relevant class file.
-        // org.benf.cfr.reader.util.ConfusedCFRException: Tried to end blocks [0[TRYBLOCK]], but top level block is 6[CATCHBLOCK]
-        // org.benf.cfr.reader.bytecode.analysis.opgraph.Op04StructuredStatement.processEndingBlocks(Op04StructuredStatement.java:394)
-        // org.benf.cfr.reader.bytecode.analysis.opgraph.Op04StructuredStatement.buildNestedBlocks(Op04StructuredStatement.java:446)
-        // org.benf.cfr.reader.bytecode.analysis.opgraph.Op03SimpleStatement.createInitialStructuredBlock(Op03SimpleStatement.java:2859)
-        // org.benf.cfr.reader.bytecode.CodeAnalyser.getAnalysisInner(CodeAnalyser.java:805)
-        // org.benf.cfr.reader.bytecode.CodeAnalyser.getAnalysisOrWrapFail(CodeAnalyser.java:220)
-        // org.benf.cfr.reader.bytecode.CodeAnalyser.getAnalysis(CodeAnalyser.java:165)
-        // org.benf.cfr.reader.entities.attributes.AttributeCode.analyse(AttributeCode.java:91)
-        // org.benf.cfr.reader.entities.Method.analyse(Method.java:354)
-        // org.benf.cfr.reader.entities.ClassFile.analyseMid(ClassFile.java:751)
-        // org.benf.cfr.reader.entities.ClassFile.analyseTop(ClassFile.java:683)
-        // org.benf.cfr.reader.Main.doJar(Main.java:128)
-        // com.njlabs.showjava.processor.JavaExtractor$1.run(JavaExtractor.java:100)
-        // java.lang.Thread.run(Thread.java:856)
-        throw new IllegalStateException("Decompilation failed");
+    public static void saveScreenshot(String name, int firstInt, int secondInt, int[] thatArray) 
+	{
+		
+    }
+    public void addListener(ActivityListener activityListener)
+	{
+        this.mActivityListeners.add(activityListener);
     }
 
-    private native void setUpBreakpad(String var1);
-
-    public void addListener(ActivityListener activityListener) {
-        this.mActivityListeners.add((Object)activityListener);
+    public void buyGame()
+	{
+		
     }
 
-    public void buyGame() {
-    }
-
-    public long calculateAvailableDiskFreeSpace(String string2) {
+    public long calculateAvailableDiskFreeSpace(String string2)
+	{
         return new StatFs(string2).getAvailableBytes();
     }
 
-    public int checkLicense() {
+    public int checkLicense()
+	{
         return 0;
     }
 
-    public void clearLoginInformation() {
+    public void clearLoginInformation()
+	{
         SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences((Context)this).edit();
         editor.remove("accessToken");
         editor.remove("clientId");
@@ -265,75 +232,93 @@ implements View.OnKeyListener {
         editor.commit();
     }
 
-    public Intent createAndroidLaunchIntent() {
+    public Intent createAndroidLaunchIntent()
+	{
         Context context = this.getApplicationContext();
         return context.getPackageManager().getLaunchIntentForPackage(context.getPackageName());
     }
 
-    public String createUUID() {
+    public String createUUID()
+	{
         return UUID.randomUUID().toString().replaceAll("-", "");
     }
 
-    public boolean dispatchKeyEvent(KeyEvent keyEvent) {
-        if (keyEvent.getCharacters() != null) {
+    public boolean dispatchKeyEvent(KeyEvent keyEvent) 
+	{
+        if (keyEvent.getCharacters() != null)
+		{
             this.nativeTypeCharacter(keyEvent.getCharacters());
         }
-        if (this.nativeKeyHandler(keyEvent.getKeyCode(), keyEvent.getAction())) {
+        if (this.nativeKeyHandler(keyEvent.getKeyCode(), keyEvent.getAction())) 
+		{
             return true;
         }
         return super.dispatchKeyEvent(keyEvent);
     }
 
-    public void displayDialog(int n) {
+    public void displayDialog(int n)
+	{
     }
 
-    public String getAccessToken() {
+    public String getAccessToken()
+	{
         return PreferenceManager.getDefaultSharedPreferences((Context)this).getString("accessToken", "");
     }
 
-    public int getAndroidVersion() {
+    public int getAndroidVersion() 
+	{
         return Build.VERSION.SDK_INT;
     }
 
-    public String[] getBroadcastAddresses() {
+    public String[] getBroadcastAddresses() 
+	{
         ArrayList arrayList = new ArrayList();
-        try {
+        try 
+		{
             System.setProperty((String)"java.net.preferIPv4Stack", (String)"true");
             Enumeration enumeration = NetworkInterface.getNetworkInterfaces();
-            while (enumeration.hasMoreElements()) {
+            while (enumeration.hasMoreElements()) 
+			{
                 NetworkInterface networkInterface = (NetworkInterface)enumeration.nextElement();
                 if (networkInterface.isLoopback()) continue;
-                for (InterfaceAddress interfaceAddress : networkInterface.getInterfaceAddresses()) {
+                for (InterfaceAddress interfaceAddress : networkInterface.getInterfaceAddresses())
+				{
                     if (interfaceAddress.getBroadcast() == null) continue;
                     arrayList.add((Object)interfaceAddress.getBroadcast().toString().substring(1));
                 }
             }
         }
-        catch (Exception var2_6) {
+        catch (Exception var2_6) 
+		{
             // empty catch block
         }
         return (String[])arrayList.toArray((Object[])new String[arrayList.size()]);
     }
 
-    public String getClientId() {
+    public String getClientId() 
+	{
         return PreferenceManager.getDefaultSharedPreferences((Context)this).getString("clientId", "");
     }
 
-    public int getCursorPosition() {
+    public int getCursorPosition()
+	{
         if (this.mHiddenTextInputDialog == null || this.textInputWidget == null) {
             return -1;
         }
         return this.textInputWidget.getSelectionStart();
     }
 
-    public String getDateString(int n) {
+    public String getDateString(int n)
+	{
         return this.DateFormat.format(new Date(1000 * (long)n));
     }
 
-    public String getDeviceId() {
+    public String getDeviceId() 
+	{
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences((Context)this);
         String string2 = sharedPreferences.getString("snooperId", "");
-        if (string2.isEmpty()) {
+        if (string2.isEmpty()) 
+		{
             string2 = UUID.randomUUID().toString().replaceAll("-", "");
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.putString("snooperId", string2);
@@ -342,50 +327,85 @@ implements View.OnKeyListener {
         return string2;
     }
 
-    public String getDeviceModel() {
+    public String getDeviceModel()
+	{
         return HardwareInformation.getDeviceModelName();
     }
 
-    public String getExternalStoragePath() {
+    public String getExternalStoragePath() 
+	{
         return Environment.getExternalStorageDirectory().getAbsolutePath();
     }
 
-    /*
-     * Exception decompiling
-     */
-    public byte[] getFileDataBytes(String var1_1) {
-        // This method has failed to decompile.  When submitting a bug report, please provide this stack trace, and (if you hold appropriate legal rights) the relevant class file.
-        // org.benf.cfr.reader.util.ConfusedCFRException: Tried to end blocks [17[UNCONDITIONALDOLOOP]], but top level block is 5[TRYBLOCK]
-        // org.benf.cfr.reader.bytecode.analysis.opgraph.Op04StructuredStatement.processEndingBlocks(Op04StructuredStatement.java:394)
-        // org.benf.cfr.reader.bytecode.analysis.opgraph.Op04StructuredStatement.buildNestedBlocks(Op04StructuredStatement.java:446)
-        // org.benf.cfr.reader.bytecode.analysis.opgraph.Op03SimpleStatement.createInitialStructuredBlock(Op03SimpleStatement.java:2859)
-        // org.benf.cfr.reader.bytecode.CodeAnalyser.getAnalysisInner(CodeAnalyser.java:805)
-        // org.benf.cfr.reader.bytecode.CodeAnalyser.getAnalysisOrWrapFail(CodeAnalyser.java:220)
-        // org.benf.cfr.reader.bytecode.CodeAnalyser.getAnalysis(CodeAnalyser.java:165)
-        // org.benf.cfr.reader.entities.attributes.AttributeCode.analyse(AttributeCode.java:91)
-        // org.benf.cfr.reader.entities.Method.analyse(Method.java:354)
-        // org.benf.cfr.reader.entities.ClassFile.analyseMid(ClassFile.java:751)
-        // org.benf.cfr.reader.entities.ClassFile.analyseTop(ClassFile.java:683)
-        // org.benf.cfr.reader.Main.doJar(Main.java:128)
-        // com.njlabs.showjava.processor.JavaExtractor$1.run(JavaExtractor.java:100)
-        // java.lang.Thread.run(Thread.java:856)
-        throw new IllegalStateException("Decompilation failed");
+    public byte[] getFileDataBytes(String var1_1)
+	{
+        try 
+		{
+			// System.out.println("Get file data : "+var1_1);
+			InputStream is = null;
+			try
+			{
+				//if(textureDisable && tm.getCurrentVertex() != null)
+				//{
+				//	is = tm.openInputStreamForAssets(var1_1, tm.getCurrentVertex());
+				//}
+				//else
+				//{
+					is = mcpeContext.getAssets().open(var1_1);
+				//}
+				
+				
+				//↓remove it!
+				
+				new BufferedInputStream(new FileInputStream(var1_1));
+			}
+			catch(FileNotFoundException e){
+				// TODO : if not in assets, try sdcard
+				try
+				{
+					is = new BufferedInputStream(new FileInputStream(var1_1));
+				}
+				catch(FileNotFoundException e2)
+				{
+					return null;
+				}
+			}
+			if(is == null) return null;
+			ByteArrayOutputStream bout = new ByteArrayOutputStream();
+			byte[] buffer = new byte[1024];
+			while (true) 
+			{
+				int len = is.read(buffer);
+				if (len < 0)
+				{
+					break;
+				}
+				bout.write(buffer, 0, len);
+			}
+			byte[] retval = bout.toByteArray();
+			return retval;
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+			return null;
+		}
     }
+	
 
-    /*
-     * Enabled aggressive block sorting
-     * Enabled unnecessary exception pruning
-     * Enabled aggressive exception aggregation
-     */
-    public String[] getIPAddresses() {
+    public String[] getIPAddresses()
+	{
         ArrayList arrayList = new ArrayList();
-        try {
+        try 
+		{
             System.setProperty((String)"java.net.preferIPv4Stack", (String)"true");
             Enumeration enumeration = NetworkInterface.getNetworkInterfaces();
-            while (enumeration.hasMoreElements()) {
+            while (enumeration.hasMoreElements()) 
+			{
                 NetworkInterface networkInterface = (NetworkInterface)enumeration.nextElement();
                 if (networkInterface.isLoopback() || !networkInterface.isUp()) continue;
-                for (InterfaceAddress interfaceAddress : networkInterface.getInterfaceAddresses()) {
+                for (InterfaceAddress interfaceAddress : networkInterface.getInterfaceAddresses()) 
+				{
                     InetAddress inetAddress = interfaceAddress.getAddress();
                     if (inetAddress == null || inetAddress.isAnyLocalAddress() || inetAddress.isMulticastAddress() || inetAddress.isLinkLocalAddress()) continue;
                     arrayList.add((Object)interfaceAddress.getAddress().toString().substring(1));
@@ -398,34 +418,48 @@ implements View.OnKeyListener {
         }
         return (String[])arrayList.toArray((Object[])new String[arrayList.size()]);
     }
-
-    /*
-     * Exception decompiling
-     */
-    public int[] getImageData(String var1_1) {
-        // This method has failed to decompile.  When submitting a bug report, please provide this stack trace, and (if you hold appropriate legal rights) the relevant class file.
-        // org.benf.cfr.reader.util.ConfusedCFRException: Tried to end blocks [0[TRYBLOCK]], but top level block is 4[CATCHBLOCK]
-        // org.benf.cfr.reader.bytecode.analysis.opgraph.Op04StructuredStatement.processEndingBlocks(Op04StructuredStatement.java:394)
-        // org.benf.cfr.reader.bytecode.analysis.opgraph.Op04StructuredStatement.buildNestedBlocks(Op04StructuredStatement.java:446)
-        // org.benf.cfr.reader.bytecode.analysis.opgraph.Op03SimpleStatement.createInitialStructuredBlock(Op03SimpleStatement.java:2859)
-        // org.benf.cfr.reader.bytecode.CodeAnalyser.getAnalysisInner(CodeAnalyser.java:805)
-        // org.benf.cfr.reader.bytecode.CodeAnalyser.getAnalysisOrWrapFail(CodeAnalyser.java:220)
-        // org.benf.cfr.reader.bytecode.CodeAnalyser.getAnalysis(CodeAnalyser.java:165)
-        // org.benf.cfr.reader.entities.attributes.AttributeCode.analyse(AttributeCode.java:91)
-        // org.benf.cfr.reader.entities.Method.analyse(Method.java:354)
-        // org.benf.cfr.reader.entities.ClassFile.analyseMid(ClassFile.java:751)
-        // org.benf.cfr.reader.entities.ClassFile.analyseTop(ClassFile.java:683)
-        // org.benf.cfr.reader.Main.doJar(Main.java:128)
-        // com.njlabs.showjava.processor.JavaExtractor$1.run(JavaExtractor.java:100)
-        // java.lang.Thread.run(Thread.java:856)
-        throw new IllegalStateException("Decompilation failed");
-    }
-
-    /*
-     * Enabled aggressive block sorting
-     * Lifted jumps to return sites
-     */
-    public int getKeyFromKeyCode(int n, int n2, int n3) {
+	public int[] getImageData(String name,boolean bl)
+	{
+		InputStream is = null;
+		try 
+		{
+			if(!bl)
+			{
+				try
+				{
+					is = new BufferedInputStream(new FileInputStream(name));
+				}
+				catch(FileNotFoundException e)
+				{
+					return null;
+				}
+			}
+			else
+			{
+				//if(!textureDisable || tm.getCurrentTexture() == null)
+				//	is = mcPackageContext.getAssets().open(name);
+				//else
+				//	is = tm.openInputStreamForAssets(name, tm.getCurrentTexture());
+			}
+			if (is == null)
+				return null;
+			Bitmap bmp = BitmapFactory.decodeStream(is);
+			int[] retval = new int[(bmp.getWidth() * bmp.getHeight()) + 2];
+			retval[0] = bmp.getWidth();
+			retval[1] = bmp.getHeight();
+			bmp.getPixels(retval, 2, bmp.getWidth(), 0, 0, bmp.getWidth(), bmp.getHeight());
+			is.close();
+			bmp.recycle();
+			return retval;
+		} 
+		catch (Exception e) 
+		{
+			e.printStackTrace();
+			return null;
+		}
+	}
+    public int getKeyFromKeyCode(int n, int n2, int n3) 
+	{
         InputDevice inputDevice;
         if (n3 < 0) {
             int[] arrn = InputDevice.getDeviceIds();
@@ -438,76 +472,86 @@ implements View.OnKeyListener {
         return inputDevice.getKeyCharacterMap().get(n, n2);
     }
 
-    public float getKeyboardHeight() {
+    public float getKeyboardHeight()
+	{
         return this.virtualKeyboardHeight;
     }
 
-    public String getLocale() {
+    public String getLocale()
+	{
         return HardwareInformation.getLocale();
     }
 
-    public float getPixelsPerMillimeter() {
+    public float getPixelsPerMillimeter() 
+	{
         DisplayMetrics displayMetrics = new DisplayMetrics();
         this.getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
         return 0.5f * (displayMetrics.xdpi + displayMetrics.ydpi) / 25.4f;
     }
 
-    public String getPlatformStringVar(int n) {
+    public String getPlatformStringVar(int n) 
+	{
         if (n == 0) {
             return Build.MODEL;
         }
         return null;
     }
 
-    public String getProfileId() {
+    public String getProfileId() 
+	{
         return PreferenceManager.getDefaultSharedPreferences((Context)this).getString("profileId", "");
     }
 
-    public String getProfileName() {
+    public String getProfileName() 
+	{
         return PreferenceManager.getDefaultSharedPreferences((Context)this).getString("profileName", "");
     }
 
-    public int getScreenHeight() {
+    public int getScreenHeight()
+	{
         Display display = ((WindowManager)this.getSystemService("window")).getDefaultDisplay();
         int n = Math.min((int)display.getWidth(), (int)display.getHeight());
         System.out.println("getheight: " + n);
         return n;
     }
 
-    public int getScreenWidth() {
+    public int getScreenWidth() 
+	{
         Display display = ((WindowManager)this.getSystemService("window")).getDefaultDisplay();
         int n = Math.max((int)display.getWidth(), (int)display.getHeight());
         System.out.println("getwidth: " + n);
         return n;
     }
 
-    public long getTotalMemory() {
+    public long getTotalMemory() 
+	{
         ActivityManager activityManager = (ActivityManager)this.getSystemService("activity");
         ActivityManager.MemoryInfo memoryInfo = new ActivityManager.MemoryInfo();
         activityManager.getMemoryInfo(memoryInfo);
         return memoryInfo.availMem;
     }
 
-    public int getUserInputStatus() {
+    public int getUserInputStatus()
+	{
         return this._userInputStatus;
     }
 
-    public String[] getUserInputString() {
+    public String[] getUserInputString()
+	{
         return this._userInputText;
     }
 
-    public boolean hasBuyButtonWhenInvalidLicense() {
+    public boolean hasBuyButtonWhenInvalidLicense() 
+	{
         return true;
     }
 
-    /*
-     * Enabled force condition propagation
-     * Lifted jumps to return sites
-     */
-    boolean hasHardwareChanged() {
+    boolean hasHardwareChanged() 
+	{
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences((Context)this);
         String string2 = sharedPreferences.getString("lastAndroidVersion", "");
-        if (!string2.isEmpty()) {
+        if (!string2.isEmpty()) 
+		{
             if (string2.equals((Object)Build.VERSION.RELEASE)) return false;
         }
         boolean bl = true;
@@ -518,7 +562,8 @@ implements View.OnKeyListener {
         return bl;
     }
 
-    public void hideKeyboard() {
+    public void hideKeyboard() 
+	{
         this.runOnUiThread(new Runnable(){
 
 				public void run() {
@@ -530,93 +575,89 @@ implements View.OnKeyListener {
 			});
     }
 
-    public void initiateUserInput(int n) {
+    public void initiateUserInput(int n) 
+	{
         this._userInputText = null;
         this._userInputStatus = -1;
     }
 
-    protected boolean isDemo() {
+    protected boolean isDemo() 
+	{
         return false;
     }
 
-    public boolean isFirstSnooperStart() {
+    public boolean isFirstSnooperStart()
+	{
         return PreferenceManager.getDefaultSharedPreferences((Context)this).getString("snooperId", "").isEmpty();
     }
 
-    /*
-     * Enabled aggressive block sorting
-     */
-    public boolean isNetworkEnabled(boolean bl) {
+    public boolean isNetworkEnabled(boolean bl)
+	{
         NetworkInfo networkInfo;
         NetworkInfo networkInfo2;
         ConnectivityManager connectivityManager = (ConnectivityManager)this.getSystemService("connectivity");
         NetworkInfo networkInfo3 = connectivityManager.getNetworkInfo(9);
-        if (networkInfo3 != null && networkInfo3.isConnected() || (networkInfo = connectivityManager.getNetworkInfo(1)) != null && networkInfo.isConnected() || (networkInfo2 = connectivityManager.getActiveNetworkInfo()) != null && networkInfo2.isConnected() && !bl) {
+        if (networkInfo3 != null && networkInfo3.isConnected() || (networkInfo = connectivityManager.getNetworkInfo(1)) != null && networkInfo.isConnected() || (networkInfo2 = connectivityManager.getActiveNetworkInfo()) != null && networkInfo2.isConnected() && !bl) 
+		{
             return true;
         }
         return false;
     }
 
-    boolean isTablet() {
-        if ((15 & this.getResources().getConfiguration().screenLayout) == 4) {
+    boolean isTablet() 
+	{
+        if ((15 & this.getResources().getConfiguration().screenLayout) == 4) 
+		{
             return true;
         }
         return false;
     }
 
-    public boolean isTextToSpeechInProgress() {
-        if (this.textToSpeechManager != null) {
+    public boolean isTextToSpeechInProgress() 
+	{
+        if (this.textToSpeechManager != null)
+		{
             return this.textToSpeechManager.isSpeaking();
         }
         return false;
     }
 
-    public void launchUri(String string2) {
+    public void launchUri(String string2)
+	{
         this.startActivity(new Intent("android.intent.action.VIEW", Uri.parse((String)string2)));
     }
 
+	//native API
     native void nativeBackPressed();
-
     native void nativeBackSpacePressed();
-
     native boolean nativeKeyHandler(int var1, int var2);
-
     native void nativeOnDestroy();
-
     native void nativeOnPickImageCanceled(long var1);
-
     native void nativeOnPickImageSuccess(long var1, String var3);
-
     native void nativeProcessIntentUriQuery(String var1, String var2);
-
     native void nativeRegisterThis();
-
     native void nativeReturnKeyPressed();
-
     native void nativeSetHeadphonesConnected(boolean var1);
-
     native void nativeSetTextboxText(String var1);
-
     native void nativeStopThis();
-
     native void nativeSuspend();
-
     native void nativeTypeCharacter(String var1);
-
     native void nativeUnregisterThis();
-
-    /*
-     * Enabled aggressive block sorting
-     */
-    protected void onActivityResult(int n, int n2, Intent intent) {
+	
+	private native void setUpBreakpad(String var1);
+    
+    protected void onActivityResult(int n, int n2, Intent intent) 
+	{
         super.onActivityResult(n, n2, intent);
         Iterator iterator = this.mActivityListeners.iterator();
-        while (iterator.hasNext()) {
+        while (iterator.hasNext())
+		{
             ((ActivityListener)iterator.next()).onActivityResult(n, n2, intent);
         }
         if (n != RESULT_PICK_IMAGE) return;
         {
-            if (n2 == -1 && intent != null) {
+            if (n2 == -1 && intent != null) 
+			{
                 Uri uri = intent.getData();
                 String[] arrstring = new String[]{"_data"};
                 Cursor cursor = this.getContentResolver().query(uri, arrstring, null, null, null);
@@ -626,7 +667,9 @@ implements View.OnKeyListener {
                 this.mCallback = 0;
                 cursor.close();
                 return;
-            } else {
+            } 
+			else 
+			{
                 if (this.mCallback == 0) return;
                 {
                     this.nativeOnPickImageCanceled(this.mCallback);
@@ -637,11 +680,54 @@ implements View.OnKeyListener {
         }
     }
 
-    public void onBackPressed() {
+    public void onBackPressed() 
+	{
+		
     }
 
-    public void onCreate(Bundle bundle) {
+    public void onCreate(Bundle bundle) 
+	{
         super.onCreate(bundle);
+		
+		try
+		{
+			mcpeContext = createPackageContext("com.mojang.minecraftpe",CONTEXT_IGNORE_SECURITY);
+			MC_LIBRARY_DIR = getPackageManager().getApplicationInfo("com.mojang.minecraftpe",0).nativeLibraryDir;
+			MC_LIBRARY_LOCATION = MC_LIBRARY_DIR + "/libminecraftpe.so";
+			
+			try
+			{
+				System.loadLibrary("ovrfmod");
+			}
+			catch (UnsatisfiedLinkError var0) 
+			{
+				Log.d("MCPE", "OVRfmod library not found");
+			}
+			try 
+			{
+				System.loadLibrary("ovrplatformloader");
+			}
+			catch (UnsatisfiedLinkError var2_1) 
+			{
+				Log.d("MCPE","OVRplatform library not found");
+			}
+			try
+			{
+				System.load(MC_LIBRARY_DIR + "/libfmod.so");
+				System.load(MC_LIBRARY_LOCATION);
+			}
+			catch(Exception e)
+			{
+				Toast.makeText(this,"MCPELibNotFound",500).show();
+			}
+		}
+		catch(Exception e)
+		{
+			
+		}
+		
+		
+		
         this.platform = Platform.createPlatform(true);
         this.setVolumeControlStream(3);
         this.nativeRegisterThis();
@@ -655,12 +741,13 @@ implements View.OnKeyListener {
         MetricsManager.trackEvent((String)("Device: " + HardwareInformation.getDeviceModelName()));
         Constants.loadFromContext((Context)this);
         this.setUpBreakpad(Constants.FILES_PATH);
-        NativeCrashManager.handleDumpFiles((Activity)this, (String)"3db796c2fc084bbc907764b7deb378c5");
+        //NativeCrashManager.handleDumpFiles((Activity)this, (String)"3db796c2fc084bbc907764b7deb378c5");
         mInstance = this;
         this._fromOnCreate = true;
     }
 
-    protected void onDestroy() {
+    protected void onDestroy()
+	{
         Log.d((String)"MinecraftPE", (String)"onDestroy");
         mInstance = null;
         System.out.println("onDestroy");
@@ -675,39 +762,44 @@ implements View.OnKeyListener {
         System.exit((int)0);
     }
 
-    public boolean onKey(View view, int n, KeyEvent keyEvent) {
+    public boolean onKey(View view, int n, KeyEvent keyEvent)
+	{
         return false;
     }
 
-    public boolean onKeyDown(int n, KeyEvent keyEvent) {
+    public boolean onKeyDown(int n, KeyEvent keyEvent)
+	{
         return super.onKeyDown(n, keyEvent);
     }
 
-    public boolean onKeyMultiple(int n, int n2, KeyEvent keyEvent) {
+    public boolean onKeyMultiple(int n, int n2, KeyEvent keyEvent)
+	{
         return super.onKeyMultiple(n, n2, keyEvent);
     }
 
-    public boolean onKeyUp(int n, KeyEvent keyEvent) {
-        if (n == 25 || n == 24) {
+    public boolean onKeyUp(int n, KeyEvent keyEvent)
+	{
+        if (n == 25 || n == 24)
+		{
             this.platform.onVolumePressed();
         }
         return super.onKeyUp(n, keyEvent);
     }
 
-    public void onNewIntent(Intent intent) {
+    public void onNewIntent(Intent intent)
+	{
         this.processIntent(intent);
     }
 
-    protected void onPause() {
+    protected void onPause()
+	{
         Log.d((String)"MinecraftPE", (String)"onPause");
         this.nativeSuspend();
         super.onPause();
     }
 
-    /*
-     * Enabled aggressive block sorting
-     */
-    protected void onResume() {
+    protected void onResume()
+	{
         Log.d((String)"MinecraftPE", (String)"onResume");
         super.onResume();
         IntentFilter intentFilter = new IntentFilter("android.intent.action.HEADSET_PLUG");
@@ -726,29 +818,34 @@ implements View.OnKeyListener {
     }
 
     @SuppressLint(value={"DefaultLocale"})
-    protected void onStart() {
+    protected void onStart()
+	{
         Log.d((String)"MinecraftPE", (String)"onStart");
         super.onStart();
         this.deviceManager.register();
-        if (this._fromOnCreate) {
+        if (this._fromOnCreate)
+		{
             this._fromOnCreate = false;
             this.processIntent(this.getIntent());
         }
     }
 
-    protected void onStop() {
+    protected void onStop()
+	{
         Log.d((String)"MinecraftPE", (String)"onStop");
         this.nativeStopThis();
         super.onStop();
         this.deviceManager.unregister();
     }
 
-    public void onWindowFocusChanged(boolean bl) {
+    public void onWindowFocusChanged(boolean bl)
+	{
         super.onWindowFocusChanged(bl);
         this.platform.onViewFocusChanged(bl);
     }
 
-    void pickImage(long l) {
+    void pickImage(long l)
+	{
         this.mCallback = l;
         try {
             this.startActivityForResult(new Intent("android.intent.action.PICK", MediaStore.Images.Media.EXTERNAL_CONTENT_URI), RESULT_PICK_IMAGE);
@@ -759,10 +856,13 @@ implements View.OnKeyListener {
         }
     }
 
-    public void postScreenshotToFacebook(String string2, int n, int n2, int[] arrn) {
+    public void postScreenshotToFacebook(String string2, int n, int n2, int[] arrn)
+	{
+		
     }
 
-    public void quit() {
+    public void quit()
+	{
         this.runOnUiThread(new Runnable(){
 
 				public void run() {
@@ -771,24 +871,29 @@ implements View.OnKeyListener {
 			});
     }
 
-    public void removeListener(ActivityListener activityListener) {
+    public void removeListener(ActivityListener activityListener)
+	{
         this.mActivityListeners.remove((Object)activityListener);
     }
 
-    public void setClipboard(String string2) {
+    public void setClipboard(String string2)
+	{
         ClipData clipData = ClipData.newPlainText((CharSequence)"MCPE-Clipdata", (CharSequence)string2);
         this.clipboardManager.setPrimaryClip(clipData);
     }
 
-    void setFileDialogCallback(long l) {
+    void setFileDialogCallback(long l)
+	{
         this.mFileDialogCallback = l;
     }
 
-    public void setIsPowerVR(boolean bl) {
+    public void setIsPowerVR(boolean bl)
+	{
         _isPowerVr = bl;
     }
 
-    public void setLoginInformation(String string2, String string3, String string4, String string5) {
+    public void setLoginInformation(String string2, String string3, String string4, String string5)
+	{
         SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences((Context)this).edit();
         editor.putString("accessToken", string2);
         editor.putString("clientId", string3);
@@ -797,31 +902,30 @@ implements View.OnKeyListener {
         editor.commit();
     }
 
-    public void setRefreshToken(String string2) {
+    public void setRefreshToken(String string2)
+	{
         SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences((Context)this).edit();
         editor.putString("refreshToken", string2);
         editor.commit();
     }
 
-    public void setSession(String string2) {
+    public void setSession(String string2)
+	{
         SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences((Context)this).edit();
         editor.putString("sessionID", string2);
         editor.commit();
     }
 
-    /*
-     * Enabled aggressive block sorting
-     * Enabled unnecessary exception pruning
-     * Enabled aggressive exception aggregation
-     * Lifted jumps to return sites
-     */
-    public void setTextToSpeechEnabled(boolean bl) {
-        if (!bl) {
+    public void setTextToSpeechEnabled(boolean bl)
+	{
+        if (!bl)
+		{
             this.textToSpeechManager = null;
             return;
         }
         if (this.textToSpeechManager != null) return;
-        try {
+        try
+		{
             this.textToSpeechManager = new TextToSpeech(this.getApplicationContext(), new TextToSpeech.OnInitListener(){
 
 					public void onInit(int n) {
@@ -829,27 +933,26 @@ implements View.OnKeyListener {
 				});
             return;
         }
-        catch (Exception exception) {
+        catch (Exception exception)
+		{
             return;
         }
     }
 
-    public void setupKeyboardViews(String string2, int n, boolean bl, boolean bl2) {
+    public void setupKeyboardViews(String string2, int n, boolean bl, boolean bl2)
+	{
         this.textInputWidget = new TextInputProxyEditTextbox((Context)this, n, bl);
         this.textInputWidget.setFocusable(true);
         this.textInputWidget.setFocusableInTouchMode(true);
         this.textInputWidget.setInputType(655360);
         this.textInputWidget.setImeOptions(268435461);
         this.textInputWidget.setText((CharSequence)string2);
-        if (bl2) {
+        if (bl2)
+		{
             this.textInputWidget.setInputType(2);
         }
         this.textInputWidget.setOnEditorActionListener(new TextView.OnEditorActionListener(){
 
-				/*
-				 * Enabled force condition propagation
-				 * Lifted jumps to return sites
-				 */
 				public boolean onEditorAction(TextView textView, int n, KeyEvent keyEvent) {
 					Log.w((String)"mcpe - keyboard", (String)("onEditorAction: " + n));
 					if (n == 5) {
@@ -952,7 +1055,8 @@ implements View.OnKeyListener {
 			});
     }
 
-    public void showKeyboard(final String string2, final int n, final boolean bl, final boolean bl2) {
+    public void showKeyboard(final String string2, final int n, final boolean bl, final boolean bl2)
+	{
         this.runOnUiThread(new Runnable(){
 
 				public void run() {
@@ -961,28 +1065,37 @@ implements View.OnKeyListener {
 			});
     }
 
-    public void startTextToSpeech(String string2) {
-        if (this.textToSpeechManager != null) {
+    public void startTextToSpeech(String string2)
+	{
+        if (this.textToSpeechManager != null)
+		{
             this.textToSpeechManager.speak(string2, 0, null);
         }
     }
 
-    public void statsTrackEvent(String string2, String string3) {
+    public void statsTrackEvent(String string2, String string3)
+	{
     }
 
-    public void statsUpdateUserData(String string2, String string3) {
+    public void statsUpdateUserData(String string2, String string3)
+	{
     }
 
-    public void stopTextToSpeech() {
-        if (this.textToSpeechManager != null) {
+    public void stopTextToSpeech()
+	{
+        if (this.textToSpeechManager != null)
+		{
             this.textToSpeechManager.stop();
         }
     }
 
-    public void tick() {
+    public void tick()
+	{
+		
     }
 
-    public void updateLocalization(final String string2, final String string3) {
+    public void updateLocalization(final String string2, final String string3)
+	{
         this.runOnUiThread(new Runnable(){
 
 				public void run() {
@@ -995,7 +1108,8 @@ implements View.OnKeyListener {
 			});
     }
 
-    public void updateTextboxText(final String string2) {
+    public void updateTextboxText(final String string2)
+	{
         this.runOnUiThread(new Runnable(){
 
 				public void run() {
@@ -1008,7 +1122,8 @@ implements View.OnKeyListener {
 			});
     }
 
-    public void vibrate(int n) {
+    public void vibrate(int n)
+	{
         ((Vibrator)this.getSystemService("vibrator")).vibrate((long)n);
     }
 
