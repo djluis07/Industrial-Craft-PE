@@ -15,7 +15,7 @@
 			android:value="com.ICPE.main"/>
 		
 		<meta-data android:name="net.zhuoweizhang.mcpelauncher.api.targetmcpeversion"
-			android:value="0.16.1.0"/>
+			android:value="0.17.0.2"/>
 		<activity
 			android:theme="@style/AppTheme"
 			android:name=".MainActivity" >

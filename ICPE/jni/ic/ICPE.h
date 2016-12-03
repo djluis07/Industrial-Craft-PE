@@ -17,6 +17,9 @@ class BlockPos;
 class LevelSettings;
 class ResourcePackManager;
 class BlockGraphics;
+class ICBlockEntityManager;
+class ICOptions;
+class UIScreenChooser;
 
 typedef BlockGraphics MCPEBlockGraphics;
 typedef unsigned char uchar;
@@ -50,5 +53,10 @@ public:
 	static void (*tickLevel_)(Level*);
 	static void tickLevel(Level*);
 public:
-	
+	static MinecraftClient* mcClient;
+	static Level* currentLevel;
+	static std::string currentLevelFolder;
+	static ICBlockEntityManager* currentICBlockEntityManager;
+	static ICOptions* icOptions;
+	static UIScreenChooser* uiChooser;
 };

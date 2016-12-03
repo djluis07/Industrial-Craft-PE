@@ -73,17 +73,24 @@ void ICPE::setupMSHookFunctions()
 	MSHookFunction((void*)&Block::initBlocks,(void*)&initBlocks,(void**)&initBlocks_);
 }
 
-void (*ICPE::loadLocalization_)(Localization*, const std::string&);
-void (*ICPE::onNewChunkFor_)(Level*,Player &, LevelChunk &);
-void (*ICPE::initRecipes_)(Recipes*self);
-bool (*ICPE::tessellateInWorld_)(BlockTessellator*,Block&,BlockPos const&,uchar,bool);
-void (*ICPE::initMCClient_)(MinecraftClient*);
-void (*ICPE::initCreativeItems_)();
-void (*ICPE::initItems_)();
-void (*ICPE::initBlockGraphics_)();
-void (*ICPE::initBlocks_)();
-void (*ICPE::createLevel_)(Minecraft*,void*,std::string const&,std::string const&,LevelSettings const &,ResourcePackManager&);
-void (*ICPE::tickLevel_)(Level*);
+void (*ICPE::loadLocalization_)(Localization*, const std::string&)=0;
+void (*ICPE::onNewChunkFor_)(Level*,Player &, LevelChunk &)=0;
+void (*ICPE::initRecipes_)(Recipes*self)=0;
+bool (*ICPE::tessellateInWorld_)(BlockTessellator*,Block&,BlockPos const&,uchar,bool)=0;
+void (*ICPE::initMCClient_)(MinecraftClient*)=0;
+void (*ICPE::initCreativeItems_)()=0;
+void (*ICPE::initItems_)()=0;
+void (*ICPE::initBlockGraphics_)()=0;
+void (*ICPE::initBlocks_)()=0;
+void (*ICPE::createLevel_)(Minecraft*,void*,std::string const&,std::string const&,LevelSettings const &,ResourcePackManager&)=0;
+void (*ICPE::tickLevel_)(Level*)=0;
+
+MinecraftClient* ICPE::mcClient=0;
+Level* ICPE::currentLevel=0;
+std::string ICPE::currentLevelFolder;
+ICBlockEntityManager* ICPE::currentICBlockEntityManager=0;
+ICOptions* ICPE::icOptions=0;
+UIScreenChooser* ICPE::uiChooser=0;
 
 void ICPE::loadLocalization(Localization *self, const std::string &languageName)
 {
