@@ -413,11 +413,17 @@ public class MainActivity extends NativeActivity implements View.OnKeyListener
             }
             return (String[])arrayList.toArray((Object[])new String[arrayList.size()]);
         }
-        catch (Exception var2_7) {
+        catch (Exception var2_7) 
+		{
             // empty catch block
         }
         return (String[])arrayList.toArray((Object[])new String[arrayList.size()]);
     }
+	
+	public int[] getImageData(String name)
+	{
+		return getImageData(name,true);
+	}
 	public int[] getImageData(String name,boolean bl)
 	{
 		InputStream is = null;
@@ -461,9 +467,11 @@ public class MainActivity extends NativeActivity implements View.OnKeyListener
     public int getKeyFromKeyCode(int n, int n2, int n3) 
 	{
         InputDevice inputDevice;
-        if (n3 < 0) {
+        if (n3 < 0) 
+		{
             int[] arrn = InputDevice.getDeviceIds();
-            if (arrn.length == 0) {
+            if (arrn.length == 0) 
+			{
                 return 0;
             }
             n3 = arrn[0];
@@ -491,7 +499,8 @@ public class MainActivity extends NativeActivity implements View.OnKeyListener
 
     public String getPlatformStringVar(int n) 
 	{
-        if (n == 0) {
+        if (n == 0) 
+		{
             return Build.MODEL;
         }
         return null;
@@ -723,11 +732,12 @@ public class MainActivity extends NativeActivity implements View.OnKeyListener
 		}
 		catch(Exception e)
 		{
-			
+			Toast.makeText(this,"ERROR Code:0",500).show();
 		}
 		
 		
-		
+		try
+		{
         this.platform = Platform.createPlatform(true);
         this.setVolumeControlStream(3);
         this.nativeRegisterThis();
@@ -744,6 +754,11 @@ public class MainActivity extends NativeActivity implements View.OnKeyListener
         //NativeCrashManager.handleDumpFiles((Activity)this, (String)"3db796c2fc084bbc907764b7deb378c5");
         mInstance = this;
         this._fromOnCreate = true;
+		}
+		catch(Exception e)
+		{
+			Toast.makeText(this,"ERROR Code:1",500).show();
+		}
     }
 
     protected void onDestroy()
