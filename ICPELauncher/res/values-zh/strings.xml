@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="app_name">工业携带版</string>
+	<string name="app_version">0.1</string>
+	<string name="agree_license">开始</string>
+	<string name="agree_user_license">我同意并遵守  </string>
+	<string name="user_legal">最终用户许可协议</string>
+	<string name="statement_end">。</string>
+	<string name="eula_all">
+		\n
+		 - 开放源代码许可:\n
+		本程序使用了一份Cydia Substrate的复制件。\n
+		本程序使用了一份android v4 support库。\n
+		本程序使用了IC2 MOD的贴图。\n
+		本程序使用了一份FMOD库。\n
+		本程序使用了simpleframework库。\n
+		本程序使用了hockeyapp库。\n
+		本程序使用了Micrsoft的SDK库。\n
+		本程序使用了facebook的SDK库。\n
+		本程序使用了XBOX的SDK库。\n
+		本程序使用了GooglePlay的SDK库。\n
+		本程序使用了PGYER的SDK库。\n
+		本程序使用了Google的Gson库。\n
+		本程序使用了amazon的SDK库。\n
+		本程序使用了gc的MaterialDesign库。\n
+		\n
+		 - 所有开发者\n
+		ModelPart\n
+		\n
+		 - 所有测试者\n
+		kokic\n
+		int100\n
+		F_picacho\n
+		ModelPart\n
+		\n
+		 - 最终用户许可协议\n
+		1.用户必须同意本《协议》才能够安装使用本软件\n
+		2.用户不得进行对本软件进行类似反汇编、反编译、反向工程的行为非法获取本软件的源代码。\n
+		3.用户不得传播本程序的修改版、重制版。\n
+		4.用户不得使用本免费软件进行盈利行为。\n
+		5.本软件由ICPE Dev Team和MCAL Team开发，任何个人和团体不得更改本程序的版权许可。\n
+		6.用户不得对本程序的测试版进行传播、发放行为。\n
+		7.用户一旦安装、打开本程序，证明已经同意本《协议》。\n
+		8.本《协议》最终解释权归ICPE Dev Team和MCAL Team所有。\n
+	</string>
+</resources>

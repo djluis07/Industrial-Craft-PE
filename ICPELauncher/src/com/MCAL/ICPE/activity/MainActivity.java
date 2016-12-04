@@ -22,6 +22,6 @@ public class MainActivity extends Activity
 	{
 		Intent intent=new Intent(this,LauncherActivity.class);
 		startActivity(intent);
-		
+		finish();
 	}
 }

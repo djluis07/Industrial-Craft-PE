@@ -22,6 +22,7 @@ import android.content.res.Resources;
 import android.database.Cursor;
 import android.graphics.Rect;
 import android.media.AudioManager;
+import android.provider.MediaStore.Images.Media;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
@@ -82,8 +83,12 @@ import android.widget.*;
 import android.content.pm.PackageManager.*;
 import java.io.*;
 import android.graphics.*;
+import android.os.Build.VERSION;
+import android.content.pm.*;
+import java.lang.reflect.*;
 
-public class MainActivity extends NativeActivity implements View.OnKeyListener 
+@SuppressLint({"SdCardPath"})
+public class MainActivity extends NativeActivity implements View.OnKeyListener
 {
 	//mcpe members
     public static int RESULT_GOOGLEPLAY_PURCHASE = 0;
@@ -112,9 +117,14 @@ public class MainActivity extends NativeActivity implements View.OnKeyListener
     private TextToSpeech textToSpeechManager;
     public int virtualKeyboardHeight = 0;
 	//launcher
-	String MC_LIBRARY_DIR="";
-	String MC_LIBRARY_LOCATION="";
-	Context mcpeContext;
+	private String MC_LIBRARY_DIR="";
+	private String MC_LIBRARY_LOCATION="";
+	private Context mcpeContext;
+	private static final String MC_NATIVE_LIBRARY_DIR = "/data/data/com.mojang.minecraftpe/lib/";
+    private static final String MC_NATIVE_LIBRARY_LOCATION = "/data/data/com.mojang.minecraftpe/lib/libminecraftpe.so";
+	private ApplicationInfo mcAppInfo;
+    private PackageInfo mcPkgInfo;
+	
     static 
 	{
         _isPowerVr = false;
@@ -124,7 +134,7 @@ public class MainActivity extends NativeActivity implements View.OnKeyListener
 
     private void createAlertDialog(boolean bl, boolean bl2, boolean bl3) 
 	{
-        AlertDialog.Builder builder = new AlertDialog.Builder((Context)this);
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle((CharSequence)"");
         if (bl3)
 		{
@@ -190,7 +200,7 @@ public class MainActivity extends NativeActivity implements View.OnKeyListener
 
     private void registerCrashManager() 
 	{
-        CrashManager.register((Context)this, "3db796c2fc084bbc907764b7deb378c5", (CrashManagerListener)new CrashManagerListener(){
+        CrashManager.register(this, "3db796c2fc084bbc907764b7deb378c5", (CrashManagerListener)new CrashManagerListener(){
 
 								  public boolean shouldAutoUploadCrashes() {
 									  return true;
@@ -214,7 +224,7 @@ public class MainActivity extends NativeActivity implements View.OnKeyListener
 
     public long calculateAvailableDiskFreeSpace(String string2)
 	{
-        return new StatFs(string2).getAvailableBytes();
+        return 0;
     }
 
     public int checkLicense()
@@ -224,7 +234,7 @@ public class MainActivity extends NativeActivity implements View.OnKeyListener
 
     public void clearLoginInformation()
 	{
-        SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences((Context)this).edit();
+        SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(this).edit();
         editor.remove("accessToken");
         editor.remove("clientId");
         editor.remove("profileId");
@@ -234,8 +244,7 @@ public class MainActivity extends NativeActivity implements View.OnKeyListener
 
     public Intent createAndroidLaunchIntent()
 	{
-        Context context = this.getApplicationContext();
-        return context.getPackageManager().getLaunchIntentForPackage(context.getPackageName());
+        return getIntent();
     }
 
     public String createUUID()
@@ -243,26 +252,45 @@ public class MainActivity extends NativeActivity implements View.OnKeyListener
         return UUID.randomUUID().toString().replaceAll("-", "");
     }
 
-    public boolean dispatchKeyEvent(KeyEvent keyEvent) 
+//    public boolean dispatchKeyEvent(KeyEvent keyEvent) 
+//	{
+//        if (keyEvent.getCharacters() != null)
+//		{
+//            this.nativeTypeCharacter(keyEvent.getCharacters());
+//        }
+//        if (this.nativeKeyHandler(keyEvent.getKeyCode(), keyEvent.getAction())) 
+//		{
+//            return true;
+//        }
+//        return super.dispatchKeyEvent(keyEvent);
+//    }
+//
+	
+	public boolean dispatchKeyEvent(KeyEvent event)
 	{
-        if (keyEvent.getCharacters() != null)
+        if (event.getKeyCode() == 0)
 		{
-            this.nativeTypeCharacter(keyEvent.getCharacters());
+            try
+			{
+                nativeTypeCharacter(event.getCharacters());
+                return true;
+            }
+			catch (UnsatisfiedLinkError e)
+			{
+				
+            }
         }
-        if (this.nativeKeyHandler(keyEvent.getKeyCode(), keyEvent.getAction())) 
-		{
-            return true;
-        }
-        return super.dispatchKeyEvent(keyEvent);
+        return super.dispatchKeyEvent(event);
     }
-
+	
     public void displayDialog(int n)
 	{
+		
     }
 
     public String getAccessToken()
 	{
-        return PreferenceManager.getDefaultSharedPreferences((Context)this).getString("accessToken", "");
+        return PreferenceManager.getDefaultSharedPreferences(this).getString("accessToken", "");
     }
 
     public int getAndroidVersion() 
@@ -275,7 +303,7 @@ public class MainActivity extends NativeActivity implements View.OnKeyListener
         ArrayList arrayList = new ArrayList();
         try 
 		{
-            System.setProperty((String)"java.net.preferIPv4Stack", (String)"true");
+            System.setProperty("java.net.preferIPv4Stack", "true");
             Enumeration enumeration = NetworkInterface.getNetworkInterfaces();
             while (enumeration.hasMoreElements()) 
 			{
@@ -297,12 +325,13 @@ public class MainActivity extends NativeActivity implements View.OnKeyListener
 
     public String getClientId() 
 	{
-        return PreferenceManager.getDefaultSharedPreferences((Context)this).getString("clientId", "");
+        return PreferenceManager.getDefaultSharedPreferences(this).getString("clientId", "");
     }
 
     public int getCursorPosition()
 	{
-        if (this.mHiddenTextInputDialog == null || this.textInputWidget == null) {
+        if (this.mHiddenTextInputDialog == null || this.textInputWidget == null)
+		{
             return -1;
         }
         return this.textInputWidget.getSelectionStart();
@@ -315,7 +344,7 @@ public class MainActivity extends NativeActivity implements View.OnKeyListener
 
     public String getDeviceId() 
 	{
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences((Context)this);
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         String string2 = sharedPreferences.getString("snooperId", "");
         if (string2.isEmpty()) 
 		{
@@ -341,7 +370,6 @@ public class MainActivity extends NativeActivity implements View.OnKeyListener
 	{
         try 
 		{
-			// System.out.println("Get file data : "+var1_1);
 			InputStream is = null;
 			try
 			{
@@ -398,7 +426,7 @@ public class MainActivity extends NativeActivity implements View.OnKeyListener
         ArrayList arrayList = new ArrayList();
         try 
 		{
-            System.setProperty((String)"java.net.preferIPv4Stack", (String)"true");
+            System.setProperty("java.net.preferIPv4Stack", "true");
             Enumeration enumeration = NetworkInterface.getNetworkInterfaces();
             while (enumeration.hasMoreElements()) 
 			{
@@ -464,20 +492,9 @@ public class MainActivity extends NativeActivity implements View.OnKeyListener
 			return null;
 		}
 	}
-    public int getKeyFromKeyCode(int n, int n2, int n3) 
+    public int getKeyFromKeyCode(int keyCode, int metaState, int deviceId)
 	{
-        InputDevice inputDevice;
-        if (n3 < 0) 
-		{
-            int[] arrn = InputDevice.getDeviceIds();
-            if (arrn.length == 0) 
-			{
-                return 0;
-            }
-            n3 = arrn[0];
-        }
-        if ((inputDevice = InputDevice.getDevice((int)n3)) == null) return 0;
-        return inputDevice.getKeyCharacterMap().get(n, n2);
+        return KeyCharacterMap.load(deviceId).get(keyCode, metaState);
     }
 
     public float getKeyboardHeight()
@@ -508,12 +525,12 @@ public class MainActivity extends NativeActivity implements View.OnKeyListener
 
     public String getProfileId() 
 	{
-        return PreferenceManager.getDefaultSharedPreferences((Context)this).getString("profileId", "");
+        return PreferenceManager.getDefaultSharedPreferences(this).getString("profileId", "");
     }
 
     public String getProfileName() 
 	{
-        return PreferenceManager.getDefaultSharedPreferences((Context)this).getString("profileName", "");
+        return PreferenceManager.getDefaultSharedPreferences(this).getString("profileName", "");
     }
 
     public int getScreenHeight()
@@ -557,18 +574,19 @@ public class MainActivity extends NativeActivity implements View.OnKeyListener
 
     boolean hasHardwareChanged() 
 	{
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences((Context)this);
-        String string2 = sharedPreferences.getString("lastAndroidVersion", "");
-        if (!string2.isEmpty()) 
-		{
-            if (string2.equals((Object)Build.VERSION.RELEASE)) return false;
-        }
-        boolean bl = true;
-        if (!bl) return bl;
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString("lastAndroidVersion", Build.VERSION.RELEASE);
-        editor.commit();
-        return bl;
+		return false;
+//        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+//        String string2 = sharedPreferences.getString("lastAndroidVersion", "");
+//        if (!string2.isEmpty()) 
+//		{
+//            if (string2.equals((Object)Build.VERSION.RELEASE)) return false;
+//        }
+//        boolean bl = true;
+//        if (!bl) return bl;
+//        SharedPreferences.Editor editor = sharedPreferences.edit();
+//        editor.putString("lastAndroidVersion", Build.VERSION.RELEASE);
+//        editor.commit();
+//        return bl;
     }
 
     public void hideKeyboard() 
@@ -597,25 +615,17 @@ public class MainActivity extends NativeActivity implements View.OnKeyListener
 
     public boolean isFirstSnooperStart()
 	{
-        return PreferenceManager.getDefaultSharedPreferences((Context)this).getString("snooperId", "").isEmpty();
+        return PreferenceManager.getDefaultSharedPreferences(this).getString("snooperId", "").isEmpty();
     }
 
     public boolean isNetworkEnabled(boolean bl)
 	{
-        NetworkInfo networkInfo;
-        NetworkInfo networkInfo2;
-        ConnectivityManager connectivityManager = (ConnectivityManager)this.getSystemService("connectivity");
-        NetworkInfo networkInfo3 = connectivityManager.getNetworkInfo(9);
-        if (networkInfo3 != null && networkInfo3.isConnected() || (networkInfo = connectivityManager.getNetworkInfo(1)) != null && networkInfo.isConnected() || (networkInfo2 = connectivityManager.getActiveNetworkInfo()) != null && networkInfo2.isConnected() && !bl) 
-		{
-            return true;
-        }
-        return false;
+        return true;
     }
 
-    boolean isTablet() 
+    public boolean isTablet() 
 	{
-        if ((15 & this.getResources().getConfiguration().screenLayout) == 4) 
+        if (VERSION.SDK_INT >= 13 && getResources().getConfiguration().smallestScreenWidthDp >= 600)
 		{
             return true;
         }
@@ -633,25 +643,25 @@ public class MainActivity extends NativeActivity implements View.OnKeyListener
 
     public void launchUri(String string2)
 	{
-        this.startActivity(new Intent("android.intent.action.VIEW", Uri.parse((String)string2)));
+        this.startActivity(new Intent("android.intent.action.VIEW", Uri.parse(string2)));
     }
 
 	//native API
-    native void nativeBackPressed();
-    native void nativeBackSpacePressed();
-    native boolean nativeKeyHandler(int var1, int var2);
-    native void nativeOnDestroy();
-    native void nativeOnPickImageCanceled(long var1);
-    native void nativeOnPickImageSuccess(long var1, String var3);
-    native void nativeProcessIntentUriQuery(String var1, String var2);
-    native void nativeRegisterThis();
-    native void nativeReturnKeyPressed();
-    native void nativeSetHeadphonesConnected(boolean var1);
-    native void nativeSetTextboxText(String var1);
-    native void nativeStopThis();
-    native void nativeSuspend();
-    native void nativeTypeCharacter(String var1);
-    native void nativeUnregisterThis();
+    public native void nativeBackPressed();
+    public native void nativeBackSpacePressed();
+    public native void nativeKeyHandler(int i, boolean z);
+    public native void nativeOnDestroy();
+    public native void nativeOnPickImageCanceled(long var1);
+    public native void nativeOnPickImageSuccess(long var1, String var3);
+    public native void nativeProcessIntentUriQuery(String var1, String var2);
+    public native void nativeRegisterThis();
+    public native void nativeReturnKeyPressed();
+    public native void nativeSetHeadphonesConnected(boolean var1);
+    public native void nativeSetTextboxText(String var1);
+    public native void nativeStopThis();
+    public native void nativeSuspend();
+    public native void nativeTypeCharacter(String var1);
+    public native void nativeUnregisterThis();
 	
 	private native void setUpBreakpad(String var1);
     
@@ -691,79 +701,86 @@ public class MainActivity extends NativeActivity implements View.OnKeyListener
 
     public void onBackPressed() 
 	{
-		
+		finish();
+		nativeBackPressed();
     }
 
     public void onCreate(Bundle bundle) 
 	{
-        super.onCreate(bundle);
-		
 		try
 		{
-			mcpeContext = createPackageContext("com.mojang.minecraftpe",CONTEXT_IGNORE_SECURITY);
-			MC_LIBRARY_DIR = getPackageManager().getApplicationInfo("com.mojang.minecraftpe",0).nativeLibraryDir;
+			if(getPackageName().equals("com.mojang.minecraftpe"))
+			{
+				mcpeContext = this;
+			}
+			else
+			{
+				mcpeContext = createPackageContext("com.mojang.minecraftpe", CONTEXT_IGNORE_SECURITY);
+			}
+			
+			this.mcPkgInfo = getPackageManager().getPackageInfo("com.mojang.minecraftpe", 0);
+			this.mcAppInfo = this.mcPkgInfo.applicationInfo;
+
+			MC_LIBRARY_DIR = mcAppInfo.nativeLibraryDir;
 			MC_LIBRARY_LOCATION = MC_LIBRARY_DIR + "/libminecraftpe.so";
 			
-			try
-			{
-				System.loadLibrary("ovrfmod");
-			}
-			catch (UnsatisfiedLinkError var0) 
-			{
-				Log.d("MCPE", "OVRfmod library not found");
-			}
-			try 
-			{
-				System.loadLibrary("ovrplatformloader");
-			}
-			catch (UnsatisfiedLinkError var2_1) 
-			{
-				Log.d("MCPE","OVRplatform library not found");
-			}
-			try
-			{
-				System.load(MC_LIBRARY_DIR + "/libfmod.so");
-				System.load(MC_LIBRARY_LOCATION);
-			}
-			catch(Exception e)
-			{
-				Toast.makeText(this,"MCPELibNotFound",500).show();
-			}
-		}
-		catch(Exception e)
+			System.load(MC_LIBRARY_DIR + "/libfmod.so");
+			FMOD.init(this);
+			System.load(MC_NATIVE_LIBRARY_LOCATION);
+			System.loadLibrary("tinysubstrate");
+		} 
+		catch (Exception e)
 		{
-			Toast.makeText(this,"ERROR Code:0",500).show();
+			e.printStackTrace();
+			finish();
 		}
 		
+//		try
+//		{
+//			System.loadLibrary("ovrfmod");
+//		}
+//		catch (UnsatisfiedLinkError var0) 
+//		{
+//			Log.d("MCPE", "OVRfmod library not found");
+//		}
+//		try 
+//		{
+//			System.loadLibrary("ovrplatformloader");
+//		}
+//		catch (UnsatisfiedLinkError var2_1) 
+//		{
+//			Log.d("MCPE","OVRplatform library not found");
+//		}
 		
 		try
 		{
-        this.platform = Platform.createPlatform(true);
-        this.setVolumeControlStream(3);
-        this.nativeRegisterThis();
-        FMOD.init((Context)this);
-        this.deviceManager = InputDeviceManager.create((Context)this);
-        this.platform.onAppStart(this.getWindow().getDecorView());
-        this.headsetConnectionReceiver = new HeadsetConnectionReceiver();
-        this.nativeSetHeadphonesConnected(((AudioManager)this.getSystemService("audio")).isWiredHeadsetOn());
-        this.clipboardManager = (ClipboardManager)this.getSystemService("clipboard");
-        MetricsManager.register((Context)this, (Application)this.getApplication());
-        MetricsManager.trackEvent((String)("Device: " + HardwareInformation.getDeviceModelName()));
-        Constants.loadFromContext((Context)this);
-        this.setUpBreakpad(Constants.FILES_PATH);
-        //NativeCrashManager.handleDumpFiles((Activity)this, (String)"3db796c2fc084bbc907764b7deb378c5");
-        mInstance = this;
-        this._fromOnCreate = true;
+			finish();
+        	this.platform = Platform.createPlatform(true);
+       		this.setVolumeControlStream(3);
+			super.onCreate(bundle);
+			nativeRegisterThis();
+        	this.deviceManager = InputDeviceManager.create(this);
+        	this.platform.onAppStart(this.getWindow().getDecorView());
+        	this.headsetConnectionReceiver = new HeadsetConnectionReceiver();
+        	this.nativeSetHeadphonesConnected(((AudioManager)this.getSystemService("audio")).isWiredHeadsetOn());
+        	this.clipboardManager = (ClipboardManager)this.getSystemService("clipboard");
+        	MetricsManager.register(this, (Application)this.getApplication());
+        	MetricsManager.trackEvent(("Device: " + HardwareInformation.getDeviceModelName()));
+        	Constants.loadFromContext(this);
+        	this.setUpBreakpad(Constants.FILES_PATH);
+        	//NativeCrashManager.handleDumpFiles((Activity)this, "3db796c2fc084bbc907764b7deb378c5");
+        	mInstance = this;
+        	this._fromOnCreate = true;
 		}
 		catch(Exception e)
 		{
-			Toast.makeText(this,"ERROR Code:1",500).show();
+			e.printStackTrace();
 		}
     }
-
+	
     protected void onDestroy()
 	{
-        Log.d((String)"MinecraftPE", (String)"onDestroy");
+        Log.d("MinecraftPE", "onDestroy");
         mInstance = null;
         System.out.println("onDestroy");
         FMOD.close();
@@ -774,7 +791,7 @@ public class MainActivity extends NativeActivity implements View.OnKeyListener
         this.nativeUnregisterThis();
         this.nativeOnDestroy();
         super.onDestroy();
-        System.exit((int)0);
+        System.exit(0);
     }
 
     public boolean onKey(View view, int n, KeyEvent keyEvent)
@@ -808,14 +825,14 @@ public class MainActivity extends NativeActivity implements View.OnKeyListener
 
     protected void onPause()
 	{
-        Log.d((String)"MinecraftPE", (String)"onPause");
+        Log.d("MinecraftPE", "onPause");
         this.nativeSuspend();
         super.onPause();
     }
 
     protected void onResume()
 	{
-        Log.d((String)"MinecraftPE", (String)"onResume");
+        Log.d("MinecraftPE", "onResume");
         super.onResume();
         IntentFilter intentFilter = new IntentFilter("android.intent.action.HEADSET_PLUG");
         this.registerReceiver((BroadcastReceiver)this.headsetConnectionReceiver, intentFilter);
@@ -832,10 +849,10 @@ public class MainActivity extends NativeActivity implements View.OnKeyListener
         }
     }
 
-    @SuppressLint(value={"DefaultLocale"})
+    /*@SuppressLint(value={"DefaultLocale"})
     protected void onStart()
 	{
-        Log.d((String)"MinecraftPE", (String)"onStart");
+        Log.d("MinecraftPE", "onStart");
         super.onStart();
         this.deviceManager.register();
         if (this._fromOnCreate)
@@ -843,11 +860,11 @@ public class MainActivity extends NativeActivity implements View.OnKeyListener
             this._fromOnCreate = false;
             this.processIntent(this.getIntent());
         }
-    }
+    }*/
 
     protected void onStop()
 	{
-        Log.d((String)"MinecraftPE", (String)"onStop");
+        Log.d("MinecraftPE", "onStop");
         this.nativeStopThis();
         super.onStop();
         this.deviceManager.unregister();
@@ -859,16 +876,10 @@ public class MainActivity extends NativeActivity implements View.OnKeyListener
         this.platform.onViewFocusChanged(bl);
     }
 
-    void pickImage(long l)
+	public void pickImage(long callbackAddress) 
 	{
-        this.mCallback = l;
-        try {
-            this.startActivityForResult(new Intent("android.intent.action.PICK", MediaStore.Images.Media.EXTERNAL_CONTENT_URI), RESULT_PICK_IMAGE);
-            return;
-        }
-        catch (ActivityNotFoundException var3_2) {
-            return;
-        }
+        this.mCallback = callbackAddress;
+        startActivityForResult(new Intent("android.intent.action.PICK", Media.EXTERNAL_CONTENT_URI), 415);
     }
 
     public void postScreenshotToFacebook(String string2, int n, int n2, int[] arrn)
@@ -878,12 +889,7 @@ public class MainActivity extends NativeActivity implements View.OnKeyListener
 
     public void quit()
 	{
-        this.runOnUiThread(new Runnable(){
-
-				public void run() {
-					MainActivity.this.finish();
-				}
-			});
+        finish();
     }
 
     public void removeListener(ActivityListener activityListener)
@@ -893,8 +899,7 @@ public class MainActivity extends NativeActivity implements View.OnKeyListener
 
     public void setClipboard(String string2)
 	{
-        ClipData clipData = ClipData.newPlainText((CharSequence)"MCPE-Clipdata", (CharSequence)string2);
-        this.clipboardManager.setPrimaryClip(clipData);
+        ((ClipboardManager) getSystemService("clipboard")).setText(string2);
     }
 
     void setFileDialogCallback(long l)
@@ -909,7 +914,7 @@ public class MainActivity extends NativeActivity implements View.OnKeyListener
 
     public void setLoginInformation(String string2, String string3, String string4, String string5)
 	{
-        SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences((Context)this).edit();
+        SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(this).edit();
         editor.putString("accessToken", string2);
         editor.putString("clientId", string3);
         editor.putString("profileId", string4);
@@ -919,14 +924,14 @@ public class MainActivity extends NativeActivity implements View.OnKeyListener
 
     public void setRefreshToken(String string2)
 	{
-        SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences((Context)this).edit();
+        SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(this).edit();
         editor.putString("refreshToken", string2);
         editor.commit();
     }
 
     public void setSession(String string2)
 	{
-        SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences((Context)this).edit();
+        SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(this).edit();
         editor.putString("sessionID", string2);
         editor.commit();
     }
@@ -956,7 +961,7 @@ public class MainActivity extends NativeActivity implements View.OnKeyListener
 
     public void setupKeyboardViews(String string2, int n, boolean bl, boolean bl2)
 	{
-        this.textInputWidget = new TextInputProxyEditTextbox((Context)this, n, bl);
+        this.textInputWidget = new TextInputProxyEditTextbox(this, n, bl);
         this.textInputWidget.setFocusable(true);
         this.textInputWidget.setFocusableInTouchMode(true);
         this.textInputWidget.setInputType(655360);
@@ -969,7 +974,7 @@ public class MainActivity extends NativeActivity implements View.OnKeyListener
         this.textInputWidget.setOnEditorActionListener(new TextView.OnEditorActionListener(){
 
 				public boolean onEditorAction(TextView textView, int n, KeyEvent keyEvent) {
-					Log.w((String)"mcpe - keyboard", (String)("onEditorAction: " + n));
+					Log.w("mcpe - keyboard", ("onEditorAction: " + n));
 					if (n == 5) {
 						MainActivity.this.nativeReturnKeyPressed();
 						return true;
@@ -1000,7 +1005,7 @@ public class MainActivity extends NativeActivity implements View.OnKeyListener
 					MainActivity.this.runOnUiThread(new Runnable(){
 
 							public void run() {
-								Log.w((String)"mcpe - keyboard", (String)"textInputWidget.onBackPressed");
+								Log.w("mcpe - keyboard", "textInputWidget.onBackPressed");
 								MainActivity.this.nativeBackPressed();
 							}
 						});
@@ -1017,14 +1022,14 @@ public class MainActivity extends NativeActivity implements View.OnKeyListener
 				}
 
 			});
-        this.mHiddenTextInputDialog = new PopupWindow((Context)this);
+        this.mHiddenTextInputDialog = new PopupWindow(this);
         this.mHiddenTextInputDialog.setInputMethodMode(1);
         this.mHiddenTextInputDialog.setWidth(320);
         this.mHiddenTextInputDialog.setHeight(50);
         this.mHiddenTextInputDialog.setWindowLayoutMode(-2, -2);
         this.mHiddenTextInputDialog.setClippingEnabled(false);
-        LinearLayout linearLayout = new LinearLayout((Context)this);
-        LinearLayout linearLayout2 = new LinearLayout((Context)this);
+        LinearLayout linearLayout = new LinearLayout(this);
+        LinearLayout linearLayout2 = new LinearLayout(this);
         linearLayout.setPadding(-5, -5, -5, -5);
         ViewGroup.MarginLayoutParams marginLayoutParams = new ViewGroup.MarginLayoutParams(-2, -2);
         marginLayoutParams.setMargins(0, 0, 0, 0);
@@ -1079,6 +1084,63 @@ public class MainActivity extends NativeActivity implements View.OnKeyListener
 				}
 			});
     }
+	
+	private void addLibraryDirToPath(String paramString)
+	{
+		try
+		{
+			Object localObject = getClassLoader();
+			Field localField = getDeclaredFieldRecursive(localObject.getClass(), "pathList");
+			localField.setAccessible(true);
+			localObject = localField.get(localObject);
+			localField = getDeclaredFieldRecursive(localObject.getClass(), "nativeLibraryDirectories");
+			localField.setAccessible(true);
+			File[] arrayOfFile = (File[])localField.get(localObject);
+			File[] arrfile = addToFileList(arrayOfFile, new File(paramString));
+			if (arrayOfFile != arrfile)
+			{
+				localField.set(localObject, arrfile);
+			}
+			return;
+		}
+		catch (Exception param)
+		{
+			param.printStackTrace();
+		}
+	}
+
+	private File[] addToFileList(File[] paramArrayOfFile, File paramFile)
+	{
+		int j = paramArrayOfFile.length;
+		int i = 0;
+		while (i < j)
+		{
+			if (paramArrayOfFile[i].equals(paramFile))
+			{
+				return paramArrayOfFile;
+			}
+			i += 1;
+		}
+		File[] arrayOfFile = new File[paramArrayOfFile.length + 1];
+		System.arraycopy(paramArrayOfFile, 0, arrayOfFile, 1, paramArrayOfFile.length);
+		arrayOfFile[0] = paramFile;
+		return arrayOfFile;
+	}
+
+	public Field getDeclaredFieldRecursive(Class<?> clazz, String name)
+	{
+		if (clazz == null)
+			return null;
+		try
+		{
+			return clazz.getDeclaredField(name);
+		}
+		catch (NoSuchFieldException nsfe)
+		{
+			return getDeclaredFieldRecursive(clazz.getSuperclass(), name);
+		}
+	}
+	
 
     public void startTextToSpeech(String string2)
 	{
@@ -1155,13 +1217,13 @@ public class MainActivity extends NativeActivity implements View.OnKeyListener
 						return;
 					}
                 case 0: {
-						Log.d((String)"MCPE", (String)"Headset unplugged");
+						Log.d("MCPE", "Headset unplugged");
 						MainActivity.this.nativeSetHeadphonesConnected(false);
 						return;
 					}
                 case 1: 
             }
-            Log.d((String)"MCPE", (String)"Headset plugged in");
+            Log.d("MCPE", "Headset plugged in");
             MainActivity.this.nativeSetHeadphonesConnected(true);
         }
     }

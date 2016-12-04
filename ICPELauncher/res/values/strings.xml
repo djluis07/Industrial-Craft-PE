@@ -1,4 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">ICPELauncher</string>
+    <string name="app_name">Industrial Craft:Pocket-Edition</string>
+	<string name="app_version">0.1</string>
+	<string name="agree_license">Start</string>
+	<string name="agree_user_license">I Follow the  </string>
+	<string name="user_legal">ICPE EULA</string>
+	<string name="statement_end">.</string>
+	<string name="eula_all">
+		\n
+		- 开放源代码许可:\n
+		Uses Cydia Substrate Library.\n
+		Uses Android v4 Support Library.\n
+		Uses IC2 textures.\n
+		Uses FMOD Library.\n
+		Uses Simpleframework Library.\n
+		Uses Hockeyapp Library.\n
+		Uses Micrsoft SDK Library\n
+		Uses facebook SDK Library.\n
+		Uses XBOX SDK Library\n
+		Uses GooglePlay SDK Library\n
+		Uses PGYER SDK Library\n
+		Uses Google Gson Library\n
+		Uses amazon SDK Library\n
+		Uses gc MaterialDesign Library\n
+		\n
+		- Developers\n
+		ModelPart\n
+		\n
+		- Testers\n
+		kokic\n
+		int100\n
+		F_picacho\n
+		ModelPart\n
+		\n
+		- End User Agreement License.\n
+		1.The user must agree to this agreement to be able to install and use the software.\n
+		2.Users shall not be carried out on the software such as anti - assembly, anti - compilation, reverse engineering behavior of illegal access to the source code of the software. \n
+		3.Users are not allowed to spread the modified version of the program, re plate. \n
+		4.Users are not allowed to use the free software for profit behavior. \n
+		5.This software is developed by ICPE Dev Team and MCAL Team, and any individual or group may not change the copyright license of this program. \n
+		6.Users are not allowed to spread the test version of the program, the release behavior. \n
+		7.Once installed, the user to open the program, has agreed to the "agreement". \n
+		8."Agreement" the final interpretation of the ICPE Dev Team and ICPE Team all. \n
+	</string>
 </resources>

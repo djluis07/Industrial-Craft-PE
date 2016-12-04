@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	android:orientation="vertical">
+
+	<ScrollView
+		android:layout_width="fill_parent"
+		android:layout_height="fill_parent"
+		android:orientation="vertical">
+
+		<LinearLayout
+			android:layout_width="fill_parent"
+			android:layout_height="fill_parent"
+			android:orientation="vertical">
+
+			<TextView
+				android:layout_height="wrap_content"
+				android:text="@string/app_name"
+				android:textAppearance="?android:attr/textAppearanceLarge"
+				android:layout_width="match_parent"/>
+
+			<TextView
+				android:layout_height="wrap_content"
+				android:text="Copyright © 2016-2017 ICPE Dev Team"
+				android:textAppearance="?android:attr/textAppearanceSmall"
+				android:layout_width="match_parent"/>
+
+			<TextView
+				android:layout_height="wrap_content"
+				android:text="Copyright © 2016-2017 MCAL Team"
+				android:textAppearance="?android:attr/textAppearanceSmall"
+				android:layout_width="match_parent"/>
+
+			<View
+				android:layout_height="2dp"
+				android:layout_width="match_parent"
+				android:background="#000000"/>
+
+			<TextView
+				android:layout_height="match_parent"
+				android:text="@string/eula_all"
+				android:textAppearance="?android:attr/textAppearanceSmall"
+				android:layout_width="match_parent"/>
+
+		</LinearLayout>
+
+	</ScrollView>
+
+</LinearLayout>
+
