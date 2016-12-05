@@ -186,8 +186,8 @@ public class MainActivity extends NativeActivity implements OnKeyListener {
 		{
             Log.d("MCPE", "OVRplatform library not found");
         }
-        System.load("/data/data/com.mojang/minecraftpe/lib/libfmod.so");
-        System.loadLibrary("/data/data/com.mojang/minecraftpe/lib/libminecraftpe.so");
+        System.loadLibrary("fmod");
+        System.loadLibrary("minecraftpe");
     }
 
     public void launchUri(String uri)
@@ -544,7 +544,8 @@ public class MainActivity extends NativeActivity implements OnKeyListener {
         return 0;
     }
 
-    public static void saveScreenshot(String filename, int w, int h, int[] pixels) {
+    public static void saveScreenshot(String filename, int w, int h, int[] pixels)
+	{
         Bitmap bitmap = Bitmap.createBitmap(pixels, w, h, Config.ARGB_8888);
         try 
 		{
@@ -574,7 +575,8 @@ public class MainActivity extends NativeActivity implements OnKeyListener {
         }
     }
 
-    public byte[] getFileDataBytes(String var1_1) {
+    public byte[] getFileDataBytes(String var1_1)
+	{
         try 
 		{
 			// System.out.println("Get file data : "+var1_1);
