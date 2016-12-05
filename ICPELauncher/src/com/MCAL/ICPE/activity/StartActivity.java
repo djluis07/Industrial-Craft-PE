@@ -10,6 +10,7 @@ import android.graphics.*;
 import com.gc.materialdesign.views.*;
 import android.os.*;
 import android.preference.*;
+import android.widget.*;
 
 public class StartActivity extends Activity
 {
@@ -18,18 +19,25 @@ public class StartActivity extends Activity
     {
         super.onCreate(savedInstanceState);
 		setContentView(R.layout.start_activity);
-
-		new Thread(new LoopRnuable()).start();
+		
+		WindowManager windowManager = getWindowManager();
+        Display display = windowManager.getDefaultDisplay();
+        int screenWidth = screenWidth = display.getWidth();
+        int screenHeight = screenHeight = display.getHeight();
+		ViewGroup.LayoutParams param = ((ImageView)findViewById(R.id.startactivityImageView)).getLayoutParams();
+		param.height=param.width=screenHeight/3;
+		
+		new Thread(new LoopRunnable()).start();
     }
 
-	public class LoopRnuable implements Runnable
+	public class LoopRunnable implements Runnable
 	{
 		@Override
         public void run()
 		{
             try
 			{
-				Thread.sleep(5000);
+				Thread.sleep(7500);
 				Intent intent=new Intent(StartActivity.this,com.MCAL.ICPE.activity.MainActivity.class);
 				startActivity(intent);
 				finish();

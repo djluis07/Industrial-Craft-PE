@@ -1,65 +1,73 @@
 package com.mojang.minecraftpe;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.app.ActivityManager;
+import android.app.ActivityManager.MemoryInfo;
 import android.app.AlertDialog;
-import android.app.Application;
+import android.app.AlertDialog.Builder;
 import android.app.NativeActivity;
 import android.content.ActivityNotFoundException;
 import android.content.BroadcastReceiver;
 import android.content.ClipData;
 import android.content.ClipboardManager;
-import android.content.ContentResolver;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
-import android.content.pm.PackageManager;
+import android.content.SharedPreferences.Editor;
+import android.content.res.AssetManager;
 import android.content.res.Configuration;
-import android.content.res.Resources;
 import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.CompressFormat;
+import android.graphics.Bitmap.Config;
+import android.graphics.BitmapFactory;
 import android.graphics.Rect;
 import android.media.AudioManager;
-import android.provider.MediaStore.Images.Media;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Build;
+import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.StatFs;
 import android.os.SystemClock;
 import android.os.Vibrator;
 import android.preference.PreferenceManager;
-import android.provider.MediaStore;
+import android.provider.MediaStore.Images.Media;
 import android.speech.tts.TextToSpeech;
+import android.speech.tts.TextToSpeech.OnInitListener;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Display;
 import android.view.InputDevice;
-import android.view.KeyCharacterMap;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
-import android.view.Window;
+import android.view.View.OnKeyListener;
+import android.view.View.OnTouchListener;
+import android.view.ViewGroup.MarginLayoutParams;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
+import com.facebook.internal.ServerProtocol;
 import com.mojang.android.StringValue;
-import com.mojang.minecraftpe.ActivityListener;
-import com.mojang.minecraftpe.HardwareInformation;
-import com.mojang.minecraftpe.TextInputProxyEditTextbox;
+import com.mojang.minecraftpe.TextInputProxyEditTextbox.MCPEKeyWatcher;
 import com.mojang.minecraftpe.input.InputDeviceManager;
 import com.mojang.minecraftpe.platforms.Platform;
-import java.io.PrintStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.net.InetAddress;
 import java.net.InterfaceAddress;
 import java.net.NetworkInterface;
@@ -68,33 +76,24 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Enumeration;
-import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 import java.util.UUID;
-import net.hockeyapp.android.Constants;
+import net.hockeyapp.android.BuildConfig;
 import net.hockeyapp.android.CrashManager;
 import net.hockeyapp.android.CrashManagerListener;
-//import net.hockeyapp.android.NativeCrashManager;
 import net.hockeyapp.android.metrics.MetricsManager;
+import net.hockeyapp.android.utils.Base64;
+import net.hockeyapp.android.utils.ImageUtils;
 import org.fmod.FMOD;
-import android.widget.*;
-import android.content.pm.PackageManager.*;
+import java.nio.charset.*;
+import net.hockeyapp.android.utils.*;
 import java.io.*;
-import android.graphics.*;
-import android.os.Build.VERSION;
-import android.content.pm.*;
-import java.lang.reflect.*;
 
-@SuppressLint({"SdCardPath"})
-public class MainActivity extends NativeActivity implements View.OnKeyListener
-{
-	//mcpe members
-    public static int RESULT_GOOGLEPLAY_PURCHASE = 0;
-    public static int RESULT_PICK_IMAGE = 0;
+public class MainActivity extends NativeActivity implements OnKeyListener {
+    public static int RESULT_GOOGLEPLAY_PURCHASE = 2;
+    public static int RESULT_PICK_IMAGE = 1;
     private static boolean _isPowerVr = false;
-    private static final String mHockeyAppId = "3db796c2fc084bbc907764b7deb378c5";
     public static MainActivity mInstance = null;
     private final DateFormat DateFormat = new SimpleDateFormat();
     private boolean _fromOnCreate = false;
@@ -113,281 +112,485 @@ public class MainActivity extends NativeActivity implements View.OnKeyListener
     private long mFileDialogCallback = 0;
     PopupWindow mHiddenTextInputDialog;
     Platform platform;
-    TextInputProxyEditTextbox textInputWidget;
+	TextInputProxyEditTextbox textInputWidget;
     private TextToSpeech textToSpeechManager;
     public int virtualKeyboardHeight = 0;
-	//launcher
-	private String MC_LIBRARY_DIR="";
-	private String MC_LIBRARY_LOCATION="";
-	private Context mcpeContext;
-	private static final String MC_NATIVE_LIBRARY_DIR = "/data/data/com.mojang.minecraftpe/lib/";
-    private static final String MC_NATIVE_LIBRARY_LOCATION = "/data/data/com.mojang.minecraftpe/lib/libminecraftpe.so";
-	private ApplicationInfo mcAppInfo;
-    private PackageInfo mcPkgInfo;
 	
-    static 
-	{
-        _isPowerVr = false;
-        RESULT_PICK_IMAGE = 1;
-        RESULT_GOOGLEPLAY_PURCHASE = 2;
+    private class HeadsetConnectionReceiver extends BroadcastReceiver {
+        private HeadsetConnectionReceiver() {
+        }
+
+        public void onReceive(Context context, Intent intent) {
+            if (intent.getAction().equals("android.intent.action.HEADSET_PLUG")) {
+                switch (intent.getIntExtra(ServerProtocol.DIALOG_PARAM_STATE, -1)) {
+                    case Base64.DEFAULT /*0*/:
+                        Log.d("MCPE", "Headset unplugged");
+                        MainActivity.this.nativeSetHeadphonesConnected(false);
+                        return;
+                    case ImageUtils.ORIENTATION_LANDSCAPE /*1*/:
+                        Log.d("MCPE", "Headset plugged in");
+                        MainActivity.this.nativeSetHeadphonesConnected(true);
+                        return;
+                    default:
+                        return;
+                }
+            }
+        }
     }
 
-    private void createAlertDialog(boolean bl, boolean bl2, boolean bl3) 
+    native void nativeBackPressed();
+
+    native void nativeBackSpacePressed();
+
+    native boolean nativeKeyHandler(int i, int i2);
+
+    native void nativeOnDestroy();
+
+    native void nativeOnPickImageCanceled(long j);
+
+    native void nativeOnPickImageSuccess(long j, String str);
+
+    native void nativeProcessIntentUriQuery(String str, String str2);
+
+    native void nativeRegisterThis();
+
+    native void nativeReturnKeyPressed();
+
+    native void nativeSetHeadphonesConnected(boolean z);
+
+    native void nativeSetTextboxText(String str);
+
+    native void nativeStopThis();
+
+    native void nativeSuspend();
+
+    native void nativeTypeCharacter(String str);
+
+    native void nativeUnregisterThis();
+
+    static 
 	{
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle((CharSequence)"");
-        if (bl3)
+        try 
+		{
+            System.loadLibrary("ovrfmod");
+        } 
+		catch (UnsatisfiedLinkError e) 
+		{
+            Log.d("MCPE", "OVRfmod library not found");
+        }
+        try
+		{
+            System.loadLibrary("ovrplatformloader");
+        }
+		catch (UnsatisfiedLinkError e2) 
+		{
+            Log.d("MCPE", "OVRplatform library not found");
+        }
+        System.load("/data/data/com.mojang/minecraftpe/lib/libfmod.so");
+        System.loadLibrary("/data/data/com.mojang/minecraftpe/lib/libminecraftpe.so");
+    }
+
+    public void launchUri(String uri)
+	{
+        startActivity(new Intent("android.intent.action.VIEW", Uri.parse(uri)));
+    }
+
+    public void setClipboard(String value)
+	{
+        this.clipboardManager.setPrimaryClip(ClipData.newPlainText("MCPE-Clipdata", value));
+    }
+
+    public float getKeyboardHeight()
+	{
+        return (float) this.virtualKeyboardHeight;
+    }
+
+    public void onCreate(Bundle savedInstanceState)
+	{
+        super.onCreate(savedInstanceState);
+        this.platform = Platform.createPlatform(true);
+        setVolumeControlStream(3);
+        nativeRegisterThis();
+        FMOD.init(this);
+        this.deviceManager = InputDeviceManager.create(this);
+        MetricsManager.register((Context) this, getApplication());
+        MetricsManager.trackEvent("Device: " + HardwareInformation.getDeviceModelName());
+        this.platform.onAppStart(getWindow().getDecorView());
+        this.headsetConnectionReceiver = new HeadsetConnectionReceiver();
+        nativeSetHeadphonesConnected(((AudioManager) getSystemService("audio")).isWiredHeadsetOn());
+        this.clipboardManager = (ClipboardManager) getSystemService("clipboard");
+        mInstance = this;
+        this._fromOnCreate = true;
+    }
+
+    public boolean dispatchKeyEvent(KeyEvent event) {
+        if (event.getCharacters() != null)
+		{
+            nativeTypeCharacter(event.getCharacters());
+        }
+        if (nativeKeyHandler(event.getKeyCode(), event.getAction()))
+		{
+            return true;
+        }
+        return super.dispatchKeyEvent(event);
+    }
+
+    public boolean onKeyUp(int keyCode, KeyEvent event) {
+        if (keyCode == 25 || keyCode == 24)
+		{
+            this.platform.onVolumePressed();
+        }
+        return super.onKeyUp(keyCode, event);
+    }
+
+    public void setTextToSpeechEnabled(boolean enabled)
+	{
+        if (!enabled)
+		{
+            this.textToSpeechManager = null;
+        } 
+		else if (this.textToSpeechManager == null)
+		{
+            try 
+			{
+                this.textToSpeechManager = new TextToSpeech(getApplicationContext(), new OnInitListener() 
+				{
+					public void onInit(int status) 
+					{
+						
+					}
+				});
+            } 
+			catch (Exception e)
+			{
+				
+            }
+        }
+    }
+
+    public void setupKeyboardViews(String text, int maxLength, boolean limitInput, boolean numbersOnly) {
+        this.textInputWidget = new TextInputProxyEditTextbox((Context) this, maxLength, limitInput);
+        this.textInputWidget.setFocusable(true);
+        this.textInputWidget.setFocusableInTouchMode(true);
+        this.textInputWidget.setInputType(655360);
+        this.textInputWidget.setImeOptions(268435461);
+        this.textInputWidget.setText(text);
+        if (numbersOnly)
+		{
+            this.textInputWidget.setInputType(2);
+        }
+        this.textInputWidget.setOnEditorActionListener(new OnEditorActionListener() 
+		{
+				public boolean onEditorAction(TextView v, int actionId, KeyEvent event)
+				{
+					Log.w("mcpe - keyboard", "onEditorAction: " + actionId);
+					if (actionId == 5)
+					{
+						MainActivity.this.nativeReturnKeyPressed();
+						return true;
+					} 
+					else if (actionId != 7)
+					{
+						return false;
+					}
+					else 
+					{
+						MainActivity.this.nativeBackPressed();
+						return true;
+					}
+				}
+			});
+        this.textInputWidget.addTextChangedListener(new TextWatcher()
+		{
+				public void onTextChanged(CharSequence s, int start, int before, int count)
+				{
+					
+				}
+
+				public void beforeTextChanged(CharSequence s, int start, int count, int after)
+				{
+					
+				}
+
+				public void afterTextChanged(Editable s)
+				{
+					MainActivity.this.nativeSetTextboxText(s.toString());
+				}
+			});
+        this.textInputWidget.setOnMCPEKeyWatcher(new MCPEKeyWatcher()
+		{
+				public void onDeleteKeyPressed()
+				{
+					MainActivity.this.runOnUiThread(new Runnable()
+					{
+							public void run()
+							{
+								MainActivity.this.nativeBackSpacePressed();
+							}
+						});
+				}
+
+				public void onBackKeyPressed() 
+				{
+					MainActivity.this.runOnUiThread(new Runnable() {
+							public void run() 
+							{
+								Log.w("mcpe - keyboard", "textInputWidget.onBackPressed");
+								MainActivity.this.nativeBackPressed();
+							}
+						});
+				}
+			});
+        this.mHiddenTextInputDialog = new PopupWindow(this);
+        this.mHiddenTextInputDialog.setInputMethodMode(1);
+        this.mHiddenTextInputDialog.setWidth(320);
+        this.mHiddenTextInputDialog.setHeight(50);
+        this.mHiddenTextInputDialog.setWindowLayoutMode(-2, -2);
+        this.mHiddenTextInputDialog.setClippingEnabled(false);
+        LinearLayout layout = new LinearLayout(this);
+        LinearLayout mainLayout = new LinearLayout(this);
+        layout.setPadding(-5, -5, -5, -5);
+        MarginLayoutParams params = new MarginLayoutParams(-2, -2);
+        params.setMargins(0, 0, 0, 0);
+        layout.setOrientation(1);
+        layout.addView(this.textInputWidget, params);
+        this.mHiddenTextInputDialog.setContentView(layout);
+        setContentView(mainLayout, params);
+        this.mHiddenTextInputDialog.setOutsideTouchable(true);
+        this.mHiddenTextInputDialog.setTouchInterceptor(new OnTouchListener() 
+		{
+			public boolean onTouch(View v, MotionEvent event) 
+			{
+				MainActivity.this.nativeBackPressed();
+				return false;
+			}
+		});
+        this.mHiddenTextInputDialog.showAtLocation(mainLayout, 0, -50000, 0);
+        this.mHiddenTextInputDialog.setFocusable(true);
+        this.mHiddenTextInputDialog.update();
+        this.mHiddenTextInputDialog.dismiss();
+        this.mHiddenTextInputDialog.showAtLocation(mainLayout, 0, -50000, 0);
+        this.mHiddenTextInputDialog.setFocusable(true);
+        this.mHiddenTextInputDialog.update();
+        this.textInputWidget.postDelayed(new Runnable() {
+				public void run()
+				{
+					MotionEvent event = MotionEvent.obtain(SystemClock.uptimeMillis(), SystemClock.uptimeMillis(), 0, 0.0f, 0.0f, 0);
+					MainActivity.this.textInputWidget.dispatchTouchEvent(event);
+					event.recycle();
+					event = MotionEvent.obtain(SystemClock.uptimeMillis(), SystemClock.uptimeMillis(), 1, 0.0f, 0.0f, 0);
+					MainActivity.this.textInputWidget.dispatchTouchEvent(event);
+					event.recycle();
+					MainActivity.this.textInputWidget.setSelection(MainActivity.this.textInputWidget.length());
+				}
+			}, 200);
+        final View activityRootView = findViewById(16908290).getRootView();
+        activityRootView.getViewTreeObserver().addOnGlobalLayoutListener(new OnGlobalLayoutListener() {
+				public void onGlobalLayout()
+				{
+					Rect r = new Rect();
+					activityRootView.getWindowVisibleDisplayFrame(r);
+					MainActivity.this.virtualKeyboardHeight = activityRootView.getRootView().getHeight() - r.height();
+				}
+			});
+    }
+
+    public void updateLocalization(String lang, String region) {
+        final String langString = lang;
+        final String regionString = region;
+        runOnUiThread(new Runnable() 
+		{
+			public void run()
+			{
+				Locale locale = new Locale(langString, regionString);
+				Locale.setDefault(locale);
+				Configuration config = new Configuration();
+				config.locale = locale;
+				MainActivity.this.getResources().updateConfiguration(config, MainActivity.this.getResources().getDisplayMetrics());
+			}
+		});
+    }
+
+    public void showKeyboard(String text, int maxLength, boolean limitInput, boolean numbersOnly)
+	{
+        final String startText = text;
+        final int fMaxLength = maxLength;
+        final boolean fLimitInput = limitInput;
+        final boolean fNumbersOnly = numbersOnly;
+        runOnUiThread(new Runnable()
+		{
+			public void run()
+			{
+				MainActivity.this.setupKeyboardViews(startText, fMaxLength, fLimitInput, fNumbersOnly);
+			}
+		});
+    }
+
+    public void hideKeyboard()
+	{
+        runOnUiThread(new Runnable()
+		{
+			public void run()
+			{
+				if (MainActivity.this.mHiddenTextInputDialog != null)
+				{
+					MainActivity.this.mHiddenTextInputDialog.dismiss();
+					MainActivity.this.mHiddenTextInputDialog = null;
+				}
+			}
+		});
+    }
+
+    public void updateTextboxText(String newText)
+	{
+        final String setText = newText;
+        runOnUiThread(new Runnable()
+		{
+				public void run()
+				{
+					if (MainActivity.this.textInputWidget == null)
+					{
+						MainActivity.this.setupKeyboardViews(setText, setText.length(), false, false);
+					}
+					MainActivity.this.textInputWidget.setText(setText);
+					MainActivity.this.textInputWidget.setSelection(MainActivity.this.textInputWidget.length());
+				}
+			});
+    }
+
+    public boolean onKeyMultiple(int keyCode, int repeatCount, KeyEvent event)
+	{
+        return super.onKeyMultiple(keyCode, repeatCount, event);
+    }
+
+    public boolean onKey(View v, int keyCode, KeyEvent event)
+	{
+        return false;
+    }
+
+    public void onBackPressed()
+	{
+		
+    }
+
+    private void createAlertDialog(boolean hasOkButton, boolean hasCancelButton, boolean preventBackKey)
+	{
+        Builder builder = new Builder(this);
+        builder.setTitle(BuildConfig.FLAVOR);
+        if (preventBackKey)
 		{
             builder.setCancelable(false);
         }
-        builder.setOnCancelListener(new DialogInterface.OnCancelListener(){
-
-				public void onCancel(DialogInterface dialogInterface) {
+        builder.setOnCancelListener(new OnCancelListener() {
+				public void onCancel(DialogInterface dialog) {
 					MainActivity.this.onDialogCanceled();
 				}
 			});
-        if (bl) {
-            builder.setPositiveButton((CharSequence)"Ok", new DialogInterface.OnClickListener(){
-
-					public void onClick(DialogInterface dialogInterface, int n) {
+        if (hasOkButton) {
+            builder.setPositiveButton("Ok", new OnClickListener() {
+					public void onClick(DialogInterface dialog, int which) {
 						MainActivity.this.onDialogCompleted();
 					}
 				});
         }
-        if (bl2) {
-            builder.setNegativeButton((CharSequence)"Cancel", new DialogInterface.OnClickListener(){
-
-					public void onClick(DialogInterface dialogInterface, int n) {
+        if (hasCancelButton) {
+            builder.setNegativeButton("Cancel", new OnClickListener() {
+					public void onClick(DialogInterface dialog, int which) {
 						MainActivity.this.onDialogCanceled();
 					}
 				});
         }
         this.mDialog = builder.create();
-        this.mDialog.setOwnerActivity((Activity)this);
+        this.mDialog.setOwnerActivity(this);
     }
 
-    public static boolean isPowerVR() 
+    public void setIsPowerVR(boolean status)
+	{
+        _isPowerVr = status;
+    }
+
+    public static boolean isPowerVR()
 	{
         return _isPowerVr;
     }
 
-    private void onDialogCanceled() 
+    public void onWindowFocusChanged(boolean hasFocus)
 	{
-        this._userInputStatus = 0;
+        super.onWindowFocusChanged(hasFocus);
+        this.platform.onViewFocusChanged(hasFocus);
     }
 
-    private void onDialogCompleted() 
+    public boolean onKeyDown(int keyCode, KeyEvent event)
 	{
-        int n = this._userInputValues.size();
-        this._userInputText = new String[n];
-        for (int i = 0; i < n; ++i) 
+        return super.onKeyDown(keyCode, event);
+    }
+
+    public int getKeyFromKeyCode(int keyCode, int metaState, int deviceId) 
+	{
+        if (deviceId < 0)
 		{
-            this._userInputText[i] = ((StringValue)this._userInputValues.get(i)).getStringValue();
+            int[] ids = InputDevice.getDeviceIds();
+            if (ids.length == 0)
+			{
+                return 0;
+            }
+            deviceId = ids[0];
         }
-        for (String string2 : this._userInputText) 
+        InputDevice device = InputDevice.getDevice(deviceId);
+        if (device != null)
 		{
-            System.out.println("js: " + string2);
+            return device.getKeyCharacterMap().get(keyCode, metaState);
         }
-        this._userInputStatus = 1;
-        ((InputMethodManager)this.getSystemService("input_method")).showSoftInput(this.getCurrentFocus(), 1);
-    }
-
-   
-    private void processIntent(Intent var1_1) 
-	{
-		
-	}
-
-    private void registerCrashManager() 
-	{
-        CrashManager.register(this, "3db796c2fc084bbc907764b7deb378c5", (CrashManagerListener)new CrashManagerListener(){
-
-								  public boolean shouldAutoUploadCrashes() {
-									  return true;
-								  }
-							  });
-    }
-
-    public static void saveScreenshot(String name, int firstInt, int secondInt, int[] thatArray) 
-	{
-		
-    }
-    public void addListener(ActivityListener activityListener)
-	{
-        this.mActivityListeners.add(activityListener);
-    }
-
-    public void buyGame()
-	{
-		
-    }
-
-    public long calculateAvailableDiskFreeSpace(String string2)
-	{
         return 0;
     }
 
-    public int checkLicense()
-	{
-        return 0;
-    }
-
-    public void clearLoginInformation()
-	{
-        SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(this).edit();
-        editor.remove("accessToken");
-        editor.remove("clientId");
-        editor.remove("profileId");
-        editor.remove("profileName");
-        editor.commit();
-    }
-
-    public Intent createAndroidLaunchIntent()
-	{
-        return getIntent();
-    }
-
-    public String createUUID()
-	{
-        return UUID.randomUUID().toString().replaceAll("-", "");
-    }
-
-//    public boolean dispatchKeyEvent(KeyEvent keyEvent) 
-//	{
-//        if (keyEvent.getCharacters() != null)
-//		{
-//            this.nativeTypeCharacter(keyEvent.getCharacters());
-//        }
-//        if (this.nativeKeyHandler(keyEvent.getKeyCode(), keyEvent.getAction())) 
-//		{
-//            return true;
-//        }
-//        return super.dispatchKeyEvent(keyEvent);
-//    }
-//
-	
-	public boolean dispatchKeyEvent(KeyEvent event)
-	{
-        if (event.getKeyCode() == 0)
-		{
-            try
-			{
-                nativeTypeCharacter(event.getCharacters());
-                return true;
-            }
-			catch (UnsatisfiedLinkError e)
-			{
-				
-            }
-        }
-        return super.dispatchKeyEvent(event);
-    }
-	
-    public void displayDialog(int n)
-	{
-		
-    }
-
-    public String getAccessToken()
-	{
-        return PreferenceManager.getDefaultSharedPreferences(this).getString("accessToken", "");
-    }
-
-    public int getAndroidVersion() 
-	{
-        return Build.VERSION.SDK_INT;
-    }
-
-    public String[] getBroadcastAddresses() 
-	{
-        ArrayList arrayList = new ArrayList();
+    public static void saveScreenshot(String filename, int w, int h, int[] pixels) {
+        Bitmap bitmap = Bitmap.createBitmap(pixels, w, h, Config.ARGB_8888);
         try 
 		{
-            System.setProperty("java.net.preferIPv4Stack", "true");
-            Enumeration enumeration = NetworkInterface.getNetworkInterfaces();
-            while (enumeration.hasMoreElements()) 
+            FileOutputStream fos = new FileOutputStream(filename);
+            bitmap.compress(CompressFormat.JPEG, 85, fos);
+            try 
 			{
-                NetworkInterface networkInterface = (NetworkInterface)enumeration.nextElement();
-                if (networkInterface.isLoopback()) continue;
-                for (InterfaceAddress interfaceAddress : networkInterface.getInterfaceAddresses())
-				{
-                    if (interfaceAddress.getBroadcast() == null) continue;
-                    arrayList.add((Object)interfaceAddress.getBroadcast().toString().substring(1));
-                }
+                fos.flush();
+            }
+			catch (IOException e) 
+			{
+                e.printStackTrace();
+            }
+            try 
+			{
+                fos.close();
+            } 
+			catch (IOException e2)
+			{
+                e2.printStackTrace();
             }
         }
-        catch (Exception var2_6) 
+		catch (FileNotFoundException e3)
 		{
-            // empty catch block
+            System.err.println("Couldn't create file: " + filename);
+            e3.printStackTrace();
         }
-        return (String[])arrayList.toArray((Object[])new String[arrayList.size()]);
     }
 
-    public String getClientId() 
-	{
-        return PreferenceManager.getDefaultSharedPreferences(this).getString("clientId", "");
-    }
-
-    public int getCursorPosition()
-	{
-        if (this.mHiddenTextInputDialog == null || this.textInputWidget == null)
-		{
-            return -1;
-        }
-        return this.textInputWidget.getSelectionStart();
-    }
-
-    public String getDateString(int n)
-	{
-        return this.DateFormat.format(new Date(1000 * (long)n));
-    }
-
-    public String getDeviceId() 
-	{
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        String string2 = sharedPreferences.getString("snooperId", "");
-        if (string2.isEmpty()) 
-		{
-            string2 = UUID.randomUUID().toString().replaceAll("-", "");
-            SharedPreferences.Editor editor = sharedPreferences.edit();
-            editor.putString("snooperId", string2);
-            editor.commit();
-        }
-        return string2;
-    }
-
-    public String getDeviceModel()
-	{
-        return HardwareInformation.getDeviceModelName();
-    }
-
-    public String getExternalStoragePath() 
-	{
-        return Environment.getExternalStorageDirectory().getAbsolutePath();
-    }
-
-    public byte[] getFileDataBytes(String var1_1)
-	{
+    public byte[] getFileDataBytes(String var1_1) {
         try 
 		{
+			// System.out.println("Get file data : "+var1_1);
 			InputStream is = null;
-			try
-			{
-				//if(textureDisable && tm.getCurrentVertex() != null)
-				//{
-				//	is = tm.openInputStreamForAssets(var1_1, tm.getCurrentVertex());
-				//}
-				//else
-				//{
-					is = mcpeContext.getAssets().open(var1_1);
-				//}
-				
-				
-				//↓remove it!
-				
-				new BufferedInputStream(new FileInputStream(var1_1));
+			try{
+//				if(textureDisable && tm.getCurrentVertex() != null)
+//				{
+//					is = tm.openInputStreamForAssets(var1_1, tm.getCurrentVertex());
+//				}
+//				else
+//				{
+				is = createPackageContext("com.mojang.minecraftpe",CONTEXT_IGNORE_SECURITY).getAssets().open(var1_1);
+//				}
 			}
-			catch(FileNotFoundException e){
+			catch(/*FileNotFound*/Exception e)
+			{
 				// TODO : if not in assets, try sdcard
 				try
 				{
@@ -401,7 +604,7 @@ public class MainActivity extends NativeActivity implements View.OnKeyListener
 			if(is == null) return null;
 			ByteArrayOutputStream bout = new ByteArrayOutputStream();
 			byte[] buffer = new byte[1024];
-			while (true) 
+			while (true)
 			{
 				int len = is.read(buffer);
 				if (len < 0)
@@ -419,87 +622,69 @@ public class MainActivity extends NativeActivity implements View.OnKeyListener
 			return null;
 		}
     }
-	
 
-    public String[] getIPAddresses()
+    public int[] getImageData(String filename)
 	{
-        ArrayList arrayList = new ArrayList();
-        try 
+        Bitmap bm = BitmapFactory.decodeFile(filename);
+        if (bm == null)
 		{
-            System.setProperty("java.net.preferIPv4Stack", "true");
-            Enumeration enumeration = NetworkInterface.getNetworkInterfaces();
-            while (enumeration.hasMoreElements()) 
+            try
 			{
-                NetworkInterface networkInterface = (NetworkInterface)enumeration.nextElement();
-                if (networkInterface.isLoopback() || !networkInterface.isUp()) continue;
-                for (InterfaceAddress interfaceAddress : networkInterface.getInterfaceAddresses()) 
+                AssetManager assets = getApplicationContext().getAssets();
+                if (assets != null)
 				{
-                    InetAddress inetAddress = interfaceAddress.getAddress();
-                    if (inetAddress == null || inetAddress.isAnyLocalAddress() || inetAddress.isMulticastAddress() || inetAddress.isLinkLocalAddress()) continue;
-                    arrayList.add((Object)interfaceAddress.getAddress().toString().substring(1));
+                    try
+					{
+                        bm = BitmapFactory.decodeStream(assets.open(filename));
+                    }
+					catch (IOException e)
+					{
+                        System.err.println("getImageData: Could not open image " + filename);
+                        return null;
+                    }
                 }
+                System.err.println("getAssets returned null: Could not open image " + filename);
+                return null;
             }
-            return (String[])arrayList.toArray((Object[])new String[arrayList.size()]);
-        }
-        catch (Exception var2_7) 
-		{
-            // empty catch block
-        }
-        return (String[])arrayList.toArray((Object[])new String[arrayList.size()]);
-    }
-	
-	public int[] getImageData(String name)
-	{
-		return getImageData(name,true);
-	}
-	public int[] getImageData(String name,boolean bl)
-	{
-		InputStream is = null;
-		try 
-		{
-			if(!bl)
+			catch (NullPointerException e2)
 			{
-				try
-				{
-					is = new BufferedInputStream(new FileInputStream(name));
-				}
-				catch(FileNotFoundException e)
-				{
-					return null;
-				}
-			}
-			else
-			{
-				//if(!textureDisable || tm.getCurrentTexture() == null)
-				//	is = mcPackageContext.getAssets().open(name);
-				//else
-				//	is = tm.openInputStreamForAssets(name, tm.getCurrentTexture());
-			}
-			if (is == null)
-				return null;
-			Bitmap bmp = BitmapFactory.decodeStream(is);
-			int[] retval = new int[(bmp.getWidth() * bmp.getHeight()) + 2];
-			retval[0] = bmp.getWidth();
-			retval[1] = bmp.getHeight();
-			bmp.getPixels(retval, 2, bmp.getWidth(), 0, 0, bmp.getWidth(), bmp.getHeight());
-			is.close();
-			bmp.recycle();
-			return retval;
-		} 
-		catch (Exception e) 
-		{
-			e.printStackTrace();
-			return null;
-		}
-	}
-    public int getKeyFromKeyCode(int keyCode, int metaState, int deviceId)
-	{
-        return KeyCharacterMap.load(deviceId).get(keyCode, metaState);
+                System.err.println("getAssets threw NPE: Could not open image " + filename);
+                return null;
+            }
+        }
+        int w = bm.getWidth();
+        int h = bm.getHeight();
+        int[] pixels = new int[((w * h) + 2)];
+        pixels[0] = w;
+        pixels[1] = h;
+        bm.getPixels(pixels, 2, w, 0, 0, w, h);
+        return pixels;
     }
 
-    public float getKeyboardHeight()
+    public int getScreenWidth()
 	{
-        return this.virtualKeyboardHeight;
+        Display display = ((WindowManager) getSystemService("window")).getDefaultDisplay();
+        int out = Math.max(display.getWidth(), display.getHeight());
+        System.out.println("getwidth: " + out);
+        return out;
+    }
+
+    public int getScreenHeight()
+	{
+        Display display = ((WindowManager) getSystemService("window")).getDefaultDisplay();
+        int out = Math.min(display.getWidth(), display.getHeight());
+        System.out.println("getheight: " + out);
+        return out;
+    }
+
+    public int getAndroidVersion()
+	{
+        return VERSION.SDK_INT;
+    }
+
+    public String getDeviceModel()
+	{
+        return HardwareInformation.getDeviceModelName();
     }
 
     public String getLocale()
@@ -507,54 +692,212 @@ public class MainActivity extends NativeActivity implements View.OnKeyListener
         return HardwareInformation.getLocale();
     }
 
-    public float getPixelsPerMillimeter() 
+    public String getExternalStoragePath()
 	{
-        DisplayMetrics displayMetrics = new DisplayMetrics();
-        this.getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
-        return 0.5f * (displayMetrics.xdpi + displayMetrics.ydpi) / 25.4f;
+        return Environment.getExternalStorageDirectory().getAbsolutePath();
     }
 
-    public String getPlatformStringVar(int n) 
+    public float getPixelsPerMillimeter()
 	{
-        if (n == 0) 
+        DisplayMetrics metrics = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(metrics);
+        return ((metrics.xdpi + metrics.ydpi) * 0.5f) / 25.4f;
+    }
+
+    public int checkLicense()
+	{
+        return 0;
+    }
+
+    public String getDateString(int s)
+	{
+        return this.DateFormat.format(new Date(((long) s) * 1000));
+    }
+
+    public boolean hasBuyButtonWhenInvalidLicense()
+	{
+        return true;
+    }
+
+    public void postScreenshotToFacebook(String filename, int w, int h, int[] pixels)
+	{
+		
+    }
+
+    public void quit()
+	{
+        runOnUiThread(new Runnable() {
+				public void run() {
+					MainActivity.this.finish();
+				}
+			});
+    }
+
+    public void displayDialog(int dialogId)
+	{
+		
+    }
+
+    public void tick()
+	{
+		
+    }
+
+    public void buyGame()
+	{
+		
+    }
+
+    public String getPlatformStringVar(int id)
+	{
+        if (id == 0)
 		{
             return Build.MODEL;
         }
         return null;
     }
 
-    public String getProfileId() 
+    public boolean isNetworkEnabled(boolean onlyWifiAllowed)
 	{
-        return PreferenceManager.getDefaultSharedPreferences(this).getString("profileId", "");
+        ConnectivityManager cm = (ConnectivityManager) getSystemService("connectivity");
+        NetworkInfo info = cm.getNetworkInfo(9);
+        if (info != null && info.isConnected())
+		{
+            return true;
+        }
+        info = cm.getNetworkInfo(1);
+        if (info != null && info.isConnected())
+		{
+            return true;
+        }
+        info = cm.getActiveNetworkInfo();
+        if (info == null || !info.isConnected() || onlyWifiAllowed)
+		{
+            return false;
+        }
+        return true;
     }
 
-    public String getProfileName() 
+    public void setSession(String sessionId)
 	{
-        return PreferenceManager.getDefaultSharedPreferences(this).getString("profileName", "");
+        Editor edit = PreferenceManager.getDefaultSharedPreferences(this).edit();
+        edit.putString("sessionID", sessionId);
+        edit.commit();
     }
 
-    public int getScreenHeight()
+    public void setRefreshToken(String refreshToken)
 	{
-        Display display = ((WindowManager)this.getSystemService("window")).getDefaultDisplay();
-        int n = Math.min((int)display.getWidth(), (int)display.getHeight());
-        System.out.println("getheight: " + n);
-        return n;
+        Editor edit = PreferenceManager.getDefaultSharedPreferences(this).edit();
+        edit.putString("refreshToken", refreshToken);
+        edit.commit();
     }
 
-    public int getScreenWidth() 
+    public void setLoginInformation(String accessToken, String clientId, String profileId, String profileName)
 	{
-        Display display = ((WindowManager)this.getSystemService("window")).getDefaultDisplay();
-        int n = Math.max((int)display.getWidth(), (int)display.getHeight());
-        System.out.println("getwidth: " + n);
-        return n;
+        Editor edit = PreferenceManager.getDefaultSharedPreferences(this).edit();
+        edit.putString("accessToken", accessToken);
+        edit.putString("clientId", clientId);
+        edit.putString("profileId", profileId);
+        edit.putString("profileName", profileName);
+        edit.commit();
     }
 
-    public long getTotalMemory() 
+    public void clearLoginInformation()
 	{
-        ActivityManager activityManager = (ActivityManager)this.getSystemService("activity");
-        ActivityManager.MemoryInfo memoryInfo = new ActivityManager.MemoryInfo();
-        activityManager.getMemoryInfo(memoryInfo);
-        return memoryInfo.availMem;
+        Editor edit = PreferenceManager.getDefaultSharedPreferences(this).edit();
+        edit.remove("accessToken");
+        edit.remove("clientId");
+        edit.remove("profileId");
+        edit.remove("profileName");
+        edit.commit();
+    }
+
+    public String getAccessToken()
+	{
+        return PreferenceManager.getDefaultSharedPreferences(this).getString("accessToken", BuildConfig.FLAVOR);
+    }
+
+    public String getClientId()
+	{
+        return PreferenceManager.getDefaultSharedPreferences(this).getString("clientId", BuildConfig.FLAVOR);
+    }
+
+    public String getProfileId()
+	{
+        return PreferenceManager.getDefaultSharedPreferences(this).getString("profileId", BuildConfig.FLAVOR);
+    }
+
+    public String getProfileName()
+	{
+        return PreferenceManager.getDefaultSharedPreferences(this).getString("profileName", BuildConfig.FLAVOR);
+    }
+
+    public void statsTrackEvent(String eventName, String eventParameters)
+	{
+		
+    }
+
+    public void statsUpdateUserData(String graphicsVendor, String graphicsRenderer)
+	{
+		
+    }
+
+    public String[] getBroadcastAddresses()
+	{
+        ArrayList<String> list = new ArrayList();
+        try
+		{
+            System.setProperty("java.net.preferIPv4Stack", ServerProtocol.DIALOG_RETURN_SCOPES_TRUE);
+            Enumeration<NetworkInterface> niEnum = NetworkInterface.getNetworkInterfaces();
+            while (niEnum.hasMoreElements())
+			{
+                NetworkInterface ni = (NetworkInterface) niEnum.nextElement();
+                if (!ni.isLoopback())
+				{
+                    for (InterfaceAddress interfaceAddress : ni.getInterfaceAddresses())
+					{
+                        if (interfaceAddress.getBroadcast() != null)
+						{
+                            list.add(interfaceAddress.getBroadcast().toString().substring(1));
+                        }
+                    }
+                }
+            }
+        } catch (Exception e)
+		{
+			
+        }
+        return (String[]) list.toArray(new String[list.size()]);
+    }
+
+    public String[] getIPAddresses()
+	{
+        ArrayList<String> list = new ArrayList();
+        try {
+            System.setProperty("java.net.preferIPv4Stack", ServerProtocol.DIALOG_RETURN_SCOPES_TRUE);
+            Enumeration<NetworkInterface> niEnum = NetworkInterface.getNetworkInterfaces();
+            while (niEnum.hasMoreElements()) {
+                NetworkInterface ni = (NetworkInterface) niEnum.nextElement();
+                if (!ni.isLoopback() && ni.isUp()) {
+                    for (InterfaceAddress interfaceAddress : ni.getInterfaceAddresses()) {
+                        InetAddress addr = interfaceAddress.getAddress();
+                        if (!(addr == null || addr.isAnyLocalAddress() || addr.isMulticastAddress() || addr.isLinkLocalAddress())) {
+                            list.add(interfaceAddress.getAddress().toString().substring(1));
+                        }
+                    }
+                }
+            }
+        } catch (Exception e)
+		{
+			
+        }
+        return list.toArray(new String[list.size()]);
+    }
+
+    public void initiateUserInput(int id)
+	{
+        this._userInputText = null;
+        this._userInputStatus = -1;
     }
 
     public int getUserInputStatus()
@@ -567,595 +910,230 @@ public class MainActivity extends NativeActivity implements View.OnKeyListener
         return this._userInputText;
     }
 
-    public boolean hasBuyButtonWhenInvalidLicense() 
+    public void vibrate(int milliSeconds)
 	{
-        return true;
+        ((Vibrator) getSystemService("vibrator")).vibrate((long) milliSeconds);
     }
 
-    boolean hasHardwareChanged() 
+    private void onDialogCanceled()
 	{
-		return false;
-//        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-//        String string2 = sharedPreferences.getString("lastAndroidVersion", "");
-//        if (!string2.isEmpty()) 
-//		{
-//            if (string2.equals((Object)Build.VERSION.RELEASE)) return false;
-//        }
-//        boolean bl = true;
-//        if (!bl) return bl;
-//        SharedPreferences.Editor editor = sharedPreferences.edit();
-//        editor.putString("lastAndroidVersion", Build.VERSION.RELEASE);
-//        editor.commit();
-//        return bl;
+        this._userInputStatus = 0;
     }
 
-    public void hideKeyboard() 
+    public long getTotalMemory()
 	{
-        this.runOnUiThread(new Runnable(){
-
-				public void run() {
-					if (MainActivity.this.mHiddenTextInputDialog != null) {
-						MainActivity.this.mHiddenTextInputDialog.dismiss();
-						MainActivity.this.mHiddenTextInputDialog = null;
-					}
-				}
-			});
+        ActivityManager activityManager = (ActivityManager) getSystemService("activity");
+        MemoryInfo memoryInfo = new MemoryInfo();
+        activityManager.getMemoryInfo(memoryInfo);
+        return memoryInfo.availMem;
     }
 
-    public void initiateUserInput(int n) 
-	{
-        this._userInputText = null;
-        this._userInputStatus = -1;
+    public long calculateAvailableDiskFreeSpace(String rootPath) {
+        return new StatFs(rootPath).getAvailableBytes();
     }
 
-    protected boolean isDemo() 
+    private void onDialogCompleted()
 	{
-        return false;
-    }
-
-    public boolean isFirstSnooperStart()
-	{
-        return PreferenceManager.getDefaultSharedPreferences(this).getString("snooperId", "").isEmpty();
-    }
-
-    public boolean isNetworkEnabled(boolean bl)
-	{
-        return true;
-    }
-
-    public boolean isTablet() 
-	{
-        if (VERSION.SDK_INT >= 13 && getResources().getConfiguration().smallestScreenWidthDp >= 600)
-		{
-            return true;
+        int size = this._userInputValues.size();
+        this._userInputText = new String[size];
+        for (int i = 0; i < size; i++) {
+            this._userInputText[i] = ((StringValue) this._userInputValues.get(i)).getStringValue();
         }
-        return false;
-    }
-
-    public boolean isTextToSpeechInProgress() 
-	{
-        if (this.textToSpeechManager != null)
-		{
-            return this.textToSpeechManager.isSpeaking();
+        for (String s : this._userInputText) {
+            System.out.println("js: " + s);
         }
-        return false;
+        this._userInputStatus = 1;
+        boolean result = ((InputMethodManager) getSystemService("input_method")).showSoftInput(getCurrentFocus(), 1);
     }
 
-    public void launchUri(String string2)
-	{
-        this.startActivity(new Intent("android.intent.action.VIEW", Uri.parse(string2)));
-    }
-
-	//native API
-    public native void nativeBackPressed();
-    public native void nativeBackSpacePressed();
-    public native void nativeKeyHandler(int i, boolean z);
-    public native void nativeOnDestroy();
-    public native void nativeOnPickImageCanceled(long var1);
-    public native void nativeOnPickImageSuccess(long var1, String var3);
-    public native void nativeProcessIntentUriQuery(String var1, String var2);
-    public native void nativeRegisterThis();
-    public native void nativeReturnKeyPressed();
-    public native void nativeSetHeadphonesConnected(boolean var1);
-    public native void nativeSetTextboxText(String var1);
-    public native void nativeStopThis();
-    public native void nativeSuspend();
-    public native void nativeTypeCharacter(String var1);
-    public native void nativeUnregisterThis();
-	
-	private native void setUpBreakpad(String var1);
-    
-    protected void onActivityResult(int n, int n2, Intent intent) 
-	{
-        super.onActivityResult(n, n2, intent);
-        Iterator iterator = this.mActivityListeners.iterator();
-        while (iterator.hasNext())
-		{
-            ((ActivityListener)iterator.next()).onActivityResult(n, n2, intent);
-        }
-        if (n != RESULT_PICK_IMAGE) return;
-        {
-            if (n2 == -1 && intent != null) 
-			{
-                Uri uri = intent.getData();
-                String[] arrstring = new String[]{"_data"};
-                Cursor cursor = this.getContentResolver().query(uri, arrstring, null, null, null);
-                cursor.moveToFirst();
-                String string2 = cursor.getString(cursor.getColumnIndex(arrstring[0]));
-                this.nativeOnPickImageSuccess(this.mCallback, string2);
-                this.mCallback = 0;
-                cursor.close();
-                return;
-            } 
-			else 
-			{
-                if (this.mCallback == 0) return;
-                {
-                    this.nativeOnPickImageCanceled(this.mCallback);
-                    this.mCallback = 0;
-                    return;
-                }
-            }
-        }
-    }
-
-    public void onBackPressed() 
-	{
-		finish();
-		nativeBackPressed();
-    }
-
-    public void onCreate(Bundle bundle) 
-	{
-		try
-		{
-			if(getPackageName().equals("com.mojang.minecraftpe"))
-			{
-				mcpeContext = this;
-			}
-			else
-			{
-				mcpeContext = createPackageContext("com.mojang.minecraftpe", CONTEXT_IGNORE_SECURITY);
-			}
-			
-			this.mcPkgInfo = getPackageManager().getPackageInfo("com.mojang.minecraftpe", 0);
-			this.mcAppInfo = this.mcPkgInfo.applicationInfo;
-
-			MC_LIBRARY_DIR = mcAppInfo.nativeLibraryDir;
-			MC_LIBRARY_LOCATION = MC_LIBRARY_DIR + "/libminecraftpe.so";
-			
-			System.load(MC_LIBRARY_DIR + "/libfmod.so");
-			FMOD.init(this);
-			System.load(MC_NATIVE_LIBRARY_LOCATION);
-			System.loadLibrary("tinysubstrate");
-		} 
-		catch (Exception e)
-		{
-			e.printStackTrace();
-			finish();
-		}
-		
-//		try
-//		{
-//			System.loadLibrary("ovrfmod");
-//		}
-//		catch (UnsatisfiedLinkError var0) 
-//		{
-//			Log.d("MCPE", "OVRfmod library not found");
-//		}
-//		try 
-//		{
-//			System.loadLibrary("ovrplatformloader");
-//		}
-//		catch (UnsatisfiedLinkError var2_1) 
-//		{
-//			Log.d("MCPE","OVRplatform library not found");
-//		}
-		
-		try
-		{
-			finish();
-        	this.platform = Platform.createPlatform(true);
-       		this.setVolumeControlStream(3);
-			super.onCreate(bundle);
-			nativeRegisterThis();
-        	this.deviceManager = InputDeviceManager.create(this);
-        	this.platform.onAppStart(this.getWindow().getDecorView());
-        	this.headsetConnectionReceiver = new HeadsetConnectionReceiver();
-        	this.nativeSetHeadphonesConnected(((AudioManager)this.getSystemService("audio")).isWiredHeadsetOn());
-        	this.clipboardManager = (ClipboardManager)this.getSystemService("clipboard");
-        	MetricsManager.register(this, (Application)this.getApplication());
-        	MetricsManager.trackEvent(("Device: " + HardwareInformation.getDeviceModelName()));
-        	Constants.loadFromContext(this);
-        	this.setUpBreakpad(Constants.FILES_PATH);
-        	//NativeCrashManager.handleDumpFiles((Activity)this, "3db796c2fc084bbc907764b7deb378c5");
-        	mInstance = this;
-        	this._fromOnCreate = true;
-		}
-		catch(Exception e)
-		{
-			e.printStackTrace();
-		}
-    }
-	
-    protected void onDestroy()
-	{
-        Log.d("MinecraftPE", "onDestroy");
-        mInstance = null;
-        System.out.println("onDestroy");
-        FMOD.close();
-        Iterator iterator = this.mActivityListeners.iterator();
-        while (iterator.hasNext()) {
-            ((ActivityListener)iterator.next()).onDestroy();
-        }
-        this.nativeUnregisterThis();
-        this.nativeOnDestroy();
-        super.onDestroy();
-        System.exit(0);
-    }
-
-    public boolean onKey(View view, int n, KeyEvent keyEvent)
-	{
-        return false;
-    }
-
-    public boolean onKeyDown(int n, KeyEvent keyEvent)
-	{
-        return super.onKeyDown(n, keyEvent);
-    }
-
-    public boolean onKeyMultiple(int n, int n2, KeyEvent keyEvent)
-	{
-        return super.onKeyMultiple(n, n2, keyEvent);
-    }
-
-    public boolean onKeyUp(int n, KeyEvent keyEvent)
-	{
-        if (n == 25 || n == 24)
-		{
-            this.platform.onVolumePressed();
-        }
-        return super.onKeyUp(n, keyEvent);
-    }
-
-    public void onNewIntent(Intent intent)
-	{
-        this.processIntent(intent);
-    }
-
-    protected void onPause()
-	{
-        Log.d("MinecraftPE", "onPause");
-        this.nativeSuspend();
-        super.onPause();
-    }
-
-    protected void onResume()
-	{
-        Log.d("MinecraftPE", "onResume");
-        super.onResume();
-        IntentFilter intentFilter = new IntentFilter("android.intent.action.HEADSET_PLUG");
-        this.registerReceiver((BroadcastReceiver)this.headsetConnectionReceiver, intentFilter);
-        if (this.mHiddenTextInputDialog != null) {
-            String string2 = this.textInputWidget.getText().toString();
-            int n = this.textInputWidget.allowedLength;
-            boolean bl = this.textInputWidget.limitInput;
-            boolean bl2 = (2 & this.textInputWidget.getInputType()) == 2;
-            this.textInputWidget.getInputType();
-            this.mHiddenTextInputDialog.dismiss();
-            this.mHiddenTextInputDialog = null;
-            this.showKeyboard(string2, n, bl, bl2);
-            this.registerCrashManager();
-        }
-    }
-
-    /*@SuppressLint(value={"DefaultLocale"})
-    protected void onStart()
-	{
+    @SuppressLint({"DefaultLocale"})
+    protected void onStart() {
         Log.d("MinecraftPE", "onStart");
         super.onStart();
         this.deviceManager.register();
         if (this._fromOnCreate)
 		{
             this._fromOnCreate = false;
-            this.processIntent(this.getIntent());
+            processIntent(getIntent());
         }
-    }*/
+    }
+
+    protected void onResume()
+	{
+        Log.d("MinecraftPE", "onResume");
+        super.onResume();
+        registerReceiver(this.headsetConnectionReceiver, new IntentFilter("android.intent.action.HEADSET_PLUG"));
+        if (this.mHiddenTextInputDialog != null)
+		{
+            String oldText = this.textInputWidget.getText().toString();
+            int maxNumCharacters = this.textInputWidget.allowedLength;
+            boolean limitInput = this.textInputWidget.limitInput;
+            boolean numbersOnly = (this.textInputWidget.getInputType() & 2) == 2;
+            this.textInputWidget.getInputType();
+            this.mHiddenTextInputDialog.dismiss();
+            this.mHiddenTextInputDialog = null;
+            showKeyboard(oldText, maxNumCharacters, limitInput, numbersOnly);
+            registerCrashManager();
+        }
+    }
+
+    protected void onPause()
+	{
+        Log.d("MinecraftPE", "onPause");
+        nativeSuspend();
+        super.onPause();
+    }
 
     protected void onStop()
 	{
         Log.d("MinecraftPE", "onStop");
-        this.nativeStopThis();
+        nativeStopThis();
         super.onStop();
         this.deviceManager.unregister();
     }
 
-    public void onWindowFocusChanged(boolean bl)
+    protected void onDestroy()
 	{
-        super.onWindowFocusChanged(bl);
-        this.platform.onViewFocusChanged(bl);
+        Log.d("MinecraftPE", "onDestroy");
+        mInstance = null;
+        System.out.println("onDestroy");
+        FMOD.close();
+        for (ActivityListener listener : this.mActivityListeners) {
+            listener.onDestroy();
+        }
+        nativeUnregisterThis();
+        nativeOnDestroy();
+        super.onDestroy();
+        System.exit(0);
     }
 
-	public void pickImage(long callbackAddress) 
+    public void onNewIntent(Intent intent)
 	{
-        this.mCallback = callbackAddress;
-        startActivityForResult(new Intent("android.intent.action.PICK", Media.EXTERNAL_CONTENT_URI), 415);
+        processIntent(intent);
     }
 
-    public void postScreenshotToFacebook(String string2, int n, int n2, int[] arrn)
+	private void processIntent(Intent intent)
 	{
 		
+	}
+   
+
+    protected boolean isDemo()
+	{
+        return false;
     }
 
-    public void quit()
+    public boolean isFirstSnooperStart()
 	{
-        finish();
+        return PreferenceManager.getDefaultSharedPreferences(this).getString("snooperId", BuildConfig.FLAVOR).isEmpty();
     }
 
-    public void removeListener(ActivityListener activityListener)
+    public String getDeviceId()
 	{
-        this.mActivityListeners.remove((Object)activityListener);
-    }
-
-    public void setClipboard(String string2)
-	{
-        ((ClipboardManager) getSystemService("clipboard")).setText(string2);
-    }
-
-    void setFileDialogCallback(long l)
-	{
-        this.mFileDialogCallback = l;
-    }
-
-    public void setIsPowerVR(boolean bl)
-	{
-        _isPowerVr = bl;
-    }
-
-    public void setLoginInformation(String string2, String string3, String string4, String string5)
-	{
-        SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(this).edit();
-        editor.putString("accessToken", string2);
-        editor.putString("clientId", string3);
-        editor.putString("profileId", string4);
-        editor.putString("profileName", string5);
-        editor.commit();
-    }
-
-    public void setRefreshToken(String string2)
-	{
-        SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(this).edit();
-        editor.putString("refreshToken", string2);
-        editor.commit();
-    }
-
-    public void setSession(String string2)
-	{
-        SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(this).edit();
-        editor.putString("sessionID", string2);
-        editor.commit();
-    }
-
-    public void setTextToSpeechEnabled(boolean bl)
-	{
-        if (!bl)
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        String snooperID = prefs.getString("snooperId", BuildConfig.FLAVOR);
+        if (!snooperID.isEmpty())
 		{
-            this.textToSpeechManager = null;
-            return;
+            return snooperID;
         }
-        if (this.textToSpeechManager != null) return;
+        snooperID = UUID.randomUUID().toString().replaceAll("-", BuildConfig.FLAVOR);
+        Editor edit = prefs.edit();
+        edit.putString("snooperId", snooperID);
+        edit.commit();
+        return snooperID;
+    }
+
+    public String createUUID()
+	{
+        return UUID.randomUUID().toString().replaceAll("-", BuildConfig.FLAVOR);
+    }
+
+    public Intent createAndroidLaunchIntent()
+	{
+        Context context = getApplicationContext();
+        return context.getPackageManager().getLaunchIntentForPackage(context.getPackageName());
+    }
+
+    boolean hasHardwareChanged()
+	{
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        String lastAndroidVersion = prefs.getString("lastAndroidVersion", BuildConfig.FLAVOR);
+        boolean firstHardwareStart = lastAndroidVersion.isEmpty() || !lastAndroidVersion.equals(VERSION.RELEASE);
+        if (firstHardwareStart)
+		{
+            Editor edit = prefs.edit();
+            edit.putString("lastAndroidVersion", VERSION.RELEASE);
+            edit.commit();
+        }
+        return firstHardwareStart;
+    }
+
+    boolean isTablet()
+	{
+        return (getResources().getConfiguration().screenLayout & 15) == 4;
+    }
+
+    void pickImage(long callback)
+	{
+        this.mCallback = callback;
         try
 		{
-            this.textToSpeechManager = new TextToSpeech(this.getApplicationContext(), new TextToSpeech.OnInitListener(){
+            startActivityForResult(new Intent("android.intent.action.PICK", Media.EXTERNAL_CONTENT_URI), RESULT_PICK_IMAGE);
+        } catch (ActivityNotFoundException e)
+		{
+			
+        }
+    }
 
-					public void onInit(int n) {
-					}
-				});
+    void setFileDialogCallback(long callback)
+	{
+        this.mFileDialogCallback = callback;
+    }
+
+    protected void onActivityResult(int requestCode, int resultCode, Intent data)
+	{
+        super.onActivityResult(requestCode, resultCode, data);
+        for (ActivityListener listener : this.mActivityListeners)
+		{
+            listener.onActivityResult(requestCode, resultCode, data);
+        }
+        if (requestCode != RESULT_PICK_IMAGE)
+		{
             return;
         }
-        catch (Exception exception)
+        if (resultCode == -1 && data != null)
 		{
-            return;
+            String[] filePathColumn = new String[]{"_data"};
+            Cursor cursor = getContentResolver().query(data.getData(), filePathColumn, null, null, null);
+            cursor.moveToFirst();
+            String picturePath = cursor.getString(cursor.getColumnIndex(filePathColumn[0]));
+            nativeOnPickImageSuccess(this.mCallback, picturePath);
+            this.mCallback = 0;
+            cursor.close();
+        }
+		else if (this.mCallback != 0)
+		{
+            nativeOnPickImageCanceled(this.mCallback);
+            this.mCallback = 0;
         }
     }
 
-    public void setupKeyboardViews(String string2, int n, boolean bl, boolean bl2)
+    public void addListener(ActivityListener listener)
 	{
-        this.textInputWidget = new TextInputProxyEditTextbox(this, n, bl);
-        this.textInputWidget.setFocusable(true);
-        this.textInputWidget.setFocusableInTouchMode(true);
-        this.textInputWidget.setInputType(655360);
-        this.textInputWidget.setImeOptions(268435461);
-        this.textInputWidget.setText((CharSequence)string2);
-        if (bl2)
-		{
-            this.textInputWidget.setInputType(2);
-        }
-        this.textInputWidget.setOnEditorActionListener(new TextView.OnEditorActionListener(){
-
-				public boolean onEditorAction(TextView textView, int n, KeyEvent keyEvent) {
-					Log.w("mcpe - keyboard", ("onEditorAction: " + n));
-					if (n == 5) {
-						MainActivity.this.nativeReturnKeyPressed();
-						return true;
-					}
-					boolean bl = false;
-					if (n != 7) return bl;
-					MainActivity.this.nativeBackPressed();
-					return true;
-				}
-			});
-        this.textInputWidget.addTextChangedListener(new TextWatcher(){
-
-				public void afterTextChanged(Editable editable) {
-					String string2 = editable.toString();
-					MainActivity.this.nativeSetTextboxText(string2);
-				}
-
-				public void beforeTextChanged(CharSequence charSequence, int n, int n2, int n3) {
-				}
-
-				public void onTextChanged(CharSequence charSequence, int n, int n2, int n3) {
-				}
-			});
-        this.textInputWidget.setOnMCPEKeyWatcher(new TextInputProxyEditTextbox.MCPEKeyWatcher(){
-
-				@Override
-				public void onBackKeyPressed() {
-					MainActivity.this.runOnUiThread(new Runnable(){
-
-							public void run() {
-								Log.w("mcpe - keyboard", "textInputWidget.onBackPressed");
-								MainActivity.this.nativeBackPressed();
-							}
-						});
-				}
-
-				@Override
-				public void onDeleteKeyPressed() {
-					MainActivity.this.runOnUiThread(new Runnable(){
-
-							public void run() {
-								MainActivity.this.nativeBackSpacePressed();
-							}
-						});
-				}
-
-			});
-        this.mHiddenTextInputDialog = new PopupWindow(this);
-        this.mHiddenTextInputDialog.setInputMethodMode(1);
-        this.mHiddenTextInputDialog.setWidth(320);
-        this.mHiddenTextInputDialog.setHeight(50);
-        this.mHiddenTextInputDialog.setWindowLayoutMode(-2, -2);
-        this.mHiddenTextInputDialog.setClippingEnabled(false);
-        LinearLayout linearLayout = new LinearLayout(this);
-        LinearLayout linearLayout2 = new LinearLayout(this);
-        linearLayout.setPadding(-5, -5, -5, -5);
-        ViewGroup.MarginLayoutParams marginLayoutParams = new ViewGroup.MarginLayoutParams(-2, -2);
-        marginLayoutParams.setMargins(0, 0, 0, 0);
-        linearLayout.setOrientation(1);
-        linearLayout.addView((View)this.textInputWidget, (ViewGroup.LayoutParams)marginLayoutParams);
-        this.mHiddenTextInputDialog.setContentView((View)linearLayout);
-        this.setContentView((View)linearLayout2, (ViewGroup.LayoutParams)marginLayoutParams);
-        this.mHiddenTextInputDialog.setOutsideTouchable(true);
-        this.mHiddenTextInputDialog.setTouchInterceptor(new View.OnTouchListener(){
-
-				public boolean onTouch(View view, MotionEvent motionEvent) {
-					MainActivity.this.nativeBackPressed();
-					return false;
-				}
-			});
-        this.mHiddenTextInputDialog.showAtLocation((View)linearLayout2, 0, -50000, 0);
-        this.mHiddenTextInputDialog.setFocusable(true);
-        this.mHiddenTextInputDialog.update();
-        this.mHiddenTextInputDialog.dismiss();
-        this.mHiddenTextInputDialog.showAtLocation((View)linearLayout2, 0, -50000, 0);
-        this.mHiddenTextInputDialog.setFocusable(true);
-        this.mHiddenTextInputDialog.update();
-        this.textInputWidget.postDelayed(new Runnable(){
-
-				public void run() {
-					MotionEvent motionEvent = MotionEvent.obtain((long)SystemClock.uptimeMillis(), (long)SystemClock.uptimeMillis(), (int)0, (float)0.0f, (float)0.0f, (int)0);
-					MainActivity.this.textInputWidget.dispatchTouchEvent(motionEvent);
-					motionEvent.recycle();
-					MotionEvent motionEvent2 = MotionEvent.obtain((long)SystemClock.uptimeMillis(), (long)SystemClock.uptimeMillis(), (int)1, (float)0.0f, (float)0.0f, (int)0);
-					MainActivity.this.textInputWidget.dispatchTouchEvent(motionEvent2);
-					motionEvent2.recycle();
-					MainActivity.this.textInputWidget.setSelection(MainActivity.this.textInputWidget.length());
-				}
-			}, 200);
-        final View view = this.findViewById(16908290).getRootView();
-        view.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener(){
-
-				public void onGlobalLayout() {
-					Rect rect = new Rect();
-					view.getWindowVisibleDisplayFrame(rect);
-					MainActivity.this.virtualKeyboardHeight = view.getRootView().getHeight() - rect.height();
-				}
-			});
+        this.mActivityListeners.add(listener);
     }
 
-    public void showKeyboard(final String string2, final int n, final boolean bl, final boolean bl2)
+    public void removeListener(ActivityListener listener)
 	{
-        this.runOnUiThread(new Runnable(){
-
-				public void run() {
-					MainActivity.this.setupKeyboardViews(string2, n, bl, bl2);
-				}
-			});
+        this.mActivityListeners.remove(listener);
     }
-	
-	private void addLibraryDirToPath(String paramString)
-	{
-		try
-		{
-			Object localObject = getClassLoader();
-			Field localField = getDeclaredFieldRecursive(localObject.getClass(), "pathList");
-			localField.setAccessible(true);
-			localObject = localField.get(localObject);
-			localField = getDeclaredFieldRecursive(localObject.getClass(), "nativeLibraryDirectories");
-			localField.setAccessible(true);
-			File[] arrayOfFile = (File[])localField.get(localObject);
-			File[] arrfile = addToFileList(arrayOfFile, new File(paramString));
-			if (arrayOfFile != arrfile)
-			{
-				localField.set(localObject, arrfile);
-			}
-			return;
-		}
-		catch (Exception param)
-		{
-			param.printStackTrace();
-		}
-	}
 
-	private File[] addToFileList(File[] paramArrayOfFile, File paramFile)
-	{
-		int j = paramArrayOfFile.length;
-		int i = 0;
-		while (i < j)
-		{
-			if (paramArrayOfFile[i].equals(paramFile))
-			{
-				return paramArrayOfFile;
-			}
-			i += 1;
-		}
-		File[] arrayOfFile = new File[paramArrayOfFile.length + 1];
-		System.arraycopy(paramArrayOfFile, 0, arrayOfFile, 1, paramArrayOfFile.length);
-		arrayOfFile[0] = paramFile;
-		return arrayOfFile;
-	}
-
-	public Field getDeclaredFieldRecursive(Class<?> clazz, String name)
-	{
-		if (clazz == null)
-			return null;
-		try
-		{
-			return clazz.getDeclaredField(name);
-		}
-		catch (NoSuchFieldException nsfe)
-		{
-			return getDeclaredFieldRecursive(clazz.getSuperclass(), name);
-		}
-	}
-	
-
-    public void startTextToSpeech(String string2)
+    public void startTextToSpeech(String s)
 	{
         if (this.textToSpeechManager != null)
 		{
-            this.textToSpeechManager.speak(string2, 0, null);
+            this.textToSpeechManager.speak(s, 0, null);
         }
-    }
-
-    public void statsTrackEvent(String string2, String string3)
-	{
-    }
-
-    public void statsUpdateUserData(String string2, String string3)
-	{
     }
 
     public void stopTextToSpeech()
@@ -1166,67 +1144,42 @@ public class MainActivity extends NativeActivity implements View.OnKeyListener
         }
     }
 
-    public void tick()
+    public boolean isTextToSpeechInProgress()
 	{
-		
-    }
-
-    public void updateLocalization(final String string2, final String string3)
-	{
-        this.runOnUiThread(new Runnable(){
-
-				public void run() {
-					Locale locale = new Locale(string2, string3);
-					Locale.setDefault((Locale)locale);
-					Configuration configuration = new Configuration();
-					configuration.locale = locale;
-					MainActivity.this.getResources().updateConfiguration(configuration, MainActivity.this.getResources().getDisplayMetrics());
-				}
-			});
-    }
-
-    public void updateTextboxText(final String string2)
-	{
-        this.runOnUiThread(new Runnable(){
-
-				public void run() {
-					if (MainActivity.this.textInputWidget == null) {
-						MainActivity.this.setupKeyboardViews(string2, string2.length(), false, false);
-					}
-					MainActivity.this.textInputWidget.setText((CharSequence)string2);
-					MainActivity.this.textInputWidget.setSelection(MainActivity.this.textInputWidget.length());
-				}
-			});
-    }
-
-    public void vibrate(int n)
-	{
-        ((Vibrator)this.getSystemService("vibrator")).vibrate((long)n);
-    }
-
-    private class HeadsetConnectionReceiver
-    extends BroadcastReceiver {
-        private HeadsetConnectionReceiver() {
+        if (this.textToSpeechManager != null)
+		{
+            return this.textToSpeechManager.isSpeaking();
         }
-
-        
-        public void onReceive(Context context, Intent intent) {
-            if (!intent.getAction().equals((Object)"android.intent.action.HEADSET_PLUG")) return;
-            switch (intent.getIntExtra("state", -1)) {
-                default: {
-						return;
-					}
-                case 0: {
-						Log.d("MCPE", "Headset unplugged");
-						MainActivity.this.nativeSetHeadphonesConnected(false);
-						return;
-					}
-                case 1: 
-            }
-            Log.d("MCPE", "Headset plugged in");
-            MainActivity.this.nativeSetHeadphonesConnected(true);
-        }
+        return false;
     }
+
+    private void registerCrashManager()
+	{
+        CrashManager.register(this, "3db796c2fc084bbc907764b7deb378c5", new CrashManagerListener()
+		{
+				public boolean shouldAutoUploadCrashes()
+				{
+					return true;
+				}
+		});
+    }
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	

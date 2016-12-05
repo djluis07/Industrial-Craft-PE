@@ -10,6 +10,7 @@ import android.graphics.*;
 import com.gc.materialdesign.views.*;
 import android.os.*;
 import android.preference.*;
+import android.widget.*;
 
 public class GuideActivity extends Activity
 {
@@ -19,7 +20,6 @@ public class GuideActivity extends Activity
         super.onCreate(savedInstanceState);
 		setContentView(R.layout.guide_activity);
 		
-		SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(this).edit();
 		if(PreferenceManager.getDefaultSharedPreferences(this).getBoolean("first_loaded",false))
 		{
 			Intent intent=new Intent(this,com.MCAL.ICPE.activity.StartActivity.class);
@@ -27,10 +27,16 @@ public class GuideActivity extends Activity
 			finish();
 		}
 		
+		
+		WindowManager windowManager = getWindowManager();
+        Display display = windowManager.getDefaultDisplay();
+        int screenWidth = screenWidth = display.getWidth();
+        int screenHeight = screenHeight = display.getHeight();
 		((com.gc.materialdesign.views.ButtonFlat)findViewById(R.id.guideactivity_ButtonFlat_UserLegal)).getTextView().getPaint().setFlags(Paint.UNDERLINE_TEXT_FLAG);
 		((com.gc.materialdesign.views.ButtonRectangle)findViewById(R.id.guideactivityButtonRectangle)).setEnabled(false);
-		
-		new Thread(new LoopRnuable()).start();
+		ViewGroup.LayoutParams param = ((ImageView)findViewById(R.id.guideactivityImageView)).getLayoutParams();
+		param.height=param.width=screenHeight/3;
+		new Thread(new LoopRunnable()).start();
     }
 	
 	/*listeners*/
@@ -68,7 +74,7 @@ public class GuideActivity extends Activity
 			
         }
     };
-	public class LoopRnuable implements Runnable
+	public class LoopRunnable implements Runnable
 	{
 		@Override
         public void run()
