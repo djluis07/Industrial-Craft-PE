@@ -5,6 +5,7 @@
 #include "mcpe/level/BlockSource.h"
 #include "mcpe/util/BlockPos.h"
 #include "mcpe/util/FullBlock.h"
+#include "mcpe/block/Block.h"
 
 namespace IC
 {
@@ -31,7 +32,7 @@ void OreFeature::place(BlockSource&s,BlockPos const&pos,ICRandom&r)
 }
 void OreFeature::checkToPlace(BlockSource&s,BlockPos const&pos)
 {
-	if(s.getBlockID(pos).id==1&&s.getData(pos)==0)
+	if(s.getBlock(pos.x,pos.y,pos.z)==Block::mStone&&s.getData(pos.x,pos.y,pos.z)==0)
 			s.setBlockAndData(pos,oreBlock,3);
 }
 }

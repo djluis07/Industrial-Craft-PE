@@ -32,9 +32,9 @@ bool RubberSaplingBlock::canSurvive(BlockSource&s, BlockPos const&pos)
 }
 void RubberSaplingBlock::neighborChanged(BlockSource&s, BlockPos const&pos, BlockPos const&pos2)
 {
-	if(!canSurvive(s,pos)&&s.getBlock(pos)==this)
+	if(!canSurvive(s,pos)&&s.getBlock(pos.x,pos.y,pos.z)==this)
 	{
-		s.removeBlock(pos);
+		s.removeBlock(pos.x,pos.y,pos.z);
 		popResource(s,pos,ItemInstance(IC::Blocks::ID::mRubberSapling,1,0));
 	}
 }

@@ -29,15 +29,15 @@ bool ResinBlock::mayPlaceOn(Block const&b)
 }
 void ResinBlock::neighborChanged(BlockSource&s, BlockPos const&pos, BlockPos const&)
 {
-	if(s.getBlock(pos)==this&&!mayPlaceOn(*s.getBlock(pos.x,pos.y-1,pos.z)))
+	if(s.getBlock(pos.x,pos.y,pos.z)==this&&!mayPlaceOn(*s.getBlock(pos.x,pos.y-1,pos.z)))
 	{
-		popResource(s,pos,ItemInstance(IC::Items::ID::mRubber,1,s.getData(pos)));
-		s.removeBlock(pos);
+		popResource(s,pos,ItemInstance(IC::Items::ID::mRubber,1,s.getData(pos.x,pos.y,pos.z)));
+		s.removeBlock(pos.x,pos.y,pos.z);
 	}
 }
 bool ResinBlock::entityInside(BlockSource&s, BlockPos const&pos, Entity&e)
 {
-	if(s.getData(pos)==0)
+	if(s.getData(pos.x,pos.y,pos.z)==0)
 		mSlimeBlock->onStepOn(e,pos);
 	else
 		return mVine->entityInside(s,pos,e);

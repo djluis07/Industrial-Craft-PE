@@ -22,7 +22,7 @@ RubberWoodBlock::RubberWoodBlock():IC::Blocks("ic.rubber.wood",IC::Blocks::ID::m
 }
 void RubberWoodBlock::tick(BlockSource&s, BlockPos const&pos, Random&)
 {
-	if(ICClient::mInstance.getRandom().nextInt(7)==5&&s.getData(pos)==1)
+	if(ICClient::mInstance.getRandom().nextInt(7)==5&&s.getData(pos.x,pos.y,pos.z)==1)
 		s.setBlockAndData(pos,FullBlock(IC::Blocks::ID::mRubberWood,2),3);
 }
 int RubberWoodBlock::getSpawnResourcesAuxValue(unsigned char)

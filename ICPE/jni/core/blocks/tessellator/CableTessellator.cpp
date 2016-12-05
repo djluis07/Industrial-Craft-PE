@@ -4,7 +4,7 @@
 
 bool CableTessellator::tessellate(Block const&b,BlockPos const&pos,unsigned char aux,bool wtf,bool (*tessellate)(BlockTessellator*,Block&,BlockPos const&,uchar,bool))
 {
-	float defaultDistance=blockSource->getData(pos)==12?0.375:0.3125;
+	float defaultDistance=blockSource->getData(pos.x,pos.y,pos.z)==12?0.375:0.3125;
 	
 	Block& block=*Block::mBlocks[b.blockId];
 	
@@ -46,7 +46,7 @@ bool CableTessellator::tessellate(Block const&b,BlockPos const&pos,unsigned char
 }
 bool CableTessellator::isElectricBlockAt(BlockPos const&pos)
 {
-	if(IC::Blocks::mICBlocks[blockSource->getBlockID(pos).id])
-		return ((IC::Blocks*)blockSource->getBlock(pos))->isElectricBlock();
+	if(IC::Blocks::mICBlocks[blockSource->getBlock(pos.x,pos.y,pos.z)->blockId])
+		return ((IC::Blocks*)blockSource->getBlock(pos.x,pos.y,pos.z))->isElectricBlock();
 	return false;
 }
