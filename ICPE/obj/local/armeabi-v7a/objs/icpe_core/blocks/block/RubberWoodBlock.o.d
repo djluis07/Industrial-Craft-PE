@@ -34,8 +34,8 @@ obj/local/armeabi-v7a/objs/icpe_core/blocks/block/RubberWoodBlock.o: \
  jni/core/mcpe/level/../blockentity/../inventory/../item/ItemInstance.h \
  jni/core/mcpe/level/../blockentity/../inventory/../item/UseAnimation.h \
  jni/core/mcpe/level/../util/Brightness.h \
- jni/core/mcpe/level/LightLayer.h jni/core/mcpe/level/DimensionId.h \
- jni/core/mcpe/util/FullBlock.h jni/core/mcpe/block/blocks/FireBlock.h
+ jni/core/mcpe/level/../util/FullBlock.h jni/core/mcpe/level/LightLayer.h \
+ jni/core/mcpe/level/DimensionId.h jni/core/mcpe/block/blocks/FireBlock.h
 
 jni/core/blocks/block/RubberWoodBlock.h:
 
@@ -121,10 +121,10 @@ jni/core/mcpe/level/../blockentity/../inventory/../item/UseAnimation.h:
 
 jni/core/mcpe/level/../util/Brightness.h:
 
+jni/core/mcpe/level/../util/FullBlock.h:
+
 jni/core/mcpe/level/LightLayer.h:
 
 jni/core/mcpe/level/DimensionId.h:
-
-jni/core/mcpe/util/FullBlock.h:
 
 jni/core/mcpe/block/blocks/FireBlock.h:

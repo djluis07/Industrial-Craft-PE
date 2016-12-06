@@ -31,7 +31,7 @@ obj/local/armeabi-v7a/objs/icpe_core/items/item/TreeTapItem.o: \
  jni/core/mcpe/level/../blockentity/../inventory/FillingContainer.h \
  jni/core/mcpe/level/../blockentity/../inventory/Container.h \
  jni/core/mcpe/level/../util/Brightness.h \
- jni/core/mcpe/level/LightLayer.h jni/core/mcpe/util/FullBlock.h \
+ jni/core/mcpe/level/../util/FullBlock.h jni/core/mcpe/level/LightLayer.h \
  jni/core/blocks/Blocks.h jni/core/client/ICClient.h \
  jni/core/blocks/blockentity/ICBlockEntityManager.h \
  jni/core/util/ICRandom.h jni/core/client/ICOptions.h \
@@ -125,9 +125,9 @@ jni/core/mcpe/level/../blockentity/../inventory/Container.h:
 
 jni/core/mcpe/level/../util/Brightness.h:
 
-jni/core/mcpe/level/LightLayer.h:
+jni/core/mcpe/level/../util/FullBlock.h:
 
-jni/core/mcpe/util/FullBlock.h:
+jni/core/mcpe/level/LightLayer.h:
 
 jni/core/blocks/Blocks.h:
 

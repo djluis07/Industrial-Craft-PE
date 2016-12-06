@@ -1,2 +1,2 @@
-# Industrial-Craft-PE
-Industrial Craft in MCPE
+# Industrial Craft:Pocket-Edition
+Industrial Craft in MCPE.
