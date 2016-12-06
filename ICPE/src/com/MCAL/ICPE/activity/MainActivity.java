@@ -16,12 +16,13 @@ public class MainActivity extends Activity
 		setContentView(R.layout.main_activity);
     }
 	
-	/*listeners*/
-	
 	public void launchGame(View view)
 	{
-		Intent intent=new Intent(this,LauncherActivity.class);
-		startActivity(intent);
-		finish();
+		//Intent intent=new Intent(this,LauncherActivity.class);
+		//startActivity(intent);
+		//finish();
+		
+		com.gc.materialdesign.widgets.Dialog dialog=new com.gc.materialdesign.widgets.Dialog(this,"test","test_message");
+		dialog.show();
 	}
 }

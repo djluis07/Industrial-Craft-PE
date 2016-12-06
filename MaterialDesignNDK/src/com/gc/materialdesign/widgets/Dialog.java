@@ -15,8 +15,8 @@ import android.widget.TextView;
 import com.gc.materialdesign.R;
 import com.gc.materialdesign.views.ButtonFlat;
 
-public class Dialog extends android.app.Dialog{
-	
+public class Dialog extends android.app.Dialog
+{
 	Context context;
 	View view;
 	View backView;
@@ -28,39 +28,54 @@ public class Dialog extends android.app.Dialog{
 	ButtonFlat buttonAccept;
 	ButtonFlat buttonCancel;
 	
-	String buttonCancelText;
+	String cancelButtonText=null;
+	String acceptButtonText=null;
 	
 	View.OnClickListener onAcceptButtonClickListener;
 	View.OnClickListener onCancelButtonClickListener;
 	
 	
-	public Dialog(Context context,String title, String message) {
+	public Dialog(Context context,String title, String message)
+	{
 		super(context, android.R.style.Theme_Translucent);
 		this.context = context;// init Context
 		this.message = message;
 		this.title = title;
 	}
 	
-	public void addCancelButton(String buttonCancelText){
-		this.buttonCancelText = buttonCancelText;
+	public void setCancelButton(String buttonCancelText)
+	{
+		this.cancelButtonText = buttonCancelText;
 	}
 	
-	public void addCancelButton(String buttonCancelText, View.OnClickListener onCancelButtonClickListener){
-		this.buttonCancelText = buttonCancelText;
+	public void setCancelButton(String buttonCancelText, View.OnClickListener onCancelButtonClickListener)
+	{
+		this.cancelButtonText = buttonCancelText;
 		this.onCancelButtonClickListener = onCancelButtonClickListener;
 	}
 	
+	public void setAcceptButton(String buttonCancelText)
+	{
+		this.acceptButtonText = buttonCancelText;
+	}
+
+	public void setAcceptButton(String buttonCancelText, View.OnClickListener onCancelButtonClickListener)
+	{
+		this.acceptButtonText = buttonCancelText;
+		this.onAcceptButtonClickListener = onCancelButtonClickListener;
+	}
 	
 	@Override
-	  protected void onCreate(Bundle savedInstanceState) {
+	  protected void onCreate(Bundle savedInstanceState)
+	  {
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 	    super.onCreate(savedInstanceState);
 	    setContentView(R.layout.dialog);
 	    
 		view = (RelativeLayout)findViewById(R.id.contentDialog);
 		backView = (RelativeLayout)findViewById(R.id.dialog_rootView);
-		backView.setOnTouchListener(new OnTouchListener() {
-			
+		backView.setOnTouchListener(new OnTouchListener() 
+		{
 			@Override
 			public boolean onTouch(View v, MotionEvent event) {
 				if (event.getX() < view.getLeft() 
@@ -79,20 +94,26 @@ public class Dialog extends android.app.Dialog{
 	    this.messageTextView = (TextView) findViewById(R.id.message);
 	    setMessage(message);
 	    
-	    this.buttonAccept = (ButtonFlat) findViewById(R.id.button_accept);
-	    buttonAccept.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				dismiss();
-				if(onAcceptButtonClickListener != null)
-			    	onAcceptButtonClickListener.onClick(v);
-			}
-		});
+		  if(acceptButtonText != null){
+			  this.buttonAccept = (ButtonFlat) findViewById(R.id.button_cancel);
+			  this.buttonAccept.setVisibility(View.VISIBLE);
+			  this.buttonAccept.setText(acceptButtonText);
+			  buttonAccept.setOnClickListener(new View.OnClickListener() {
+
+					  @Override
+					  public void onClick(View v)
+					  {
+						  dismiss();
+						  if(onCancelButtonClickListener != null)
+							  onCancelButtonClickListener.onClick(v);
+					  }
+				  });
+		  }
 	    
-	    if(buttonCancelText != null){
+	    if(cancelButtonText != null){
 		    this.buttonCancel = (ButtonFlat) findViewById(R.id.button_cancel);
 		    this.buttonCancel.setVisibility(View.VISIBLE);
-		    this.buttonCancel.setText(buttonCancelText);
+		    this.buttonCancel.setText(cancelButtonText);
 	    	buttonCancel.setOnClickListener(new View.OnClickListener() {
 	    		
 				@Override
@@ -116,7 +137,8 @@ public class Dialog extends android.app.Dialog{
 	
 	// GETERS & SETTERS
 
-	public String getMessage() {
+	public String getMessage()
+	{
 		return message;
 	}
 
@@ -137,7 +159,8 @@ public class Dialog extends android.app.Dialog{
 		return title;
 	}
 
-	public void setTitle(String title) {
+	public void setTitle(String title)
+	{
 		this.title = title;
 		if(title == null)
 			titleTextView.setVisibility(View.GONE);
@@ -155,7 +178,8 @@ public class Dialog extends android.app.Dialog{
 		this.titleTextView = titleTextView;
 	}
 
-	public ButtonFlat getButtonAccept() {
+	public ButtonFlat getButtonAccept()
+	{
 		return buttonAccept;
 	}
 
@@ -163,7 +187,8 @@ public class Dialog extends android.app.Dialog{
 		this.buttonAccept = buttonAccept;
 	}
 
-	public ButtonFlat getButtonCancel() {
+	public ButtonFlat getButtonCancel()
+	{
 		return buttonCancel;
 	}
 
@@ -186,33 +211,9 @@ public class Dialog extends android.app.Dialog{
 	}
 	
 	@Override
-	public void dismiss() {
-		Animation anim = AnimationUtils.loadAnimation(context, R.anim.dialog_main_hide_amination);
-		anim.setAnimationListener(new AnimationListener() {
-			
-			@Override
-			public void onAnimationStart(Animation animation) {
-			}
-			
-			@Override
-			public void onAnimationRepeat(Animation animation) {
-			}
-			
-			@Override
-			public void onAnimationEnd(Animation animation) {
-				view.post(new Runnable() {
-					@Override
-					public void run() {
-			        	Dialog.super.dismiss();
-			        }
-			    });
-				
-			}
-		});
-		Animation backAnim = AnimationUtils.loadAnimation(context, R.anim.dialog_root_hide_amin);
-		
-		view.startAnimation(anim);
-		backView.startAnimation(backAnim);
+	public void dismiss()
+	{
+		Dialog.super.dismiss();
 	}
 	
 	

@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:background="@drawable/dialog_background"
+        android:background="#FFFFFF"
         android:padding="24dp">
 
         <TextView
@@ -68,6 +68,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Accept"
+				android:visibility="gone"
                 android:background="#1E88E5" />
         </LinearLayout>
     </RelativeLayout>

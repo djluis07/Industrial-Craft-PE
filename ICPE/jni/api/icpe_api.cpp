@@ -19,9 +19,9 @@ extern "C"
 {
 	JNIEXPORT jint JNI_OnLoad(JavaVM* vm, void*)
 	{
-		jclass systemClass=GetEnv(vm)->FindClass("java/lang/System");
-		jmethodID mid = GetEnv(vm)->GetStaticMethodID(systemClass, "load", "(Ljava/lang/String;)[V");
-		GetEnv(vm)->CallStaticVoidMethod(systemClass,mid,GetEnv(vm)->NewStringUTF("/data/data/com.mojang.minecraftpe/lib/libminecraftpe.so"));
+		//jclass systemClass=GetEnv(vm)->FindClass("java/lang/System");
+		//jmethodID mid = GetEnv(vm)->GetStaticMethodID(systemClass, "load", "(Ljava/lang/String;)[V");
+		//GetEnv(vm)->CallStaticVoidMethod(systemClass,mid,GetEnv(vm)->NewStringUTF("/data/data/com.mojang.minecraftpe/lib/libminecraftpe.so"));
 		return JNI_VERSION_1_6;
 	}
 }
