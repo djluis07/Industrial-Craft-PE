@@ -18,7 +18,6 @@ public class GuideActivity extends Activity
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-		setContentView(R.layout.guide_activity);
 		
 		if(PreferenceManager.getDefaultSharedPreferences(this).getBoolean("first_loaded",false))
 		{
@@ -27,6 +26,7 @@ public class GuideActivity extends Activity
 			finish();
 		}
 		
+		setContentView(R.layout.guide_activity);
 		
 		WindowManager windowManager = getWindowManager();
         Display display = windowManager.getDefaultDisplay();
