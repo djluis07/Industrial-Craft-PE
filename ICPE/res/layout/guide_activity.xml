@@ -45,61 +45,6 @@
 
 			</LinearLayout>
 
-			<LinearLayout
-				android:layout_width="match_parent"
-				android:layout_height="wrap_content"
-				android:gravity="center"
-				android:orientation="horizontal">
-
-				<com.gc.materialdesign.views.CheckBox
-					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
-					android:id="@+id/guideactivityCheckBox"/>
-
-				<RelativeLayout
-					android:layout_width="wrap_content"
-					android:layout_height="match_parent"
-					android:orientation="vertical">
-
-					<TextView
-						android:layout_height="wrap_content"
-						android:text="@string/agree_user_license"
-						android:layout_width="wrap_content"
-						android:layout_centerInParent="true"/>
-
-				</RelativeLayout>
-
-				<RelativeLayout
-					android:layout_width="wrap_content"
-					android:layout_height="match_parent"
-					android:orientation="vertical">
-
-					<com.gc.materialdesign.views.ButtonFlat
-						android:layout_height="wrap_content"
-						android:layout_width="wrap_content"
-						android:layout_centerInParent="true"
-						android:onClick="onReadLicense"
-						android:text="@string/user_legal"
-						android:textColor="#0000FF"
-						android:id="@+id/guideactivity_ButtonFlat_UserLegal"/>
-
-				</RelativeLayout>
-
-				<RelativeLayout
-					android:layout_width="wrap_content"
-					android:layout_height="match_parent"
-					android:orientation="vertical">
-
-					<TextView
-						android:layout_height="wrap_content"
-						android:layout_width="wrap_content"
-						android:layout_centerInParent="true"
-						android:text="@string/statement_end"/>
-
-				</RelativeLayout>
-
-			</LinearLayout>
-
 			<com.gc.materialdesign.views.ButtonRectangle
 				android:layout_height="wrap_content"
 				android:layout_width="match_parent"
@@ -108,6 +53,61 @@
 				android:id="@+id/guideactivityButtonRectangle"/>
 
 		</LinearLayout>
+
+	</LinearLayout>
+
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:gravity="center"
+		android:orientation="horizontal">
+
+		<com.gc.materialdesign.views.CheckBox
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:id="@+id/guideactivityCheckBox"/>
+
+		<RelativeLayout
+			android:layout_width="wrap_content"
+			android:layout_height="match_parent"
+			android:orientation="vertical">
+
+			<TextView
+				android:layout_height="wrap_content"
+				android:text="@string/agree_user_license"
+				android:layout_width="wrap_content"
+				android:layout_centerInParent="true"/>
+
+		</RelativeLayout>
+
+		<RelativeLayout
+			android:layout_width="wrap_content"
+			android:layout_height="match_parent"
+			android:orientation="vertical">
+
+			<com.gc.materialdesign.views.ButtonFlat
+				android:layout_height="wrap_content"
+				android:layout_width="wrap_content"
+				android:layout_centerInParent="true"
+				android:onClick="onReadLicense"
+				android:text="@string/user_legal"
+				android:textColor="#0000FF"
+				android:id="@+id/guideactivity_ButtonFlat_UserLegal"/>
+
+		</RelativeLayout>
+
+		<RelativeLayout
+			android:layout_width="wrap_content"
+			android:layout_height="match_parent"
+			android:orientation="vertical">
+
+			<TextView
+				android:layout_height="wrap_content"
+				android:layout_width="wrap_content"
+				android:layout_centerInParent="true"
+				android:text="@string/statement_end"/>
+
+		</RelativeLayout>
 
 	</LinearLayout>
 

@@ -22,8 +22,7 @@ obj/local/armeabi-v7a/objs/icpe_core/blocks/block/ResinBlock.o: \
  jni/core/mcpe/level/../blockentity/../inventory/FillingContainer.h \
  jni/core/mcpe/level/../blockentity/../inventory/Container.h \
  jni/core/mcpe/level/../util/Brightness.h \
- jni/core/mcpe/level/../util/FullBlock.h jni/core/mcpe/level/LightLayer.h \
- jni/core/mcpe/level/DimensionId.h
+ jni/core/mcpe/level/LightLayer.h jni/core/mcpe/level/DimensionId.h
 
 jni/core/blocks/block/ResinBlock.h:
 
@@ -86,8 +85,6 @@ jni/core/mcpe/level/../blockentity/../inventory/FillingContainer.h:
 jni/core/mcpe/level/../blockentity/../inventory/Container.h:
 
 jni/core/mcpe/level/../util/Brightness.h:
-
-jni/core/mcpe/level/../util/FullBlock.h:
 
 jni/core/mcpe/level/LightLayer.h:
 

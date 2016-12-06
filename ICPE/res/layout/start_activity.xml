@@ -45,19 +45,19 @@
 
 			</LinearLayout>
 
-			<TextView
-				android:layout_height="wrap_content"
-				android:text="Copyright © 2016-2017 ICPE Dev Team"
-				android:layout_width="wrap_content"/>
-
-			<TextView
-				android:layout_height="wrap_content"
-				android:text="Copyright © 2016-2017 MCAL Team"
-				android:layout_width="wrap_content"/>
-
 		</LinearLayout>
 
 	</LinearLayout>
+
+	<TextView
+		android:layout_height="wrap_content"
+		android:text="Copyright © 2016-2017 ICPE Dev Team"
+		android:layout_width="wrap_content"/>
+
+	<TextView
+		android:layout_height="wrap_content"
+		android:text="Copyright © 2016-2017 MCAL Team"
+		android:layout_width="wrap_content"/>
 
 </LinearLayout>
 

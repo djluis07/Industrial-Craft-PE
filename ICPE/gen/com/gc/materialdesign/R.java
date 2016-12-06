@@ -218,10 +218,10 @@ containing a value of this type.
         public static final int dialog_rootView=0x7f08001a;
         public static final int errorTextView=0x7f080021;
         public static final int green=0x7f080018;
-        public static final int guideactivityButtonRectangle=0x7f080025;
-        public static final int guideactivityCheckBox=0x7f080023;
+        public static final int guideactivityButtonRectangle=0x7f080023;
+        public static final int guideactivityCheckBox=0x7f080024;
         public static final int guideactivityImageView=0x7f080022;
-        public static final int guideactivity_ButtonFlat_UserLegal=0x7f080024;
+        public static final int guideactivity_ButtonFlat_UserLegal=0x7f080025;
         public static final int itemButtons=0x7f080006;
         public static final int itemProgress=0x7f080008;
         public static final int itemSwitches=0x7f080007;

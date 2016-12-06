@@ -23,9 +23,8 @@ obj/local/armeabi-v7a/objs/icpe_core/blocks/block/RubberLeavesBlock.o: \
  jni/core/mcpe/level/../blockentity/../inventory/../item/ItemInstance.h \
  jni/core/mcpe/level/../blockentity/../inventory/../item/UseAnimation.h \
  jni/core/mcpe/level/../util/Brightness.h \
- jni/core/mcpe/level/../util/FullBlock.h jni/core/mcpe/level/LightLayer.h \
- jni/core/mcpe/level/DimensionId.h jni/core/mcpe/block/blocks/FireBlock.h \
- jni/core/client/ICClient.h \
+ jni/core/mcpe/level/LightLayer.h jni/core/mcpe/level/DimensionId.h \
+ jni/core/mcpe/block/blocks/FireBlock.h jni/core/client/ICClient.h \
  jni/core/blocks/blockentity/ICBlockEntityManager.h \
  jni/core/util/ICRandom.h jni/core/client/ICOptions.h \
  jni/core/util/MCADataBase.h \
@@ -95,8 +94,6 @@ jni/core/mcpe/level/../blockentity/../inventory/../item/ItemInstance.h:
 jni/core/mcpe/level/../blockentity/../inventory/../item/UseAnimation.h:
 
 jni/core/mcpe/level/../util/Brightness.h:
-
-jni/core/mcpe/level/../util/FullBlock.h:
 
 jni/core/mcpe/level/LightLayer.h:
 

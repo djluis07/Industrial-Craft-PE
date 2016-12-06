@@ -44,8 +44,7 @@ obj/local/armeabi-v7a/objs/icpe_core/ICPE.o: jni/core/ICPE.cpp \
  jni/core/mcpe/level/../blockentity/../inventory/FillingContainer.h \
  jni/core/mcpe/level/../blockentity/../inventory/Container.h \
  jni/core/mcpe/level/../util/Brightness.h \
- jni/core/mcpe/level/../util/FullBlock.h jni/core/mcpe/level/LightLayer.h \
- jni/core/mcpe/level/DimensionId.h \
+ jni/core/mcpe/level/LightLayer.h jni/core/mcpe/level/DimensionId.h \
  jni/core/mcpe/client/renderer/Tessellator.h \
  jni/core/mcpe/client/renderer/../MemoryTracker.h \
  jni/core/mcpe/util/Vec2.h jni/core/mcpe/client/gui/GuiData.h \
@@ -63,7 +62,8 @@ obj/local/armeabi-v7a/objs/icpe_core/ICPE.o: jni/core/ICPE.cpp \
  jni/core/mcpe/entity/EntityRendererId.h \
  jni/core/mcpe/entity/EntityType.h \
  jni/core/mcpe/entity/../item/ArmorSlot.h \
- jni/core/mcpe/entity/item/ItemEntity.h jni/core/mcpe/level/Level.h \
+ jni/core/mcpe/entity/item/ItemEntity.h jni/core/mcpe/util/FullBlock.h \
+ jni/core/mcpe/level/Level.h \
  /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/sources/cxx-stl/gnu-libstdc++/4.9/include/unordered_set \
  jni/core/mcpe/level/LevelStorage.h jni/core/mcpe/level/ParticleType.h \
  jni/core/mcpe/level/BlockSourceListener.h \
@@ -190,8 +190,6 @@ jni/core/mcpe/level/../blockentity/../inventory/Container.h:
 
 jni/core/mcpe/level/../util/Brightness.h:
 
-jni/core/mcpe/level/../util/FullBlock.h:
-
 jni/core/mcpe/level/LightLayer.h:
 
 jni/core/mcpe/level/DimensionId.h:
@@ -239,6 +237,8 @@ jni/core/mcpe/entity/EntityType.h:
 jni/core/mcpe/entity/../item/ArmorSlot.h:
 
 jni/core/mcpe/entity/item/ItemEntity.h:
+
+jni/core/mcpe/util/FullBlock.h:
 
 jni/core/mcpe/level/Level.h:
 

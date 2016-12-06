@@ -6,7 +6,7 @@
 #include "LightLayer.h"
 #include "DimensionId.h"
 
-//class MaterialType;
+class Color;
 class Level;
 class ChunkSource;
 class BlockPos;

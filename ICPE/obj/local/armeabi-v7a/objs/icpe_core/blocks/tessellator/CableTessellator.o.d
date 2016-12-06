@@ -26,8 +26,7 @@ obj/local/armeabi-v7a/objs/icpe_core/blocks/tessellator/CableTessellator.o: \
  jni/core/mcpe/level/../blockentity/../inventory/../item/ItemInstance.h \
  jni/core/mcpe/level/../blockentity/../inventory/../item/UseAnimation.h \
  jni/core/mcpe/level/../util/Brightness.h \
- jni/core/mcpe/level/../util/FullBlock.h jni/core/mcpe/level/LightLayer.h \
- jni/core/mcpe/level/DimensionId.h \
+ jni/core/mcpe/level/LightLayer.h jni/core/mcpe/level/DimensionId.h \
  jni/core/mcpe/client/renderer/Tessellator.h \
  jni/core/mcpe/client/renderer/../MemoryTracker.h \
  jni/core/mcpe/util/Vec2.h jni/core/mcpe/block/BlockGraphics.h \
@@ -93,8 +92,6 @@ jni/core/mcpe/level/../blockentity/../inventory/../item/ItemInstance.h:
 jni/core/mcpe/level/../blockentity/../inventory/../item/UseAnimation.h:
 
 jni/core/mcpe/level/../util/Brightness.h:
-
-jni/core/mcpe/level/../util/FullBlock.h:
 
 jni/core/mcpe/level/LightLayer.h:
 
