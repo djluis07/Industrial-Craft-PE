@@ -9,20 +9,23 @@
 	<string name="eula_all">
 		\n
 		- 开放源代码许可:\n
-		Uses Cydia Substrate Library.\n
-		Uses Android v4 Support Library.\n
+		Uses Cydia Substrate library.\n
+		Uses Android v4 Support library.\n
 		Uses IC2 textures.\n
-		Uses FMOD Library.\n
-		Uses Simpleframework Library.\n
-		Uses Hockeyapp Library.\n
-		Uses Micrsoft SDK Library.\n
-		Uses facebook SDK Library.\n
-		Uses XBOX SDK Library.\n
-		Uses GooglePlay SDK Library.\n
-		Uses PGYER SDK Library.\n
-		Uses Google Gson Library.\n
-		Uses amazon SDK Library.\n
-		Uses gc MaterialDesign Library.\n
+		Uses FMOD library.\n
+		Uses Simpleframework library.\n
+		Uses Hockeyapp library.\n
+		Uses Micrsoft SDK library.\n
+		Uses facebook SDK library.\n
+		Uses XBOX SDK library.\n
+		Uses GooglePlay SDK library.\n
+		Uses PGYER SDK library.\n
+		Uses Google Gson library.\n
+		Uses amazon SDK library.\n
+		Uses gc MaterialDesign library.\n
+		Uses android support v7 library.\n
+		Uses nineoldandroids library.\n
+		Uses butterknife library.\n
 		\n
 		- Developers\n
 		ModelPart\n

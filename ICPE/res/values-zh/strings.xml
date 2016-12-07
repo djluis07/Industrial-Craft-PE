@@ -23,6 +23,9 @@
 		本程序使用了Google的Gson库。\n
 		本程序使用了amazon的SDK库。\n
 		本程序使用了gc的MaterialDesign库。\n
+		本程序使用了android support v7库。\n
+		本程序使用了nineoldandroids库。\n
+		本程序使用了butterknife库。\n
 		\n
 		 - 所有开发者\n
 		ModelPart\n
