@@ -34,4 +34,10 @@ public class MainActivity extends Activity
 		dialog.addButtonCancel("hh");
 		dialog.show();
 	}
+	
+	public void gotoOptions(View view)
+	{
+		Intent intent=new Intent(this,OptionsActivity.class);
+		startActivity(intent);
+	}
 }

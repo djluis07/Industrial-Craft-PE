@@ -3,128 +3,68 @@
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:materialdesign="http://schemas.android.com/apk/res-auto"
 	android:layout_width="match_parent"
-	android:layout_height="match_parent"
-	android:background="#FFF">
+	android:layout_height="match_parent">
 
 	<ScrollView
 		android:layout_width="fill_parent"
-		android:layout_height="fill_parent">
+		android:layout_height="fill_parent"
+		android:scrollbars="vertical"
+		android:scrollbarThumbVertical="@drawable/scroll_bar">
 
 		<LinearLayout
-			android:layout_width="fill_parent"
-			android:layout_height="fill_parent"
+			xmlns:materialdesign="http://schemas.android.com/apk/res-auto"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
 			android:orientation="vertical">
 
 			<RelativeLayout
 				android:layout_width="fill_parent"
-				android:layout_height="32dp"
-				android:layout_marginLeft="24dp">
+				android:layout_height="148dp">
 
-				<TextView
-					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
-					android:layout_centerVertical="true"
-					android:text="Flat Button"/>
+				<RelativeLayout
+					android:layout_width="fill_parent"
+					android:layout_height="128dp"
+					android:background="#2D83CB"
+					android:paddingBottom="20dp"
+					android:paddingLeft="100dp">
+
+					<TextView
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_alignParentBottom="true"
+						android:layout_marginLeft="0dp"
+						android:text="@string/app_name"
+						android:textSize="25dp"/>
+
+				</RelativeLayout>
 
 				<View
 					android:layout_width="fill_parent"
-					android:layout_height="1dp"
-					android:layout_alignParentBottom="true"
-					android:background="#1E88E5"/>
-
-			</RelativeLayout>
-
-			<RelativeLayout
-				android:layout_width="fill_parent"
-				android:layout_height="72dp">
-
-				<com.gc.materialdesign.views.ButtonFlat
-					android:id="@+id/buttonflat"
-					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
-					android:layout_centerInParent="true"
-					android:textColor="#ffffff"
-					android:text="Button"/>
-
-			</RelativeLayout>
-
-			<RelativeLayout
-				android:layout_width="fill_parent"
-				android:layout_height="32dp"
-				android:layout_marginLeft="24dp">
-
-				<TextView
-					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
-					android:layout_centerVertical="true"
-					android:text="Rectangle Button"/>
-
-				<View
-					android:layout_width="fill_parent"
-					android:layout_height="1dp"
-					android:layout_alignParentBottom="true"
-					android:background="#1E88E5"/>
-
-			</RelativeLayout>
-
-			<RelativeLayout
-				android:layout_width="fill_parent"
-				android:layout_height="72dp">
-
-				<com.gc.materialdesign.views.ButtonRectangle
-					android:id="@+id/button"
-					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
-					android:layout_centerInParent="true"
-					android:background="#1E88E5"
-					android:text="Button"/>
-
-			</RelativeLayout>
-
-			<RelativeLayout
-				android:layout_width="fill_parent"
-				android:layout_height="32dp"
-				android:layout_marginLeft="24dp">
-
-				<TextView
-					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
-					android:layout_centerVertical="true"
-					android:text="Small Float Button"/>
-
-				<View
-					android:layout_width="fill_parent"
-					android:layout_height="1dp"
-					android:layout_alignParentBottom="true"
-					android:background="#1E88E5"/>
-
-			</RelativeLayout>
-
-			<RelativeLayout
-				android:layout_width="fill_parent"
-				android:layout_height="72dp">
+					android:layout_height="2dp"
+					android:layout_marginTop="128dp"
+					android:background="#88CECECE"/>
 
 				<com.gc.materialdesign.views.ButtonFloatSmall
-					android:id="@+id/buttonFloatSmall"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
-					android:layout_centerInParent="true"
+					android:layout_marginLeft="32dp"
+					android:layout_marginTop="108dp"
 					android:background="#1E88E5"
-					android:onClick="launchGame"
-					materialdesign:iconDrawable="@drawable/ic_action_new"/>
+					materialdesign:iconDrawable="@drawable/ic_list_black"
+					android:onClick="gotoOptions"/>
 
 			</RelativeLayout>
 
 			<RelativeLayout
 				android:layout_width="fill_parent"
-				android:layout_height="32dp"
-				android:layout_marginLeft="24dp">
+				android:layout_height="48dp"
+				android:layout_marginLeft="104dp">
 
 				<TextView
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
 					android:layout_centerVertical="true"
-					android:text="Icon Button"/>
+					android:text="Version 0.1"/>
 
 				<View
 					android:layout_width="fill_parent"
@@ -134,31 +74,25 @@
 
 			</RelativeLayout>
 
-			<RelativeLayout
+			<LinearLayout
 				android:layout_width="fill_parent"
-				android:layout_height="72dp">
+				android:layout_height="wrap_content"
+				android:orientation="vertical">
 
-				
-			</RelativeLayout>
-
-			<RelativeLayout
-				android:layout_width="fill_parent"
-				android:layout_height="32dp"
-				android:layout_marginLeft="24dp">
-
-				<TextView
+				<ImageView
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
-					android:layout_centerVertical="true"
-					android:text="Float Button"/>
+					android:src="@drawable/image_1"
+					android:layout_marginLeft="20dp"
+					android:layout_marginRight="20dp"
+					android:layout_marginTop="20dp"/>
 
-				<View
-					android:layout_width="fill_parent"
-					android:layout_height="1dp"
-					android:layout_alignParentBottom="true"
-					android:background="#1E88E5"/>
+				<TextView
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:text="update_msg"/>
 
-			</RelativeLayout>
+			</LinearLayout>
 
 		</LinearLayout>
 
@@ -172,19 +106,9 @@
 		android:layout_marginRight="30dp"
 		android:background="#1E88E5"
 		materialdesign:animate="true"
-		materialdesign:iconDrawable="@drawable/ic_action_new"
-		android:layout_marginBottom="30dp"/>
-
-	<com.gc.materialdesign.views.ButtonFloat
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:layout_alignParentRight="true"
-		android:layout_alignParentBottom="true"
-		android:layout_marginRight="30dp"
-		android:background="#1E88E5"
-		materialdesign:animate="true"
-		materialdesign:iconDrawable="@drawable/ic_action_new"
-		android:layout_marginBottom="100dp"/>
+		materialdesign:iconDrawable="@drawable/ic_launch_black"
+		android:layout_marginBottom="30dp"
+		android:onClick="launchGame"/>
 
 </RelativeLayout>
 

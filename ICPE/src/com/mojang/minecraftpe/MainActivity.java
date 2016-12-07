@@ -938,7 +938,7 @@ public class MainActivity extends NativeActivity implements OnKeyListener {
 	{
         int size = this._userInputValues.size();
         this._userInputText = new String[size];
-        for (int i = 0; i < size; i++) {
+        for (int i = 0; i < size; ++i) {
             this._userInputText[i] = ((StringValue) this._userInputValues.get(i)).getStringValue();
         }
         for (String s : this._userInputText) {

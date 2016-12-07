@@ -103,7 +103,7 @@
 /*     */       }
 /*     */     }
 /*     */ 
-/* 106 */     for (int i = 0; i <= height / 4 + random.nextInt(2); i++) {
+/* 106 */     for (int i = 0; i <= height / 4 + random.nextInt(2); ++i) {
 /* 107 */       tmpPos.func_181079_c(pos.func_177958_n(), pos.func_177956_o() + height + i, pos.func_177952_p());
 /*     */ 
 /* 110 */       if (world.func_175623_d(tmpPos)) {

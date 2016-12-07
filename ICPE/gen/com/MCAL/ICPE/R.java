@@ -185,24 +185,27 @@ containing a value of this type.
         public static final int float_button1_shadowp=0x7f02000b;
         public static final int float_button_shadow1=0x7f02000c;
         public static final int ic_action_new=0x7f02000d;
-        public static final int ic_next=0x7f02000e;
-        public static final int ic_reloj_max=0x7f02000f;
-        public static final int icn_button=0x7f020010;
-        public static final int icn_progress=0x7f020011;
-        public static final int icn_select_color=0x7f020012;
-        public static final int icn_switch=0x7f020013;
-        public static final int icn_widget=0x7f020014;
-        public static final int icon=0x7f020015;
-        public static final int selector_list=0x7f020016;
-        public static final int shadow_down=0x7f020017;
-        public static final int shadow_right=0x7f020018;
-        public static final int sprite_check=0x7f020019;
-        public static final int transparent_backgrouns=0x7f02001a;
+        public static final int ic_launch_black=0x7f02000e;
+        public static final int ic_list_black=0x7f02000f;
+        public static final int ic_next=0x7f020010;
+        public static final int ic_reloj_max=0x7f020011;
+        public static final int ic_settings_black=0x7f020012;
+        public static final int icn_button=0x7f020013;
+        public static final int icn_progress=0x7f020014;
+        public static final int icn_select_color=0x7f020015;
+        public static final int icn_switch=0x7f020016;
+        public static final int icn_widget=0x7f020017;
+        public static final int icon=0x7f020018;
+        public static final int image_1=0x7f020019;
+        public static final int scroll_bar=0x7f02001a;
+        public static final int selector_list=0x7f02001b;
+        public static final int shadow_down=0x7f02001c;
+        public static final int shadow_right=0x7f02001d;
+        public static final int sprite_check=0x7f02001e;
+        public static final int transparent_backgrouns=0x7f02001f;
     }
     public static final class id {
         public static final int blue=0x7f080005;
-        public static final int button=0x7f080016;
-        public static final int buttonFloatSmall=0x7f080017;
         public static final int button_accept=0x7f08000c;
         public static final int button_cancel=0x7f08000b;
         public static final int buttonflat=0x7f080010;
@@ -220,9 +223,9 @@ containing a value of this type.
         public static final int progressBarCircularIndetermininate=0x7f08000e;
         public static final int red=0x7f080003;
         public static final int rootSelector=0x7f080000;
-        public static final int shape_bacground=0x7f080019;
+        public static final int shape_bacground=0x7f080017;
         public static final int snackbar=0x7f08000f;
-        public static final int startactivityImageView=0x7f080018;
+        public static final int startactivityImageView=0x7f080016;
         public static final int text=0x7f080011;
         public static final int title=0x7f080008;
         public static final int viewColor=0x7f080002;
@@ -236,7 +239,8 @@ containing a value of this type.
         public static final int guide_activity=0x7f030005;
         public static final int license_activity=0x7f030006;
         public static final int main_activity=0x7f030007;
-        public static final int start_activity=0x7f030008;
+        public static final int options_activity=0x7f030008;
+        public static final int start_activity=0x7f030009;
     }
     public static final class string {
         public static final int agree_license=0x7f060002;
@@ -251,6 +255,7 @@ containing a value of this type.
         public static final int AppTheme=0x7f070000;
         public static final int FullScreen=0x7f070001;
         public static final int errorDialog=0x7f070002;
+        public static final int scrollBarTheme=0x7f070003;
     }
     public static final class styleable {
         /** Attributes that can be used with a CustomAttributes.

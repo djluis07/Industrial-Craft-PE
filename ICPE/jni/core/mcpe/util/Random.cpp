@@ -16,7 +16,7 @@ void Random::setSeed(long unsigned int seed)
 
 	long unsigned int help = seed;
 	long unsigned int multiplier = 0x6C078965;
-	for(int i = 1; i < 624; i++)
+	for(int i = 1; i < 624; ++i)
 	{
 		help ^= (help >> 30);
 		help = (help * multiplier) + i;

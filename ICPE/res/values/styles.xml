@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<style name="AppTheme" parent="@android:style/Theme.Holo.Light"></style>
+	<style name="AppTheme" parent="@android:style/Theme.Light.NoTitleBar"></style>
 	<style name="FullScreen" parent="@android:style/Theme.Light.NoTitleBar.Fullscreen"></style>
 	<style name="errorDialog" parent="@android:style/Theme.Holo.Light.Dialog">
         <item name="android:windowFrame">@null</item>
@@ -12,5 +12,8 @@
 		<item name="android:windowBackground">@android:color/transparent</item>
 		<item name="android:background">@android:color/white</item>
 		<item name="android:backgroundDimEnabled">true</item>
+	</style>
+	<style name="scrollBarTheme">
+        <item name="android:background">@android:color/black</item>
 	</style>
 </resources>
