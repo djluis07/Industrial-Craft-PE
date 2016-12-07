@@ -6,6 +6,10 @@
 	<string name="agree_user_license">我同意并遵守  </string>
 	<string name="user_legal">最终用户许可协议</string>
 	<string name="statement_end">。</string>
+	<string name="launch_by_mcpelauncher">方块启动器</string>
+	<string name="launch_by_self">工业携带版启动器</string>
+	<string name="launch_message">请选择一个启动方式。</string>
+	<string name="launch_title">启动游戏</string>
 	<string name="eula_all">
 		\n
 		 - 开放源代码许可:\n

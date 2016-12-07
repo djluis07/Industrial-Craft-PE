@@ -25,15 +25,42 @@ public class MainActivity extends Activity
 	
 	public void launchGame(View view)
 	{
-//		Intent intent=new Intent(this,LauncherActivity.class);
-//		startActivity(intent);
-//		finish();
-		
-		com.gc.materialdesign.widgets.Dialog dialog=new com.gc.materialdesign.widgets.Dialog(this,"test","test_message\njj\njj\nagi\nai\nkkkkkkk\n你\nal/\n*?&*/[*?\naopapoqjj\nakoaokgk\nap?\n....");
-		dialog.addButtonAccept("gone");
-		dialog.addButtonCancel("hh");
+		com.gc.materialdesign.widgets.Dialog dialog=new com.gc.materialdesign.widgets.Dialog(this,getString(R.string.launch_title),getString(R.string.launch_message));
+		dialog.addButtonCancel(getString(R.string.launch_by_mcpelauncher),new View.OnClickListener()
+		{
+			@Override
+			public void onClick(View p1)
+			{
+				Intent intent = MainActivity.this.getPackageManager().getLaunchIntentForPackage("net.zhuoweizhang.mcpelauncher.pro");
+				if (intent==null)
+				{
+					Intent intent2 = MainActivity.this.getPackageManager().getLaunchIntentForPackage("net.zhuoweizhang.mcpelauncher");
+					if(intent2!=null)
+						startActivity(intent2);
+					else
+					{
+//						Intent intent3=new Intent(MainActivity.this,ErrorActivity.class);
+//						startActivity(intent3);
+					}
+				}
+				else
+					startActivity(intent);
+			}
+		});
+		dialog.addButtonAccept(getString(R.string.launch_by_self),new View.OnClickListener()
+		{
+
+			@Override
+			public void onClick(View p1)
+			{
+				Intent intent=new Intent(MainActivity.this,LauncherActivity.class);
+				startActivity(intent);
+				finish();
+			}
+		});
 		dialog.show();
 	}
+	
 	
 	public void gotoOptions(View view)
 	{

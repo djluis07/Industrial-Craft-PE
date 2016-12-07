@@ -247,7 +247,11 @@ containing a value of this type.
         public static final int agree_user_license=0x7f060003;
         public static final int app_name=0x7f060000;
         public static final int app_version=0x7f060001;
-        public static final int eula_all=0x7f060006;
+        public static final int eula_all=0x7f06000a;
+        public static final int launch_by_mcpelauncher=0x7f060006;
+        public static final int launch_by_self=0x7f060007;
+        public static final int launch_message=0x7f060008;
+        public static final int launch_title=0x7f060009;
         public static final int statement_end=0x7f060005;
         public static final int user_legal=0x7f060004;
     }

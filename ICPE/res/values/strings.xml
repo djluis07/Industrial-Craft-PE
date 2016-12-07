@@ -6,6 +6,10 @@
 	<string name="agree_user_license">I Follow the  </string>
 	<string name="user_legal">ICPE EULA</string>
 	<string name="statement_end">.</string>
+	<string name="launch_by_mcpelauncher">BlockLauncher</string>
+	<string name="launch_by_self">ICPE Launcher</string>
+	<string name="launch_message">Choose a launch way.</string>
+	<string name="launch_title">Launch Game</string>
 	<string name="eula_all">
 		\n
 		- 开放源代码许可:\n
