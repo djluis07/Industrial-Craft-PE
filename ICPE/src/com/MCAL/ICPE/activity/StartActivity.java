@@ -11,6 +11,7 @@ import com.gc.materialdesign.views.*;
 import android.os.*;
 import android.preference.*;
 import android.widget.*;
+import android.app.*;
 
 public class StartActivity extends Activity
 {

@@ -417,7 +417,7 @@ public class Slider extends CustomView {
         protected void onCreate(Bundle savedInstanceState) {
             requestWindowFeature(Window.FEATURE_NO_TITLE);
             super.onCreate(savedInstanceState);
-            setContentView(R.layout.number_indicator_spinner);
+            setContentView(R.layout.gc_materialdesign_number_indicator_spinner);
             setCanceledOnTouchOutside(false);
 
             RelativeLayout content = (RelativeLayout) this

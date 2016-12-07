@@ -59,4 +59,6 @@ public:
 	static ICBlockEntityManager* currentICBlockEntityManager;
 	static ICOptions* icOptions;
 	static UIScreenChooser* uiChooser;
+public:
+	static const int localKeyCode=137624695;
 };

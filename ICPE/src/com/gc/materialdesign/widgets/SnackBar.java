@@ -56,7 +56,7 @@ public class SnackBar extends Dialog{
 	  protected void onCreate(Bundle savedInstanceState) {
 	    super.onCreate(savedInstanceState);
 	    requestWindowFeature(Window.FEATURE_NO_TITLE);
-	    setContentView(R.layout.snackbar);
+	    setContentView(R.layout.gc_materialdesign_snackbar);
 	    setCanceledOnTouchOutside(false);
 	    ((TextView)findViewById(R.id.text)).setText(text); 
 	    ((TextView)findViewById(R.id.text)).setTextSize(textSize); //set textSize

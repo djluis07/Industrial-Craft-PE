@@ -52,7 +52,7 @@ public class ColorSelector extends android.app.Dialog implements OnValueChangedL
 	  protected void onCreate(Bundle savedInstanceState) {
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 	    super.onCreate(savedInstanceState);
-	    setContentView(R.layout.color_selector);
+	    setContentView(R.layout.gc_materialdesign_color_selector);
 	    
 	    view = (LinearLayout)findViewById(R.id.contentSelector);
 		backView = (RelativeLayout)findViewById(R.id.rootSelector);

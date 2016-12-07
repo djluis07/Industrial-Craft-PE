@@ -1,6 +1,7 @@
 package com.gc.materialdesign.views;
 
 import com.MCAL.ICPE.R;
+
 import com.gc.materialdesign.utils.Utils;
 
 import android.content.Context;
@@ -18,10 +19,8 @@ import android.widget.TextView;
 
 public abstract class Button extends CustomView 
 {
-
 	final static String ANDROIDXML = "http://schemas.android.com/apk/res/android";
 
-	// Complete in child class
 	int minWidth;
 	int minHeight;
 	int background;
@@ -33,7 +32,8 @@ public abstract class Button extends CustomView
 	int backgroundColor = Color.parseColor("#1E88E5");
 	TextView textButton;
 
-	public Button(Context context, AttributeSet attrs) {
+	public Button(Context context, AttributeSet attrs) 
+	{
 		super(context, attrs);
 		setDefaultProperties();
 		clickAfterRipple = attrs.getAttributeBooleanValue(MATERIALDESIGNXML,
@@ -44,16 +44,14 @@ public abstract class Button extends CustomView
 			rippleColor = makePressColor();
 	}
 
-	protected void setDefaultProperties() {
-		// Min size
+	protected void setDefaultProperties() 
+	{
 		setMinimumHeight(Utils.dpToPx(minHeight, getResources()));
 		setMinimumWidth(Utils.dpToPx(minWidth, getResources()));
-		// Background shape
 		setBackgroundResource(background);
 		setBackgroundColor(backgroundColor);
 	}
 
-	// Set atributtes of XML to View
 	abstract protected void setAttributes(AttributeSet attrs);
 
 	// ### RIPPLE EFFECT ###
@@ -67,11 +65,14 @@ public abstract class Button extends CustomView
 		if (isEnabled()) 
 		{
 			isLastTouch = true;
-			if (event.getAction() == MotionEvent.ACTION_DOWN) {
+			if (event.getAction() == MotionEvent.ACTION_DOWN)
+			{
 				radius = getHeight() / rippleSize;
 				x = event.getX();
 				y = event.getY();
-			} else if (event.getAction() == MotionEvent.ACTION_MOVE) {
+			} 
+			else if (event.getAction() == MotionEvent.ACTION_MOVE)
+			{
 				radius = getHeight() / rippleSize;
 				x = event.getX();
 				y = event.getY();
@@ -81,7 +82,9 @@ public abstract class Button extends CustomView
 					x = -1;
 					y = -1;
 				}
-			} else if (event.getAction() == MotionEvent.ACTION_UP) {
+			} 
+			else if (event.getAction() == MotionEvent.ACTION_UP)
+			{
 				if ((event.getX() <= getWidth() && event.getX() >= 0)
 						&& (event.getY() <= getHeight() && event.getY() >= 0)) {
 					++radius;
@@ -93,7 +96,9 @@ public abstract class Button extends CustomView
 					x = -1;
 					y = -1;
 				}
-			} else if (event.getAction() == MotionEvent.ACTION_CANCEL) {
+			} 
+			else if (event.getAction() == MotionEvent.ACTION_CANCEL)
+			{
 				isLastTouch = false;
 				x = -1;
 				y = -1;
@@ -112,15 +117,16 @@ public abstract class Button extends CustomView
 	}
 
 	@Override
-	public boolean onInterceptTouchEvent(MotionEvent ev) {
-		// super.onInterceptTouchEvent(ev);
+	public boolean onInterceptTouchEvent(MotionEvent ev) 
+	{
 		return true;
 	}
 
-	public Bitmap makeCircle() {
+	public Bitmap makeCircle()
+	{
 		Bitmap output = Bitmap.createBitmap(
-				getWidth() - Utils.dpToPx(6, getResources()), getHeight()
-						- Utils.dpToPx(7, getResources()), Config.ARGB_8888);
+				getWidth() - Utils.dpToPx(0, getResources()), getHeight()
+						- Utils.dpToPx(0, getResources()), Config.ARGB_8888);
 		Canvas canvas = new Canvas(output);
 		canvas.drawARGB(0, 0, 0, 0);
 		Paint paint = new Paint();
@@ -129,7 +135,8 @@ public abstract class Button extends CustomView
 		canvas.drawCircle(x, y, radius, paint);
 		if (radius > getHeight() / rippleSize)
 			radius += rippleSpeed;
-		if (radius >= getWidth()) {
+		if (radius >= getWidth())
+		{
 			x = -1;
 			y = -1;
 			radius = getHeight() / rippleSize;
@@ -138,13 +145,9 @@ public abstract class Button extends CustomView
 		}
 		return output;
 	}
-
-	/**
-	 * Make a dark color to ripple effect
-	 * 
-	 * @return
-	 */
-	protected int makePressColor() {
+	
+	protected int makePressColor() 
+	{
 		int r = (this.backgroundColor >> 16) & 0xFF;
 		int g = (this.backgroundColor >> 8) & 0xFF;
 		int b = (this.backgroundColor >> 0) & 0xFF;
@@ -155,12 +158,14 @@ public abstract class Button extends CustomView
 	}
 
 	@Override
-	public void setOnClickListener(OnClickListener l) {
+	public void setOnClickListener(OnClickListener l) 
+	{
 		onClickListener = l;
 	}
 
 	// Set color of background
-	public void setBackgroundColor(int color) {
+	public void setBackgroundColor(int color)
+	{
 		this.backgroundColor = color;
 		if (isEnabled())
 			beforeBackground = backgroundColor;
@@ -175,27 +180,33 @@ public abstract class Button extends CustomView
 		}
 	}
 
-	public void setRippleSpeed(float rippleSpeed) {
+	public void setRippleSpeed(float rippleSpeed) 
+	{
 		this.rippleSpeed = rippleSpeed;
 	}
 
-	public float getRippleSpeed() {
+	public float getRippleSpeed()
+	{
 		return this.rippleSpeed;
 	}
 
-	public void setText(String text) {
+	public void setText(String text)
+	{
 		textButton.setText(text);
 	}
 
-	public void setTextColor(int color) {
+	public void setTextColor(int color) 
+	{
 		textButton.setTextColor(color);
 	}
 
-	public TextView getTextView() {
+	public TextView getTextView() 
+	{
 		return textButton;
 	}
 
-	public String getText() {
+	public String getText() 
+	{
 		return textButton.getText().toString();
 	}
 }

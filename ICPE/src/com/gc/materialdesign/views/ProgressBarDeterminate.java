@@ -15,7 +15,6 @@ import android.widget.RelativeLayout.LayoutParams;
 
 public class ProgressBarDeterminate extends CustomView {
 	
-	
 	int max = 100;
 	int min = 0;
 	int progress = 0;

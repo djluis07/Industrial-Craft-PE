@@ -1,6 +1,7 @@
 package com.gc.materialdesign.views;
 
 import com.MCAL.ICPE.R;
+
 import com.nineoldandroids.animation.Animator;
 import com.nineoldandroids.animation.Animator.AnimatorListener;
 import com.nineoldandroids.animation.ObjectAnimator;
@@ -11,9 +12,10 @@ import android.util.AttributeSet;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 
-public class ProgressBarIndeterminate extends ProgressBarDeterminate {
-
-	public ProgressBarIndeterminate(Context context, AttributeSet attrs) {
+public class ProgressBarIndeterminate extends ProgressBarDeterminate
+{
+	public ProgressBarIndeterminate(Context context, AttributeSet attrs)
+	{
 		super(context, attrs);
 		post(new Runnable() {
 			

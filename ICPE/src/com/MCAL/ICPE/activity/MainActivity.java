@@ -12,6 +12,7 @@ import android.widget.*;
 import android.database.*;
 import java.util.*;
 import android.util.*;
+import android.view.View.*;
 
 public class MainActivity extends Activity
 {

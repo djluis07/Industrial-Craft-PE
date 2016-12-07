@@ -201,45 +201,42 @@ containing a value of this type.
     }
     public static final class id {
         public static final int blue=0x7f080005;
-        public static final int button=0x7f080013;
-        public static final int buttonFloatSmall=0x7f080014;
-        public static final int buttonIcon=0x7f080015;
+        public static final int button=0x7f080016;
+        public static final int buttonFloatSmall=0x7f080017;
         public static final int button_accept=0x7f08000c;
         public static final int button_cancel=0x7f08000b;
-        public static final int buttonflat=0x7f080012;
+        public static final int buttonflat=0x7f080010;
         public static final int contentDialog=0x7f080007;
         public static final int contentSelector=0x7f080001;
         public static final int dialog_rootView=0x7f080006;
-        public static final int errorTextView=0x7f08000d;
         public static final int green=0x7f080004;
-        public static final int guideactivityButtonRectangle=0x7f08000f;
-        public static final int guideactivityCheckBox=0x7f080010;
-        public static final int guideactivityImageView=0x7f08000e;
-        public static final int guideactivity_ButtonFlat_UserLegal=0x7f080011;
+        public static final int guideactivityButtonRectangle=0x7f080013;
+        public static final int guideactivityCheckBox=0x7f080014;
+        public static final int guideactivityImageView=0x7f080012;
+        public static final int guideactivity_ButtonFlat_UserLegal=0x7f080015;
         public static final int message=0x7f08000a;
         public static final int message_scrollView=0x7f080009;
-        public static final int number_indicator_spinner_content=0x7f080016;
-        public static final int progressBarCircularIndetermininate=0x7f080017;
+        public static final int number_indicator_spinner_content=0x7f08000d;
+        public static final int progressBarCircularIndetermininate=0x7f08000e;
         public static final int red=0x7f080003;
         public static final int rootSelector=0x7f080000;
-        public static final int shape_bacground=0x7f08001b;
-        public static final int snackbar=0x7f080018;
-        public static final int startactivityImageView=0x7f08001a;
-        public static final int text=0x7f080019;
+        public static final int shape_bacground=0x7f080019;
+        public static final int snackbar=0x7f08000f;
+        public static final int startactivityImageView=0x7f080018;
+        public static final int text=0x7f080011;
         public static final int title=0x7f080008;
         public static final int viewColor=0x7f080002;
     }
     public static final class layout {
-        public static final int color_selector=0x7f030000;
-        public static final int dialog=0x7f030001;
-        public static final int error=0x7f030002;
-        public static final int guide_activity=0x7f030003;
-        public static final int license_activity=0x7f030004;
-        public static final int main_activity=0x7f030005;
-        public static final int number_indicator_spinner=0x7f030006;
-        public static final int progress_dialog=0x7f030007;
-        public static final int snackbar=0x7f030008;
-        public static final int start_activity=0x7f030009;
+        public static final int gc_materialdesign_color_selector=0x7f030000;
+        public static final int gc_materialdesign_dialog=0x7f030001;
+        public static final int gc_materialdesign_number_indicator_spinner=0x7f030002;
+        public static final int gc_materialdesign_progress_dialog=0x7f030003;
+        public static final int gc_materialdesign_snackbar=0x7f030004;
+        public static final int guide_activity=0x7f030005;
+        public static final int license_activity=0x7f030006;
+        public static final int main_activity=0x7f030007;
+        public static final int start_activity=0x7f030008;
     }
     public static final class string {
         public static final int agree_license=0x7f060002;

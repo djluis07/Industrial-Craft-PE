@@ -1,11 +1,11 @@
 #pragma once
 
-#include "util/MCADataBase.h"
+#include "mca/data/Database.h"
 
 class ICOptions
 {
 private:
-	//MCADataBase<bool> dataBase;
+	mca::Database database;
 	bool useLog;
 	bool replaceLastLog;
 	bool icEnabled;

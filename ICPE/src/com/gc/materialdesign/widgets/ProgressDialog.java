@@ -43,7 +43,7 @@ public class ProgressDialog extends android.app.Dialog{
 	  protected void onCreate(Bundle savedInstanceState) {
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 	    super.onCreate(savedInstanceState);
-	    setContentView(R.layout.progress_dialog);
+	    setContentView(R.layout.gc_materialdesign_progress_dialog);
 	    
 		view = (RelativeLayout)findViewById(R.id.contentDialog);
 		backView = (RelativeLayout)findViewById(R.id.dialog_rootView);

@@ -61,7 +61,6 @@ public class ButtonFloat extends Button{
 	
 	protected void setDefaultProperties()
 	{
-//		super.setDefaultProperties();
 		rippleSpeed = Utils.dpToPx(2, getResources())*((float)2.5);
 		rippleSize = Utils.dpToPx(5, getResources());
 		setMinimumWidth(Utils.dpToPx(sizeRadius*2, getResources()));
@@ -70,7 +69,6 @@ public class ButtonFloat extends Button{
 	}
 	
 	
-	// Set atributtes of XML to View
 	protected void setAttributes(AttributeSet attrs){
 		//Set background Color
 		// Color by resource
@@ -88,6 +86,7 @@ public class ButtonFloat extends Button{
 		// Color by resource
 		int rippleColor = attrs.getAttributeResourceValue(MATERIALDESIGNXML,
 				"rippleColor", -1);
+		
 		if (rippleColor != -1) {
 			setRippleColor(getResources().getColor(rippleColor));
 		} else {

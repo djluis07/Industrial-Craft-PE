@@ -72,7 +72,7 @@ public class Dialog extends android.app.Dialog
 	  {
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 	    super.onCreate(savedInstanceState);
-	    setContentView(R.layout.dialog);
+	    setContentView(R.layout.gc_materialdesign_dialog);
 	    
 		view = (RelativeLayout)findViewById(R.id.contentDialog);
 		backView = (RelativeLayout)findViewById(R.id.dialog_rootView);
