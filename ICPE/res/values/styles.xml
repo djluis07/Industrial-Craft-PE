@@ -13,7 +13,5 @@
 		<item name="android:background">@android:color/white</item>
 		<item name="android:backgroundDimEnabled">true</item>
 	</style>
-	<style name="scrollBarTheme">
-        <item name="android:background">@android:color/black</item>
-	</style>
+	
 </resources>

@@ -111,7 +111,7 @@ public class ProgressBarCircularIndeterminate extends CustomView {
 		    temp.drawCircle(getWidth()/2, getHeight()/2, radius2, transparentPaint);
 		    canvas.drawBitmap(bitmap, 0, 0, new Paint());
 		    if(radius2 >= getWidth()/2-Utils.dpToPx(4, getResources()))
-		    	cont++;
+		    	++cont;
 		    if(radius2 >= getWidth()/2)
 		    	firstAnimationOver = true;
 		}

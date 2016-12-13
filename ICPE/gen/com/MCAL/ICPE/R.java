@@ -184,31 +184,36 @@ containing a value of this type.
         public static final int dialog_background=0x7f02000a;
         public static final int float_button1_shadowp=0x7f02000b;
         public static final int float_button_shadow1=0x7f02000c;
-        public static final int ic_action_new=0x7f02000d;
-        public static final int ic_launch_black=0x7f02000e;
-        public static final int ic_list_black=0x7f02000f;
-        public static final int ic_next=0x7f020010;
-        public static final int ic_reloj_max=0x7f020011;
-        public static final int ic_settings_black=0x7f020012;
-        public static final int icn_button=0x7f020013;
-        public static final int icn_progress=0x7f020014;
-        public static final int icn_select_color=0x7f020015;
-        public static final int icn_switch=0x7f020016;
-        public static final int icn_widget=0x7f020017;
-        public static final int icon=0x7f020018;
-        public static final int image_1=0x7f020019;
-        public static final int scroll_bar=0x7f02001a;
-        public static final int selector_list=0x7f02001b;
-        public static final int shadow_down=0x7f02001c;
-        public static final int shadow_right=0x7f02001d;
-        public static final int sprite_check=0x7f02001e;
-        public static final int transparent_backgrouns=0x7f02001f;
+        public static final int ic_account_child_black=0x7f02000d;
+        public static final int ic_action_new=0x7f02000e;
+        public static final int ic_assignment_black=0x7f02000f;
+        public static final int ic_bug_report_black=0x7f020010;
+        public static final int ic_get_app_black=0x7f020011;
+        public static final int ic_launch_black=0x7f020012;
+        public static final int ic_list_black=0x7f020013;
+        public static final int ic_next=0x7f020014;
+        public static final int ic_reloj_max=0x7f020015;
+        public static final int ic_settings_black=0x7f020016;
+        public static final int icn_button=0x7f020017;
+        public static final int icn_progress=0x7f020018;
+        public static final int icn_select_color=0x7f020019;
+        public static final int icn_switch=0x7f02001a;
+        public static final int icn_widget=0x7f02001b;
+        public static final int icon=0x7f02001c;
+        public static final int icpedevteam=0x7f02001d;
+        public static final int image_1=0x7f02001e;
+        public static final int mcalteam=0x7f02001f;
+        public static final int scroll_bar=0x7f020020;
+        public static final int selector_list=0x7f020021;
+        public static final int shadow_down=0x7f020022;
+        public static final int shadow_right=0x7f020023;
+        public static final int sprite_check=0x7f020024;
+        public static final int transparent_backgrouns=0x7f020025;
     }
     public static final class id {
         public static final int blue=0x7f080005;
         public static final int button_accept=0x7f08000c;
         public static final int button_cancel=0x7f08000b;
-        public static final int buttonflat=0x7f080010;
         public static final int contentDialog=0x7f080007;
         public static final int contentSelector=0x7f080001;
         public static final int dialog_rootView=0x7f080006;
@@ -223,11 +228,14 @@ containing a value of this type.
         public static final int progressBarCircularIndetermininate=0x7f08000e;
         public static final int red=0x7f080003;
         public static final int rootSelector=0x7f080000;
-        public static final int shape_bacground=0x7f080017;
+        public static final int shape_bacground=0x7f080019;
         public static final int snackbar=0x7f08000f;
+        public static final int snackbarbuttonflat=0x7f080010;
+        public static final int snackbartext=0x7f080011;
         public static final int startactivityImageView=0x7f080016;
-        public static final int text=0x7f080011;
         public static final int title=0x7f080008;
+        public static final int updateactivityTextViewUpdateMsg=0x7f080018;
+        public static final int updateactivityTextViewVersionName=0x7f080017;
         public static final int viewColor=0x7f080002;
     }
     public static final class layout {
@@ -237,29 +245,47 @@ containing a value of this type.
         public static final int gc_materialdesign_progress_dialog=0x7f030003;
         public static final int gc_materialdesign_snackbar=0x7f030004;
         public static final int guide_activity=0x7f030005;
-        public static final int license_activity=0x7f030006;
-        public static final int main_activity=0x7f030007;
-        public static final int options_activity=0x7f030008;
-        public static final int start_activity=0x7f030009;
+        public static final int join_us_activity=0x7f030006;
+        public static final int license_activity=0x7f030007;
+        public static final int main_activity=0x7f030008;
+        public static final int nomcpe_activity=0x7f030009;
+        public static final int options_activity=0x7f03000a;
+        public static final int settings_activity=0x7f03000b;
+        public static final int start_activity=0x7f03000c;
+        public static final int update_activity=0x7f03000d;
     }
     public static final class string {
         public static final int agree_license=0x7f060002;
         public static final int agree_user_license=0x7f060003;
         public static final int app_name=0x7f060000;
         public static final int app_version=0x7f060001;
-        public static final int eula_all=0x7f06000a;
+        public static final int availableDownload=0x7f060013;
+        public static final int cancel=0x7f060010;
+        public static final int download=0x7f060011;
+        public static final int downloadProgress=0x7f060015;
+        public static final int download_done=0x7f060016;
+        public static final int downloadnew=0x7f060012;
+        public static final int error=0x7f06000e;
+        public static final int eula_all=0x7f060019;
+        public static final int install=0x7f060018;
+        public static final int install_now=0x7f060017;
+        public static final int join_us=0x7f06000b;
         public static final int launch_by_mcpelauncher=0x7f060006;
         public static final int launch_by_self=0x7f060007;
         public static final int launch_message=0x7f060008;
         public static final int launch_title=0x7f060009;
+        public static final int menu=0x7f06000a;
+        public static final int no_qq=0x7f06000f;
+        public static final int noupdate=0x7f060014;
+        public static final int settings=0x7f06000c;
         public static final int statement_end=0x7f060005;
+        public static final int update=0x7f06000d;
         public static final int user_legal=0x7f060004;
     }
     public static final class style {
         public static final int AppTheme=0x7f070000;
         public static final int FullScreen=0x7f070001;
         public static final int errorDialog=0x7f070002;
-        public static final int scrollBarTheme=0x7f070003;
     }
     public static final class styleable {
         /** Attributes that can be used with a CustomAttributes.

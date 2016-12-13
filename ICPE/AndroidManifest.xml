@@ -2,9 +2,13 @@
 <manifest 
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	package="com.MCAL.ICPE"
-    android:versionCode="1"
+    android:versionCode="2"
 	android:versionName="@string/app_version">
 	
+	<uses-permission
+		android:name="android.permission.READ_PHONE_STATE" />
+	<uses-permission
+		android:name="android.permission.ACCESS_WIFI_STATE" />
 	<uses-permission 
 		android:name="android.permission.INTERNET" />
     <uses-permission
@@ -35,7 +39,11 @@
 
 		<meta-data 
 			android:name="net.zhuoweizhang.mcpelauncher.api.targetmcpeversion"
-			android:value="0.17.0.2"/>
+			android:value="1.0.0.2"/>
+		
+		<meta-data
+			android:name="PGYER_APPID"
+			android:value="9150783a8e8aed1e4c7ac1da613aa8fc"/>
 		
         <activity 
 			android:name="com.MCAL.ICPE.activity.MainActivity"
@@ -50,14 +58,32 @@
         </activity>
 		
 		<activity
-			android:name="com.MCAL.ICPE.activity.OptionsActivity"
+			android:name="com.MCAL.ICPE.activity.JoinUSActivity"
 			android:theme="@style/AppTheme"
 			android:screenOrientation="landscape">
         </activity>
 		
 		<activity
-			android:name="com.MCAL.ICPE.activity.StartActivity"
-			android:theme="@style/FullScreen"
+			android:name="com.MCAL.ICPE.activity.SettingsActivity"
+			android:theme="@style/AppTheme"
+			android:screenOrientation="landscape">
+        </activity>
+		
+		<activity
+			android:name="com.MCAL.ICPE.activity.UpdateActivity"
+			android:theme="@style/AppTheme"
+			android:screenOrientation="landscape">
+        </activity>
+		
+		<activity
+			android:name="com.MCAL.ICPE.activity.NoAPIActivity"
+			android:theme="@style/AppTheme"
+			android:screenOrientation="landscape">
+        </activity>
+		
+		<activity
+			android:name="com.MCAL.ICPE.activity.OptionsActivity"
+			android:theme="@style/AppTheme"
 			android:screenOrientation="landscape">
         </activity>
 		

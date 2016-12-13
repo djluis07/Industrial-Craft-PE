@@ -1,25 +1,3 @@
-/*
- * Decompiled with CFR 0_110.
- * 
- * Could not load the following classes:
- *  android.annotation.SuppressLint
- *  android.os.Build
- *  android.os.Build$VERSION
- *  java.io.BufferedReader
- *  java.io.File
- *  java.io.FileReader
- *  java.io.Reader
- *  java.lang.CharSequence
- *  java.lang.Exception
- *  java.lang.Object
- *  java.lang.String
- *  java.lang.StringBuffer
- *  java.util.HashMap
- *  java.util.Locale
- *  java.util.Map
- *  java.util.regex.Matcher
- *  java.util.regex.Pattern
- */
 package com.mojang.minecraftpe;
 
 import android.annotation.SuppressLint;

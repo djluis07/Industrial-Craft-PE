@@ -58,7 +58,7 @@
 			<RelativeLayout
 				android:layout_width="fill_parent"
 				android:layout_height="48dp"
-				android:layout_marginLeft="104dp">
+				android:layout_marginLeft="50dp">
 
 				<TextView
 					android:layout_width="wrap_content"

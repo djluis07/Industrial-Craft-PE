@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Industrial Craft:Pocket-Edition</string>
-	<string name="app_version">0.1</string>
+	<string name="app_version">beta 0.2</string>
 	<string name="agree_license">Start</string>
 	<string name="agree_user_license">I Follow the  </string>
 	<string name="user_legal">ICPE EULA</string>
@@ -10,11 +10,25 @@
 	<string name="launch_by_self">ICPE Launcher</string>
 	<string name="launch_message">Choose a launch way.</string>
 	<string name="launch_title">Launch Game</string>
+	<string name="menu">Menu</string>
+	<string name="join_us">Join us</string>
+	<string name="settings">Settings</string>
+	<string name="update">Update</string>
+	<string name="error">ERROR</string>
+	<string name="no_qq">You haven\'t install QQ.</string>
+	<string name="cancel">Cancel</string>
+	<string name="download">Download</string>
+	<string name="downloadnew">Download a new version?</string>
+	<string name="availableDownload">An available version:  </string>
+	<string name="noupdate">No available new version found.</string>
+	<string name="downloadProgress">Download progress: </string>
+	<string name="download_done">Download done</string>
+	<string name="install_now">Install now?</string>
+	<string name="install">Install</string>
 	<string name="eula_all">
 		\n
 		- 开放源代码许可:\n
 		Uses Cydia Substrate library.\n
-		Uses Android v4 Support library.\n
 		Uses IC2 textures.\n
 		Uses FMOD library.\n
 		Uses Simpleframework library.\n
@@ -27,6 +41,7 @@
 		Uses Google Gson library.\n
 		Uses amazon SDK library.\n
 		Uses gc MaterialDesign library.\n
+		Uses android support v4 library.\n
 		Uses android support v7 library.\n
 		Uses nineoldandroids library.\n
 		Uses butterknife library.\n

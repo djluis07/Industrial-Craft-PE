@@ -46,34 +46,37 @@ public class SnackBar extends Dialog{
 	}
 	
 	// Only text
-	public SnackBar(Activity activity, String text) {
+	public SnackBar(Activity activity, String text)
+	{
 		super(activity, android.R.style.Theme_Translucent);
 		this.activity = activity;
 		this.text = text;
 	}
 	
 	@Override
-	  protected void onCreate(Bundle savedInstanceState) {
+	protected void onCreate(Bundle savedInstanceState)
+	{
 	    super.onCreate(savedInstanceState);
 	    requestWindowFeature(Window.FEATURE_NO_TITLE);
 	    setContentView(R.layout.gc_materialdesign_snackbar);
 	    setCanceledOnTouchOutside(false);
-	    ((TextView)findViewById(R.id.text)).setText(text); 
-	    ((TextView)findViewById(R.id.text)).setTextSize(textSize); //set textSize
-		button = (ButtonFlat) findViewById(R.id.buttonflat);
-		if(text == null || onClickListener == null){
+	    ((TextView)findViewById(R.id.snackbartext)).setText(text); 
+	    ((TextView)findViewById(R.id.snackbartext)).setTextSize(textSize); //set textSize
+		button = (ButtonFlat) findViewById(R.id.snackbarbuttonflat);
+		if(text == null || onClickListener == null)
 			button.setVisibility(View.GONE);
-		}else{
+		else if(text != null && onClickListener != null)
+		{
 			button.setText(buttonText);
 			button.setBackgroundColor(backgroundButton);
 			
-			button.setOnClickListener(new View.OnClickListener() {
-				
+			button.setOnClickListener(new View.OnClickListener()
+			{
 				@Override
 				public void onClick(View v)
 				{
+					SnackBar.this.onClickListener.onClick(v);
 					dismiss();
-					onClickListener.onClick(v);
 				}
 			});
 		}
@@ -82,27 +85,30 @@ public class SnackBar extends Dialog{
 	}
 	
 	@Override
-	public boolean onTouchEvent(MotionEvent event) {
+	public boolean onTouchEvent(MotionEvent event) 
+	{
 		return activity.dispatchTouchEvent(event);
 	}
 	
 	@Override
-	public void onBackPressed() {
+	public void onBackPressed()
+	{
+		
 	}
 	
 	@Override
-	public void show() {
+	public void show() 
+	{
 		super.show();
 		view.setVisibility(View.VISIBLE);
 		view.startAnimation(AnimationUtils.loadAnimation(activity, R.anim.snackbar_show_animation));
-		if (!mIndeterminate) {
+		if (!mIndeterminate) 
 		    dismissTimer.start();
-		}
 	}
 	
 	// Dismiss timer 
-	Thread dismissTimer = new Thread(new Runnable() {
-		
+	Thread dismissTimer = new Thread(new Runnable() 
+	{
 		@Override
 		public void run() {
 			try {
@@ -117,10 +123,10 @@ public class SnackBar extends Dialog{
 	Handler handler = new Handler(new Handler.Callback() {
 		
 		@Override
-		public boolean handleMessage(Message msg) {
-			 if(onHideListener != null) {
+		public boolean handleMessage(Message msg) 
+		{
+			 if(onHideListener != null)
 				 onHideListener.onHide();
-			 }
 			dismiss();
 			return false;
 		}
@@ -152,30 +158,33 @@ public class SnackBar extends Dialog{
 	
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
-		// TODO 自动生成的方法存根
-		 if (keyCode == KeyEvent.KEYCODE_BACK )  {
+		 if (keyCode == KeyEvent.KEYCODE_BACK)
 			 dismiss();
-		 }
 		return super.onKeyDown(keyCode, event);
 	}
 	
-	public void setMessageTextSize(float size) {
+	public void setMessageTextSize(float size) 
+	{
 		textSize = size;
 	}
 	
-	public void setIndeterminate(boolean indeterminate) {
+	public void setIndeterminate(boolean indeterminate) 
+	{
         	mIndeterminate = indeterminate;
 	}
 	
-	public boolean isIndeterminate() {
+	public boolean isIndeterminate()
+	{
 		return mIndeterminate;
 	}
 
-	public void setDismissTimer(int time) {
+	public void setDismissTimer(int time)
+	{
 		mTimer = time;
 	}
 	
-	public int getDismissTimer() {
+	public int getDismissTimer()
+	{
 		return mTimer;
 	}
 	
@@ -183,7 +192,8 @@ public class SnackBar extends Dialog{
 	 * Change background color of SnackBar
 	 * @param color
 	 */
-	public void setBackgroundSnackBar(int color){
+	public void setBackgroundSnackBar(int color)
+	{
 		backgroundSnackBar = color;
 		if(view != null)
 			view.setBackgroundColor(color);
@@ -193,7 +203,8 @@ public class SnackBar extends Dialog{
 	 * Chage color of FlatButton in Snackbar
 	 * @param color
 	 */
-	public void setColorButton(int color){
+	public void setColorButton(int color)
+	{
 		backgroundButton = color;
 		if(button != null)
 			button.setBackgroundColor(color);
@@ -204,11 +215,13 @@ public class SnackBar extends Dialog{
 	 * @author Navas
 	 *
 	 */
-	public interface OnHideListener{
+	public interface OnHideListener
+	{
 		public void onHide();
 	}
 	
-	public void setOnhideListener(OnHideListener onHideListener){
+	public void setOnhideListener(OnHideListener onHideListener)
+	{
 		this.onHideListener = onHideListener;
 	}
 }

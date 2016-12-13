@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:materialdesign="http://schemas.android.com/apk/res-auto"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent">
+
+	<ScrollView
+		android:layout_width="fill_parent"
+		android:layout_height="fill_parent"
+		android:scrollbars="vertical"
+		android:scrollbarThumbVertical="@drawable/scroll_bar">
+
+		<LinearLayout
+			xmlns:materialdesign="http://schemas.android.com/apk/res-auto"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:orientation="vertical">
+
+			<RelativeLayout
+				android:layout_width="fill_parent"
+				android:layout_height="148dp">
+
+				<RelativeLayout
+					android:layout_width="fill_parent"
+					android:layout_height="128dp"
+					android:background="#FF3900"
+					android:paddingBottom="20dp"
+					android:paddingLeft="100dp">
+
+					<TextView
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_alignParentBottom="true"
+						android:layout_marginLeft="0dp"
+						android:text="@string/join_us"
+						android:textSize="25dp"/>
+
+				</RelativeLayout>
+
+				<View
+					android:layout_width="fill_parent"
+					android:layout_height="2dp"
+					android:layout_marginTop="128dp"
+					android:background="#88CECECE"/>
+
+			</RelativeLayout>
+
+			<RelativeLayout
+				android:layout_width="fill_parent"
+				android:layout_height="48dp"
+				android:layout_marginLeft="50dp">
+
+				<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_centerVertical="true"
+					android:text="@string/join_us"/>
+
+				<View
+					android:layout_width="fill_parent"
+					android:layout_height="1dp"
+					android:layout_alignParentBottom="true"
+					android:background="#FF3900"/>
+
+			</RelativeLayout>
+			
+			<LinearLayout
+				android:layout_height="fill_parent"
+				android:layout_width="wrap_content"
+				android:orientation="vertical">
+				
+				<TextView
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:layout_centerVertical="true"
+					android:text="@string/join_us"/>
+				
+			</LinearLayout>
+
+		</LinearLayout>
+
+	</ScrollView>
+
+</RelativeLayout>
+

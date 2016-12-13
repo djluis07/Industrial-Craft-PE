@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:materialdesign="http://schemas.android.com/apk/res-auto"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent">
+
+	<ScrollView
+		android:layout_width="fill_parent"
+		android:layout_height="fill_parent"
+		android:scrollbars="vertical"
+		android:scrollbarThumbVertical="@drawable/scroll_bar">
+
+		<LinearLayout
+			xmlns:materialdesign="http://schemas.android.com/apk/res-auto"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:orientation="vertical">
+
+			<RelativeLayout
+				android:layout_width="fill_parent"
+				android:layout_height="148dp">
+
+				<RelativeLayout
+					android:layout_width="fill_parent"
+					android:layout_height="128dp"
+					android:background="#2D83CB"
+					android:paddingBottom="20dp"
+					android:paddingLeft="100dp">
+
+					<TextView
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_alignParentBottom="true"
+						android:layout_marginLeft="0dp"
+						android:text="@string/join_us"
+						android:textSize="25dp"/>
+
+				</RelativeLayout>
+
+				<View
+					android:layout_width="fill_parent"
+					android:layout_height="2dp"
+					android:layout_marginTop="128dp"
+					android:background="#88CECECE"/>
+
+			</RelativeLayout>
+
+			<RelativeLayout
+				android:layout_width="fill_parent"
+				android:layout_height="48dp"
+				android:layout_marginLeft="50dp">
+
+				<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_centerVertical="true"
+					android:text="@string/join_us"/>
+
+				<View
+					android:layout_width="fill_parent"
+					android:layout_height="1dp"
+					android:layout_alignParentBottom="true"
+					android:background="#1E88E5"/>
+
+			</RelativeLayout>
+
+			<com.gc.materialdesign.views.LayoutRipple
+				android:layout_width="fill_parent"
+				android:layout_height="250dp"
+				android:clickable="true"
+				android:onClick="join_ICPEDevTeam">
+
+				<ImageView
+					android:layout_width="200dp"
+					android:layout_height="200dp"
+					android:layout_centerVertical="true"
+					android:layout_marginLeft="32dp"
+					android:src="@drawable/icpedevteam"/>
+
+				<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_centerVertical="true"
+					android:layout_marginLeft="250dp"
+					android:text="ICPE Dev Team"/>
+
+			</com.gc.materialdesign.views.LayoutRipple>
+
+			<com.gc.materialdesign.views.LayoutRipple
+				android:layout_width="fill_parent"
+				android:layout_height="250dp"
+				android:clickable="true"
+				android:onClick="join_MCALTeam">
+
+				<ImageView
+					android:layout_width="200dp"
+					android:layout_height="200dp"
+					android:layout_centerVertical="true"
+					android:layout_marginLeft="32dp"
+					android:src="@drawable/mcalteam"/>
+
+				<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_centerVertical="true"
+					android:layout_marginLeft="250dp"
+					android:text="MCAL Team"/>
+
+			</com.gc.materialdesign.views.LayoutRipple>
+
+		</LinearLayout>
+
+	</ScrollView>
+
+</RelativeLayout>
+

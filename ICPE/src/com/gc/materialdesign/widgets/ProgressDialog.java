@@ -23,7 +23,7 @@ public class ProgressDialog extends android.app.Dialog{
 	View backView;
 	String title;
 	TextView titleTextView;
-	
+	int maxProgress;
 	int progressColor = -1;
 	
 	public ProgressDialog(Context context,String title) {
@@ -40,15 +40,16 @@ public class ProgressDialog extends android.app.Dialog{
 	}
 	
 	@Override
-	  protected void onCreate(Bundle savedInstanceState) {
+	  protected void onCreate(Bundle savedInstanceState)
+	  {
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 	    super.onCreate(savedInstanceState);
 	    setContentView(R.layout.gc_materialdesign_progress_dialog);
 	    
 		view = (RelativeLayout)findViewById(R.id.contentDialog);
 		backView = (RelativeLayout)findViewById(R.id.dialog_rootView);
-		backView.setOnTouchListener(new OnTouchListener() {
-			
+		backView.setOnTouchListener(new OnTouchListener()
+		{
 			@Override
 			public boolean onTouch(View v, MotionEvent event) {
 				if (event.getX() < view.getLeft() 
@@ -75,18 +76,17 @@ public class ProgressDialog extends android.app.Dialog{
 	public void show() {
 		// TODO 自动生成的方法存根
 		super.show();
-		// set dialog enter animations
-		view.startAnimation(AnimationUtils.loadAnimation(context, R.anim.dialog_main_show_amination));
-		backView.startAnimation(AnimationUtils.loadAnimation(context, R.anim.dialog_root_show_amin));
 	}
 	
 	// GETERS & SETTERS
 
-	public String getTitle() {
+	public String getTitle()
+	{
 		return title;
 	}
 
-	public void setTitle(String title) {
+	public void setTitle(String title)
+	{
 		this.title = title;
 		if(title == null)
 			titleTextView.setVisibility(View.GONE);
@@ -95,45 +95,22 @@ public class ProgressDialog extends android.app.Dialog{
 			titleTextView.setText(title);
 		}
 	}
+	
+	
 
-	public TextView getTitleTextView() {
+	public TextView getTitleTextView() 
+	{
 		return titleTextView;
 	}
 
-	public void setTitleTextView(TextView titleTextView) {
+	public void setTitleTextView(TextView titleTextView) 
+	{
 		this.titleTextView = titleTextView;
 	}
 
 	@Override
-	public void dismiss() {
-		Animation anim = AnimationUtils.loadAnimation(context, R.anim.dialog_main_hide_amination);
-		anim.setAnimationListener(new AnimationListener() {
-			
-			@Override
-			public void onAnimationStart(Animation animation) {
-			}
-			
-			@Override
-			public void onAnimationRepeat(Animation animation) {
-			}
-			
-			@Override
-			public void onAnimationEnd(Animation animation) {
-				view.post(new Runnable() {
-					@Override
-					public void run() {
-			        	ProgressDialog.super.dismiss();
-			        }
-			    });
-				
-			}
-		});
-		Animation backAnim = AnimationUtils.loadAnimation(context, R.anim.dialog_root_hide_amin);
-		
-		view.startAnimation(anim);
-		backView.startAnimation(backAnim);
+	public void dismiss()
+	{
+		ProgressDialog.super.dismiss();
 	}
-	
-	
-
 }

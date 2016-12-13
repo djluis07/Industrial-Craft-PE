@@ -68,11 +68,11 @@ public class Dialog extends android.app.Dialog
 	}
 	
 	@Override
-	  protected void onCreate(Bundle savedInstanceState)
-	  {
+	protected void onCreate(Bundle savedInstanceState)
+	{
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 	    super.onCreate(savedInstanceState);
-	    setContentView(R.layout.gc_materialdesign_dialog);
+		setContentView(R.layout.gc_materialdesign_dialog);
 	    
 		view = (RelativeLayout)findViewById(R.id.contentDialog);
 		backView = (RelativeLayout)findViewById(R.id.dialog_rootView);
@@ -96,11 +96,12 @@ public class Dialog extends android.app.Dialog
 	    this.messageTextView = (TextView) findViewById(R.id.message);
 	    setMessage(message);
 	    
-		  if(acceptButtonText != null){
-			  this.buttonAccept = (ButtonFlat) findViewById(R.id.button_accept);
-			  this.buttonAccept.setVisibility(View.VISIBLE);
-			  this.buttonAccept.setText(acceptButtonText);
-			  buttonAccept.setOnClickListener(new View.OnClickListener() {
+		if(acceptButtonText != null)
+		{
+			this.buttonAccept = (ButtonFlat) findViewById(R.id.button_accept);
+			this.buttonAccept.setVisibility(View.VISIBLE);
+			this.buttonAccept.setText(acceptButtonText);
+			buttonAccept.setOnClickListener(new View.OnClickListener() {
 
 					  @Override
 					  public void onClick(View v)

@@ -13,6 +13,9 @@ import android.database.*;
 import java.util.*;
 import android.util.*;
 import android.view.View.*;
+import com.pgyersdk.update.*;
+import com.pgyersdk.javabean.*;
+import com.gc.materialdesign.widgets.*;
 
 public class MainActivity extends Activity
 {
@@ -21,6 +24,8 @@ public class MainActivity extends Activity
     {
         super.onCreate(savedInstanceState);
 		setContentView(R.layout.main_activity);
+		
+		checkUpdate();
     }
 	
 	public void launchGame(View view)
@@ -66,5 +71,34 @@ public class MainActivity extends Activity
 	{
 		Intent intent=new Intent(this,OptionsActivity.class);
 		startActivity(intent);
+	}
+	
+	protected void checkUpdate()
+	{
+		PgyUpdateManager.register(this,new UpdateManagerListener()
+		{
+			@Override
+			public void onUpdateAvailable(final String result)
+			{
+				AppBean bean = getAppBeanFromString(result);
+				
+				SnackBar bar = new SnackBar(MainActivity.this,getString(R.string.availableDownload)+bean.getVersionName(),getString(R.string.download),new View.OnClickListener()
+				{
+					@Override
+					public void onClick(View p1)
+					{
+						Intent intent=new Intent(MainActivity.this,UpdateActivity.class);
+						startActivity(intent);
+					}
+				});
+				bar.setDismissTimer(5000);
+				bar.show();
+			}
+			@Override
+			public void onNoUpdateAvailable()
+			{
+				
+			}
+		});
 	}
 }
