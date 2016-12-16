@@ -29,6 +29,7 @@
 		android:minSdkVersion="9" />
     
 	<application 
+		android:name="com.MCAL.ICPE.ICPEApplication"
 		android:label="@string/app_name"
 		android:largeHeap="true"
 		android:icon="@drawable/icon" >
