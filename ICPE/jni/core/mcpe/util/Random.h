@@ -2,7 +2,7 @@
 
 struct Random
 {
-	Random();
+	Random()=default;
 	Random(long unsigned int);
 
 	void setSeed(long unsigned int);

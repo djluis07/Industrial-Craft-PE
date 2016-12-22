@@ -7,10 +7,11 @@
 #include "Block.h"
 #include "BlockShape.h"
 #include "../client/renderer/texture/TextureAtlasTextureItem.h"
+
 class BlockSource;
-struct BlockPos;
+class BlockPos;
 class AABB;
-struct Vec3;
+class Vec3;
 class Random;
 class TextureAtlas;
 namespace Json { class Value; }

@@ -1,18 +1,21 @@
 #pragma once
 
 #include <memory>
+
 #include "UseAnimation.h"
+#include "../Util/BlockID.h"
 
 class CompoundTag;
 class Item;
 class Block;
 class ItemEnchants;
 class Mob;
+class Entity;
 class Player;
-#include "../Util/BlockID.h"
 class Level;
 
-class ItemInstance {
+class ItemInstance
+{
 public:
     unsigned char count;
     unsigned short aux;
@@ -20,7 +23,7 @@ public:
     bool valid;
     Item* item;
     Block* block;
-
+public:
     ItemInstance(Block const*);
     ItemInstance(Block const*,int);
     ItemInstance(Block const*,int,int);
@@ -33,7 +36,7 @@ public:
     ItemInstance(int,int,int);
     ItemInstance(int,int,int,CompoundTag const*);
     ItemInstance();
-
+public:
     void _getHoverFormattingPrefix();
     void _setItem(int);
     void add(int);
@@ -64,7 +67,7 @@ public:
     bool hasCustomHoverName();
     bool hasSameUserData(ItemInstance const&);
     bool hasUserData();
-    void hurtAndBreak(int,Mob *);
+    void hurtAndBreak(int,Entity *);
     void hurtEnemy(Mob *,Mob *);
     void init(int,int,int);
     void interactEnemy(Mob *,Player *);
@@ -104,13 +107,13 @@ public:
     void setRepairCost(int);
     void setUserData(std::unique_ptr<CompoundTag>);
     void snap(Player*);
-    void toString();
+    std::string toString();
     void use(Player &);
     void useAsFuel();
-    void useOn(Player *,int,int,int,signed char,float,float,float);
+    void useOn(Entity&,int,int,int,signed char,float,float,float);
     void useTimeDepleted(Level *,Player *);
 	void onCraftedBy(Level&,Player&);
-
+public:
     static ItemInstance* clone(ItemInstance const*);
     static ItemInstance* cloneSafe(ItemInstance const*);
     static ItemInstance* fromTag(CompoundTag const&);

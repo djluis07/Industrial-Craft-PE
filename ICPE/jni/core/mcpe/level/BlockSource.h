@@ -26,7 +26,8 @@ class TileTickingQueue;
 class Dimension;
 class BlockSourceListener;
 class Biome;
-// Size : 76
+class Entity;
+
 class BlockSource
 {
 public:
@@ -114,8 +115,8 @@ public:
 	void runLightUpdates(LightLayer const &, BlockPos const &, BlockPos const &);
 	void setBlock(BlockPos const &, BlockID, int);
 	void setBlock(int, int, int, BlockID, int);
-	void setBlockAndData(BlockPos const &, BlockID, unsigned char, int);
-	void setBlockAndData(BlockPos const &, FullBlock, int);
+	void setBlockAndData(BlockPos const &, BlockID, unsigned char, int,Entity*);
+	void setBlockAndData(BlockPos const &, FullBlock, int,Entity*);
 	void setBlockAndData(int, int, int, BlockID, unsigned char, int);
 	void setBlockAndData(int, int, int, FullBlock, int);
 	void setBlockAndDataNoUpdate(int, int, int, FullBlock);

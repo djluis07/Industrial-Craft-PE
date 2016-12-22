@@ -2,7 +2,7 @@
 
 #include "blocks/Blocks.h"
 
-bool CableTessellator::tessellate(Block const&b,BlockPos const&pos,unsigned char aux,bool wtf,bool (*tessellate)(BlockTessellator*,Block&,BlockPos const&,uchar,bool))
+bool CableTessellator::tessellate(Block const&b,BlockPos const&pos,unsigned char aux,bool wtf,bool (*tessellate)(BlockTessellator*,Block const&,BlockPos const&,uchar,bool))
 {
 	float defaultDistance=blockSource->getData(pos.x,pos.y,pos.z)==12?0.375:0.3125;
 	

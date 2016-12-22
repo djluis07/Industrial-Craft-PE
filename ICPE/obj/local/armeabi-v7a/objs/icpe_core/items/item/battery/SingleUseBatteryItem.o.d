@@ -10,7 +10,8 @@ obj/local/armeabi-v7a/objs/icpe_core/items/item/battery/SingleUseBatteryItem.o: 
  jni/core/mcpe/item/UseAnimation.h jni/core/mcpe/item/ItemInstance.h \
  jni/core/mcpe/item/../Util/BlockID.h \
  jni/core/mcpe/item/../Util/../block/BlockProperty.h \
- jni/core/mcpe/client/renderer/texture/TextureUVCoordinateSet.h \
+ jni/core/mcpe/block/BlockShape.h \
+ jni/core/mcpe/item/../client/renderer/texture/TextureUVCoordinateSet.h \
  jni/core/mcpe/util/ResourceLocation.h \
  /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/sources/cxx-stl/gnu-libstdc++/4.9/include/fstream
 
@@ -38,7 +39,9 @@ jni/core/mcpe/item/../Util/BlockID.h:
 
 jni/core/mcpe/item/../Util/../block/BlockProperty.h:
 
-jni/core/mcpe/client/renderer/texture/TextureUVCoordinateSet.h:
+jni/core/mcpe/block/BlockShape.h:
+
+jni/core/mcpe/item/../client/renderer/texture/TextureUVCoordinateSet.h:
 
 jni/core/mcpe/util/ResourceLocation.h:
 

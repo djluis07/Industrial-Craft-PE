@@ -23,7 +23,6 @@ public:
 	bool selected;
 protected:
 	std::shared_ptr<PackedScrollContainer>background;
-	std::shared_ptr<PackedScrollContainer>backgroundSelected;
 public:
 	ItemPanel(int,ItemInstance const&,int x,int y,MinecraftClient&c);
 	~ItemPanel()=default;
@@ -32,5 +31,7 @@ public:
 	int getTargetButtonID()const;
 	void render(MinecraftClient&);
 	void setSelected(bool);
+	bool getSelected()const;
+	std::shared_ptr<PackedScrollContainer> getBackground();
 };
 }

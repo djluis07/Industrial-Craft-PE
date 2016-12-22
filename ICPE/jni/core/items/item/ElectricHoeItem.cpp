@@ -19,9 +19,9 @@ std::string ElectricHoeItem::buildEffectDescriptionName(const ItemInstance&i) co
 {
 	return "§7"+I18n::get("ic.effectname.lastectricity")+Util::toString((500-i.aux)*50)+"EU/25000EU";
 }
-void ElectricHoeItem::useOn(ItemInstance*instance, Player*p, int x, int y, int z, signed char side, float px, float py, float pz)
+void ElectricHoeItem::useOn(ItemInstance&instance, Entity&p, int x, int y, int z, signed char side, float px, float py, float pz)
 {
-	if(!(instance&&p)||instance->aux>=getMaxDamage()-1)
-		return ;
 	mHoe_iron->useOn(instance,p,x,y,z,side,px,py,pz);
+	
+	//uncompleted
 }

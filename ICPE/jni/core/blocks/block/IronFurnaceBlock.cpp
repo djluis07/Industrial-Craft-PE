@@ -9,11 +9,11 @@ IronFurnaceBlock::IronFurnaceBlock():IC::Blocks("ic.ironfurnace",IC::Blocks::ID:
 	setDestroyTime(3);
 	setExplodeable(15);
 }
-int IronFurnaceBlock::getPlacementDataValue(Mob&m, BlockPos const&pos, signed char side, Vec3 const&pixel, int aux)
+int IronFurnaceBlock::getPlacementDataValue(Entity&e, BlockPos const&pos, signed char side, Vec3 const&pixel, int aux)const
 {
-	return mFurnace->getPlacementDataValue(m,pos,side,pixel,aux)-2;
+	return mFurnace->getPlacementDataValue(e,pos,side,pixel,aux)-2;
 }
-bool IronFurnaceBlock::use(Player&, BlockPos const&)
+bool IronFurnaceBlock::use(Player&, BlockPos const&)const
 {
 	return true;
 }

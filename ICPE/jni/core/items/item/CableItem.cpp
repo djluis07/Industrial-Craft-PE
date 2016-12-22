@@ -130,15 +130,13 @@ std::string CableItem::buildEffectDescriptionName(const ItemInstance&i) const
 		return "§78192EU/t\n-0.025EU/m";
 	}
 }
-void CableItem::useOn(ItemInstance*instance, Player*p, int x, int y, int z, signed char side, float pixelx, float pixely, float pixelz)
+void CableItem::useOn(ItemInstance&instance, Entity&p, int x, int y, int z, signed char side, float pixelx, float pixely, float pixelz)
 {
-	if(!p||!instance)return;
-	
-	ItemInstance cableItem(IC::Blocks::ID::mCable,instance->count,instance->aux);
+	ItemInstance cableItem(IC::Blocks::ID::mCable,instance.count,instance.aux);
 	cableItem.useOn(p,x,y,z,side,pixelx,pixely,pixelz);
 	
-	instance->count=cableItem.count;
-	if(instance->count==0)
-		instance->setNull();
+	instance.count=cableItem.count;
+	if(instance.count==0)
+		instance.setNull();
 	return;
 }

@@ -40,7 +40,7 @@
 
 		<meta-data 
 			android:name="net.zhuoweizhang.mcpelauncher.api.targetmcpeversion"
-			android:value="1.0.0.2"/>
+			android:value="1.0.0.16"/>
 		
 		<meta-data
 			android:name="PGYER_APPID"

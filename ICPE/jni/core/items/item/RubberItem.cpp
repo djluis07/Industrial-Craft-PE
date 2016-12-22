@@ -27,15 +27,12 @@ const TextureUVCoordinateSet& RubberItem::getIcon(int aux, int, bool) const
 {
 	return rubberTextures[aux>=(sizeof(rubberTextures)/sizeof(TextureUVCoordinateSet))?0:aux];
 }
-void RubberItem::useOn(ItemInstance*instance, Player*p, int x, int y, int z, signed char side, float pixelx, float pixely, float pixelz)
+void RubberItem::useOn(ItemInstance&instance, Entity&p, int x, int y, int z, signed char side, float pixelx, float pixely, float pixelz)
 {
-	if(!p||!instance)
-		return;
-	
-	ItemInstance resinItem(IC::Blocks::ID::mResin,instance->count,instance->aux);
+	ItemInstance resinItem(IC::Blocks::ID::mResin,instance.count,instance.aux);
 	resinItem.useOn(p,x,y,z,side,pixelx,pixely,pixelz);
 	
-	instance->count=resinItem.count;
-	if(instance->count==0)
-		instance->setNull();
+	instance.count=resinItem.count;
+	if(instance.count==0)
+		instance.setNull();
 }

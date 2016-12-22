@@ -3,10 +3,11 @@
 #include "mcpe/level/BlockSource.h"
 #include "mcpe/item/ItemInstance.h"
 #include "mcpe/block/blocks/FireBlock.h"
+#include "mcpe/util/Random.h"
 
-#include "client/ICClient.h"
-#include "util/ICRandom.h"
 #include "blocks/Blocks.h"
+
+#include "ICPE.h"
 
 RubberLeavesBlock::RubberLeavesBlock():IC::Blocks("ic.rubber.leaves",IC::Blocks::ID::mRubberLeaves,Material::getMaterial(MaterialType::PLANT))
 {
@@ -27,7 +28,7 @@ int RubberLeavesBlock::getResource(Random&, int id, int)
 }
 int RubberLeavesBlock::getResourceCount(Random&, int id, int)
 {
-	return id==359?1:(ICClient::mInstance.getRandom().nextInt(10)==9?1:0);
+	return id==359?1:(ICPE::mRandom.nextInt(10)==9?1:0);
 }
 ItemInstance RubberLeavesBlock::getSilkTouchItemInstance(unsigned char)
 {

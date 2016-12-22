@@ -7,6 +7,6 @@ class IronFurnaceBlock : public IC::Blocks
 public:
 	IronFurnaceBlock();
 public:
-	virtual bool use(Player&, BlockPos const&);
-	virtual int getPlacementDataValue(Mob&, BlockPos const&, signed char, Vec3 const&, int);
+	virtual bool use(Player&, BlockPos const&)const;
+	virtual int getPlacementDataValue(Entity&, BlockPos const&, signed char, Vec3 const&, int)const;
 };

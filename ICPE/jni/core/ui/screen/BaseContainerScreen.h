@@ -4,17 +4,14 @@
 #include <vector>
 
 #include "mcpe/util/BlockPos.h"
-
-#include "ui/uilib/UILibScreen.h"
+#include "mcpe/client/gui/screen/Screen.h"
 
 #include "ui/renderer/MovingItemRenderer.h"
 #include "ui/view/ItemPanel.h"
 
 class BlockSource;
 class Button;
-class Screen;
 class Label;
-class Biome;
 class Player;
 class PackedScrollContainer;
 class ItemInstance;
@@ -22,9 +19,8 @@ class MovingItemRenderer;
 
 namespace Touch{class TButton;}
 namespace Touch{class THeader;}
-namespace IC{class ItemUIElement;}
 
-class BaseContainerScreen : public UILibScreen
+class BaseContainerScreen : public Screen
 {
 protected:
 	std::string headerName;
@@ -32,8 +28,9 @@ protected:
 	std::shared_ptr<Touch::TButton> buttonClose;
 	std::shared_ptr<PackedScrollContainer> background;
 	std::shared_ptr<PackedScrollContainer> closeBackground;
-	std::shared_ptr<PackedScrollContainer> closeBackgroundPressed;
-	std::shared_ptr<PackedScrollContainer> itemSlotBackground;
+	std::shared_ptr<PackedScrollContainer> closeBackground_pressed;
+	std::shared_ptr<PackedScrollContainer> backgroundSelected;
+	std::shared_ptr<PackedScrollContainer> itemSlotDarkBackground;
 protected:
 	std::vector<std::shared_ptr<MovingItemRenderer> > movingItems;
 	std::vector<std::shared_ptr<IC::ItemPanel> > itemPanels;
@@ -45,15 +42,15 @@ protected:
 public:
 	BlockSource*source;
 	Player*player;
-	BlockPos pos;
 public:
-	BaseContainerScreen(BlockSource&,BlockPos const&,Player&,std::string const&);
+	BaseContainerScreen(MinecraftClient&,BlockSource&,Player&,std::string const&);
 	~BaseContainerScreen()=default;
 public:
 	virtual std::string getScreenName()const;
-	virtual void buttonClicked(Button&);
+	virtual std::string getScreenNameW()const;
+	virtual void _buttonClicked(Button&);
 	virtual void init();
-	virtual void render(int,int,float,void (*)(Screen*,int,int,float));
+	virtual void render(int,int,float);
 public:
 	void drawSlotItemAt(int,int,ItemInstance*);
 	void startRenderMovingItem(ItemInstance *,float,float,float,float,float,float);
@@ -67,7 +64,7 @@ public:
 	virtual void onItemPanelChanged(IC::ItemPanel&);
 	virtual void onRegisterPanels(int,int);
 	virtual unsigned char getAddItemToItemPanelCount(ItemInstance const&,IC::ItemPanel&);
-public:
+protected:
 	void registerNewItemPanel(int x,int y,ItemInstance const&);
 	std::shared_ptr<Button> getButtonByID(int);
 };

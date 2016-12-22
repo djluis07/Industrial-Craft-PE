@@ -25,13 +25,6 @@ ItemPanel::ItemPanel(int ID,ItemInstance const&i,int x,int y,MinecraftClient&c)
 	background->width=30;
 	background->height=30;
 	background->setBackground(&c,"textures/gui/gui",{229,0,6,6},2,2);
-	
-	backgroundSelected=std::make_shared<PackedScrollContainer>(false,false);
-	backgroundSelected->xPosition=xPosition-3;
-	backgroundSelected->yPosition=yPosition-3;
-	backgroundSelected->width=36;
-	backgroundSelected->height=36;
-	backgroundSelected->setBackground(&c,"textures/gui/gui",{0,22,24,24},3,3);
 }
 std::shared_ptr<Touch::TButton> ItemPanel::getNewButton(MinecraftClient&c)
 {
@@ -40,18 +33,23 @@ std::shared_ptr<Touch::TButton> ItemPanel::getNewButton(MinecraftClient&c)
 	newBtn->yPosition=yPosition;
 	newBtn->width=30;
 	newBtn->height=30;
+	newBtn->setVisible(false);
 	return newBtn;
 }
 int ItemPanel::getTargetButtonID()const
 {
 	return id+1000;
 }
+bool ItemPanel::getSelected()const
+{
+	return selected;
+}
+std::shared_ptr<PackedScrollContainer> ItemPanel::getBackground()
+{
+	return background;
+}
 void ItemPanel::render(MinecraftClient&client)
 {
-	background->render(&client,xPosition,yPosition);
-	if(selected)
-		backgroundSelected->render(&client,xPosition,yPosition);
-	
 	if(item.count==0)return;
 	
 	ItemRenderer::instance->renderGuiItemNew(&item,0,xPosition+7.5,yPosition+5,10,1,1,false);

@@ -13,20 +13,8 @@ obj/local/armeabi-v7a/objs/icpe_core/blocks/blockentity/ICBlockEntity.o: \
  jni/core/mcpe/client/../util/Vec3.h \
  /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/sources/cxx-stl/gnu-libstdc++/4.9/include/cmath \
  jni/core/mcpe/client/renderer/LevelRenderer.h \
- jni/core/blocks/blockentity/ICBlockEntityManager.h \
- jni/core/client/ICClient.h jni/core/util/ICRandom.h \
- jni/core/client/ICOptions.h jni/core/mca/data/Database.h \
- jni/core/mca/data/tag/ComposedTag.h jni/core/mca/data/tag/ListTag.h \
- jni/core/mca/data/tag/Tag.h jni/core/mca/data/worker/DatabaseReader.h \
- jni/core/mca/data/worker/DatabaseWorker.h \
- /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/sources/cxx-stl/gnu-libstdc++/4.9/include/fstream \
- jni/core/mca/data/worker/DatabaseWriter.h \
- /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/platforms/android-19/arch-arm/usr/include/sys/stat.h \
- /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/platforms/android-19/arch-arm/usr/include/linux/stat.h \
- /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/platforms/android-19/arch-arm/usr/include/endian.h \
- /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/platforms/android-19/arch-arm/usr/include/sys/endian.h \
- /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/platforms/android-19/arch-arm/usr/include/machine/endian.h \
- jni/core/ui/UIScreenChooser.h
+ jni/core/blocks/blockentity/ICBlockEntityManager.h jni/core/ICPE.h \
+ /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/platforms/android-19/arch-arm/usr/include/jni.h
 
 jni/core/blocks/blockentity/ICBlockEntity.h:
 
@@ -60,36 +48,6 @@ jni/core/mcpe/client/renderer/LevelRenderer.h:
 
 jni/core/blocks/blockentity/ICBlockEntityManager.h:
 
-jni/core/client/ICClient.h:
+jni/core/ICPE.h:
 
-jni/core/util/ICRandom.h:
-
-jni/core/client/ICOptions.h:
-
-jni/core/mca/data/Database.h:
-
-jni/core/mca/data/tag/ComposedTag.h:
-
-jni/core/mca/data/tag/ListTag.h:
-
-jni/core/mca/data/tag/Tag.h:
-
-jni/core/mca/data/worker/DatabaseReader.h:
-
-jni/core/mca/data/worker/DatabaseWorker.h:
-
-/data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/sources/cxx-stl/gnu-libstdc++/4.9/include/fstream:
-
-jni/core/mca/data/worker/DatabaseWriter.h:
-
-/data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/platforms/android-19/arch-arm/usr/include/sys/stat.h:
-
-/data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/platforms/android-19/arch-arm/usr/include/linux/stat.h:
-
-/data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/platforms/android-19/arch-arm/usr/include/endian.h:
-
-/data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/platforms/android-19/arch-arm/usr/include/sys/endian.h:
-
-/data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/platforms/android-19/arch-arm/usr/include/machine/endian.h:
-
-jni/core/ui/UIScreenChooser.h:
+/data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/platforms/android-19/arch-arm/usr/include/jni.h:

@@ -20,6 +20,7 @@ class BlockGraphics;
 class ICBlockEntityManager;
 class ICOptions;
 class UIScreenChooser;
+class Random;
 
 typedef BlockGraphics MCPEBlockGraphics;
 typedef unsigned char uchar;
@@ -36,8 +37,8 @@ public:
 	static void onNewChunkFor(Level*,Player &, LevelChunk &);
 	static void (*initRecipes_)(Recipes*);
 	static void initRecipes(Recipes*);
-	static bool (*tessellateInWorld_)(BlockTessellator*,Block&,BlockPos const&,uchar,bool);
-	static bool tessellateInWorld(BlockTessellator*,Block&,BlockPos const&,uchar,bool);
+	static bool (*tessellateInWorld_)(BlockTessellator*,Block const&,BlockPos const&,uchar,bool);
+	static bool tessellateInWorld(BlockTessellator*,Block const&,BlockPos const&,uchar,bool);
 	static void (*initMCClient_)(MinecraftClient*);
 	static void initMCClient(MinecraftClient*);
 	static void (*initCreativeItems_)();
@@ -53,12 +54,12 @@ public:
 	static void (*tickLevel_)(Level*);
 	static void tickLevel(Level*);
 public:
-	static MinecraftClient* mcClient;
-	static Level* currentLevel;
-	static std::string currentLevelFolder;
-	static ICBlockEntityManager* currentICBlockEntityManager;
-	static ICOptions* icOptions;
-	static UIScreenChooser* uiChooser;
-public:
-	static const int localKeyCode=137624695;
+	static MinecraftClient* pMinecraftClient;
+	static Level* pLevel;
+	static std::string mLevelFolder;
+	static ICBlockEntityManager mBlockEntityManager;
+	static ICOptions mICOptions;
+	static UIScreenChooser mUIScreenChooser;
+	static Random mRandom;
+	static const int localKeyCode;
 };

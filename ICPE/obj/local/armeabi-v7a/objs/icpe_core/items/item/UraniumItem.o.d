@@ -8,7 +8,8 @@ obj/local/armeabi-v7a/objs/icpe_core/items/item/UraniumItem.o: \
  jni/core/mcpe/item/UseAnimation.h jni/core/mcpe/item/ItemInstance.h \
  jni/core/mcpe/item/../Util/BlockID.h \
  jni/core/mcpe/item/../Util/../block/BlockProperty.h \
- jni/core/mcpe/client/renderer/texture/TextureUVCoordinateSet.h \
+ jni/core/mcpe/block/BlockShape.h \
+ jni/core/mcpe/item/../client/renderer/texture/TextureUVCoordinateSet.h \
  jni/core/mcpe/util/ResourceLocation.h \
  jni/core/mcpe/client/resources/I18n.h
 
@@ -34,7 +35,9 @@ jni/core/mcpe/item/../Util/BlockID.h:
 
 jni/core/mcpe/item/../Util/../block/BlockProperty.h:
 
-jni/core/mcpe/client/renderer/texture/TextureUVCoordinateSet.h:
+jni/core/mcpe/block/BlockShape.h:
+
+jni/core/mcpe/item/../client/renderer/texture/TextureUVCoordinateSet.h:
 
 jni/core/mcpe/util/ResourceLocation.h:
 

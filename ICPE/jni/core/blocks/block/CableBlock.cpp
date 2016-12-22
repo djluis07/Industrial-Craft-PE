@@ -10,8 +10,9 @@
 #include "mcpe/entity/EntityClassTree.h"
 #include "mcpe/util/EntityDamageSource.h"
 
-#include "client/ICClient.h"
 #include "client/ICOptions.h"
+
+#include "ICPE.h"
 
 CableBlock::CableBlock():ElectricConductorBlock("ic.cable.tin",IC::Blocks::ID::mCable,Material::getMaterial(MaterialType::DEVICE))
 {
@@ -50,7 +51,7 @@ void CableBlock::neighborChanged(BlockSource&, BlockPos const&, BlockPos const&)
 }
 bool CableBlock::entityInside(BlockSource&s, BlockPos const&pos, Entity&e)
 {
-	if(!ICClient::mInstance.getOptions().getElectricityHurt())
+	if(!ICPE::mICOptions.getElectricityHurt())
 		return false;
 	if(!(s.getData(pos.x,pos.y,pos.z)==0||s.getData(pos.x,pos.y,pos.z)==2||s.getData(pos.x,pos.y,pos.z)==6||s.getData(pos.x,pos.y,pos.z)==9))
 		return false;

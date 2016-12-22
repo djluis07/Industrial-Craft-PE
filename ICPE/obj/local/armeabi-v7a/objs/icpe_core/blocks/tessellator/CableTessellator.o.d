@@ -16,11 +16,11 @@ obj/local/armeabi-v7a/objs/icpe_core/blocks/tessellator/CableTessellator.o: \
  jni/core/mcpe/block/material/Material.h \
  jni/core/mcpe/block/material/MaterialType.h \
  jni/core/mcpe/block/BlockShape.h \
- jni/core/mcpe/blockentity/BlockEntityType.h \
  jni/core/mcpe/item/CreativeItemCategory.h \
  jni/core/mcpe/block/BlockSoundType.h \
  jni/core/mcpe/block/BlockSupportType.h jni/core/mcpe/level/BlockSource.h \
  jni/core/mcpe/level/../blockentity/BlockEntity.h \
+ jni/core/mcpe/level/../blockentity/BlockEntityType.h \
  jni/core/mcpe/level/../blockentity/../inventory/FillingContainer.h \
  jni/core/mcpe/level/../blockentity/../inventory/Container.h \
  jni/core/mcpe/level/../blockentity/../inventory/../item/ItemInstance.h \
@@ -71,8 +71,6 @@ jni/core/mcpe/block/material/MaterialType.h:
 
 jni/core/mcpe/block/BlockShape.h:
 
-jni/core/mcpe/blockentity/BlockEntityType.h:
-
 jni/core/mcpe/item/CreativeItemCategory.h:
 
 jni/core/mcpe/block/BlockSoundType.h:
@@ -82,6 +80,8 @@ jni/core/mcpe/block/BlockSupportType.h:
 jni/core/mcpe/level/BlockSource.h:
 
 jni/core/mcpe/level/../blockentity/BlockEntity.h:
+
+jni/core/mcpe/level/../blockentity/BlockEntityType.h:
 
 jni/core/mcpe/level/../blockentity/../inventory/FillingContainer.h:
 

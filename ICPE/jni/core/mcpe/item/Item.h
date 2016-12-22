@@ -8,7 +8,9 @@
 #include "UseAnimation.h"
 #include "ItemInstance.h"
 #include "mcpe/util/BlockID.h"
-#include "mcpe/client/renderer/texture/TextureUVCoordinateSet.h"
+#include "mcpe/block/BlockShape.h"
+#include "../client/renderer/texture/TextureUVCoordinateSet.h"
+
 class TextureUVCoordinateSet;
 class SeedItemComponent;
 class FoodItemComponent;
@@ -24,7 +26,10 @@ class BlockSource;
 class Vec3;
 class IDataInput;
 class IDataOutput;
-namespace Json { class Value; };
+namespace Json
+{ 
+	class Value; 
+};
 
 class Item 
 {
@@ -40,20 +45,21 @@ public:
 	static std::vector<ItemInstance> mCreativeList;
 
 	/* vtable */
-    virtual ~Item();
-    virtual void setIcon(std::string const&, int);
-    virtual void setIcon(TextureUVCoordinateSet const&);
-    virtual void setMaxStackSize(unsigned char);
-    virtual void setCategory(CreativeItemCategory);
-    virtual void setStackedByData(bool);
-    virtual void setMaxDamage(int);
-    virtual void setHandEquipped();
-    virtual void setUseAnimation(UseAnimation);
-    virtual void setMaxUseDuration(int);
-    virtual void setRequiresWorldBuilder(bool);
-    virtual void setExplodable(bool);
-    virtual void setIsGlint(bool);
-    virtual void setShouldDespawn(bool);
+	virtual ~Item();
+    virtual Item* setIcon(std::string const&, int);
+    virtual Item* setIcon(TextureUVCoordinateSet const&);
+    virtual Item* setMaxStackSize(unsigned char);
+    virtual Item* setCategory(CreativeItemCategory);
+    virtual Item* setStackedByData(bool);
+    virtual Item* setMaxDamage(int);
+    virtual Item* setHandEquipped();
+    virtual Item* setUseAnimation(UseAnimation);
+    virtual Item* setMaxUseDuration(int);
+    virtual Item* setRequiresWorldBuilder(bool);
+    virtual Item* setExplodable(bool);
+    virtual Item* setIsGlint(bool);
+    virtual Item* setShouldDespawn(bool);
+    virtual BlockShape getBlockShape() const;
     virtual bool canBeDepleted();
     virtual bool canDestroySpecial(Block const*) const;
     virtual int getLevelDataForAuxValue(int) const;
@@ -73,24 +79,28 @@ public:
     virtual int getEnchantSlot() const;
     virtual int getEnchantValue() const;
     virtual bool isComplex() const;
+    virtual bool isValidAuxValue(int) const;
+    virtual int getDamageChance(int) const;
     virtual bool uniqueAuxValues() const;
     virtual int getColor(ItemInstance const&) const;
     virtual void use(ItemInstance&, Player&);
-    virtual void useOn(ItemInstance*, Player*, int, int, int, signed char, float, float, float);
+    virtual void useOn(ItemInstance&, Entity&, int, int, int, signed char, float, float, float);
     virtual void dispense(BlockSource&, Container&, int, Vec3 const&, signed char);
     virtual void useTimeDepleted(ItemInstance*, Level*, Player*);
     virtual void releaseUsing(ItemInstance*, Player*, int);
-    virtual float getDestroySpeed(ItemInstance*, Block*);
+    virtual float getDestroySpeed(ItemInstance*, Block const*);
     virtual void hurtEnemy(ItemInstance*, Mob*, Mob*);
     virtual void interactEnemy(ItemInstance*, Mob*, Player*);
-    virtual void mineBlock(ItemInstance*, BlockID, int, int, int, Mob*);
+    virtual void mineBlock(ItemInstance*, BlockID, int, int, int, Entity*);
     virtual std::string buildDescriptionName(ItemInstance const&) const;
     virtual std::string buildEffectDescriptionName(ItemInstance const&) const;
     virtual void readUserData(ItemInstance*, IDataInput&) const;
     virtual void writeUserData(ItemInstance const*, IDataOutput&) const;
-    virtual int getMaxStackSize(ItemInstance const*);
+    virtual void getMaxStackSize(ItemInstance const*);
     virtual void inventoryTick(ItemInstance&, Level&, Entity&, int, bool);
     virtual void onCraftedBy(ItemInstance&, Level&, Player&);
+    virtual int getCooldownType() const;
+    virtual int getCooldownTime() const;
     virtual std::string getInteractText(Player const&) const;
     virtual int getAnimationFrameFor(Mob&) const;
     virtual bool isEmissive(int) const;
@@ -103,8 +113,9 @@ public:
 	static void addCreativeItem(short,short);
 	static TextureUVCoordinateSet getTextureUVCoordinateSet(std::string const&,int);
 	
-	static Item*mHoe_iron;
-	static Item*mSword_diamond;
-	static Item*mShears;
-	static Item*mHatchet_diamond;
+	static Item* mSword_diamond;
+	static Item* mShears;
+	static Item* mHatchet_diamond;
+	static Item* mHoe_iron;
+	
 };

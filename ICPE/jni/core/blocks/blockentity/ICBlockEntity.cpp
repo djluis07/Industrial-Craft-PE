@@ -7,7 +7,8 @@
 #include "mcpe/client/renderer/LevelRenderer.h"
 
 #include "ICBlockEntityManager.h"
-#include "client/ICClient.h"
+
+#include "ICPE.h"
 
 ICBlockEntity::ICBlockEntity(BlockPos pos,BlockSource&s,Block*b,std::string p)
 {
@@ -17,7 +18,7 @@ ICBlockEntity::ICBlockEntity(BlockPos pos,BlockSource&s,Block*b,std::string p)
 	changed=false;
 	source=&s;
 	
-	ICClient::mInstance.getBlockEntityManager().addNew(this);
+	ICPE::mBlockEntityManager.addNew(this);
 }
 void ICBlockEntity::tick(Level&l)
 {
@@ -46,7 +47,7 @@ void ICBlockEntity::moveTo(BlockPos const&pos)
 void ICBlockEntity::setChanged()
 {
 	changed=true;
-	ICClient::mInstance.getMinecraftClient()->getLevelRenderer()->onAreaChanged(*source,position,position);
+	ICPE::pMinecraftClient->getLevelRenderer()->onAreaChanged(*source,position,position);
 }
 void ICBlockEntity::onRemove()
 {

@@ -6,8 +6,9 @@ class BatteryBlockScreen : public BaseContainerScreen
 {
 protected:
 	std::shared_ptr<PackedScrollContainer> electricityBackground;
+	BlockPos blockPos;
 public:
-	BatteryBlockScreen(BlockSource&,BlockPos const&,Player&);
+	BatteryBlockScreen(MinecraftClient&,BlockSource&,BlockPos const&,Player&);
 	~BatteryBlockScreen()=default;
 public:
 	virtual void onItemPanelChanged(IC::ItemPanel&);

@@ -12,10 +12,10 @@ public:
 public:
 	ICEntityBlock(std::string const&,int, const Material&);
 public:
-	virtual void onPlace(BlockSource&, BlockPos const&);
-	virtual void onRemove(BlockSource&, BlockPos const&);
-	virtual void onLoaded(BlockSource&, BlockPos const&);
-	virtual void onMove(BlockSource&, BlockPos const&, BlockPos const&);
+	virtual void onPlace(BlockSource&, BlockPos const&)const;
+	virtual void onRemove(BlockSource&, BlockPos const&)const;
+	virtual void onLoaded(BlockSource&, BlockPos const&)const;
+	virtual void onMove(BlockSource&, BlockPos const&, BlockPos const&)const;
 public:
-	virtual ICBlockEntity* newICBlockEntity(BlockPos,BlockSource&)=0;
+	virtual ICBlockEntity* newICBlockEntity(BlockPos,BlockSource&)const=0;
 };

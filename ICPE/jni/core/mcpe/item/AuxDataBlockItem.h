@@ -7,5 +7,5 @@ class AuxDataBlockItem : public BlockItem
 public:
 	char filler[10];
 public:
-	AuxDataBlockItem(std::string const&,int,Block*);
+	AuxDataBlockItem(std::string const&,int,Block const*);
 };

@@ -1,8 +1,10 @@
 #include "GuideBookItem.h"
 
-#include "client/ICClient.h"
-
 #include "mcpe/client/resources/I18n.h"
+
+#include "ui/UIScreenChooser.h"
+
+#include "ICPE.h"
 
 GuideBookItem::GuideBookItem():IC::Items("guide_book",IC::Items::ID::mGuideBook-256)
 {
@@ -17,7 +19,7 @@ std::string GuideBookItem::buildEffectDescriptionName(ItemInstance const&) const
 }
 void GuideBookItem::useOn(ItemInstance*, Player*, int, int, int, signed char, float, float, float)
 {
-	ICClient::mInstance.getScreenChooser()->pushGuideBookScreen();
+	ICPE::mUIScreenChooser.pushGuideBookScreen();
 }
 bool GuideBookItem::isEmissive(int) const
 {

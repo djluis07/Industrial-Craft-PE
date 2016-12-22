@@ -27,11 +27,11 @@ std::string ICOreBlock::buildDescriptionName(unsigned char aux) const
 		return I18n::get("ic.ore.uranium");
 	}
 }
-int ICOreBlock::getSpawnResourcesAuxValue(unsigned char aux)
+int ICOreBlock::getSpawnResourcesAuxValue(unsigned char aux)const
 {
 	return aux;
 }
-int ICOreBlock::getPlacementDataValue(Mob&, BlockPos const&, signed char, Vec3 const&, int aux)
+int ICOreBlock::getPlacementDataValue(Entity&, BlockPos const&, signed char, Vec3 const&, int aux)const
 {
 	return aux;
 }

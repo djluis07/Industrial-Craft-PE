@@ -9,6 +9,7 @@
 #include "mcpe/client/gui/IntRectangle.h"
 #include "mcpe/client/gui/Font.h"
 #include "mcpe/client/gui/screen/Screen.h"
+#include "mcpe/client/gui/screen/ScreenChooser.h"
 #include "mcpe/client/renderer/ScreenRenderer.h"
 #include "mcpe/client/renderer/ItemRenderer.h"
 #include "mcpe/client/settings/Options.h"
@@ -20,10 +21,9 @@
 #include "mcpe/item/ItemInstance.h"
 #include "mcpe/block/Block.h"
 
-BaseContainerScreen::BaseContainerScreen(BlockSource&s,BlockPos const&ps,Player&p,std::string const&n)
+BaseContainerScreen::BaseContainerScreen(MinecraftClient&c,BlockSource&s,Player&p,std::string const&n):Screen(c)
 {
 	source=&s;
-	pos=ps;
 	player=&p;
 	headerName=n;
 	itemTextTimer=0;
@@ -36,19 +36,22 @@ BaseContainerScreen::BaseContainerScreen(BlockSource&s,BlockPos const&ps,Player&
 }
 void BaseContainerScreen::init()
 {
-	int width=scr->mcClient->getGuiData()->getScreenWidth();
-	int height=scr->mcClient->getGuiData()->getScreenHeight();
+	Screen::init();
+	
+	int width=mcClient->getGuiData()->getScreenWidth();
+	int height=mcClient->getGuiData()->getScreenHeight();
 	
 	unsigned int posInInv=0;
 	for(unsigned int yPos=35;posInInv<36;yPos+=25)
 		for(unsigned int xPos=15;xPos<120&&posInInv<36;xPos+=25)
 		{
-			std::shared_ptr<Touch::TButton> newBtn=std::make_shared<Touch::TButton>(posInInv++,"",scr->mcClient,false,0);
+			std::shared_ptr<Touch::TButton> newBtn=std::make_shared<Touch::TButton>(posInInv++,"",mcClient,false,0);
 			newBtn->xPosition=xPos;
 			newBtn->yPosition=yPos;
 			newBtn->width=25;
 			newBtn->height=25;
-			scr->buttonList.push_back(newBtn);
+			newBtn->setVisible(false);
+			buttonList.push_back(newBtn);
 		}
 	int currentID=100;
 	
@@ -57,40 +60,70 @@ void BaseContainerScreen::init()
 	header->yPosition=0;
 	header->width=width;
 	header->height=25;
-	scr->buttonList.push_back(header);
+	buttonList.push_back(header);
 	
 	background=std::make_shared<PackedScrollContainer>(false,false);
 	background->xPosition=0;
 	background->yPosition=0;
 	background->width=width;
 	background->height=height;
-	background->setBackground(scr->mcClient,"textures/gui/spritesheet",{34,43,14,14},3,3);
+	background->setBackground(mcClient,"textures/gui/spritesheet",{34,43,14,14},3,3);
+	tabElementList.push_back(background);
+	
+	buttonClose=std::make_shared<Touch::TButton>(++currentID,"",mcClient,false,0);
+	buttonClose->xPosition=width-20;
+	buttonClose->yPosition=0;
+	buttonClose->width=20;
+	buttonClose->height=20;
+	buttonClose->setVisible(false);
+	buttonList.push_back(buttonClose);
 	
 	closeBackground=std::make_shared<PackedScrollContainer>(false,false);
 	closeBackground->xPosition=width-20;
 	closeBackground->yPosition=0;
 	closeBackground->width=20;
 	closeBackground->height=20;
-	closeBackground->setBackground(scr->mcClient,"textures/gui/spritesheet",{60,0,18,18},0,0);
+	closeBackground->setVisible(false);
+	closeBackground->setBackground(mcClient,"textures/gui/spritesheet",{60,0,18,18},0,0);
+	tabElementList.push_back(closeBackground);
 	
-	closeBackgroundPressed=std::make_shared<PackedScrollContainer>(false,false);
-	closeBackgroundPressed->xPosition=width-20;
-	closeBackgroundPressed->yPosition=0;
-	closeBackgroundPressed->width=20;
-	closeBackgroundPressed->height=20;
-	closeBackgroundPressed->setBackground(scr->mcClient,"textures/gui/spritesheet",{78,0,18,18},0,0);
+	closeBackground_pressed=std::make_shared<PackedScrollContainer>(false,false);
+	closeBackground_pressed->xPosition=width-20;
+	closeBackground_pressed->yPosition=0;
+	closeBackground_pressed->width=20;
+	closeBackground_pressed->height=20;
+	closeBackground_pressed->setVisible(false);
+	closeBackground_pressed->setBackground(mcClient,"textures/gui/spritesheet",{78,0,18,18},0,0);
+	tabElementList.push_back(closeBackground_pressed);
 	
-	buttonClose=std::make_shared<Touch::TButton>(++currentID,"",scr->mcClient,false,0);
-	buttonClose->xPosition=width-20;
-	buttonClose->yPosition=0;
-	buttonClose->width=20;
-	buttonClose->height=20;
-	scr->buttonList.push_back(buttonClose);
+	backgroundSelected=std::make_shared<PackedScrollContainer>(false,false);
+	backgroundSelected->xPosition=-50;
+	backgroundSelected->yPosition=-50;
+	backgroundSelected->width=0;
+	backgroundSelected->height=0;
+	backgroundSelected->setBackground(mcClient,"textures/gui/gui",{0,22,24,24},3,3);
+	tabElementList.push_back(backgroundSelected);
 	
-	itemSlotBackground=std::make_shared<PackedScrollContainer>(false,false);
-	itemSlotBackground->width=25;
-	itemSlotBackground->height=25;
-	itemSlotBackground->setBackground(scr->mcClient,"textures/gui/gui",{200,46,16,16},2,2);
+	itemSlotDarkBackground=std::make_shared<PackedScrollContainer>(false,false);
+	itemSlotDarkBackground->width=145;
+	itemSlotDarkBackground->height=height-35;
+	itemSlotDarkBackground->xPosition=5;
+	itemSlotDarkBackground->yPosition=30;
+	itemSlotDarkBackground->setBackground(Color(0.25,0.25,0.25,1.0));
+	tabElementList.push_back(itemSlotDarkBackground);
+
+	posInInv=0;
+	for(unsigned int yPos=35;posInInv<36;yPos+=25)
+		for(unsigned int xPos=15;xPos<120&&posInInv<36;xPos+=25,++posInInv)
+		{
+			std::shared_ptr<PackedScrollContainer> itemSlotBackground=std::make_shared<PackedScrollContainer>(false,false);
+			itemSlotBackground->width=25;
+			itemSlotBackground->height=25;
+			itemSlotBackground->xPosition=xPos;
+			itemSlotBackground->yPosition=yPos;
+			itemSlotBackground->setBackground(mcClient,"textures/gui/gui",{200,46,16,16},2,2);
+			tabElementList.push_back(itemSlotBackground);
+		}
 	
 	onInit();
 	
@@ -98,13 +131,13 @@ void BaseContainerScreen::init()
 	if(itemPanels.size()>0)
 		itemPanels[0]->setSelected(true);
 }
-void BaseContainerScreen::render(int,int,float,void (*)(Screen*,int,int,float))
+void BaseContainerScreen::render(int int1,int int2,float floatvalue)
 {
-	InventoryMenu* invMenu=scr->mcClient->getLocalPlayer()->getInventoryMenu();
-	int width=scr->mcClient->getGuiData()->getScreenWidth();
-	int height=scr->mcClient->getGuiData()->getScreenHeight();
+	InventoryMenu* invMenu=mcClient->getLocalPlayer()->getInventoryMenu();
+	int width=mcClient->getGuiData()->getScreenWidth();
+	int height=mcClient->getGuiData()->getScreenHeight();
 	
-	for(std::shared_ptr<Button>& btn : scr->buttonList)
+	for(std::shared_ptr<Button>& btn : buttonList)
 	{
 		//inv
 		
@@ -157,15 +190,21 @@ void BaseContainerScreen::render(int,int,float,void (*)(Screen*,int,int,float))
 		}
 	}
 	
-	//render backgrounds
-	background->render(scr->mcClient,background->xPosition,background->yPosition);
-	ScreenRenderer::singletonPtr->fill(5,30,150,height-5,Color(0.25,0.25,0.25,1.0));
-	header->render(scr->mcClient,header->xPosition,header->yPosition);
-	if(buttonClose->pressed)
-		closeBackgroundPressed->render(scr->mcClient,closeBackgroundPressed->xPosition,closeBackgroundPressed->yPosition);
-	else
-		closeBackground->render(scr->mcClient,closeBackground->xPosition,closeBackground->yPosition);
+	closeBackground_pressed->setVisible(buttonClose->isSelected());
+	closeBackground->setVisible(!buttonClose->isSelected());
 	
+	for(std::shared_ptr<IC::ItemPanel>& panel : itemPanels)
+		if(panel->getSelected())
+		{
+			backgroundSelected->xPosition=panel->xPosition-3;
+			backgroundSelected->yPosition=panel->yPosition-3;
+			backgroundSelected->width=36;
+			backgroundSelected->height=36;
+		}
+	
+	//render background
+	Screen::render(int1,int2,floatvalue);
+
 	//render inventory items
 	unsigned int posInInv=0;
 	for(unsigned int yPos=35;posInInv<36;yPos+=25)
@@ -193,7 +232,7 @@ void BaseContainerScreen::render(int,int,float,void (*)(Screen*,int,int,float))
 	}
 	//render panels
 	for(std::shared_ptr<IC::ItemPanel>& panel : itemPanels)
-		panel->render(*scr->mcClient);
+		panel->render(*mcClient);
 	
 	onRender();
 	
@@ -204,10 +243,14 @@ std::string BaseContainerScreen::getScreenName()const
 {
 	return "ic_base_container_screen";
 }
-void BaseContainerScreen::buttonClicked(Button&btn)
+std::string BaseContainerScreen::getScreenNameW()const
+{
+	return "ic_base_container_screen";
+}
+void BaseContainerScreen::_buttonClicked(Button&btn)
 {
 	if(buttonClose.get()==&btn)
-		scr->mcClient->schedulePopScreen(1);
+		mcClient->getScreenChooser()->schedulePopScreen(1);
 	if(btn.id>=1000&&nowPanelID!=btn.id-1000)
 	{
 		itemPanels[nowPanelID]->setSelected(false);
@@ -217,13 +260,9 @@ void BaseContainerScreen::buttonClicked(Button&btn)
 }
 void BaseContainerScreen::drawSlotItemAt(int x,int y,ItemInstance* item)
 {
-	itemSlotBackground->xPosition=x;
-	itemSlotBackground->yPosition=y;
-	itemSlotBackground->render(scr->mcClient,itemSlotBackground->xPosition,itemSlotBackground->yPosition);
-	
 	if(item)ItemRenderer::instance->renderGuiItemNew(item,0,x+5,y+2.5,2,1,1,false);
 	if(item&&item->count>1)
-		scr->mcClient->getFont()->drawShadow(item->count>99?"99+":Util::toString(item->count),x+((item->count>9)?10:15),y+15,Color::WHITE,false,0);
+		mcClient->getFont()->drawShadow(item->count>99?"99+":Util::toString(item->count),x+((item->count>9)?10:15),y+15,Color::WHITE,false,0);
 }
 void BaseContainerScreen::startRenderMovingItem(ItemInstance *item,float xStart,float yStart,float xEnd,float yEnd,float speed,float size)
 {
@@ -253,7 +292,7 @@ void BaseContainerScreen::onSlotMove(float startPosX,float startPosY,int startSl
 	
 	if(isInv)
 	{
-		InventoryMenu* invMenu=scr->mcClient->getLocalPlayer()->getInventoryMenu();
+		InventoryMenu* invMenu=mcClient->getLocalPlayer()->getInventoryMenu();
 		ItemInstance* item=invMenu->getSlot(startSlot);
 		ItemInstance copyItem=*item;
 		copyItem.count=count;
@@ -278,7 +317,7 @@ void BaseContainerScreen::onSlotMove(float startPosX,float startPosY,int startSl
 		ItemInstance* item=&itemPanels[startSlot]->item;
 		ItemInstance copyItem=*item;
 		copyItem.count=count;
-		InventoryMenu* invMenu=scr->mcClient->getLocalPlayer()->getInventoryMenu();
+		InventoryMenu* invMenu=mcClient->getLocalPlayer()->getInventoryMenu();
 		ItemInstance *itemsInv[36];
 		int itemsLeft=count;
 		for(unsigned char pos=0;pos<36;++pos)
@@ -314,11 +353,11 @@ void BaseContainerScreen::onRenderItemText()
 		return;
 	itemTextTimer-=0.02F;
 	
-	int width=scr->mcClient->getGuiData()->getScreenWidth();
-	int height=scr->mcClient->getGuiData()->getScreenHeight();
+	int width=mcClient->getGuiData()->getScreenWidth();
+	int height=mcClient->getGuiData()->getScreenHeight();
 	
-	ScreenRenderer::singletonPtr->drawCenteredString(scr->mcClient->getFont(),itemTextInstance.getHoverName(),width/2,height/5*4,Color::WHITE);
-	ScreenRenderer::singletonPtr->drawCenteredString(scr->mcClient->getFont(),itemTextInstance.getEffectName(),width/2,height/5*4+10,Color::WHITE);
+	ScreenRenderer::singletonPtr->drawCenteredString(mcClient->getFont(),itemTextInstance.getHoverName(),width/2,height/5*4,Color::WHITE);
+	ScreenRenderer::singletonPtr->drawCenteredString(mcClient->getFont(),itemTextInstance.getEffectName(),width/2,height/5*4+10,Color::WHITE);
 }
 void BaseContainerScreen::startRenderItemText(ItemInstance const&item)
 {
@@ -345,13 +384,14 @@ void BaseContainerScreen::onRegisterPanels(int,int)
 }
 void BaseContainerScreen::registerNewItemPanel(int x,int y,ItemInstance const&item)
 {
-	std::shared_ptr<IC::ItemPanel> newPanel=std::make_shared<IC::ItemPanel>(itemPanels.size(),item,x,y,*scr->mcClient);
-	scr->buttonList.push_back(newPanel->getNewButton(*scr->mcClient));
+	std::shared_ptr<IC::ItemPanel> newPanel=std::make_shared<IC::ItemPanel>(itemPanels.size(),item,x,y,*mcClient);
+	buttonList.push_back(newPanel->getNewButton(*mcClient));
 	itemPanels.push_back(newPanel);
+	tabElementList.push_back(newPanel->getBackground());
 }
 std::shared_ptr<Button> BaseContainerScreen::getButtonByID(int id)
 {
-	for(std::shared_ptr<Button>& btn : scr->buttonList)
+	for(std::shared_ptr<Button>& btn : buttonList)
 		if(btn.get()&&btn->id==id)
 			return btn;
 }

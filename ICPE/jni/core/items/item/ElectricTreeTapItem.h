@@ -8,5 +8,5 @@ public:
 	ElectricTreeTapItem();
 public:
 	virtual std::string buildEffectDescriptionName(const ItemInstance&) const;
-	virtual void useOn(ItemInstance*, Player*, int, int, int, signed char, float, float, float);
+	virtual void useOn(ItemInstance&, Entity&, int, int, int, signed char, float, float, float);
 };

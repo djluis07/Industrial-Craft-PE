@@ -2,7 +2,8 @@
 
 #include "mcpe/block/Block.h"
 
-struct FireBlock : public Block
+class FireBlock : public Block
 {
+public:
 	void setFlammable(BlockID,int,int);
 };

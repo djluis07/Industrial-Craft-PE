@@ -19,14 +19,13 @@ obj/local/armeabi-v7a/objs/icpe_core/ICPE.o: jni/core/ICPE.cpp \
  jni/core/mcpe/item/UseAnimation.h jni/core/mcpe/item/ItemInstance.h \
  jni/core/mcpe/item/../Util/BlockID.h \
  jni/core/mcpe/item/../Util/../block/BlockProperty.h \
- jni/core/mcpe/client/renderer/texture/TextureUVCoordinateSet.h \
+ jni/core/mcpe/block/BlockShape.h \
+ jni/core/mcpe/item/../client/renderer/texture/TextureUVCoordinateSet.h \
  jni/core/mcpe/util/ResourceLocation.h jni/core/mcpe/block/Block.h \
  jni/core/mcpe/util/Color.h jni/core/mcpe/util/AABB.h \
  jni/core/mcpe/util/Vec3.h jni/core/mcpe/util/BlockPos.h \
  jni/core/mcpe/block/material/Material.h \
  jni/core/mcpe/block/material/MaterialType.h \
- jni/core/mcpe/block/BlockShape.h \
- jni/core/mcpe/blockentity/BlockEntityType.h \
  jni/core/mcpe/block/BlockSoundType.h \
  jni/core/mcpe/block/BlockSupportType.h \
  jni/core/mcpe/block/BlockGraphics.h \
@@ -41,6 +40,7 @@ obj/local/armeabi-v7a/objs/icpe_core/ICPE.o: jni/core/ICPE.cpp \
  jni/core/mcpe/client/renderer/MaterialPtr.h \
  jni/core/mcpe/level/BlockSource.h \
  jni/core/mcpe/level/../blockentity/BlockEntity.h \
+ jni/core/mcpe/level/../blockentity/BlockEntityType.h \
  jni/core/mcpe/level/../blockentity/../inventory/FillingContainer.h \
  jni/core/mcpe/level/../blockentity/../inventory/Container.h \
  jni/core/mcpe/level/../util/Brightness.h \
@@ -81,10 +81,10 @@ obj/local/armeabi-v7a/objs/icpe_core/ICPE.o: jni/core/ICPE.cpp \
  jni/core/blocks/BlockGraphics.h \
  jni/core/blocks/blockentity/ICBlockEntityManager.h \
  jni/core/blocks/tessellator/CableTessellator.h jni/core/gen/FeatureGen.h \
- jni/core/client/ICClient.h jni/core/util/ICRandom.h \
- jni/core/client/ICOptions.h jni/core/mca/data/Database.h \
- jni/core/mca/data/tag/ComposedTag.h jni/core/mca/data/tag/ListTag.h \
- jni/core/mca/data/tag/Tag.h jni/core/mca/data/worker/DatabaseReader.h \
+ jni/core/ui/UIScreenChooser.h jni/core/client/ICOptions.h \
+ jni/core/mca/data/Database.h jni/core/mca/data/tag/ComposedTag.h \
+ jni/core/mca/data/tag/ListTag.h jni/core/mca/data/tag/Tag.h \
+ jni/core/mca/data/worker/DatabaseReader.h \
  jni/core/mca/data/worker/DatabaseWorker.h \
  /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/sources/cxx-stl/gnu-libstdc++/4.9/include/sstream \
  jni/core/mca/data/worker/DatabaseWriter.h \
@@ -93,7 +93,6 @@ obj/local/armeabi-v7a/objs/icpe_core/ICPE.o: jni/core/ICPE.cpp \
  /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/platforms/android-19/arch-arm/usr/include/endian.h \
  /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/platforms/android-19/arch-arm/usr/include/sys/endian.h \
  /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/platforms/android-19/arch-arm/usr/include/machine/endian.h \
- jni/core/ui/UIScreenChooser.h jni/core/ui/uilib/UILib.h \
  jni/core/util/language/zh_CN.h jni/core/util/language/en_US.h
 
 jni/core/ICPE.h:
@@ -140,7 +139,9 @@ jni/core/mcpe/item/../Util/BlockID.h:
 
 jni/core/mcpe/item/../Util/../block/BlockProperty.h:
 
-jni/core/mcpe/client/renderer/texture/TextureUVCoordinateSet.h:
+jni/core/mcpe/block/BlockShape.h:
+
+jni/core/mcpe/item/../client/renderer/texture/TextureUVCoordinateSet.h:
 
 jni/core/mcpe/util/ResourceLocation.h:
 
@@ -157,10 +158,6 @@ jni/core/mcpe/util/BlockPos.h:
 jni/core/mcpe/block/material/Material.h:
 
 jni/core/mcpe/block/material/MaterialType.h:
-
-jni/core/mcpe/block/BlockShape.h:
-
-jni/core/mcpe/blockentity/BlockEntityType.h:
 
 jni/core/mcpe/block/BlockSoundType.h:
 
@@ -191,6 +188,8 @@ jni/core/mcpe/client/renderer/MaterialPtr.h:
 jni/core/mcpe/level/BlockSource.h:
 
 jni/core/mcpe/level/../blockentity/BlockEntity.h:
+
+jni/core/mcpe/level/../blockentity/BlockEntityType.h:
 
 jni/core/mcpe/level/../blockentity/../inventory/FillingContainer.h:
 
@@ -294,9 +293,7 @@ jni/core/blocks/tessellator/CableTessellator.h:
 
 jni/core/gen/FeatureGen.h:
 
-jni/core/client/ICClient.h:
-
-jni/core/util/ICRandom.h:
+jni/core/ui/UIScreenChooser.h:
 
 jni/core/client/ICOptions.h:
 
@@ -325,10 +322,6 @@ jni/core/mca/data/worker/DatabaseWriter.h:
 /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/platforms/android-19/arch-arm/usr/include/sys/endian.h:
 
 /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/platforms/android-19/arch-arm/usr/include/machine/endian.h:
-
-jni/core/ui/UIScreenChooser.h:
-
-jni/core/ui/uilib/UILib.h:
 
 jni/core/util/language/zh_CN.h:
 

@@ -32,7 +32,7 @@ void OreFeature::place(BlockSource&s,BlockPos const&pos,ICRandom&r)
 }
 void OreFeature::checkToPlace(BlockSource&s,BlockPos const&pos)
 {
-	if(s.getBlock(pos.x,pos.y,pos.z)==Block::mStone&&s.getData(pos.x,pos.y,pos.z)==0)
-			s.setBlockAndData(pos,oreBlock,3);
+	if(s.getBlock(pos)==Block::mStone&&s.getData(pos)==0)
+		s.setBlockAndData(pos,oreBlock,3,0);
 }
 }

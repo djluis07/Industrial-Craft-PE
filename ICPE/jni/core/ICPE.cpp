@@ -44,10 +44,8 @@
 #include "blocks/blockentity/ICBlockEntityManager.h"
 #include "blocks/tessellator/CableTessellator.h"
 #include "gen/FeatureGen.h"
-#include "client/ICClient.h"
-#include "ui/uilib/UILib.h"
 #include "ui/UIScreenChooser.h"
-#include "util/ICRandom.h"
+#include "client/ICOptions.h"
 #include "util/language/zh_CN.h"
 #include "util/language/en_US.h"
 
@@ -58,8 +56,6 @@ jint ICPE::onJNI_Loaded(JavaVM*,void*)
 }
 void ICPE::setupMSHookFunctions()
 {
-	UILib::setup();
-	
 	MSHookFunction((void*)&Localization::_load,(void*)&loadLocalization,(void**)&loadLocalization_);
 	MSHookFunction((void*)&Level::tick,(void*)&tickLevel,(void**)&tickLevel_);
 	MSHookFunction((void*)&Minecraft::createLevel,(void*)&createLevel,(void**)&createLevel_);
@@ -76,7 +72,7 @@ void ICPE::setupMSHookFunctions()
 void (*ICPE::loadLocalization_)(Localization*, const std::string&)=0;
 void (*ICPE::onNewChunkFor_)(Level*,Player &, LevelChunk &)=0;
 void (*ICPE::initRecipes_)(Recipes*self)=0;
-bool (*ICPE::tessellateInWorld_)(BlockTessellator*,Block&,BlockPos const&,uchar,bool)=0;
+bool (*ICPE::tessellateInWorld_)(BlockTessellator*,Block const&,BlockPos const&,uchar,bool)=0;
 void (*ICPE::initMCClient_)(MinecraftClient*)=0;
 void (*ICPE::initCreativeItems_)()=0;
 void (*ICPE::initItems_)()=0;
@@ -85,12 +81,14 @@ void (*ICPE::initBlocks_)()=0;
 void (*ICPE::createLevel_)(Minecraft*,void*,std::string const&,std::string const&,LevelSettings const &,ResourcePackManager&)=0;
 void (*ICPE::tickLevel_)(Level*)=0;
 
-MinecraftClient* ICPE::mcClient=0;
-Level* ICPE::currentLevel=0;
-std::string ICPE::currentLevelFolder;
-ICBlockEntityManager* ICPE::currentICBlockEntityManager=0;
-ICOptions* ICPE::icOptions=0;
-UIScreenChooser* ICPE::uiChooser=0;
+MinecraftClient* ICPE::pMinecraftClient=0;
+Level* ICPE::pLevel=0;
+std::string ICPE::mLevelFolder;
+ICBlockEntityManager ICPE::mBlockEntityManager;
+ICOptions ICPE::mICOptions;
+UIScreenChooser ICPE::mUIScreenChooser;
+Random ICPE::mRandom;
+const int ICPE::localKeyCode=137624695;
 
 void ICPE::loadLocalization(Localization *self, const std::string &languageName)
 {
@@ -120,7 +118,7 @@ void ICPE::initRecipes(Recipes*self)
 	initRecipes_(self);
 	ICRecipes::addRecipes(*self,*FurnaceRecipes::getInstance());
 }
-bool ICPE::tessellateInWorld(BlockTessellator*tessellator,Block&block,BlockPos const&pos,uchar aux,bool wtf)
+bool ICPE::tessellateInWorld(BlockTessellator*tessellator,Block const&block,BlockPos const&pos,uchar aux,bool wtf)
 {
 	if(&block==Block::mBlocks[IC::Blocks::ID::mCable])
 		return ((CableTessellator*)tessellator)->tessellate(block,pos,aux,wtf,tessellateInWorld_);
@@ -129,7 +127,9 @@ bool ICPE::tessellateInWorld(BlockTessellator*tessellator,Block&block,BlockPos c
 void ICPE::initMCClient(MinecraftClient*self)
 {
 	initMCClient_(self);
-	ICClient::mInstance.setMinecraftClient(self);
+	pMinecraftClient=self;
+	mUIScreenChooser=UIScreenChooser(*self);
+	mRandom=Random((unsigned long int)time(0));
 }
 void ICPE::initCreativeItems()
 {
@@ -154,10 +154,10 @@ void ICPE::initBlocks()
 void ICPE::createLevel(Minecraft*self,void*v,std::string const&path,std::string const&name,LevelSettings const &settings,ResourcePackManager&manager)
 {
 	createLevel_(self,v,path,name,settings,manager);
-	ICClient::mInstance.setLevelFolder(path);
+	mLevelFolder=path;
 }
 void ICPE::tickLevel(Level*self)
 {
 	tickLevel_(self);
-	ICClient::mInstance.setCurrentLevel(self);
+	pLevel=self;
 }

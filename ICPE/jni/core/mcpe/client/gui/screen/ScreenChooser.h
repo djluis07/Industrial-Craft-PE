@@ -18,6 +18,7 @@ public:
 	~ScreenChooser();
 	void pushLocalPlayScreen();
 	void popScreen(AbstractScreen &, int);
+	void schedulePopScreen(int);
 	void pushAddExternalServerScreen(void);
 	void pushAnvilScreen(Player &, BlockPos const &);
 	void pushBlockSelectionScreen(void);
