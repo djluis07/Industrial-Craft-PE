@@ -5,7 +5,7 @@
 class FullBlock;
 class BlockPos;
 class BlockSource;
-class ICRandom;
+class Random;
 
 namespace IC
 {
@@ -23,8 +23,8 @@ public:
 	OreFeature(FullBlock,OreGenType);
 	~OreFeature()=default;
 public:
-	void place(BlockSource&,BlockPos const&,ICRandom&);
+	bool place(BlockSource&,BlockPos const&,Random&)const;
 protected:
-	void checkToPlace(BlockSource&,BlockPos const&);
+	void checkToPlace(BlockSource&,BlockPos const&)const;
 };
 }

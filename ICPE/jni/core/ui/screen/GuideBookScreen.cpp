@@ -31,9 +31,9 @@ void GuideBookScreen::init()
 	guideBookBackground->setBackground(mcClient,"textures/gui/book",{8,0,152,184},0,0);
 	tabElementList.push_back(guideBookBackground);
 }
-void GuideBookScreen::render(int,int,float)
+void GuideBookScreen::render(int i,int i2,float f)
 {
-	
+	Screen::render(i,i2,f);
 }
 void GuideBookScreen::_buttonClicked(Button&btn)
 {

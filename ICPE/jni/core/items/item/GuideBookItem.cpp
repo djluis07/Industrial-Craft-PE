@@ -17,7 +17,7 @@ std::string GuideBookItem::buildEffectDescriptionName(ItemInstance const&) const
 {
 	return "§7"+I18n::get("ic.guidebook.effect");
 }
-void GuideBookItem::useOn(ItemInstance*, Player*, int, int, int, signed char, float, float, float)
+void GuideBookItem::useOn(ItemInstance&, Entity&, int, int, int, signed char, float, float, float)
 {
 	ICPE::mUIScreenChooser.pushGuideBookScreen();
 }

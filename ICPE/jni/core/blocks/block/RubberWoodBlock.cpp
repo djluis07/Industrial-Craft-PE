@@ -19,16 +19,16 @@ RubberWoodBlock::RubberWoodBlock():IC::Blocks("ic.rubber.wood",IC::Blocks::ID::m
 	
 	((FireBlock*)mFire)->setFlammable(BlockID(IC::Blocks::ID::mRubberWood),50,10);
 }
-void RubberWoodBlock::tick(BlockSource&s, BlockPos const&pos, Random&r)
+void RubberWoodBlock::tick(BlockSource&s, BlockPos const&pos, Random&r)const
 {
-	if(r.nextInt(7)==5&&s.getData(pos.x,pos.y,pos.z)==1)
+	if(r.nextInt(7)==5&&s.getData(pos)==1)
 		s.setBlockAndData(pos,FullBlock(IC::Blocks::ID::mRubberWood,2),3,0);
 }
-int RubberWoodBlock::getSpawnResourcesAuxValue(unsigned char)
+int RubberWoodBlock::getSpawnResourcesAuxValue(unsigned char)const
 {
 	return 0;
 }
-int RubberWoodBlock::getPlacementDataValue(Mob&, BlockPos const&, signed char, Vec3 const&, int aux)
+int RubberWoodBlock::getPlacementDataValue(Mob&, BlockPos const&, signed char, Vec3 const&, int aux)const
 {
 	return aux;
 }

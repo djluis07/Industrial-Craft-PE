@@ -27,8 +27,8 @@ void BlockGraphics::initBlockGraphics()
 	MCPEBlockGraphics::mBlocks[IC::Blocks::ID::mResin]=new MCPEBlockGraphics("portal");
 	MCPEBlockGraphics::mBlocks[IC::Blocks::ID::mResin]->setTextureItem("resin_sheet");
 	
-	MCPEBlockGraphics::mBlocks[IC::Blocks::ID::mRubberLeaves]=new MCPEBlockGraphics("leaves");
-	MCPEBlockGraphics::mBlocks[IC::Blocks::ID::mRubberLeaves]->setTextureItem("rubber_leaves");
+	MCPEBlockGraphics::mBlocks[IC::Blocks::ID::mRubberLeaves]=new MCPEBlockGraphics("portal");
+	MCPEBlockGraphics::mBlocks[IC::Blocks::ID::mRubberLeaves]->setTextureItem("rubber_leaves_carried");
 	MCPEBlockGraphics::mBlocks[IC::Blocks::ID::mRubberLeaves]->setCarriedTextureItem("rubber_leaves_carried");
 	MCPEBlockGraphics::mBlocks[IC::Blocks::ID::mRubberLeaves]->setTextureIsotropic(1);
 	MCPEBlockGraphics::mBlocks[IC::Blocks::ID::mRubberLeaves]->setTextureIsotropic(0);

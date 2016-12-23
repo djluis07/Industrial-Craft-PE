@@ -10,17 +10,17 @@ public:
 	class ID
 	{
 	public:
-		static const unsigned char mOre=200;
-		static const unsigned char mMachine=201;
-		static const unsigned char mAdvancedMachine=36;
-		static const unsigned char mRubberWood=202;
-		static const unsigned char mRubberLeaves=203;
-		static const unsigned char mRubberSapling=204;
-		static const unsigned char mITNT=206;
-		static const unsigned char mResin=207;
-		static const unsigned char mCable=208;
-		static const unsigned char mIronFurnace=209;
-		static const unsigned char mIronFence=210;
+		static const unsigned char mOre=36;
+		static const unsigned char mMachine=210;
+		static const unsigned char mAdvancedMachine=211;
+		static const unsigned char mRubberWood=212;
+		static const unsigned char mRubberLeaves=213;
+		static const unsigned char mRubberSapling=214;
+		static const unsigned char mITNT=215;
+		static const unsigned char mResin=216;
+		static const unsigned char mCable=220;
+		static const unsigned char mIronFurnace=218;
+		static const unsigned char mIronFence=219;
 	};
 public:
 	static bool mICBlocks[256];

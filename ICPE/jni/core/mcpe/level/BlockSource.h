@@ -60,10 +60,14 @@ public:
 	FullBlock getBlockAndData(BlockPos const &);
 	BlockEntity* getBlockEntity(int, int, int);
 	BlockID getBlockID(int, int, int);
+	BlockID getBlockID(BlockPos const &);
 	Brightness getBrightness(LightLayer const &, int, int, int);
 	Brightness getBrightness(int, int, int);
+	Brightness getBrightness(LightLayer const &, BlockPos const &);
+	Brightness getBrightness(BlockPos const &);
 	LevelChunk* getChunk(int, int);
 	LevelChunk* getChunkAt(int, int, int);
+	LevelChunk* getChunkAt(BlockPos const &);
 	ChunkSource* getChunkSource();
 	int getData(BlockPos const &);
 	int getData(int, int, int);

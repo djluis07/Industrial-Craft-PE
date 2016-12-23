@@ -15,34 +15,34 @@ ResinBlock::ResinBlock():IC::Blocks("ic.resin",IC::Blocks::ID::mResin,Material::
 	setDestroyTime(1);
 	setSolid(false);
 }
-int ResinBlock::getResource(Random&, int, int)
+int ResinBlock::getResource(Random&, int, int)const
 {
 	return IC::Items::ID::mRubber;
 }
-int ResinBlock::getSpawnResourcesAuxValue(unsigned char aux)
+int ResinBlock::getSpawnResourcesAuxValue(unsigned char aux)const
 {
 	return aux;
 }
-bool ResinBlock::mayPlaceOn(Block const&b)
+bool ResinBlock::mayPlaceOn(Block const&b)const
 {
 	return b.isSolid();
 }
-void ResinBlock::neighborChanged(BlockSource&s, BlockPos const&pos, BlockPos const&)
+void ResinBlock::neighborChanged(BlockSource&s, BlockPos const&pos, BlockPos const&)const
 {
-	if(s.getBlock(pos.x,pos.y,pos.z)==this&&!mayPlaceOn(*s.getBlock(pos.x,pos.y-1,pos.z)))
+	if(s.getBlock(pos)==this&&!mayPlaceOn(*s.getBlock(pos.x,pos.y-1,pos.z)))
 	{
-		popResource(s,pos,ItemInstance(IC::Items::ID::mRubber,1,s.getData(pos.x,pos.y,pos.z)));
-		s.removeBlock(pos.x,pos.y,pos.z);
+		popResource(s,pos,ItemInstance(IC::Items::ID::mRubber,1,s.getData(pos)));
+		s.removeBlock(pos);
 	}
 }
-bool ResinBlock::entityInside(BlockSource&s, BlockPos const&pos, Entity&e)
+bool ResinBlock::entityInside(BlockSource&s, BlockPos const&pos, Entity&e)const
 {
-	if(s.getData(pos.x,pos.y,pos.z)==0)
+	if(s.getData(pos)==0)
 		mSlimeBlock->onStepOn(e,pos);
 	else
 		return mVine->entityInside(s,pos,e);
 }
-bool ResinBlock::shouldStopFalling(Entity&)
+bool ResinBlock::shouldStopFalling(Entity&)const
 {
 	return true;
 }

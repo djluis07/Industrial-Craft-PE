@@ -17,32 +17,48 @@ RubberLeavesBlock::RubberLeavesBlock():IC::Blocks("ic.rubber.leaves",IC::Blocks:
 	//setSoundType(BlockSoundType::SOUND_DEFAULT);
 	setExplodeable(1);
 	setDestroyTime(0.2);
-	renderLayer=mLeaves->renderLayer;
 	setTicking(true);
+	setVisualShape({0.001,0.001,0.001,1,1,1});
+	renderLayer=mLeaves->renderLayer;
 	
 	((FireBlock*)mFire)->setFlammable(BlockID(IC::Blocks::ID::mRubberLeaves),65,25);
 }
-int RubberLeavesBlock::getResource(Random&, int id, int)
+int RubberLeavesBlock::getResource(Random&, int id, int)const
 {
 	return id==359?IC::Blocks::ID::mRubberLeaves:IC::Blocks::ID::mRubberSapling;
 }
-int RubberLeavesBlock::getResourceCount(Random&, int id, int)
+int RubberLeavesBlock::getResourceCount(Random&r, int id, int)const
 {
-	return id==359?1:(ICPE::mRandom.nextInt(10)==9?1:0);
+	return id==359?1:(r.nextInt(10)==9?1:0);
 }
-ItemInstance RubberLeavesBlock::getSilkTouchItemInstance(unsigned char)
+ItemInstance RubberLeavesBlock::getSilkTouchItemInstance(unsigned char)const
 {
 	return ItemInstance(IC::Blocks::ID::mRubberLeaves,1,0);
+}
+void RubberLeavesBlock::onGraphicsModeChanged(bool, bool, bool)
+{
+	renderLayer=mLeaves->renderLayer;
 }
 int RubberLeavesBlock::getRenderLayer(BlockSource&s, BlockPos const&pos) const
 {
 	return mLeaves->getRenderLayer(s,pos);
 }
-int RubberLeavesBlock::getColor(BlockSource&, BlockPos const&) const
+int RubberLeavesBlock::getExtraRenderLayers() const
 {
-	return 8431445;
+	return mLeaves->getExtraRenderLayers();
 }
-void RubberLeavesBlock::tick(BlockSource&s, BlockPos const&pos, Random&)
+bool RubberLeavesBlock::isSeasonTinted(BlockSource&, BlockPos const&) const
 {
-	
+	return true;
+}
+void RubberLeavesBlock::tick(BlockSource&s, BlockPos const&pos, Random&r)const
+{
+	if(r.nextBool(8))
+	{
+		
+	}
+}
+int RubberLeavesBlock::getPlacementDataValue(Entity&, BlockPos const&, signed char, Vec3 const&, int) const
+{
+	return 4;
 }

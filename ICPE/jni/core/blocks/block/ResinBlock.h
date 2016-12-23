@@ -7,10 +7,10 @@ class ResinBlock : public IC::Blocks
 public:
 	ResinBlock();
 public:
-	virtual bool shouldStopFalling(Entity&);
-	virtual bool entityInside(BlockSource&, BlockPos const&, Entity&);
-	virtual int getSpawnResourcesAuxValue(unsigned char);
-	virtual int getResource(Random&, int, int);
-	virtual bool mayPlaceOn(Block const&);
-	virtual void neighborChanged(BlockSource&, BlockPos const&, BlockPos const&);
+	virtual bool shouldStopFalling(Entity&)const;
+	virtual bool entityInside(BlockSource&, BlockPos const&, Entity&)const;
+	virtual int getSpawnResourcesAuxValue(unsigned char)const;
+	virtual int getResource(Random&, int, int)const;
+	virtual bool mayPlaceOn(Block const&)const;
+	virtual void neighborChanged(BlockSource&, BlockPos const&, BlockPos const&)const;
 };

@@ -14,4 +14,9 @@ public:
 	virtual bool canSurvive(BlockSource&, BlockPos const&)const;
 	virtual void neighborChanged(BlockSource&, BlockPos const&, BlockPos const&)const;
 	virtual bool checkIsPathable(Entity&, BlockPos const&, BlockPos const&)const;
+	virtual void onGraphicsModeChanged(bool, bool, bool);
+	virtual int getRenderLayer(BlockSource&, BlockPos const&) const;
+	virtual int getExtraRenderLayers() const;
+protected:
+	bool grow(BlockSource&,BlockPos const&,Random&)const;
 };

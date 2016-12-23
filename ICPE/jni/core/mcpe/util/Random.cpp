@@ -35,3 +35,13 @@ int Random::nextInt(int max)
 {
 	return genrand_int32()%max;
 }
+
+bool Random::nextBool()
+{
+	return genrand_int32()%2;
+}
+
+bool Random::nextBool(int max)
+{
+	return nextInt(max)==nextInt(max);
+}
