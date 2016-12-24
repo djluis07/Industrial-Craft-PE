@@ -361,12 +361,12 @@ bool OreFeature::place(BlockSource&s,BlockPos const&pos,Random&r)const
 }
 void OreFeature::checkToPlace(BlockSource&s,BlockPos const&pos)const
 {
-	//if(s.getBlock(pos)==Block::mStone&&s.getData(pos)==0)
+	if(s.getBlock(pos)==Block::mStone&&s.getData(pos)==0)
 		s.setBlockAndData(pos,oreBlock,3,0);
 }
 void OreFeature::checkToPlace(BlockSource&s,int x,int y,int z)const
 {
-	//if(s.getBlock(x,y,z)==Block::mStone&&s.getData(x,y,z)==0)
+	if(s.getBlock(x,y,z)==Block::mStone&&s.getData(x,y,z)==0)
 		s.setBlockAndData(x,y,z,oreBlock,3);
 }
 }

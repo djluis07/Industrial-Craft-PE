@@ -24,52 +24,50 @@ std::shared_ptr<Feature> FeatureGen::copperOre;
 std::shared_ptr<Feature> FeatureGen::uraniumOre;
 std::shared_ptr<Feature> FeatureGen::leadOre;
 
-void FeatureGen::decorateChunk(BlockSource&s, ChunkPos const&cpos)
+void FeatureGen::decorateChunk(BlockSource&s, Random&random,Biome*biome,BlockPos const&pos)
 {
-	Random random(s.getLevel().getSeed()+cpos.x-cpos.z);
-	
 	prepare();
 	
 	//rubber trees
 	{
-		for(int x=cpos.x*16;x<cpos.x*16+16;++x)
-			for(int z=cpos.z*13;z<cpos.z*16+16;++z)
+		for(int x=pos.x;x<pos.x+16;++x)
+			for(int z=pos.z;z<pos.z+16;++z)
 				for(int y=256;y>50;--y)
-					if(s.getBlock(x,y,z)==Block::mGrass&&getRubGenChance(*s.getBiome(BlockPos(x,y,z)))!=0&&random.nextBool(getRubGenChance(*s.getBiome(BlockPos(x,y,z)))))
+					if(s.getBlock(x,y,z)==Block::mGrass&&getRubGenChance(*biome)!=0&&random.nextBool(getRubGenChance(*biome)))
 						rubTree->place(s,BlockPos(x,y,z),random);
 	}
 	
 	//uraniun ore
-	for(int x=cpos.x*16;x<cpos.x*16+16;++x)
+	for(int x=pos.x;x<pos.x+16;++x)
 		for(int y=5;y<20;++y)
-			for(int z=cpos.z*13;z<cpos.z*16+16;++z)
-				if(random.nextBool(15000))
+			for(int z=pos.z;z<pos.z+16;++z)
+				if(random.nextBool(3000))
 					uraniumOre->place(s,BlockPos(x,y,z),random);
 	//copper ore
-	for(int x=cpos.x*16;x<cpos.x*16+16;++x)
+	for(int x=pos.x;x<pos.x+16;++x)
 		for(int y=5;y<70;++y)
-			for(int z=cpos.z*13;z<cpos.z*16+16;++z)
-				if(random.nextBool(5000))
+			for(int z=pos.z;z<pos.z+16;++z)
+				if(random.nextBool(1000))
 					copperOre->place(s,BlockPos(x,y,z),random);
 	//tin ore
-	for(int x=cpos.x*16;x<cpos.x*16+16;++x)
+	for(int x=pos.x;x<pos.x+16;++x)
 		for(int y=5;y<55;++y)
-			for(int z=cpos.z*13;z<cpos.z*16+16;++z)
-				if(random.nextBool(7500))
+			for(int z=pos.z;z<pos.z+16;++z)
+				if(random.nextBool(1400))
 					tinOre->place(s,BlockPos(x,y,z),random);
 	//lead ore
-	for(int x=cpos.x*16;x<cpos.x*16+16;++x)
+	for(int x=pos.x;x<pos.x+16;++x)
 		for(int y=5;y<25;++y)
-			for(int z=cpos.z*13;z<cpos.z*16+16;++z)
-				if(random.nextBool(10000))
+			for(int z=pos.z;z<pos.z+16;++z)
+				if(random.nextBool(2000))
 					tinOre->place(s,BlockPos(x,y,z),random);
 }
 unsigned int FeatureGen::getRubGenChance(Biome&b)
 {
 	if(&b==Biome::forest||&b==Biome::extremeHillsWithTrees||&b==Biome::extremeHillsWithTreesMutated||&b==Biome::forestHills||&b==Biome::forestMutated||&b==Biome::plainsMutated)
-		return 5000;
+		return 10000;
 	if(&b==Biome::swampland||&b==Biome::swamplandMutated)
-		return 3000;
+		return 7000;
 	return 0;
 }
 void FeatureGen::prepare()

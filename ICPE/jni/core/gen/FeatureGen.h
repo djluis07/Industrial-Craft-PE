@@ -3,8 +3,9 @@
 #include <memory>
 
 class BlockSource;
-class ChunkPos;
+class BlockPos;
 class Biome;
+class Random;
 
 namespace IC
 {
@@ -20,7 +21,7 @@ private:
 	static std::shared_ptr<IC::Feature> leadOre;
 	static std::shared_ptr<IC::Feature> uraniumOre;
 public:
-	static void decorateChunk(BlockSource&, ChunkPos const&);
+	static void decorateChunk(BlockSource&, Random&,Biome*,BlockPos const&);
 private:
 	static unsigned int getRubGenChance(Biome&);
 	static void prepare();

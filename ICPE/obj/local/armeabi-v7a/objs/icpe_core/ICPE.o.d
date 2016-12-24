@@ -76,7 +76,8 @@ obj/local/armeabi-v7a/objs/icpe_core/ICPE.o: jni/core/ICPE.cpp \
  jni/core/mcpe/level/../entity/player/../../inventory/BaseContainerMenu.h \
  jni/core/mcpe/level/chunk/LevelChunk.h \
  jni/core/mcpe/util/ChunkBlockPos.h jni/core/mcpe/level/biome/Biome.h \
- jni/core/mcpe/level/ChunkPos.h jni/core/items/Items.h \
+ jni/core/mcpe/level/ChunkPos.h \
+ jni/core/mcpe/level/biome/BiomeDecorator.h jni/core/items/Items.h \
  jni/core/items/recipe/ICRecipes.h jni/core/blocks/Blocks.h \
  jni/core/blocks/BlockGraphics.h \
  jni/core/blocks/blockentity/ICBlockEntityManager.h \
@@ -278,6 +279,8 @@ jni/core/mcpe/util/ChunkBlockPos.h:
 jni/core/mcpe/level/biome/Biome.h:
 
 jni/core/mcpe/level/ChunkPos.h:
+
+jni/core/mcpe/level/biome/BiomeDecorator.h:
 
 jni/core/items/Items.h:
 

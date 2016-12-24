@@ -21,6 +21,9 @@ class ICBlockEntityManager;
 class ICOptions;
 class UIScreenChooser;
 class Random;
+class BiomeDecorator;
+class Biome;
+class BlockSource;
 
 typedef BlockGraphics MCPEBlockGraphics;
 typedef unsigned char uchar;
@@ -33,8 +36,8 @@ public:
 public:
 	static void (*loadLocalization_)(Localization*, const std::string&);
 	static void loadLocalization(Localization *, const std::string &);
-	static void (*onNewChunkFor_)(Level*,Player &, LevelChunk &);
-	static void onNewChunkFor(Level*,Player &, LevelChunk &);
+	static void (*decorateChunk_)(BiomeDecorator*,BlockSource*, Random&, Biome*, BlockPos const&, bool, float);
+	static void decorateChunk(BiomeDecorator*,BlockSource*, Random&, Biome*, BlockPos const&, bool, float);
 	static void (*initRecipes_)(Recipes*);
 	static void initRecipes(Recipes*);
 	static bool (*tessellateInWorld_)(BlockTessellator*,Block const&,BlockPos const&,uchar,bool);

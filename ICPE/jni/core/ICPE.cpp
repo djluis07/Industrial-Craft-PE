@@ -36,6 +36,7 @@
 #include "mcpe/level/Level.h"
 #include "mcpe/level/chunk/LevelChunk.h"
 #include "mcpe/level/ChunkPos.h"
+#include "mcpe/level/biome/BiomeDecorator.h"
 
 #include "items/Items.h"
 #include "items/recipe/ICRecipes.h"
@@ -59,7 +60,7 @@ void ICPE::setupMSHookFunctions()
 	MSHookFunction((void*)&Localization::_load,(void*)&loadLocalization,(void**)&loadLocalization_);
 	MSHookFunction((void*)&Level::tick,(void*)&tickLevel,(void**)&tickLevel_);
 	MSHookFunction((void*)&Minecraft::createLevel,(void*)&createLevel,(void**)&createLevel_);
-	MSHookFunction((void*)&Level::onNewChunkFor,(void*)&onNewChunkFor,(void**)&onNewChunkFor_);
+	MSHookFunction((void*)&BiomeDecorator::decorate,(void*)&decorateChunk,(void**)&decorateChunk_);
 	MSHookFunction((void*)&Recipes::init,(void*)&initRecipes,(void**)&initRecipes_);
 	MSHookFunction((void*)&BlockTessellator::tessellateInWorld,(void*)&tessellateInWorld,(void**)&tessellateInWorld_);
 	MSHookFunction((void*)&MinecraftClient::init,(void*)&initMCClient,(void**)&initMCClient_);
@@ -70,7 +71,7 @@ void ICPE::setupMSHookFunctions()
 }
 
 void (*ICPE::loadLocalization_)(Localization*, const std::string&)=0;
-void (*ICPE::onNewChunkFor_)(Level*,Player &, LevelChunk &)=0;
+void (*ICPE::decorateChunk_)(BiomeDecorator*,BlockSource*, Random&, Biome*, BlockPos const&, bool, float)=0;
 void (*ICPE::initRecipes_)(Recipes*self)=0;
 bool (*ICPE::tessellateInWorld_)(BlockTessellator*,Block const&,BlockPos const&,uchar,bool)=0;
 void (*ICPE::initMCClient_)(MinecraftClient*)=0;
@@ -103,15 +104,12 @@ void ICPE::loadLocalization(Localization *self, const std::string &languageName)
 	for(std::string translation : languageList)
 		self->_appendTranslations(translation);
 }
-void ICPE::onNewChunkFor(Level*self,Player &p, LevelChunk &chunk)
+void ICPE::decorateChunk(BiomeDecorator*decorator,BlockSource*s, Random&r, Biome*biome, BlockPos const&pos, bool b, float f)
 {
-	onNewChunkFor_(self,p,chunk);
+	decorateChunk_(decorator,s,r,biome,pos,b,f);
 	
-	if(p.getRegion().getBlock(chunk.getPosition().x*16,0,chunk.getPosition().z)==Block::mBedrock&&p.getRegion().getData(chunk.getPosition().x*16,0,chunk.getPosition().z)==0)
-	{
-		p.getRegion().setBlockAndData(chunk.getPosition().x*16,0,chunk.getPosition().z,FullBlock(7,1),3);
-		IC::FeatureGen::decorateChunk(p.getRegion(),chunk.getPosition());
-	}
+	if(s)
+		IC::FeatureGen::decorateChunk(*s,r,biome,pos);
 }
 void ICPE::initRecipes(Recipes*self)
 {
