@@ -9,8 +9,8 @@ RubberItem::RubberItem():IC::Items("ic.rubber.0",IC::Items::ID::mRubber-0x100)
 	setCategory(CreativeItemCategory::ITEMS);
 	setStackedByData(true);
 	
-	rubberTextures[0]=getTextureUVCoordinateSet("resin",0);
-	rubberTextures[1]=getTextureUVCoordinateSet("rubber",0);
+	rubberTextures[0]=getTextureUVCoordinateSet("icpe_resin",0);
+	rubberTextures[1]=getTextureUVCoordinateSet("icpe_rubber",0);
 }
 std::string RubberItem::buildDescriptionName(const ItemInstance&i) const
 {

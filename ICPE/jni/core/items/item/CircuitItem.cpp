@@ -7,8 +7,8 @@ CircuitItem::CircuitItem():IC::Items("ic.circuit",IC::Items::ID::mCircuit-0x100)
 	setCategory(CreativeItemCategory::ITEMS);
 	setStackedByData(true);
 	
-	circuitTextures[0]=getTextureUVCoordinateSet("circuit",0);
-	circuitTextures[1]=getTextureUVCoordinateSet("advanced_circuit",0);
+	circuitTextures[0]=getTextureUVCoordinateSet("icpe_circuit",0);
+	circuitTextures[1]=getTextureUVCoordinateSet("icpe_advanced_circuit",0);
 }
 std::string CircuitItem::buildDescriptionName(const ItemInstance&i) const
 {

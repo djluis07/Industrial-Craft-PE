@@ -7,23 +7,23 @@ UraniumItem::UraniumItem():IC::Items("ic.uranium.0",IC::Items::ID::mUranium-0x10
 	setCategory(CreativeItemCategory::ITEMS);
 	setStackedByData(true);
 	
-	uraniumTextures[0]=getTextureUVCoordinateSet("uranium",0);
-	uraniumTextures[1]=getTextureUVCoordinateSet("uranium",235);
-	uraniumTextures[2]=getTextureUVCoordinateSet("uranium",238);
-	uraniumTextures[3]=getTextureUVCoordinateSet("depleted_dual_mox",0);
-	uraniumTextures[4]=getTextureUVCoordinateSet("depleted_dual_uranium",0);
-	uraniumTextures[5]=getTextureUVCoordinateSet("depleted_mox",0);
-	uraniumTextures[6]=getTextureUVCoordinateSet("depleted_quad_mox",0);
-	uraniumTextures[7]=getTextureUVCoordinateSet("depleted_quad_uranium",0);
-	uraniumTextures[8]=getTextureUVCoordinateSet("depleted_uranium",0);
-	uraniumTextures[9]=getTextureUVCoordinateSet("mox",0);
-	uraniumTextures[10]=getTextureUVCoordinateSet("mox_pellet",0);
-	uraniumTextures[11]=getTextureUVCoordinateSet("plutonium",0);
-	uraniumTextures[12]=getTextureUVCoordinateSet("rtg_pellet",0);
-	uraniumTextures[13]=getTextureUVCoordinateSet("small_plutonium",0);
-	uraniumTextures[14]=getTextureUVCoordinateSet("small_uranium",235);
-	uraniumTextures[15]=getTextureUVCoordinateSet("small_uranium",238);
-	uraniumTextures[16]=getTextureUVCoordinateSet("uranium_pellet",0);
+	uraniumTextures[0]=getTextureUVCoordinateSet("icpe_uranium",0);
+	uraniumTextures[1]=getTextureUVCoordinateSet("icpe_uranium",235);
+	uraniumTextures[2]=getTextureUVCoordinateSet("icpe_uranium",238);
+	uraniumTextures[3]=getTextureUVCoordinateSet("icpe_depleted_dual_mox",0);
+	uraniumTextures[4]=getTextureUVCoordinateSet("icpe_depleted_dual_uranium",0);
+	uraniumTextures[5]=getTextureUVCoordinateSet("icpe_depleted_mox",0);
+	uraniumTextures[6]=getTextureUVCoordinateSet("icpe_depleted_quad_mox",0);
+	uraniumTextures[7]=getTextureUVCoordinateSet("icpe_depleted_quad_uranium",0);
+	uraniumTextures[8]=getTextureUVCoordinateSet("icpe_depleted_uranium",0);
+	uraniumTextures[9]=getTextureUVCoordinateSet("icpe_mox",0);
+	uraniumTextures[10]=getTextureUVCoordinateSet("icpe_mox_pellet",0);
+	uraniumTextures[11]=getTextureUVCoordinateSet("icpe_plutonium",0);
+	uraniumTextures[12]=getTextureUVCoordinateSet("icpe_rtg_pellet",0);
+	uraniumTextures[13]=getTextureUVCoordinateSet("icpe_small_plutonium",0);
+	uraniumTextures[14]=getTextureUVCoordinateSet("icpe_small_uranium",235);
+	uraniumTextures[15]=getTextureUVCoordinateSet("icpe_small_uranium",238);
+	uraniumTextures[16]=getTextureUVCoordinateSet("icpe_uranium_pellet",0);
 }
 std::string UraniumItem::buildDescriptionName(const ItemInstance&i) const
 {

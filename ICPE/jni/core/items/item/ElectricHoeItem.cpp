@@ -10,7 +10,7 @@
 
 ElectricHoeItem::ElectricHoeItem():IC::Items("ic.electric.hoe",IC::Items::ID::mElectricHoe-0x100)
 {
-	setIcon("electric_hoe",0);
+	setIcon("icpe_electric_hoe",0);
 	setMaxStackSize(1);
 	setCategory(CreativeItemCategory::TOOLS);
 	setMaxDamage(501);

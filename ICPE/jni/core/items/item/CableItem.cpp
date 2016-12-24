@@ -10,20 +10,20 @@ CableItem::CableItem():IC::Items("ic.cable.tin.0",IC::Items::ID::mCable-256)
 	setCategory(CreativeItemCategory::ITEMS);
 	setStackedByData(true);
 	
-	tinTextures[0]=getTextureUVCoordinateSet("tin_cable",0);
-	tinTextures[1]=getTextureUVCoordinateSet("tin_cable",1);
-	ironTextures[0]=getTextureUVCoordinateSet("iron_cable",0);
-	ironTextures[1]=getTextureUVCoordinateSet("iron_cable",1);
-	ironTextures[2]=getTextureUVCoordinateSet("iron_cable",2);
-	ironTextures[3]=getTextureUVCoordinateSet("iron_cable",3);
-	goldTextures[0]=getTextureUVCoordinateSet("gold_cable",0);
-	goldTextures[1]=getTextureUVCoordinateSet("gold_cable",1);
-	goldTextures[2]=getTextureUVCoordinateSet("gold_cable",2);
-	copperTextures[0]=getTextureUVCoordinateSet("copper_cable",0);
-	copperTextures[1]=getTextureUVCoordinateSet("copper_cable",1);
-	utilTextures[0]=getTextureUVCoordinateSet("detector_cable",0);
-	utilTextures[1]=getTextureUVCoordinateSet("glass_cable",0);
-	utilTextures[2]=getTextureUVCoordinateSet("splitter_cable",0);
+	tinTextures[0]=getTextureUVCoordinateSet("icpe_tin_cable",0);
+	tinTextures[1]=getTextureUVCoordinateSet("icpe_tin_cable",1);
+	ironTextures[0]=getTextureUVCoordinateSet("icpe_iron_cable",0);
+	ironTextures[1]=getTextureUVCoordinateSet("icpe_iron_cable",1);
+	ironTextures[2]=getTextureUVCoordinateSet("icpe_iron_cable",2);
+	ironTextures[3]=getTextureUVCoordinateSet("icpe_iron_cable",3);
+	goldTextures[0]=getTextureUVCoordinateSet("icpe_gold_cable",0);
+	goldTextures[1]=getTextureUVCoordinateSet("icpe_gold_cable",1);
+	goldTextures[2]=getTextureUVCoordinateSet("icpe_gold_cable",2);
+	copperTextures[0]=getTextureUVCoordinateSet("icpe_copper_cable",0);
+	copperTextures[1]=getTextureUVCoordinateSet("icpe_copper_cable",1);
+	utilTextures[0]=getTextureUVCoordinateSet("icpe_detector_cable",0);
+	utilTextures[1]=getTextureUVCoordinateSet("icpe_glass_cable",0);
+	utilTextures[2]=getTextureUVCoordinateSet("icpe_splitter_cable",0);
 }
 std::string CableItem::buildDescriptionName(const ItemInstance&i) const
 {

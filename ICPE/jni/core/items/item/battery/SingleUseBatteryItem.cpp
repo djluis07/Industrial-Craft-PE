@@ -4,7 +4,7 @@
 
 SingleUseBatteryItem::SingleUseBatteryItem():BatteryItem("ic.battery.singleuse",ID::mSingleUseBattery-0x100)
 {
-	setIcon("single_use_battery",0);
+	setIcon("icpe_single_use_battery",0);
 }
 unsigned int SingleUseBatteryItem::getEU(ItemInstance const&)const
 {

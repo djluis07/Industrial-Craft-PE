@@ -7,24 +7,24 @@ PlateItem::PlateItem():IC::Items("ic.plate.tin",IC::Items::ID::mPlate-0x100)
 	setCategory(CreativeItemCategory::ITEMS);
 	setStackedByData(true);
 	
-	plateTextures[0]=getTextureUVCoordinateSet("pl_bronze",0);
-	plateTextures[1]=getTextureUVCoordinateSet("pl_copper",0);
-	plateTextures[2]=getTextureUVCoordinateSet("pl_gold",0);
-	plateTextures[3]=getTextureUVCoordinateSet("pl_iron",0);
-	plateTextures[4]=getTextureUVCoordinateSet("pl_lapis",0);
-	plateTextures[5]=getTextureUVCoordinateSet("pl_lead",0);
-	plateTextures[6]=getTextureUVCoordinateSet("pl_obsidian",0);
-	plateTextures[7]=getTextureUVCoordinateSet("pl_steel",0);
-	plateTextures[8]=getTextureUVCoordinateSet("pl_tin",0);
-	plateTextures[9]=getTextureUVCoordinateSet("pl_bronze",0);
-	plateTextures[10]=getTextureUVCoordinateSet("dense_copper",0);
-	plateTextures[11]=getTextureUVCoordinateSet("dense_gold",0);
-	plateTextures[12]=getTextureUVCoordinateSet("dense_iron",0);
-	plateTextures[13]=getTextureUVCoordinateSet("dense_lapis",0);
-	plateTextures[14]=getTextureUVCoordinateSet("dense_lead",0);
-	plateTextures[15]=getTextureUVCoordinateSet("dense_obsidian",0);
-	plateTextures[16]=getTextureUVCoordinateSet("dense_steel",0);
-	plateTextures[17]=getTextureUVCoordinateSet("dense_tin",0);
+	plateTextures[0]=getTextureUVCoordinateSet("icpe_pl_bronze",0);
+	plateTextures[1]=getTextureUVCoordinateSet("icpe_pl_copper",0);
+	plateTextures[2]=getTextureUVCoordinateSet("icpe_pl_gold",0);
+	plateTextures[3]=getTextureUVCoordinateSet("icpe_pl_iron",0);
+	plateTextures[4]=getTextureUVCoordinateSet("icpe_pl_lapis",0);
+	plateTextures[5]=getTextureUVCoordinateSet("icpe_pl_lead",0);
+	plateTextures[6]=getTextureUVCoordinateSet("icpe_pl_obsidian",0);
+	plateTextures[7]=getTextureUVCoordinateSet("icpe_pl_steel",0);
+	plateTextures[8]=getTextureUVCoordinateSet("icpe_pl_tin",0);
+	plateTextures[9]=getTextureUVCoordinateSet("icpe_pl_bronze",0);
+	plateTextures[10]=getTextureUVCoordinateSet("icpe_dense_copper",0);
+	plateTextures[11]=getTextureUVCoordinateSet("icpe_dense_gold",0);
+	plateTextures[12]=getTextureUVCoordinateSet("icpe_dense_iron",0);
+	plateTextures[13]=getTextureUVCoordinateSet("icpe_dense_lapis",0);
+	plateTextures[14]=getTextureUVCoordinateSet("icpe_dense_lead",0);
+	plateTextures[15]=getTextureUVCoordinateSet("icpe_dense_obsidian",0);
+	plateTextures[16]=getTextureUVCoordinateSet("icpe_dense_steel",0);
+	plateTextures[17]=getTextureUVCoordinateSet("icpe_dense_tin",0);
 }
 std::string PlateItem::buildDescriptionName(const ItemInstance&i) const
 {

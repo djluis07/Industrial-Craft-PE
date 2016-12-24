@@ -184,12 +184,12 @@ void Items::addICCreativeItems()
 }
 void Items::initICItems()
 {
-	Item::mItems[ID::mElectricMotor]=new ICDefaultItem("ic.electricmotor",ID::mElectricMotor-0x100,"electric_motor",0);
-	Item::mItems[ID::mPowerUnitSmall]=new ICDefaultItem("ic.power.unit.small",ID::mPowerUnitSmall-0x100,"small_power_unit",0);
-	Item::mItems[ID::mCoil]=new ICDefaultItem("ic.coil",ID::mCoil-0x100,"coil",0);
-	Item::mItems[ID::mScrap]=new ICDefaultItem("ic.scrap",ID::mScrap-0x100,"scrap",0);
-	Item::mItems[ID::mSlag]=new ICDefaultItem("ic.slag",ID::mSlag-0x100,"slag",0);
-	Item::mItems[ID::mAlloyPlate]=new ICDefaultItem("ic.plate.alloy",ID::mAlloyPlate-0x100,"alloy",0);
+	Item::mItems[ID::mElectricMotor]=new ICDefaultItem("ic.electricmotor",ID::mElectricMotor-0x100,"icpe_electric_motor",0);
+	Item::mItems[ID::mPowerUnitSmall]=new ICDefaultItem("ic.power.unit.small",ID::mPowerUnitSmall-0x100,"icpe_small_power_unit",0);
+	Item::mItems[ID::mCoil]=new ICDefaultItem("ic.coil",ID::mCoil-0x100,"icpe_coil",0);
+	Item::mItems[ID::mScrap]=new ICDefaultItem("ic.scrap",ID::mScrap-0x100,"icpe_scrap",0);
+	Item::mItems[ID::mSlag]=new ICDefaultItem("ic.slag",ID::mSlag-0x100,"icpe_slag",0);
+	Item::mItems[ID::mAlloyPlate]=new ICDefaultItem("ic.plate.alloy",ID::mAlloyPlate-0x100,"icpe_alloy",0);
 	
 	Item::mItems[ID::mGuideBook]=new GuideBookItem();
 	Item::mItems[ID::mSingleUseBattery]=new SingleUseBatteryItem();

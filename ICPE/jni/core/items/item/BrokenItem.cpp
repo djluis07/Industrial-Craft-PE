@@ -9,27 +9,27 @@ BrokenItem::BrokenItem():IC::Items("ic.crushed.copper",IC::Items::ID::mBroken-0x
 	setCategory(CreativeItemCategory::ITEMS);
 	setStackedByData(true);
 	
-	brokenTextures[0]=getTextureUVCoordinateSet("cr_copper",0);
-	brokenTextures[1]=getTextureUVCoordinateSet("cr_gold",0);
-	brokenTextures[2]=getTextureUVCoordinateSet("cr_iron",0);
-	brokenTextures[3]=getTextureUVCoordinateSet("cr_lead",0);
-	brokenTextures[4]=getTextureUVCoordinateSet("cr_silver",0);
-	brokenTextures[5]=getTextureUVCoordinateSet("cr_tin",0);
-	brokenTextures[6]=getTextureUVCoordinateSet("cr_uranium",0);
-	brokenTextures[7]=getTextureUVCoordinateSet("pu_copper",0);
-	brokenTextures[8]=getTextureUVCoordinateSet("pu_gold",0);
-	brokenTextures[9]=getTextureUVCoordinateSet("pu_iron",0);
-	brokenTextures[10]=getTextureUVCoordinateSet("pu_lead",0);
-	brokenTextures[11]=getTextureUVCoordinateSet("pu_silver",0);
-	brokenTextures[12]=getTextureUVCoordinateSet("pu_tin",0);
-	brokenTextures[13]=getTextureUVCoordinateSet("pu_uranium",0);
-	brokenTextures[14]=getTextureUVCoordinateSet("ca_bronze",0);
-	brokenTextures[15]=getTextureUVCoordinateSet("ca_copper",0);
-	brokenTextures[16]=getTextureUVCoordinateSet("ca_gold",0);
-	brokenTextures[17]=getTextureUVCoordinateSet("ca_iron",0);
-	brokenTextures[18]=getTextureUVCoordinateSet("ca_lead",0);
-	brokenTextures[19]=getTextureUVCoordinateSet("ca_steel",0);
-	brokenTextures[20]=getTextureUVCoordinateSet("ca_tin",0);
+	brokenTextures[0]=getTextureUVCoordinateSet("icpe_cr_copper",0);
+	brokenTextures[1]=getTextureUVCoordinateSet("icpe_cr_gold",0);
+	brokenTextures[2]=getTextureUVCoordinateSet("icpe_cr_iron",0);
+	brokenTextures[3]=getTextureUVCoordinateSet("icpe_cr_lead",0);
+	brokenTextures[4]=getTextureUVCoordinateSet("icpe_cr_silver",0);
+	brokenTextures[5]=getTextureUVCoordinateSet("icpe_cr_tin",0);
+	brokenTextures[6]=getTextureUVCoordinateSet("icpe_cr_uranium",0);
+	brokenTextures[7]=getTextureUVCoordinateSet("icpe_pu_copper",0);
+	brokenTextures[8]=getTextureUVCoordinateSet("icpe_pu_gold",0);
+	brokenTextures[9]=getTextureUVCoordinateSet("icpe_pu_iron",0);
+	brokenTextures[10]=getTextureUVCoordinateSet("icpe_pu_lead",0);
+	brokenTextures[11]=getTextureUVCoordinateSet("icpe_pu_silver",0);
+	brokenTextures[12]=getTextureUVCoordinateSet("icpe_pu_tin",0);
+	brokenTextures[13]=getTextureUVCoordinateSet("icpe_pu_uranium",0);
+	brokenTextures[14]=getTextureUVCoordinateSet("icpe_ca_bronze",0);
+	brokenTextures[15]=getTextureUVCoordinateSet("icpe_ca_copper",0);
+	brokenTextures[16]=getTextureUVCoordinateSet("icpe_ca_gold",0);
+	brokenTextures[17]=getTextureUVCoordinateSet("icpe_ca_iron",0);
+	brokenTextures[18]=getTextureUVCoordinateSet("icpe_ca_lead",0);
+	brokenTextures[19]=getTextureUVCoordinateSet("icpe_ca_steel",0);
+	brokenTextures[20]=getTextureUVCoordinateSet("icpe_ca_tin",0);
 }
 std::string BrokenItem::buildDescriptionName(const ItemInstance&i) const
 {

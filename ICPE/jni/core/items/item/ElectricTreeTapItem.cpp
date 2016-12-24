@@ -16,7 +16,7 @@
 
 ElectricTreeTapItem::ElectricTreeTapItem():IC::Items("ic.electric.treetap",IC::Items::ID::mElectricTreeTap-0x100)
 {
-	setIcon("electric_treetap",0);
+	setIcon("icpe_electric_treetap",0);
 	setMaxStackSize(1);
 	setCategory(CreativeItemCategory::TOOLS);
 	setMaxDamage(201);

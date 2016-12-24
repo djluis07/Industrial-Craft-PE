@@ -12,7 +12,7 @@
 
 ChainsawItem::ChainsawItem():IC::Items("ic.electric.chainsaw",ID::mChainsaw-0x100)
 {
-	setIcon("chainsaw",0);
+	setIcon("icpe_chainsaw",0);
 	setMaxStackSize(1);
 	setCategory(CreativeItemCategory::TOOLS);
 	setMaxDamage(501);

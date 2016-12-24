@@ -14,7 +14,7 @@
 
 TreeTapItem::TreeTapItem():IC::Items("ic.treetap",IC::Items::ID::mTreeTap-0x100)
 {
-	setIcon("treetap",0);
+	setIcon("icpe_treetap",0);
 	setMaxStackSize(1);
 	setCategory(CreativeItemCategory::TOOLS);
 	setMaxDamage(128);
