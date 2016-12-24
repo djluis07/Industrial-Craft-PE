@@ -17,10 +17,12 @@ obj/local/armeabi-v7a/objs/icpe_core/gen/FeatureGen.o: \
  jni/core/mcpe/block/BlockShape.h \
  jni/core/mcpe/item/CreativeItemCategory.h \
  jni/core/mcpe/block/BlockSoundType.h \
- jni/core/mcpe/block/BlockSupportType.h jni/core/gen/feature/OreFeature.h \
- jni/core/mcpe/util/FullBlock.h jni/core/gen/feature/Feature.h \
- jni/core/gen/feature/RubTreeFeature.h jni/core/mcpe/level/ChunkPos.h \
- jni/core/mcpe/level/biome/Biome.h jni/core/mcpe/level/BlockSource.h \
+ jni/core/mcpe/block/BlockSupportType.h \
+ jni/core/gen/feature/RubTreeFeature.h jni/core/mcpe/util/FullBlock.h \
+ jni/core/mcpe/level/gen/Feature.h jni/core/mcpe/level/gen/OreFeature.h \
+ jni/core/mcpe/level/ChunkPos.h jni/core/mcpe/level/biome/Biome.h \
+ jni/core/mcpe/level/biome/BiomeDecorator.h \
+ jni/core/mcpe/level/BlockSource.h \
  jni/core/mcpe/level/../blockentity/BlockEntity.h \
  jni/core/mcpe/level/../blockentity/BlockEntityType.h \
  jni/core/mcpe/level/../blockentity/../inventory/FillingContainer.h \
@@ -98,17 +100,19 @@ jni/core/mcpe/block/BlockSoundType.h:
 
 jni/core/mcpe/block/BlockSupportType.h:
 
-jni/core/gen/feature/OreFeature.h:
+jni/core/gen/feature/RubTreeFeature.h:
 
 jni/core/mcpe/util/FullBlock.h:
 
-jni/core/gen/feature/Feature.h:
+jni/core/mcpe/level/gen/Feature.h:
 
-jni/core/gen/feature/RubTreeFeature.h:
+jni/core/mcpe/level/gen/OreFeature.h:
 
 jni/core/mcpe/level/ChunkPos.h:
 
 jni/core/mcpe/level/biome/Biome.h:
+
+jni/core/mcpe/level/biome/BiomeDecorator.h:
 
 jni/core/mcpe/level/BlockSource.h:
 

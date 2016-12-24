@@ -2,7 +2,7 @@
 
 #include "mcpe/util/FullBlock.h"
 
-#include "Feature.h"
+#include "mcpe/level/gen/Feature.h"
 
 class FullBlock;
 class BlockPos;
@@ -11,7 +11,7 @@ class Random;
 
 namespace IC
 {
-class RubTreeFeature : public IC::Feature
+class RubTreeFeature : public Feature
 {
 protected:
 	int maxTreeHeight;

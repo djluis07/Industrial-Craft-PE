@@ -12,7 +12,7 @@
 
 namespace IC
 {
-RubTreeFeature::RubTreeFeature(FullBlock const&l,FullBlock const&ll,FullBlock const&le,int max)
+RubTreeFeature::RubTreeFeature(FullBlock const&l,FullBlock const&ll,FullBlock const&le,int max):Feature(0)
 {
 	log=l;
 	log2=ll;

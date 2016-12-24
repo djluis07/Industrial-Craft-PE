@@ -116,7 +116,7 @@ void ICPE::decorateChunk(BiomeDecorator*decorator,BlockSource*s, Random&r, Biome
 	decorateChunk_(decorator,s,r,biome,pos,b,f);
 	
 	if(s)
-		IC::FeatureGen::decorateChunk(*s,r,biome,pos);
+		IC::FeatureGen::decorateChunk(decorator,*s,r,biome,pos);
 }
 void ICPE::initRecipes(Recipes*self)
 {
