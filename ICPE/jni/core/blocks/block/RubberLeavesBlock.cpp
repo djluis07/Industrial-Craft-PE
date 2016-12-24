@@ -6,8 +6,10 @@
 #include "mcpe/util/Random.h"
 
 #include "blocks/Blocks.h"
-
+#include "util/Math.h"
 #include "ICPE.h"
+
+#include <stdlib.h>
 
 RubberLeavesBlock::RubberLeavesBlock():IC::Blocks("ic.rubber.leaves",IC::Blocks::ID::mRubberLeaves,Material::getMaterial(MaterialType::PLANT))
 {
@@ -53,12 +55,45 @@ bool RubberLeavesBlock::isSeasonTinted(BlockSource&, BlockPos const&) const
 }
 void RubberLeavesBlock::tick(BlockSource&s, BlockPos const&pos, Random&r)const
 {
-	if(r.nextBool(8))
+	if(r.nextBool(8)&&s.getData(pos)==0)
 	{
-		
+		for(int sx=pos.x-4;sx<pos.x+4;++sx)
+			for(int sy=pos.y-4;sy<pos.y+4;++sy)
+				for(int sz=pos.z-4;sz<pos.z+4;++sz)
+				{
+					if(s.getBlockID(sx,sy,sz).id==ID::mRubberWood)
+						if(isValidDistance(s,BlockPos(sx,sy,sz),pos))
+							return;
+				}
+		die(s,pos,r);
 	}
 }
 int RubberLeavesBlock::getPlacementDataValue(Entity&, BlockPos const&, signed char, Vec3 const&, int) const
 {
 	return 4;
+}
+void RubberLeavesBlock::die(BlockSource&s,BlockPos const&pos,Random&r)const
+{
+	s.removeBlock(pos);
+	if(r.nextInt(12))
+		popResource(s,pos,ItemInstance(ID::mRubberSapling,1,0));
+}
+bool RubberLeavesBlock::isValidDistance(BlockSource&s,BlockPos const&pos1,BlockPos const&pos2)const
+{
+	if((abs(pos1.x-pos2.x)+abs(pos1.y-pos2.y)+abs(pos1.z-pos2.z))>4)
+		return false;
+	
+	int minX=Math::min(pos1.x,pos2.x);
+	int maxX=Math::max(pos1.x,pos2.x);
+	int minY=Math::min(pos1.y,pos2.y);
+	int maxY=Math::max(pos1.y,pos2.y);
+	int minZ=Math::min(pos1.z,pos2.z);
+	int maxZ=Math::max(pos1.z,pos2.z);
+	
+	for(int posX=minX;posX<=maxX;++posX)
+		for(int posY=minY;posY<=maxY;++posY)
+			for(int posZ=minZ;posZ<=maxZ;++posZ)
+				if(s.getBlock(posX,posY,posZ)!=this&&s.getBlock(posX,posY,posZ)!=mBlocks[ID::mRubberWood])
+					return false;
+	return true;
 }

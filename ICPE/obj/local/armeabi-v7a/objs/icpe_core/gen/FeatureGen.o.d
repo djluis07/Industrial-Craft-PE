@@ -17,9 +17,10 @@ obj/local/armeabi-v7a/objs/icpe_core/gen/FeatureGen.o: \
  jni/core/mcpe/block/BlockShape.h \
  jni/core/mcpe/item/CreativeItemCategory.h \
  jni/core/mcpe/block/BlockSoundType.h \
- jni/core/mcpe/block/BlockSupportType.h jni/core/util/ICRandom.h \
- jni/core/gen/feature/OreFeature.h jni/core/mcpe/util/FullBlock.h \
- jni/core/mcpe/level/ChunkPos.h jni/core/mcpe/level/BlockSource.h \
+ jni/core/mcpe/block/BlockSupportType.h jni/core/gen/feature/OreFeature.h \
+ jni/core/mcpe/util/FullBlock.h jni/core/gen/feature/Feature.h \
+ jni/core/gen/feature/RubTreeFeature.h jni/core/mcpe/level/ChunkPos.h \
+ jni/core/mcpe/level/biome/Biome.h jni/core/mcpe/level/BlockSource.h \
  jni/core/mcpe/level/../blockentity/BlockEntity.h \
  jni/core/mcpe/level/../blockentity/BlockEntityType.h \
  jni/core/mcpe/level/../blockentity/../inventory/FillingContainer.h \
@@ -27,7 +28,27 @@ obj/local/armeabi-v7a/objs/icpe_core/gen/FeatureGen.o: \
  jni/core/mcpe/level/../blockentity/../inventory/../item/ItemInstance.h \
  jni/core/mcpe/level/../blockentity/../inventory/../item/UseAnimation.h \
  jni/core/mcpe/level/../util/Brightness.h \
- jni/core/mcpe/level/LightLayer.h jni/core/mcpe/level/DimensionId.h
+ jni/core/mcpe/level/LightLayer.h jni/core/mcpe/level/DimensionId.h \
+ jni/core/mcpe/level/Level.h \
+ /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/sources/cxx-stl/gnu-libstdc++/4.9/include/unordered_set \
+ jni/core/mcpe/level/LevelStorage.h jni/core/mcpe/level/ParticleType.h \
+ jni/core/mcpe/level/BlockSourceListener.h \
+ jni/core/mcpe/level/GeneratorType.h \
+ jni/core/mcpe/level/storage/LevelData.h \
+ jni/core/mcpe/level/../entity/Entity.h \
+ jni/core/mcpe/level/../entity/SynchedEntityData.h \
+ jni/core/mcpe/level/../entity/../util/Vec2.h \
+ jni/core/mcpe/level/../entity/EntityRendererId.h \
+ jni/core/mcpe/level/../entity/EntityType.h \
+ jni/core/mcpe/level/../entity/../item/ArmorSlot.h \
+ jni/core/mcpe/level/../client/AppPlatformListener.h \
+ jni/core/mcpe/level/../util/Random.h \
+ jni/core/mcpe/level/../entity/player/LocalPlayer.h \
+ jni/core/mcpe/level/../entity/player/Player.h jni/core/mcpe/entity/Mob.h \
+ jni/core/mcpe/gamemode/GameType.h \
+ jni/core/mcpe/level/../entity/player/../../inventory/IContainerListener.h \
+ jni/core/mcpe/level/../entity/player/../../inventory/InventoryMenu.h \
+ jni/core/mcpe/level/../entity/player/../../inventory/BaseContainerMenu.h
 
 jni/core/gen/FeatureGen.h:
 
@@ -77,13 +98,17 @@ jni/core/mcpe/block/BlockSoundType.h:
 
 jni/core/mcpe/block/BlockSupportType.h:
 
-jni/core/util/ICRandom.h:
-
 jni/core/gen/feature/OreFeature.h:
 
 jni/core/mcpe/util/FullBlock.h:
 
+jni/core/gen/feature/Feature.h:
+
+jni/core/gen/feature/RubTreeFeature.h:
+
 jni/core/mcpe/level/ChunkPos.h:
+
+jni/core/mcpe/level/biome/Biome.h:
 
 jni/core/mcpe/level/BlockSource.h:
 
@@ -104,3 +129,47 @@ jni/core/mcpe/level/../util/Brightness.h:
 jni/core/mcpe/level/LightLayer.h:
 
 jni/core/mcpe/level/DimensionId.h:
+
+jni/core/mcpe/level/Level.h:
+
+/data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/sources/cxx-stl/gnu-libstdc++/4.9/include/unordered_set:
+
+jni/core/mcpe/level/LevelStorage.h:
+
+jni/core/mcpe/level/ParticleType.h:
+
+jni/core/mcpe/level/BlockSourceListener.h:
+
+jni/core/mcpe/level/GeneratorType.h:
+
+jni/core/mcpe/level/storage/LevelData.h:
+
+jni/core/mcpe/level/../entity/Entity.h:
+
+jni/core/mcpe/level/../entity/SynchedEntityData.h:
+
+jni/core/mcpe/level/../entity/../util/Vec2.h:
+
+jni/core/mcpe/level/../entity/EntityRendererId.h:
+
+jni/core/mcpe/level/../entity/EntityType.h:
+
+jni/core/mcpe/level/../entity/../item/ArmorSlot.h:
+
+jni/core/mcpe/level/../client/AppPlatformListener.h:
+
+jni/core/mcpe/level/../util/Random.h:
+
+jni/core/mcpe/level/../entity/player/LocalPlayer.h:
+
+jni/core/mcpe/level/../entity/player/Player.h:
+
+jni/core/mcpe/entity/Mob.h:
+
+jni/core/mcpe/gamemode/GameType.h:
+
+jni/core/mcpe/level/../entity/player/../../inventory/IContainerListener.h:
+
+jni/core/mcpe/level/../entity/player/../../inventory/InventoryMenu.h:
+
+jni/core/mcpe/level/../entity/player/../../inventory/BaseContainerMenu.h:

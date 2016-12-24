@@ -2,6 +2,8 @@
 
 #include "mcpe/util/FullBlock.h"
 
+#include "Feature.h"
+
 class FullBlock;
 class BlockPos;
 class BlockSource;
@@ -9,7 +11,7 @@ class Random;
 
 namespace IC
 {
-class RubTreeFeature
+class RubTreeFeature : public IC::Feature
 {
 protected:
 	int maxTreeHeight;
@@ -24,6 +26,7 @@ public:
 protected:
 	bool grow(BlockSource&,BlockPos const&,Random&)const;
 	int getGrowHeight(BlockSource&,BlockPos const&)const;
-	bool canBeReplaced(BlockSource&,BlockPos const&)const;
+	bool canBeReplacedByWood(BlockSource&,BlockPos const&)const;
+	bool canBeReplacedByLeaves(BlockSource&,BlockPos const&)const;
 };
 }

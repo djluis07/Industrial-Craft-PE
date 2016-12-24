@@ -34,22 +34,22 @@ void ElectricTreeTapItem::useOn(ItemInstance&instance, Entity&p, int x, int y, i
 		switch(side)
 		{
 		case 0:
-			Block::mBlocks[IC::Blocks::ID::mRubberWood]->popResource(p.getRegion(),BlockPos(x,y-1,z),ItemInstance(IC::Items::ID::mRubber,1+ICPE::mRandom.nextInt(3),0));
+			p.getRegion().getBlock(x,y,z)->popResource(p.getRegion(),BlockPos(x,y-1,z),ItemInstance(IC::Items::ID::mRubber,1+ICPE::mRandom.nextInt(3),0));
 		break;
 		case 1:
-			Block::mBlocks[IC::Blocks::ID::mRubberWood]->popResource(p.getRegion(),BlockPos(x,y+1,z),ItemInstance(IC::Items::ID::mRubber,1+ICPE::mRandom.nextInt(3),0));
+			p.getRegion().getBlock(x,y,z)->popResource(p.getRegion(),BlockPos(x,y+1,z),ItemInstance(IC::Items::ID::mRubber,1+ICPE::mRandom.nextInt(3),0));
 		break;
 		case 2:
-			Block::mBlocks[IC::Blocks::ID::mRubberWood]->popResource(p.getRegion(),BlockPos(x,y,z-1),ItemInstance(IC::Items::ID::mRubber,1+ICPE::mRandom.nextInt(3),0));
+			p.getRegion().getBlock(x,y,z)->popResource(p.getRegion(),BlockPos(x,y,z-1),ItemInstance(IC::Items::ID::mRubber,1+ICPE::mRandom.nextInt(3),0));
 		break;
 		case 3:
-			Block::mBlocks[IC::Blocks::ID::mRubberWood]->popResource(p.getRegion(),BlockPos(x,y,z+1),ItemInstance(IC::Items::ID::mRubber,1+ICPE::mRandom.nextInt(3),0));
+			p.getRegion().getBlock(x,y,z)->popResource(p.getRegion(),BlockPos(x,y,z+1),ItemInstance(IC::Items::ID::mRubber,1+ICPE::mRandom.nextInt(3),0));
 		break;
 		case 4:
-			Block::mBlocks[IC::Blocks::ID::mRubberWood]->popResource(p.getRegion(),BlockPos(x-1,y,z),ItemInstance(IC::Items::ID::mRubber,1+ICPE::mRandom.nextInt(3),0));
+			p.getRegion().getBlock(x,y,z)->popResource(p.getRegion(),BlockPos(x-1,y,z),ItemInstance(IC::Items::ID::mRubber,1+ICPE::mRandom.nextInt(3),0));
 		break;
 		case 5:
-			Block::mBlocks[IC::Blocks::ID::mRubberWood]->popResource(p.getRegion(),BlockPos(x+1,y,z),ItemInstance(IC::Items::ID::mRubber,1+ICPE::mRandom.nextInt(3),0));
+			p.getRegion().getBlock(x,y,z)->popResource(p.getRegion(),BlockPos(x+1,y,z),ItemInstance(IC::Items::ID::mRubber,1+ICPE::mRandom.nextInt(3),0));
 		break;
 		}
 	}

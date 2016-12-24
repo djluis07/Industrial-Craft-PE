@@ -2,7 +2,7 @@ obj/local/armeabi-v7a/objs/icpe_core/gen/feature/RubTreeFeature.o: \
  jni/core/gen/feature/RubTreeFeature.cpp \
  jni/core/gen/feature/RubTreeFeature.h jni/core/mcpe/util/FullBlock.h \
  jni/core/mcpe/util/BlockID.h jni/core/mcpe/util/../block/BlockProperty.h \
- jni/core/mcpe/level/BlockSource.h \
+ jni/core/gen/feature/Feature.h jni/core/mcpe/level/BlockSource.h \
  /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/sources/cxx-stl/gnu-libstdc++/4.9/include/memory \
  jni/core/mcpe/level/../blockentity/BlockEntity.h \
  jni/core/mcpe/level/../blockentity/BlockEntityType.h \
@@ -24,7 +24,7 @@ obj/local/armeabi-v7a/objs/icpe_core/gen/feature/RubTreeFeature.o: \
  jni/core/mcpe/block/BlockShape.h \
  jni/core/mcpe/item/CreativeItemCategory.h \
  jni/core/mcpe/block/BlockSoundType.h \
- jni/core/mcpe/block/BlockSupportType.h \
+ jni/core/mcpe/block/BlockSupportType.h jni/core/blocks/Blocks.h \
  /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/platforms/android-19/arch-arm/usr/include/stdlib.h \
  /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/platforms/android-19/arch-arm/usr/include/alloca.h \
  /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/platforms/android-19/arch-arm/usr/include/strings.h \
@@ -37,6 +37,8 @@ jni/core/mcpe/util/FullBlock.h:
 jni/core/mcpe/util/BlockID.h:
 
 jni/core/mcpe/util/../block/BlockProperty.h:
+
+jni/core/gen/feature/Feature.h:
 
 jni/core/mcpe/level/BlockSource.h:
 
@@ -91,6 +93,8 @@ jni/core/mcpe/item/CreativeItemCategory.h:
 jni/core/mcpe/block/BlockSoundType.h:
 
 jni/core/mcpe/block/BlockSupportType.h:
+
+jni/core/blocks/Blocks.h:
 
 /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/platforms/android-19/arch-arm/usr/include/stdlib.h:
 

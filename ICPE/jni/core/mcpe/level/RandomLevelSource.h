@@ -5,5 +5,5 @@ class LevelChunk;
 class RandomLevelSource
 {
 public:
-	void prepareHeights(int, int, LevelChunk *);
+	void loadChunk(LevelChunk&, bool);
 };

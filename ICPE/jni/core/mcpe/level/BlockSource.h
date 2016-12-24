@@ -22,7 +22,6 @@ class BlockEntity;
 class LightLayer;
 class ChunkPos;
 class Bounds;
-class TileTickingQueue;
 class Dimension;
 class BlockSourceListener;
 class Biome;

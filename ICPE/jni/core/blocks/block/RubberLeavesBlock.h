@@ -16,4 +16,7 @@ public:
 	virtual int getRenderLayer(BlockSource&, BlockPos const&) const;
 	virtual int getExtraRenderLayers() const;
 	virtual int getPlacementDataValue(Entity&, BlockPos const&, signed char, Vec3 const&, int) const;
+protected:
+	void die(BlockSource&, BlockPos const&, Random&)const;
+	bool isValidDistance(BlockSource&, BlockPos const&, BlockPos const&)const;
 };
