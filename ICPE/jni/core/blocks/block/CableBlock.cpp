@@ -54,8 +54,8 @@ void CableBlock::neighborChanged(BlockSource&, BlockPos const&, BlockPos const&)
 bool CableBlock::entityInside(BlockSource&s, BlockPos const&pos, Entity&e)const
 {
 	//uncompleted
-	if(!ICPE::mICOptions.getElectricityHurt())
-		return false;
+	//if(!ICPE::mICOptions.getElectricityHurt())
+		//return false;
 	if(!(s.getData(pos)==0||s.getData(pos.x,pos.y,pos.z)==2||s.getData(pos.x,pos.y,pos.z)==6||s.getData(pos.x,pos.y,pos.z)==9))
 		return false;
 	

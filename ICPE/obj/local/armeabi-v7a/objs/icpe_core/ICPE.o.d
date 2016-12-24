@@ -30,6 +30,7 @@ obj/local/armeabi-v7a/objs/icpe_core/ICPE.o: jni/core/ICPE.cpp \
  jni/core/mcpe/block/BlockSupportType.h \
  jni/core/mcpe/block/BlockGraphics.h \
  jni/core/mcpe/block/../client/renderer/texture/TextureAtlasTextureItem.h \
+ jni/core/mcpe/block/blocks/FlowerPotBlock.h \
  jni/core/mcpe/client/MinecraftClient.h jni/core/mcpe/client/App.h \
  jni/core/mcpe/client/AppPlatformListener.h \
  jni/core/mcpe/client/../gamemode/GameType.h \
@@ -167,6 +168,8 @@ jni/core/mcpe/block/BlockSupportType.h:
 jni/core/mcpe/block/BlockGraphics.h:
 
 jni/core/mcpe/block/../client/renderer/texture/TextureAtlasTextureItem.h:
+
+jni/core/mcpe/block/blocks/FlowerPotBlock.h:
 
 jni/core/mcpe/client/MinecraftClient.h:
 

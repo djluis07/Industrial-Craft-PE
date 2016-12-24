@@ -7,7 +7,6 @@ IronFenceBlock::IronFenceBlock():FenceBlock("ic.ironfence",IC::Blocks::ID::mIron
 	init();
 	setCategory(CreativeItemCategory::DECORATIONS);
 	setSolid(false);
-	//setSoundType(BlockSoundType::SOUND_DEFAULT);
 	setDestroyTime(3);
 	setExplodeable(15);
 }

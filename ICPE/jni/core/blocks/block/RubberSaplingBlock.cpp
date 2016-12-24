@@ -11,7 +11,6 @@
 RubberSaplingBlock::RubberSaplingBlock():IC::Blocks("ic.rubber.sapling",IC::Blocks::ID::mRubberSapling,Material::getMaterial(MaterialType::PLANT))
 {
 	setCategory(CreativeItemCategory::DECORATIONS);
-	//setSoundType(BlockSoundType::SOUND_DEFAULT);
 	setTicking(true);
 	setSolid(false);
 	renderLayer=mSapling->renderLayer;

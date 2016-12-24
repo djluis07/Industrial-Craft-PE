@@ -11,7 +11,6 @@ public:
 	virtual int getResource(Random&, int, int)const;
 	virtual int getResourceCount(Random&, int, int)const;
 	virtual ItemInstance getSilkTouchItemInstance(unsigned char)const;
-	virtual bool isSeasonTinted(BlockSource&, BlockPos const&) const;
 	virtual void onGraphicsModeChanged(bool, bool, bool);
 	virtual int getRenderLayer(BlockSource&, BlockPos const&) const;
 	virtual int getExtraRenderLayers() const;

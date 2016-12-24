@@ -16,7 +16,6 @@ RubberLeavesBlock::RubberLeavesBlock():IC::Blocks("ic.rubber.leaves",IC::Blocks:
 	init();
 	setCategory(CreativeItemCategory::DECORATIONS);
 	setSolid(false);
-	//setSoundType(BlockSoundType::SOUND_DEFAULT);
 	setExplodeable(1);
 	setDestroyTime(0.2);
 	setTicking(true);
@@ -48,10 +47,6 @@ int RubberLeavesBlock::getRenderLayer(BlockSource&s, BlockPos const&pos) const
 int RubberLeavesBlock::getExtraRenderLayers() const
 {
 	return mLeaves->getExtraRenderLayers();
-}
-bool RubberLeavesBlock::isSeasonTinted(BlockSource&, BlockPos const&) const
-{
-	return true;
 }
 void RubberLeavesBlock::tick(BlockSource&s, BlockPos const&pos, Random&r)const
 {

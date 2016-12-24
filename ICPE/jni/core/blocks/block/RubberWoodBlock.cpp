@@ -11,7 +11,6 @@
 RubberWoodBlock::RubberWoodBlock():IC::Blocks("ic.rubber.wood",IC::Blocks::ID::mRubberWood,Material::getMaterial(MaterialType::WOOD))
 {
 	init();
-	//setSoundType(BlockSoundType::SOUND_DEFAULT);
 	setCategory(CreativeItemCategory::DECORATIONS);
 	setExplodeable(10);
 	setDestroyTime(2);
@@ -21,7 +20,7 @@ RubberWoodBlock::RubberWoodBlock():IC::Blocks("ic.rubber.wood",IC::Blocks::ID::m
 }
 void RubberWoodBlock::tick(BlockSource&s, BlockPos const&pos, Random&r)const
 {
-	if(r.nextInt(7)==5&&s.getData(pos)==1)
+	if(s.getData(pos)==1&&canMakeWet(s,pos)&&r.nextBool(7))
 		s.setBlockAndData(pos,FullBlock(IC::Blocks::ID::mRubberWood,2),3,0);
 }
 int RubberWoodBlock::getSpawnResourcesAuxValue(unsigned char)const
@@ -31,4 +30,25 @@ int RubberWoodBlock::getSpawnResourcesAuxValue(unsigned char)const
 int RubberWoodBlock::getPlacementDataValue(Mob&, BlockPos const&, signed char, Vec3 const&, int aux)const
 {
 	return aux;
+}
+bool RubberWoodBlock::canMakeWet(BlockSource&s,BlockPos const&pos)const
+{
+	if(hasLeafAround(s,pos))
+		return true;
+	if(hasWoodTop(s,pos))
+		return canMakeWet(s,BlockPos(pos.x,pos.y+1,pos.z));
+	return false;
+}
+bool RubberWoodBlock::hasWoodTop(BlockSource&s,BlockPos const&pos)const
+{
+	return s.getBlock(pos.x,pos.y+1,pos.z)==this;
+}
+bool RubberWoodBlock::hasLeafAround(BlockSource&s,BlockPos const&pos)const
+{
+	return s.getBlock(pos.x,pos.y-1,pos.z)==mBlocks[ID::mRubberLeaves]||
+	s.getBlock(pos.x,pos.y+1,pos.z)==mBlocks[ID::mRubberLeaves]||
+	s.getBlock(pos.x,pos.y,pos.z-1)==mBlocks[ID::mRubberLeaves]||
+	s.getBlock(pos.x,pos.y,pos.z+1)==mBlocks[ID::mRubberLeaves]||
+	s.getBlock(pos.x-1,pos.y,pos.z)==mBlocks[ID::mRubberLeaves]||
+	s.getBlock(pos.x+1,pos.y,pos.z)==mBlocks[ID::mRubberLeaves];
 }

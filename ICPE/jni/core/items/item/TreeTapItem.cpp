@@ -28,22 +28,22 @@ void TreeTapItem::useOn(ItemInstance&instance, Entity&p, int x, int y, int z, si
 		switch(side)
 		{
 		case 0:
-			p.getRegion().getBlock(x,y,z)->popResource(p.getRegion(),BlockPos(x,y-1,z),ItemInstance(IC::Items::ID::mRubber,1+ICPE::mRandom.nextInt(3),0));
+			p.getRegion().getBlock(x,y-1,z)->popResource(p.getRegion(),BlockPos(x,y-1,z),ItemInstance(IC::Items::ID::mRubber,1+ICPE::mRandom.nextInt(3),0));
 		break;
 		case 1:
-			p.getRegion().getBlock(x,y,z)->popResource(p.getRegion(),BlockPos(x,y+1,z),ItemInstance(IC::Items::ID::mRubber,1+ICPE::mRandom.nextInt(3),0));
+			p.getRegion().getBlock(x,y+1,z)->popResource(p.getRegion(),BlockPos(x,y+1,z),ItemInstance(IC::Items::ID::mRubber,1+ICPE::mRandom.nextInt(3),0));
 		break;
 		case 2:
-			p.getRegion().getBlock(x,y,z)->popResource(p.getRegion(),BlockPos(x,y,z-1),ItemInstance(IC::Items::ID::mRubber,1+ICPE::mRandom.nextInt(3),0));
+			p.getRegion().getBlock(x,y,z-1)->popResource(p.getRegion(),BlockPos(x,y,z-1),ItemInstance(IC::Items::ID::mRubber,1+ICPE::mRandom.nextInt(3),0));
 		break;
 		case 3:
-			p.getRegion().getBlock(x,y,z)->popResource(p.getRegion(),BlockPos(x,y,z+1),ItemInstance(IC::Items::ID::mRubber,1+ICPE::mRandom.nextInt(3),0));
+			p.getRegion().getBlock(x,y,z+1)->popResource(p.getRegion(),BlockPos(x,y,z+1),ItemInstance(IC::Items::ID::mRubber,1+ICPE::mRandom.nextInt(3),0));
 		break;
 		case 4:
-			p.getRegion().getBlock(x,y,z)->popResource(p.getRegion(),BlockPos(x-1,y,z),ItemInstance(IC::Items::ID::mRubber,1+ICPE::mRandom.nextInt(3),0));
+			p.getRegion().getBlock(x-1,y,z)->popResource(p.getRegion(),BlockPos(x-1,y,z),ItemInstance(IC::Items::ID::mRubber,1+ICPE::mRandom.nextInt(3),0));
 		break;
 		case 5:
-			p.getRegion().getBlock(x,y,z)->popResource(p.getRegion(),BlockPos(x+1,y,z),ItemInstance(IC::Items::ID::mRubber,1+ICPE::mRandom.nextInt(3),0));
+			p.getRegion().getBlock(x+1,y,z)->popResource(p.getRegion(),BlockPos(x+1,y,z),ItemInstance(IC::Items::ID::mRubber,1+ICPE::mRandom.nextInt(3),0));
 		break;
 		}
 	}

@@ -11,7 +11,6 @@ ResinBlock::ResinBlock():IC::Blocks("ic.resin",IC::Blocks::ID::mResin,Material::
 	init();
 	setCategory(CreativeItemCategory::DECORATIONS);
 	setVisualShape({0,0,0,1,0.125,1});
-	//setSoundType(BlockSoundType::SOUND_DEFAULT);
 	setDestroyTime(1);
 	setSolid(false);
 }

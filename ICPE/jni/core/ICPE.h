@@ -24,6 +24,7 @@ class Random;
 class BiomeDecorator;
 class Biome;
 class BlockSource;
+class FlowerPotBlock;
 
 typedef BlockGraphics MCPEBlockGraphics;
 typedef unsigned char uchar;
@@ -46,6 +47,8 @@ public:
 	static void initMCClient(MinecraftClient*);
 	static void (*initCreativeItems_)();
 	static void initCreativeItems();
+	static bool (*isSupportedFlower_)(FlowerPotBlock const*const,Block const*,short);
+	static bool isSupportedFlower(FlowerPotBlock const*const,Block const*,short);
 	static void (*initItems_)();
 	static void initItems();
 	static void (*initBlockGraphics_)();

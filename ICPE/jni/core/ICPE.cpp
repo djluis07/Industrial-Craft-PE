@@ -19,6 +19,7 @@
 #include "mcpe/item/Item.h"
 #include "mcpe/block/Block.h"
 #include "mcpe/block/BlockGraphics.h"
+#include "mcpe/block/blocks/FlowerPotBlock.h"
 #include "mcpe/client/MinecraftClient.h"
 #include "mcpe/client/Minecraft.h"
 #include "mcpe/client/resources/Localization.h"
@@ -57,6 +58,7 @@ jint ICPE::onJNI_Loaded(JavaVM*,void*)
 }
 void ICPE::setupMSHookFunctions()
 {
+	MSHookFunction((void*)&FlowerPotBlock::isSupportedBlock,(void*)&isSupportedFlower,(void**)&isSupportedFlower_);
 	MSHookFunction((void*)&Localization::_load,(void*)&loadLocalization,(void**)&loadLocalization_);
 	MSHookFunction((void*)&Level::tick,(void*)&tickLevel,(void**)&tickLevel_);
 	MSHookFunction((void*)&Minecraft::createLevel,(void*)&createLevel,(void**)&createLevel_);
@@ -79,6 +81,7 @@ void (*ICPE::initCreativeItems_)()=0;
 void (*ICPE::initItems_)()=0;
 void (*ICPE::initBlockGraphics_)()=0;
 void (*ICPE::initBlocks_)()=0;
+bool (*ICPE::isSupportedFlower_)(FlowerPotBlock const*const,Block const*,short)=0;
 void (*ICPE::createLevel_)(Minecraft*,void*,std::string const&,std::string const&,LevelSettings const &,ResourcePackManager&)=0;
 void (*ICPE::tickLevel_)(Level*)=0;
 
@@ -103,6 +106,10 @@ void ICPE::loadLocalization(Localization *self, const std::string &languageName)
 		languageList=ICLangauge::zh_CN;
 	for(std::string translation : languageList)
 		self->_appendTranslations(translation);
+}
+bool ICPE::isSupportedFlower(FlowerPotBlock const*const self,Block const*block,short aux)
+{
+	return block==Block::mBlocks[IC::Blocks::ID::mRubberSapling]||isSupportedFlower_(self,block,aux);
 }
 void ICPE::decorateChunk(BiomeDecorator*decorator,BlockSource*s, Random&r, Biome*biome, BlockPos const&pos, bool b, float f)
 {

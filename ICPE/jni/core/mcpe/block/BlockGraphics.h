@@ -6,6 +6,7 @@
 
 #include "Block.h"
 #include "BlockShape.h"
+#include "BlockSoundType.h"
 #include "../client/renderer/texture/TextureAtlasTextureItem.h"
 
 class BlockSource;
@@ -19,81 +20,43 @@ namespace Json { class Value; }
 class BlockGraphics 
 {
 public:
-	class SoundType 
-	{
-	public:
-		float volume; // 0
-		float pitch; // 4
-		std::string stepSound; // 8
-		std::string breakSound; // 12
-		std::string placeSound; // 16
-
-		SoundType(const std::string&, float, float);
-		SoundType(const std::string&, const std::string&, float, float);
-		SoundType(const std::string&, const std::string&, const std::string&, float, float);
-
-		~SoundType();
-
-		float getVolume() const;
-		float getPitch() const;
-		std::string getStepSound() const;
-		std::string getBreakSound() const;
-		std::string getPlaceSound() const;
-	};
-	
 	void**vtable;
 	char filler[500];
 
 	static std::shared_ptr<TextureAtlas> mTerrainTextureAtlas;
 	static std::vector<std::unique_ptr<BlockGraphics>> mOwnedBlocks;
 	static BlockGraphics* mBlocks[256];
-	//static BlockGraphics* mBlockLookupMap; //HALP
-	
-	static const BlockGraphics::SoundType SOUND_ANVIL;
-	static const BlockGraphics::SoundType SOUND_CLOTH;
-	static const BlockGraphics::SoundType SOUND_GLASS;
-	static const BlockGraphics::SoundType SOUND_GRASS;
-	static const BlockGraphics::SoundType SOUND_GRAVEL;
-	static const BlockGraphics::SoundType SOUND_LADDER;
-	static const BlockGraphics::SoundType SOUND_METAL;
-	static const BlockGraphics::SoundType SOUND_NORMAL;
-	static const BlockGraphics::SoundType SOUND_SAND;
-	static const BlockGraphics::SoundType SOUND_SILENT;
-	static const BlockGraphics::SoundType SOUND_SLIME;
-	static const BlockGraphics::SoundType SOUND_SNOW;
-	static const BlockGraphics::SoundType SOUND_STONE;
-	static const BlockGraphics::SoundType SOUND_WOOD;
 
 	BlockGraphics(const std::string&);
 
 	virtual ~BlockGraphics();
-	virtual bool shouldRenderFace(BlockSource&, const BlockPos&, signed char, const AABB&) const;
-	virtual int getIconYOffset() const;
-	virtual int getColor(int) const;
-	virtual int getColor(BlockSource&, const BlockPos&) const;
-	virtual int getColorForParticle(BlockSource&, const BlockPos&, int) const;
-	virtual bool isSeasonTinted(BlockSource&, const BlockPos&) const;
-	virtual void prepareRender(BlockSource&, const BlockPos&);
-	virtual void onGraphicsModeChanged(bool, bool);
-	virtual int getRenderLayer(BlockSource&, const BlockPos&) const;
-	virtual int getExtraRenderLayers();
-	virtual const AABB& getVisualShape(BlockSource&, const BlockPos&, AABB&, bool);
-	virtual const AABB& getVisualShape(unsigned char, AABB&, bool);
-	virtual const TextureUVCoordinateSet& getCarriedTexture(signed char, int) const;
-	virtual bool animateTick(BlockSource&, const BlockPos&, Random&);
-	virtual void randomlyModifyPosition(const BlockPos&, int&) const;
-	virtual void randomlyModifyPosition(const BlockPos&) const;
-	virtual void setVisualShape(const AABB&);
-	virtual void setVisualShape(const Vec3&, const Vec3&);
-	virtual void setSoundType(const BlockGraphics::SoundType&);
 
+	bool shouldRenderFace(BlockSource&, const BlockPos&, signed char, const AABB&) const;
+	int getIconYOffset() const;
+	int getColor(int) const;
+	int getColor(BlockSource&, const BlockPos&) const;
+	int getColorForParticle(BlockSource&, const BlockPos&, int) const;
+	bool isSeasonTinted(BlockSource&, const BlockPos&) const;
+	void prepareRender(BlockSource&, const BlockPos&);
+	void onGraphicsModeChanged(bool, bool);
+	int getRenderLayer(BlockSource&, const BlockPos&) const;
+	int getExtraRenderLayers();
+	const AABB& getVisualShape(BlockSource&, const BlockPos&, AABB&, bool);
+	const AABB& getVisualShape(unsigned char, AABB&, bool);
+	const TextureUVCoordinateSet& getCarriedTexture(signed char, int) const;
+	bool animateTick(BlockSource&, const BlockPos&, Random&);
+	void randomlyModifyPosition(const BlockPos&, int&) const;
+	void randomlyModifyPosition(const BlockPos&) const;
+	void setVisualShape(const AABB&);
+	void setVisualShape(const Vec3&, const Vec3&);
+	void setSoundType(BlockSoundType);
 	Block& getBlock() const;
 	BlockShape getBlockShape() const;
 	void getFaceTextureIsotropic();
 	Color getMapColor(const FullBlock) const;
 	Color getMapColor() const;
 	int getRenderLayer() const;
-	SoundType& getSoundType();
+	BlockSoundType getSoundType();
 	const TextureUVCoordinateSet& getTexture(signed char) const;
 	const TextureUVCoordinateSet& getTexture(signed char, int) const;
 	bool isAlphaTested();

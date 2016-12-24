@@ -24,10 +24,10 @@ void GuideBookScreen::init()
 	int height=mcClient->getGuiData()->getScreenHeight();
 	
 	guideBookBackground=std::make_shared<PackedScrollContainer>(false,false);
-	guideBookBackground->width=304;
-	guideBookBackground->height=368;
-	guideBookBackground->xPosition=width/2-152;
-	guideBookBackground->yPosition=height/2-184;
+	guideBookBackground->width=228;
+	guideBookBackground->height=276;
+	guideBookBackground->xPosition=width/2-114;
+	guideBookBackground->yPosition=height/2-138;
 	guideBookBackground->setBackground(mcClient,"textures/gui/book",{8,0,152,184},0,0);
 	tabElementList.push_back(guideBookBackground);
 }
