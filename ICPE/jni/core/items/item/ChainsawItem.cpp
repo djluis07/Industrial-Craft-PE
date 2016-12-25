@@ -19,9 +19,9 @@ ChainsawItem::ChainsawItem():IC::Items("ic.electric.chainsaw",ID::mChainsaw-0x10
 }
 std::string ChainsawItem::buildEffectDescriptionName(const ItemInstance&i) const
 {
-	return "§7"+I18n::get("ic.effectname.lastectricity")+Util::toString((500-i.aux)*50)+"EU/25000EU";
+	return "§7"+I18n::get("ic.effectname.lastectricity")+Util::toString(((((Item*)this)->getMaxDamage()-1)-i.aux)*50)+"EU/25000EU";
 }
-float ChainsawItem::getDestroySpeed(ItemInstance*instance, Block*block)
+float ChainsawItem::getDestroySpeed(ItemInstance*instance, Block const*block)
 {
 	if(!instance||instance->aux>=getMaxDamage()-1)
 		return Item::getDestroySpeed(0,block);

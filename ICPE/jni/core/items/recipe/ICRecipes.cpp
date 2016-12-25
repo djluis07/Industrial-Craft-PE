@@ -26,10 +26,10 @@ void ICRecipes::addFurnaceRecipes(FurnaceRecipes&fr)
 {
 	RecipeUtil ru(0,&fr);
 	
-	ru.addFurnaceRecipe(265,0,IC::Items::ID::mIngot,1);
+	/*ru.addFurnaceRecipe(265,0,IC::Items::ID::mIngot,1);
 	ru.addFurnaceRecipe(IC::Blocks::ID::mOre,0,IC::Items::ID::mIngot,0);
 	ru.addFurnaceRecipe(IC::Blocks::ID::mOre,1,IC::Items::ID::mIngot,2);
 	ru.addFurnaceRecipe(IC::Blocks::ID::mOre,2,IC::Items::ID::mIngot,3);
 	ru.addFurnaceRecipe(IC::Blocks::ID::mOre,3,IC::Items::ID::mUranium,0);
-	ru.addFurnaceRecipe(IC::Items::ID::mRubber,0,IC::Items::ID::mRubber,1);
+	ru.addFurnaceRecipe(IC::Items::ID::mRubber,0,IC::Items::ID::mRubber,1);*/
 }

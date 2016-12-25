@@ -7,7 +7,6 @@ class ResinBlock : public IC::Blocks
 public:
 	ResinBlock();
 public:
-	virtual bool shouldStopFalling(Entity&)const;
 	virtual bool entityInside(BlockSource&, BlockPos const&, Entity&)const;
 	virtual int getSpawnResourcesAuxValue(unsigned char)const;
 	virtual int getResource(Random&, int, int)const;

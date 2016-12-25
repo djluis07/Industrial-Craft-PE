@@ -58,6 +58,7 @@ jint ICPE::onJNI_Loaded(JavaVM*,void*)
 }
 void ICPE::setupMSHookFunctions()
 {
+	MSHookFunction((void*)&Entity::causeFallDamage,(void*)&causeFallDamage,(void**)&causeFallDamage_);
 	MSHookFunction((void*)&FlowerPotBlock::isSupportedBlock,(void*)&isSupportedFlower,(void**)&isSupportedFlower_);
 	MSHookFunction((void*)&Localization::_load,(void*)&loadLocalization,(void**)&loadLocalization_);
 	MSHookFunction((void*)&Level::tick,(void*)&tickLevel,(void**)&tickLevel_);
@@ -84,6 +85,7 @@ void (*ICPE::initBlocks_)()=0;
 bool (*ICPE::isSupportedFlower_)(FlowerPotBlock const*const,Block const*,short)=0;
 void (*ICPE::createLevel_)(Minecraft*,void*,std::string const&,std::string const&,LevelSettings const &,ResourcePackManager&)=0;
 void (*ICPE::tickLevel_)(Level*)=0;
+void (*ICPE::causeFallDamage_)(Entity*,float)=0;
 
 MinecraftClient* ICPE::pMinecraftClient=0;
 Level* ICPE::pLevel=0;
@@ -122,6 +124,14 @@ void ICPE::initRecipes(Recipes*self)
 {
 	initRecipes_(self);
 	ICRecipes::addRecipes(*self,*FurnaceRecipes::getInstance());
+}
+void ICPE::causeFallDamage(Entity*self,float distance)
+{
+	if(self&&(
+	(self->getRegion().getBlock(self->getPos().x,self->getPos().y,self->getPos().z)==Block::mBlocks[IC::Blocks::ID::mResin]&&self->getRegion().getData(self->getPos().x,self->getPos().y,self->getPos().z)==1)||
+	(self->getRegion().getBlock(self->getPos().x,self->getPos().y-1,self->getPos().z)==Block::mBlocks[IC::Blocks::ID::mResin]&&self->getRegion().getData(self->getPos().x,self->getPos().y-1,self->getPos().z)==1)))
+		return;
+	causeFallDamage_(self,distance);
 }
 bool ICPE::tessellateInWorld(BlockTessellator*tessellator,Block const&block,BlockPos const&pos,uchar aux,bool wtf)
 {

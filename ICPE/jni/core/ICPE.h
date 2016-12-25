@@ -25,6 +25,7 @@ class BiomeDecorator;
 class Biome;
 class BlockSource;
 class FlowerPotBlock;
+class Entity;
 
 typedef BlockGraphics MCPEBlockGraphics;
 typedef unsigned char uchar;
@@ -45,6 +46,8 @@ public:
 	static bool tessellateInWorld(BlockTessellator*,Block const&,BlockPos const&,uchar,bool);
 	static void (*initMCClient_)(MinecraftClient*);
 	static void initMCClient(MinecraftClient*);
+	static void (*causeFallDamage_)(Entity*,float);
+	static void causeFallDamage(Entity*,float);
 	static void (*initCreativeItems_)();
 	static void initCreativeItems();
 	static bool (*isSupportedFlower_)(FlowerPotBlock const*const,Block const*,short);

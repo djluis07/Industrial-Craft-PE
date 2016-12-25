@@ -106,9 +106,9 @@ public:
 	virtual void onMovePlayerPacketNormal(const Vec3&, const Vec2&);
 
 	ItemInstance* getSelectedItem() const;
-	bool IsCreative() const;
-	bool IsSurvival() const;
-	bool IsViewer() const;
+	bool isCreative() const;
+	bool isSurvival() const;
+	bool isViewer() const;
 	bool hasRespawnPosition() const;
 	BlockPos getSpawnPosition();
 	void setRespawnPosition(const BlockPos&);

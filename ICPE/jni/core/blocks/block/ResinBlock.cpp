@@ -38,10 +38,4 @@ bool ResinBlock::entityInside(BlockSource&s, BlockPos const&pos, Entity&e)const
 {
 	if(s.getData(pos)==0)
 		mSlimeBlock->onStepOn(e,pos);
-	else
-		return mVine->entityInside(s,pos,e);
-}
-bool ResinBlock::shouldStopFalling(Entity&)const
-{
-	return true;
 }

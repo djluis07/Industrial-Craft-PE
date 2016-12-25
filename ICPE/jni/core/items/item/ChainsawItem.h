@@ -12,5 +12,5 @@ public:
 	virtual void mineBlock(ItemInstance*, BlockID, int, int, int, Mob*);
 	virtual std::string buildEffectDescriptionName(const ItemInstance&) const;
 	virtual bool canDestroySpecial(const Block*) const;
-	virtual float getDestroySpeed(ItemInstance*, Block*);
+	virtual float getDestroySpeed(ItemInstance*, Block const*);
 };

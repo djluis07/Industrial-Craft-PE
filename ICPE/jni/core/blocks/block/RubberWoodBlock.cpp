@@ -7,6 +7,10 @@
 #include "mcpe/util/FullBlock.h"
 #include "mcpe/util/Random.h"
 #include "mcpe/block/blocks/FireBlock.h"
+#include "mcpe/entity/player/Player.h"
+
+#include "items/Items.h"
+#include "ICPE.h"
 
 RubberWoodBlock::RubberWoodBlock():IC::Blocks("ic.rubber.wood",IC::Blocks::ID::mRubberWood,Material::getMaterial(MaterialType::WOOD))
 {
@@ -30,6 +34,32 @@ int RubberWoodBlock::getSpawnResourcesAuxValue(unsigned char)const
 int RubberWoodBlock::getPlacementDataValue(Mob&, BlockPos const&, signed char, Vec3 const&, int aux)const
 {
 	return aux;
+}
+bool RubberWoodBlock::use(Player&p, BlockPos const&pos) const
+{
+	if(p.getSelectedItem()&&p.getSelectedItem()->getId()==IC::Items::ID::mTreeTap)
+	{
+		if(p.getRegion().getData(pos)>0)
+		{
+			p.getRegion().setBlockAndData(pos,FullBlock(Blocks::ID::mRubberWood,p.getRegion().getData(pos)-1),3,0);
+			if(!p.isCreative())
+				p.getSelectedItem()->hurtAndBreak(1,0);
+			popResource(p.getRegion(),pos,ItemInstance(IC::Items::ID::mRubber,1+ICPE::mRandom.nextInt(3),0));
+		}
+	}
+	else if(p.getSelectedItem()&&p.getSelectedItem()->getId()==IC::Items::ID::mElectricTreeTap)
+	{
+		if(p.getSelectedItem()->aux<(p.getSelectedItem()->getMaxDamage()-1)&&p.getRegion().getData(pos)>0)
+		{
+			p.getRegion().setBlockAndData(pos,FullBlock(Blocks::ID::mRubberWood,p.getRegion().getData(pos)-1),3,0);
+			if(!p.isCreative())
+				p.getSelectedItem()->hurtAndBreak(1,0);
+			popResource(p.getRegion(),pos,ItemInstance(IC::Items::ID::mRubber,1+ICPE::mRandom.nextInt(3),0));
+		}
+	}
+	else
+		return false;
+	return true;
 }
 bool RubberWoodBlock::canMakeWet(BlockSource&s,BlockPos const&pos)const
 {

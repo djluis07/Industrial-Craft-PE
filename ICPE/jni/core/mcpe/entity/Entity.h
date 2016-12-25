@@ -196,8 +196,8 @@ public:
 	virtual void changeDimension(DimensionId);
 	virtual void changeDimension(ChangeDimensionPacket&);
 	virtual Player* getControllingPlayer() const;
-	virtual void checkFallDamage(float, bool);
-	virtual void causeFallDamage(float);
+	void checkFallDamage(float, bool);
+	void causeFallDamage(float);
 	virtual bool canAddRider(Entity&) const;
 	virtual float getEyeHeight() const;
 	virtual void sendMotionPacketIfNeeded();
