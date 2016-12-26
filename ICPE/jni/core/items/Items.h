@@ -16,7 +16,6 @@ public:
 		static const short mRubber=502;
 		static const short mTreeTap=503;
 		static const short mCable=504;
-		static const short mBroken=587;
 		static const short mSlag=510;
 		static const short mScrap=511;
 		static const short mForgeHammer=512;
@@ -90,9 +89,27 @@ public:
 		static const short mFlatificationTFBP=582;
 		static const short mIrrigationTFBP=583;
 		static const short mMushroomTFBP=584;
-		
-		
-		
+		static const short mCrushedCopper=585;
+		static const short mCrushedGold=586;
+		static const short mCrushedIron=587;
+		static const short mCrushedLead=588;
+		static const short mCrushedSilver=589;
+		static const short mCrushedTin=590;
+		static const short mCrushedUranium=591;
+		static const short mPurifiedCopper=592;
+		static const short mPurifiedGold=593;
+		static const short mPurifiedIron=594;
+		static const short mPurifiedLead=595;
+		static const short mPurifiedSilver=596;
+		static const short mPurifiedTin=597;
+		static const short mPurifiedUranium=598;
+		static const short mCasingBronze=599;
+		static const short mCasingCopper=600;
+		static const short mCasingGold=601;
+		static const short mCasingIron=602;
+		static const short mCasingLead=603;
+		static const short mCasingSteel=604;
+		static const short mCasingTin=605;
 	};
 public:
 	static void initICAllItems();

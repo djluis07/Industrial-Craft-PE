@@ -40,7 +40,7 @@ void FeatureGen::decorateChunk(BiomeDecorator*bd,BlockSource&s, Random&random,Bi
 	
 	//uranium ore
 	for(int x=pos.x;x<pos.x+16;++x)
-		for(int y=5;y<64;++y)
+		for(int y=5;y<25;++y)
 			for(int z=pos.z;z<pos.z+16;++z)
 				if(random.nextBool(5000))
 					bd->_placeFeature(&s,uraniumOre,BlockPos(x,y,z),random);
@@ -58,7 +58,7 @@ void FeatureGen::decorateChunk(BiomeDecorator*bd,BlockSource&s, Random&random,Bi
 					bd->_placeFeature(&s,tinOre,BlockPos(x,y,z),random);
 	//lead ore
 	for(int x=pos.x;x<pos.x+16;++x)
-		for(int y=0;y<63;++y)
+		for(int y=0;y<30;++y)
 			for(int z=pos.z;z<pos.z+16;++z)
 				if(random.nextBool(2000))
 					bd->_placeFeature(&s,leadOre,BlockPos(x,y,z),random);

@@ -13,7 +13,6 @@
 #include "item/RubberItem.h"
 #include "item/TreeTapItem.h"
 #include "item/CableItem.h"
-#include "item/BrokenItem.h"
 #include "item/ForgeHammerItem.h"
 #include "item/ElectricTreeTapItem.h"
 #include "item/ElectricHoeItem.h"
@@ -79,27 +78,6 @@ void Items::addICCreativeItems()
 	Item::addCreativeItem(ID::mCable,11);
 	Item::addCreativeItem(ID::mCable,12);
 	Item::addCreativeItem(ID::mCable,13);
-	Item::addCreativeItem(ID::mBroken,0);
-	Item::addCreativeItem(ID::mBroken,1);
-	Item::addCreativeItem(ID::mBroken,2);
-	Item::addCreativeItem(ID::mBroken,3);
-	Item::addCreativeItem(ID::mBroken,4);
-	Item::addCreativeItem(ID::mBroken,5);
-	Item::addCreativeItem(ID::mBroken,6);
-	Item::addCreativeItem(ID::mBroken,7);
-	Item::addCreativeItem(ID::mBroken,8);
-	Item::addCreativeItem(ID::mBroken,9);
-	Item::addCreativeItem(ID::mBroken,10);
-	Item::addCreativeItem(ID::mBroken,11);
-	Item::addCreativeItem(ID::mBroken,12);
-	Item::addCreativeItem(ID::mBroken,13);
-	Item::addCreativeItem(ID::mBroken,14);
-	Item::addCreativeItem(ID::mBroken,15);
-	Item::addCreativeItem(ID::mBroken,16);
-	Item::addCreativeItem(ID::mBroken,17);
-	Item::addCreativeItem(ID::mBroken,18);
-	Item::addCreativeItem(ID::mBroken,19);
-	Item::addCreativeItem(ID::mBroken,20);
 	Item::addCreativeItem(ID::mScrap,0);
 	Item::addCreativeItem(ID::mSlag,0);
 	Item::addCreativeItem(ID::mForgeHammer,0);
@@ -175,88 +153,27 @@ void Items::addICCreativeItems()
 	Item::addCreativeItem(ID::mFlatificationTFBP,0);
 	Item::addCreativeItem(ID::mIrrigationTFBP,0);
 	Item::addCreativeItem(ID::mMushroomTFBP,0);
-	/*Item::addCreativeItem(ID::mSingleUseBattery,0);
-	Item::addCreativeItem(ID::mSingleUseBattery,0);
-	Item::addCreativeItem(ID::mSingleUseBattery,0);
-	Item::addCreativeItem(ID::mSingleUseBattery,0);
-	Item::addCreativeItem(ID::mSingleUseBattery,0);
-	Item::addCreativeItem(ID::mSingleUseBattery,0);
-	Item::addCreativeItem(ID::mSingleUseBattery,0);
-	Item::addCreativeItem(ID::mSingleUseBattery,0);
-	Item::addCreativeItem(ID::mSingleUseBattery,0);
-	Item::addCreativeItem(ID::mSingleUseBattery,0);
-	Item::addCreativeItem(ID::mSingleUseBattery,0);
-	Item::addCreativeItem(ID::mSingleUseBattery,0);
-	Item::addCreativeItem(ID::mSingleUseBattery,0);
-	Item::addCreativeItem(ID::mSingleUseBattery,0);
-	Item::addCreativeItem(ID::mSingleUseBattery,0);
-	Item::addCreativeItem(ID::mSingleUseBattery,0);
-	Item::addCreativeItem(ID::mSingleUseBattery,0);
-	Item::addCreativeItem(ID::mSingleUseBattery,0);
-	Item::addCreativeItem(ID::mSingleUseBattery,0);
-	Item::addCreativeItem(ID::mSingleUseBattery,0);
-	Item::addCreativeItem(ID::mSingleUseBattery,0);
-	Item::addCreativeItem(ID::mSingleUseBattery,0);
-	Item::addCreativeItem(ID::mSingleUseBattery,0);
-	Item::addCreativeItem(ID::mSingleUseBattery,0);
-	Item::addCreativeItem(ID::mSingleUseBattery,0);
-	Item::addCreativeItem(ID::mSingleUseBattery,0);
-	Item::addCreativeItem(ID::mSingleUseBattery,0);
-	Item::addCreativeItem(ID::mSingleUseBattery,0);
-	Item::addCreativeItem(ID::mSingleUseBattery,0);
-	Item::addCreativeItem(ID::mSingleUseBattery,0);
-	Item::addCreativeItem(ID::mSingleUseBattery,0);
-	Item::addCreativeItem(ID::mSingleUseBattery,0);
-	Item::addCreativeItem(ID::mSingleUseBattery,0);
-	Item::addCreativeItem(ID::mSingleUseBattery,0);
-	Item::addCreativeItem(ID::mSingleUseBattery,0);
-	Item::addCreativeItem(ID::mSingleUseBattery,0);
-	Item::addCreativeItem(ID::mSingleUseBattery,0);
-	Item::addCreativeItem(ID::mSingleUseBattery,0);
-	Item::addCreativeItem(ID::mSingleUseBattery,0);
-	Item::addCreativeItem(ID::mSingleUseBattery,0);
-	Item::addCreativeItem(ID::mSingleUseBattery,0);
-	Item::addCreativeItem(ID::mSingleUseBattery,0);
-	Item::addCreativeItem(ID::mSingleUseBattery,0);
-	Item::addCreativeItem(ID::mSingleUseBattery,0);
-	Item::addCreativeItem(ID::mSingleUseBattery,0);
-	Item::addCreativeItem(ID::mSingleUseBattery,0);
-	Item::addCreativeItem(ID::mSingleUseBattery,0);
-	Item::addCreativeItem(ID::mSingleUseBattery,0);
-	Item::addCreativeItem(ID::mSingleUseBattery,0);
-	Item::addCreativeItem(ID::mSingleUseBattery,0);
-	Item::addCreativeItem(ID::mSingleUseBattery,0);
-	Item::addCreativeItem(ID::mSingleUseBattery,0);
-	Item::addCreativeItem(ID::mSingleUseBattery,0);
-	Item::addCreativeItem(ID::mSingleUseBattery,0);
-	Item::addCreativeItem(ID::mSingleUseBattery,0);
-	Item::addCreativeItem(ID::mSingleUseBattery,0);
-	Item::addCreativeItem(ID::mSingleUseBattery,0);
-	Item::addCreativeItem(ID::mSingleUseBattery,0);
-	Item::addCreativeItem(ID::mSingleUseBattery,0);
-	Item::addCreativeItem(ID::mSingleUseBattery,0);
-	Item::addCreativeItem(ID::mSingleUseBattery,0);
-	Item::addCreativeItem(ID::mSingleUseBattery,0);
-	Item::addCreativeItem(ID::mSingleUseBattery,0);
-	Item::addCreativeItem(ID::mSingleUseBattery,0);
-	Item::addCreativeItem(ID::mSingleUseBattery,0);
-	Item::addCreativeItem(ID::mSingleUseBattery,0);
-	Item::addCreativeItem(ID::mSingleUseBattery,0);
-	Item::addCreativeItem(ID::mSingleUseBattery,0);
-	Item::addCreativeItem(ID::mSingleUseBattery,0);
-	Item::addCreativeItem(ID::mSingleUseBattery,0);
-	Item::addCreativeItem(ID::mSingleUseBattery,0);
-	Item::addCreativeItem(ID::mSingleUseBattery,0);
-	Item::addCreativeItem(ID::mSingleUseBattery,0);
-	Item::addCreativeItem(ID::mSingleUseBattery,0);
-	Item::addCreativeItem(ID::mSingleUseBattery,0);
-	Item::addCreativeItem(ID::mSingleUseBattery,0);
-	Item::addCreativeItem(ID::mSingleUseBattery,0);
-	Item::addCreativeItem(ID::mSingleUseBattery,0);
-	Item::addCreativeItem(ID::mSingleUseBattery,0);
-	Item::addCreativeItem(ID::mSingleUseBattery,0);
-	Item::addCreativeItem(ID::mSingleUseBattery,0);
-	Item::addCreativeItem(ID::mSingleUseBattery,0);*/
+	Item::addCreativeItem(ID::mCrushedCopper,0);
+	Item::addCreativeItem(ID::mCrushedGold,0);
+	Item::addCreativeItem(ID::mCrushedIron,0);
+	Item::addCreativeItem(ID::mCrushedLead,0);
+	Item::addCreativeItem(ID::mCrushedSilver,0);
+	Item::addCreativeItem(ID::mCrushedTin,0);
+	Item::addCreativeItem(ID::mCrushedUranium,0);
+	Item::addCreativeItem(ID::mPurifiedCopper,0);
+	Item::addCreativeItem(ID::mPurifiedGold,0);
+	Item::addCreativeItem(ID::mPurifiedIron,0);
+	Item::addCreativeItem(ID::mPurifiedLead,0);
+	Item::addCreativeItem(ID::mPurifiedSilver,0);
+	Item::addCreativeItem(ID::mPurifiedTin,0);
+	Item::addCreativeItem(ID::mPurifiedUranium,0);
+	Item::addCreativeItem(ID::mCasingBronze,0);
+	Item::addCreativeItem(ID::mCasingCopper,0);
+	Item::addCreativeItem(ID::mCasingGold,0);
+	Item::addCreativeItem(ID::mCasingIron,0);
+	Item::addCreativeItem(ID::mCasingLead,0);
+	Item::addCreativeItem(ID::mCasingSteel,0);
+	Item::addCreativeItem(ID::mCasingTin,0);
 }
 void Items::initICItems()
 {
@@ -327,8 +244,27 @@ void Items::initICItems()
 	registerItem(ID::mFlatificationTFBP,"ic.tfbp.flatfication","icpe_tfbp_flatification",0);
 	registerItem(ID::mIrrigationTFBP,"ic.tfbp.irrigation","icpe_tfbp_irrigation",0);
 	registerItem(ID::mMushroomTFBP,"ic.tfbp.mushroom","icpe_tfbp_mushroom",0);
-	
-	
+	registerItem(ID::mCrushedCopper,"ic.crushed.copper","icpe_cr_copper",0);
+	registerItem(ID::mCrushedGold,"ic.crushed.gold","icpe_cr_gold",0);
+	registerItem(ID::mCrushedIron,"ic.crushed.iron","icpe_cr_iron",0);
+	registerItem(ID::mCrushedLead,"ic.crushed.lead","icpe_cr_lead",0);
+	registerItem(ID::mCrushedSilver,"ic.crushed.silver","icpe_cr_silver",0);
+	registerItem(ID::mCrushedTin,"ic.crushed.tin","icpe_cr_tin",0);
+	registerItem(ID::mCrushedUranium,"ic.crushed.uranium","icpe_pu_uranium",0);
+	registerItem(ID::mPurifiedCopper,"ic.purified.copper","icpe_pu_copper",0);
+	registerItem(ID::mPurifiedGold,"ic.purified.gold","icpe_pu_gold",0);
+	registerItem(ID::mPurifiedIron,"ic.purified.iron","icpe_pu_iron",0);
+	registerItem(ID::mPurifiedLead,"ic.purified.lead","icpe_pu_lead",0);
+	registerItem(ID::mPurifiedSilver,"ic.purified.silver","icpe_pu_silver",0);
+	registerItem(ID::mPurifiedTin,"ic.purified.tin","icpe_pu_tin",0);
+	registerItem(ID::mPurifiedUranium,"ic.purified.uranium","icpe_pu_uranium",0);
+	registerItem(ID::mCasingBronze,"ic.casing.bronze","icpe_ca_bronze",0);
+	registerItem(ID::mCasingCopper,"ic.casing.copper","icpe_ca_copper",0);
+	registerItem(ID::mCasingGold,"ic.casing.gold","icpe_ca_gold",0);
+	registerItem(ID::mCasingIron,"ic.casing.iron","icpe_ca_iron",0);
+	registerItem(ID::mCasingLead,"ic.casing.lead","icpe_ca_lead",0);
+	registerItem(ID::mCasingSteel,"ic.casing.steel","icpe_ca_steel",0);
+	registerItem(ID::mCasingTin,"ic.casing.tin","icpe_ca_tin",0);
 	
 	Item::mItems[ID::mGuideBook]=new GuideBookItem();
 	Item::mItems[ID::mSingleUseBattery]=new SingleUseBatteryItem();
@@ -336,7 +272,6 @@ void Items::initICItems()
 	Item::mItems[ID::mElectricHoe]=new ElectricHoeItem();
 	Item::mItems[ID::mElectricTreeTap]=new ElectricTreeTapItem();
 	Item::mItems[ID::mForgeHammer]=new ForgeHammerItem();
-	Item::mItems[ID::mBroken]=new BrokenItem();
 	Item::mItems[ID::mUranium]=new UraniumItem();
 	Item::mItems[ID::mRubber]=new RubberItem();
 	Item::mItems[ID::mTreeTap]=new TreeTapItem();

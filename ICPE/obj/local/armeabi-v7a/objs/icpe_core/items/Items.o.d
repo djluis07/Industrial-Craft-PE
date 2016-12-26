@@ -24,8 +24,7 @@ obj/local/armeabi-v7a/objs/icpe_core/items/Items.o: \
  jni/core/items/item/battery/SingleUseBatteryItem.h \
  jni/core/items/item/base/BatteryItem.h jni/core/items/item/UraniumItem.h \
  jni/core/items/item/RubberItem.h jni/core/items/item/TreeTapItem.h \
- jni/core/items/item/CableItem.h jni/core/items/item/BrokenItem.h \
- jni/core/items/item/ForgeHammerItem.h \
+ jni/core/items/item/CableItem.h jni/core/items/item/ForgeHammerItem.h \
  jni/core/items/item/ElectricTreeTapItem.h \
  jni/core/items/item/ElectricHoeItem.h jni/core/items/item/ChainsawItem.h \
  jni/core/items/item/GuideBookItem.h
@@ -97,8 +96,6 @@ jni/core/items/item/RubberItem.h:
 jni/core/items/item/TreeTapItem.h:
 
 jni/core/items/item/CableItem.h:
-
-jni/core/items/item/BrokenItem.h:
 
 jni/core/items/item/ForgeHammerItem.h:
 

@@ -2,8 +2,11 @@
 
 #include <vector>
 
+#include "ICPE.h"
+
 ICOptions::ICOptions()
 {
+	database=mca::Database("/sdcard/games/com.mojang/minecraftpe/ICPEOptions.db","icpe_options",ICPE::localKeyCode);
 	
 }
 bool ICOptions::getUseLog()const

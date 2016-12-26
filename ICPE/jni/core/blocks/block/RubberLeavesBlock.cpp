@@ -70,7 +70,7 @@ int RubberLeavesBlock::getPlacementDataValue(Entity&, BlockPos const&, signed ch
 void RubberLeavesBlock::die(BlockSource&s,BlockPos const&pos,Random&r)const
 {
 	s.removeBlock(pos);
-	if(r.nextInt(12))
+	if(r.nextBool(12))
 		popResource(s,pos,ItemInstance(ID::mRubberSapling,1,0));
 }
 bool RubberLeavesBlock::isValidDistance(BlockSource&s,BlockPos const&pos1,BlockPos const&pos2)const
