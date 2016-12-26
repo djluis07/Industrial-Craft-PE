@@ -5,12 +5,13 @@
 
 #include "mcpe/item/ItemInstance.h"
 #include "mcpe/level/BlockSource.h"
+#include "mcpe/entity/Entity.h"
 
 ResinBlock::ResinBlock():IC::Blocks("ic.resin",IC::Blocks::ID::mResin,Material::getMaterial(MaterialType::DEVICE))
 {
 	init();
 	setCategory(CreativeItemCategory::DECORATIONS);
-	setVisualShape({0,0,0,1,0.125,1});
+	setVisualShape({0,0,0,1,0.25,1});
 	setDestroyTime(1);
 	setSolid(false);
 }
@@ -34,8 +35,13 @@ void ResinBlock::neighborChanged(BlockSource&s, BlockPos const&pos, BlockPos con
 		s.removeBlock(pos);
 	}
 }
-bool ResinBlock::entityInside(BlockSource&s, BlockPos const&pos, Entity&e)const
+void ResinBlock::onFallOn(BlockSource&s, BlockPos const&pos, Entity*entity, float distance) const
 {
-	if(s.getData(pos)==0)
+	if(s.getData(pos)==1)
+		mSlimeBlock->onFallOn(s,pos,entity,distance);
+}
+void ResinBlock::onStepOn(Entity&e, BlockPos const&pos) const
+{
+	if(e.getRegion().getData(pos)==0)
 		mSlimeBlock->onStepOn(e,pos);
 }

@@ -13,7 +13,9 @@ obj/local/armeabi-v7a/objs/icpe_core/client/ICOptions.o: \
  /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/platforms/android-19/arch-arm/usr/include/linux/stat.h \
  /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/platforms/android-19/arch-arm/usr/include/endian.h \
  /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/platforms/android-19/arch-arm/usr/include/sys/endian.h \
- /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/platforms/android-19/arch-arm/usr/include/machine/endian.h
+ /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/platforms/android-19/arch-arm/usr/include/machine/endian.h \
+ jni/core/ICPE.h \
+ /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/platforms/android-19/arch-arm/usr/include/jni.h
 
 jni/core/client/ICOptions.h:
 
@@ -48,3 +50,7 @@ jni/core/mca/data/worker/DatabaseWriter.h:
 /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/platforms/android-19/arch-arm/usr/include/sys/endian.h:
 
 /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/platforms/android-19/arch-arm/usr/include/machine/endian.h:
+
+jni/core/ICPE.h:
+
+/data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/platforms/android-19/arch-arm/usr/include/jni.h:
