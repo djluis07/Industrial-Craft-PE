@@ -27,7 +27,7 @@ obj/local/armeabi-v7a/objs/icpe_core/items/Items.o: \
  jni/core/items/item/CableItem.h jni/core/items/item/ForgeHammerItem.h \
  jni/core/items/item/ElectricTreeTapItem.h \
  jni/core/items/item/ElectricHoeItem.h jni/core/items/item/ChainsawItem.h \
- jni/core/items/item/GuideBookItem.h
+ jni/core/items/item/GuideBookItem.h jni/core/items/item/PainterItem.h
 
 jni/core/items/Items.h:
 
@@ -106,3 +106,5 @@ jni/core/items/item/ElectricHoeItem.h:
 jni/core/items/item/ChainsawItem.h:
 
 jni/core/items/item/GuideBookItem.h:
+
+jni/core/items/item/PainterItem.h:

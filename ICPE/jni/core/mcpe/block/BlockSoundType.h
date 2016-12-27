@@ -11,5 +11,5 @@ enum class BlockSoundType : int
 	LADDER,
 	IRON,
 	SLIME,
-	SCILICET
+	SILENT
 };

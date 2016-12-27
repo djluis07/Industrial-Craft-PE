@@ -16,5 +16,6 @@ public:
 	virtual void neighborChanged(BlockSource&, BlockPos const&, BlockPos const&)const;
 	virtual bool entityInside(BlockSource&, BlockPos const&, Entity&)const;
 	virtual bool hasComparatorSignal()const;
+	virtual int getRenderLayer(BlockSource&, BlockPos const&) const;
 	virtual int getComparatorSignal(BlockSource&, BlockPos const&, signed char, int)const;
 };

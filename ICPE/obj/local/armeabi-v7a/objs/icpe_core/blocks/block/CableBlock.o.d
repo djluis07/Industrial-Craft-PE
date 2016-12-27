@@ -31,7 +31,7 @@ obj/local/armeabi-v7a/objs/icpe_core/blocks/block/CableBlock.o: \
  jni/core/mcpe/entity/EntityType.h \
  jni/core/mcpe/entity/../item/ArmorSlot.h jni/core/mcpe/entity/Mob.h \
  jni/core/mcpe/entity/EntityClassTree.h \
- jni/core/mcpe/util/EntityDamageSource.h jni/core/client/ICOptions.h \
+ jni/core/mcpe/util/EntityDamageSource.h jni/core/util/ICOptions.h \
  jni/core/mca/data/Database.h jni/core/mca/data/tag/ComposedTag.h \
  jni/core/mca/data/tag/ListTag.h jni/core/mca/data/tag/Tag.h \
  jni/core/mca/data/worker/DatabaseReader.h \
@@ -135,7 +135,7 @@ jni/core/mcpe/entity/EntityClassTree.h:
 
 jni/core/mcpe/util/EntityDamageSource.h:
 
-jni/core/client/ICOptions.h:
+jni/core/util/ICOptions.h:
 
 jni/core/mca/data/Database.h:
 

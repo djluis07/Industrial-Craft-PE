@@ -3,7 +3,7 @@
 #include "mcpe/client/resources/I18n.h"
 #include "mcpe/item/ItemInstance.h"
 
-ICOreBlock::ICOreBlock():IC::Blocks("ic.ore.tin",IC::Blocks::ID::mOre,Material::getMaterial(MaterialType::METAL))
+ICOreBlock::ICOreBlock():OreBlock("ic.ore",IC::Blocks::ID::mOre)
 {
 	init();
 	setSolid(true);

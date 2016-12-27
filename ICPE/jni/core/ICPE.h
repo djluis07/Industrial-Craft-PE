@@ -33,7 +33,7 @@ typedef unsigned char uchar;
 class ICPE
 {
 public:
-	static jint onJNI_Loaded(JavaVM*,void*);
+	static void launch(JavaVM*,void*);
 	static void setupMSHookFunctions();
 public:
 	static void (*loadLocalization_)(Localization*, const std::string&);
@@ -60,6 +60,8 @@ public:
 	static void createLevel(Minecraft*,void*,std::string const&,std::string const&,LevelSettings const &,ResourcePackManager&);
 	static void (*tickLevel_)(Level*);
 	static void tickLevel(Level*);
+	static bool (*isAnyAuxValue_)(int);
+	static bool isAnyAuxValue(int);
 public:
 	static MinecraftClient* pMinecraftClient;
 	static Level* pLevel;

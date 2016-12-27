@@ -10,7 +10,7 @@
 #include "mcpe/entity/EntityClassTree.h"
 #include "mcpe/util/EntityDamageSource.h"
 
-#include "client/ICOptions.h"
+#include "util/ICOptions.h"
 
 #include "ICPE.h"
 
@@ -19,7 +19,6 @@ CableBlock::CableBlock():ElectricConductorBlock("ic.cable.tin",IC::Blocks::ID::m
 	init();
 	setSolid(false);
 	setVisualShape({0.25,0.25,0.25,0.75,0.75,0.75});
-	renderLayer=mGlass->renderLayer;
 }
 bool CableBlock::detachesOnPistonMove(BlockSource&, BlockPos const&)const
 {
@@ -43,9 +42,7 @@ int CableBlock::getSpawnResourcesAuxValue(unsigned char i)const
 }
 std::string CableBlock::buildDescriptionName(unsigned char aux) const
 {
-	return "cable";//Item::mItems[IC::Items::ID::mCable]->buildDescriptionName(ItemInstance();
-	
-	//uncompleted
+	return Item::mItems[IC::Items::ID::mCable]->buildDescriptionName(ItemInstance(this->blockId,1,aux));
 }
 void CableBlock::neighborChanged(BlockSource&, BlockPos const&, BlockPos const&)const
 {
@@ -71,4 +68,8 @@ bool CableBlock::hasComparatorSignal()const
 int CableBlock::getComparatorSignal(BlockSource&, BlockPos const&, signed char, int)const
 {
 	return 1;
+}
+int CableBlock::getRenderLayer(BlockSource&s, BlockPos const&pos) const
+{
+	return mGlass->getRenderLayer(s,pos);
 }

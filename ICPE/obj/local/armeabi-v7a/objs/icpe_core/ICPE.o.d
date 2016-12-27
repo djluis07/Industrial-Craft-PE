@@ -56,10 +56,10 @@ obj/local/armeabi-v7a/objs/icpe_core/ICPE.o: jni/core/ICPE.cpp \
  jni/core/mcpe/client/gui/screen/BaseScreen.h \
  jni/core/mcpe/client/gui/screen/AbstractScreen.h \
  jni/core/mcpe/client/gui/screen/ScreenChooser.h \
- jni/core/mcpe/recipe/Recipes.h jni/core/mcpe/recipe/FurnaceRecipes.h \
- jni/core/mcpe/gamemode/GameMode.h jni/core/mcpe/entity/player/Player.h \
- jni/core/mcpe/entity/Mob.h jni/core/mcpe/entity/Entity.h \
- jni/core/mcpe/entity/SynchedEntityData.h \
+ jni/core/mcpe/recipe/Recipes.h jni/core/mcpe/recipe/Recipe.h \
+ jni/core/mcpe/recipe/FurnaceRecipes.h jni/core/mcpe/gamemode/GameMode.h \
+ jni/core/mcpe/entity/player/Player.h jni/core/mcpe/entity/Mob.h \
+ jni/core/mcpe/entity/Entity.h jni/core/mcpe/entity/SynchedEntityData.h \
  jni/core/mcpe/entity/EntityRendererId.h \
  jni/core/mcpe/entity/EntityType.h \
  jni/core/mcpe/entity/../item/ArmorSlot.h \
@@ -83,7 +83,7 @@ obj/local/armeabi-v7a/objs/icpe_core/ICPE.o: jni/core/ICPE.cpp \
  jni/core/blocks/BlockGraphics.h \
  jni/core/blocks/blockentity/ICBlockEntityManager.h \
  jni/core/blocks/tessellator/CableTessellator.h jni/core/gen/FeatureGen.h \
- jni/core/ui/UIScreenChooser.h jni/core/client/ICOptions.h \
+ jni/core/ui/UIScreenChooser.h jni/core/util/ICOptions.h \
  jni/core/mca/data/Database.h jni/core/mca/data/tag/ComposedTag.h \
  jni/core/mca/data/tag/ListTag.h jni/core/mca/data/tag/Tag.h \
  jni/core/mca/data/worker/DatabaseReader.h \
@@ -229,6 +229,8 @@ jni/core/mcpe/client/gui/screen/ScreenChooser.h:
 
 jni/core/mcpe/recipe/Recipes.h:
 
+jni/core/mcpe/recipe/Recipe.h:
+
 jni/core/mcpe/recipe/FurnaceRecipes.h:
 
 jni/core/mcpe/gamemode/GameMode.h:
@@ -301,7 +303,7 @@ jni/core/gen/FeatureGen.h:
 
 jni/core/ui/UIScreenChooser.h:
 
-jni/core/client/ICOptions.h:
+jni/core/util/ICOptions.h:
 
 jni/core/mca/data/Database.h:
 

@@ -7,8 +7,8 @@
 
 void ICRecipes::addRecipes(Recipes&r,FurnaceRecipes&fr)
 {
-	//addItemRecipes(r);
-	//addFurnaceRecipes(fr);
+	addItemRecipes(r);
+	addFurnaceRecipes(fr);
 }
 void ICRecipes::addItemRecipes(Recipes&r)
 {
@@ -20,6 +20,10 @@ void ICRecipes::addItemRecipes(Recipes&r)
 	
 	ru.addRecipeType(5,'w');
 	ru.addShapedRecipe(ItemInstance(IC::Items::ID::mTreeTap,1,0),{" w ","www","w  "});
+	ru.clearAllRecipeTypes();
+	
+	ru.addRecipeTypeAuxValue(IC::Blocks::ID::mMetal,1,'w');
+	ru.addShapedRecipe(ItemInstance(1,5,0),{"w"});
 	ru.clearAllRecipeTypes();
 }
 void ICRecipes::addFurnaceRecipes(FurnaceRecipes&fr)

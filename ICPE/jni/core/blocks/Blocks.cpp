@@ -19,6 +19,9 @@ namespace IC
 {
 void Blocks::initICBlocks()
 {
+	for(bool & block : mICBlocks)
+		block=false;
+	
 	Block::mBlocks[ID::mIronFurnace]=new IronFurnaceBlock();
 	Block::mBlocks[ID::mCable]=new CableBlock();
 	Block::mBlocks[ID::mRubberLeaves]=new RubberLeavesBlock();
@@ -28,6 +31,8 @@ void Blocks::initICBlocks()
 	Block::mBlocks[ID::mRubberSapling]=new RubberSaplingBlock();
 	Block::mBlocks[ID::mOre]=new ICOreBlock();
 	Block::mBlocks[ID::mIronFence]=new IronFenceBlock();
+	Block::mBlocks[ID::mOre]=new ICOreBlock();
+	Block::mBlocks[ID::mMetal]=new MetalBlock();
 }
 bool Blocks::isElectricBlock()const
 {
@@ -57,12 +62,16 @@ bool Blocks::isElectricRecevier()const
 {
 	return false;
 }
-int Blocks::getNowVoltage(BlockSource&,BlockPos const&)
+int Blocks::getNowVoltage(BlockSource&,BlockPos const&)const
 {
 	return 0;
 }
 Blocks::Blocks(std::string const&name,int id,Material const&m):Block(name,id,m)
 {
 	mICBlocks[id]=true;
+}
+bool Blocks::isAnyAuxValueInRecipe()const
+{
+	return true;
 }
 }

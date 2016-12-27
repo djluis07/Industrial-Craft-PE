@@ -51,5 +51,9 @@ void BlockGraphics::initBlockGraphics()
 	MCPEBlockGraphics::mBlocks[IC::Blocks::ID::mIronFence]->setTextureItem("icpe_fence_iron");
 	MCPEBlockGraphics::mBlocks[IC::Blocks::ID::mIronFence]->setBlockShape(BlockShape::FENCE);
 	MCPEBlockGraphics::mBlocks[IC::Blocks::ID::mIronFence]->setSoundType(BlockSoundType::STONE);
+	
+	MCPEBlockGraphics::mBlocks[IC::Blocks::ID::mMetal]=new MCPEBlockGraphics("dirt");
+	MCPEBlockGraphics::mBlocks[IC::Blocks::ID::mMetal]->setTextureItem("icpe_metal_block");
+	MCPEBlockGraphics::mBlocks[IC::Blocks::ID::mMetal]->setSoundType(BlockSoundType::STONE);
 }
 }

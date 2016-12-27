@@ -13,6 +13,7 @@ public:
 	{
 	public:
 		static const short mUranium=500;
+		static const short mPainter=501;
 		static const short mRubber=502;
 		static const short mTreeTap=503;
 		static const short mCable=504;
@@ -110,6 +111,8 @@ public:
 		static const short mCasingLead=603;
 		static const short mCasingSteel=604;
 		static const short mCasingTin=605;
+		static const short mPainterBlack=606;
+		
 	};
 public:
 	static void initICAllItems();

@@ -29,6 +29,7 @@
 #include "mcpe/client/gui/screen/ScreenChooser.h"
 #include "mcpe/client/renderer/ScreenRenderer.h"
 #include "mcpe/recipe/Recipes.h"
+#include "mcpe/recipe/Recipe.h"
 #include "mcpe/recipe/FurnaceRecipes.h"
 #include "mcpe/gamemode/GameMode.h"
 #include "mcpe/entity/player/Player.h"
@@ -47,17 +48,17 @@
 #include "blocks/tessellator/CableTessellator.h"
 #include "gen/FeatureGen.h"
 #include "ui/UIScreenChooser.h"
-#include "client/ICOptions.h"
+#include "util/ICOptions.h"
 #include "util/language/zh_CN.h"
 #include "util/language/en_US.h"
 
-jint ICPE::onJNI_Loaded(JavaVM*,void*)
+void ICPE::launch(JavaVM*,void*)
 {
 	setupMSHookFunctions();
-	return JNI_VERSION_1_6;
 }
 void ICPE::setupMSHookFunctions()
 {
+	MSHookFunction((void*)&Recipe::isAnyAuxValue,(void*)&isAnyAuxValue,(void**)&isAnyAuxValue_);
 	MSHookFunction((void*)&FlowerPotBlock::isSupportedBlock,(void*)&isSupportedFlower,(void**)&isSupportedFlower_);
 	MSHookFunction((void*)&Localization::_load,(void*)&loadLocalization,(void**)&loadLocalization_);
 	MSHookFunction((void*)&Level::tick,(void*)&tickLevel,(void**)&tickLevel_);
@@ -84,6 +85,7 @@ void (*ICPE::initBlocks_)()=0;
 bool (*ICPE::isSupportedFlower_)(FlowerPotBlock const*const,Block const*,short)=0;
 void (*ICPE::createLevel_)(Minecraft*,void*,std::string const&,std::string const&,LevelSettings const &,ResourcePackManager&)=0;
 void (*ICPE::tickLevel_)(Level*)=0;
+bool (*ICPE::isAnyAuxValue_)(int)=0;
 
 MinecraftClient* ICPE::pMinecraftClient=0;
 Level* ICPE::pLevel=0;
@@ -165,4 +167,11 @@ void ICPE::tickLevel(Level*self)
 {
 	tickLevel_(self);
 	pLevel=self;
+}
+bool ICPE::isAnyAuxValue(int id)
+{
+	if(id<=255&&IC::Blocks::mICBlocks[id])
+		if(!((IC::Blocks*)Block::mBlocks[id])->isAnyAuxValueInRecipe())
+			return false;
+	return isAnyAuxValue_(id);
 }

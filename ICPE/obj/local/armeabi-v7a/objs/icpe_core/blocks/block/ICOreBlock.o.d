@@ -1,6 +1,6 @@
 obj/local/armeabi-v7a/objs/icpe_core/blocks/block/ICOreBlock.o: \
  jni/core/blocks/block/ICOreBlock.cpp jni/core/blocks/block/ICOreBlock.h \
- jni/core/blocks/Blocks.h jni/core/mcpe/block/Block.h \
+ jni/core/blocks/block/base/OreBlock.h jni/core/mcpe/block/Block.h \
  /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/sources/cxx-stl/gnu-libstdc++/4.9/include/string \
  /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/sources/cxx-stl/gnu-libstdc++/4.9/include/vector \
  /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/sources/cxx-stl/gnu-libstdc++/4.9/include/memory \
@@ -14,13 +14,13 @@ obj/local/armeabi-v7a/objs/icpe_core/blocks/block/ICOreBlock.o: \
  jni/core/mcpe/block/BlockShape.h \
  jni/core/mcpe/item/CreativeItemCategory.h \
  jni/core/mcpe/block/BlockSoundType.h \
- jni/core/mcpe/block/BlockSupportType.h \
+ jni/core/mcpe/block/BlockSupportType.h jni/core/blocks/Blocks.h \
  jni/core/mcpe/client/resources/I18n.h jni/core/mcpe/item/ItemInstance.h \
  jni/core/mcpe/item/UseAnimation.h
 
 jni/core/blocks/block/ICOreBlock.h:
 
-jni/core/blocks/Blocks.h:
+jni/core/blocks/block/base/OreBlock.h:
 
 jni/core/mcpe/block/Block.h:
 
@@ -59,6 +59,8 @@ jni/core/mcpe/item/CreativeItemCategory.h:
 jni/core/mcpe/block/BlockSoundType.h:
 
 jni/core/mcpe/block/BlockSupportType.h:
+
+jni/core/blocks/Blocks.h:
 
 jni/core/mcpe/client/resources/I18n.h:
 

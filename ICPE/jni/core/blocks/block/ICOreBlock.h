@@ -1,8 +1,9 @@
 #pragma once
 
+#include "base/OreBlock.h"
 #include "blocks/Blocks.h"
 
-class ICOreBlock : public IC::Blocks
+class ICOreBlock : public OreBlock
 {
 public:
 	ICOreBlock();

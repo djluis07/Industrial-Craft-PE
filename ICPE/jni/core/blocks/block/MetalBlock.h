@@ -5,5 +5,7 @@
 class MetalBlock : public IC::Blocks
 {
 public:
-	MetalBlock(std::string const&name,int id);
+	MetalBlock();
+public:
+	virtual bool isAnyAuxValueInRecipe()const;
 };

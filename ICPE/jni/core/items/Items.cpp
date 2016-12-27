@@ -18,6 +18,7 @@
 #include "item/ElectricHoeItem.h"
 #include "item/ChainsawItem.h"
 #include "item/GuideBookItem.h"
+#include "item/PainterItem.h"
 
 bool IC::Items::mICItems[4096];
 
@@ -25,12 +26,13 @@ namespace IC
 {
 void Items::initICAllItems()
 {
+	for(bool & item : mICItems)
+		item=false;
 	initICItems();
 	initICBlockItems();
 }
 void Items::addICCreativeItems()
 {
-	Item::addCreativeItem(ID::mGuideBook,0);
 	Item::addCreativeItem(IC::Blocks::ID::mOre,0);
 	Item::addCreativeItem(IC::Blocks::ID::mOre,1);
 	Item::addCreativeItem(IC::Blocks::ID::mOre,2);
@@ -43,24 +45,31 @@ void Items::addICCreativeItems()
 	Item::addCreativeItem(IC::Blocks::ID::mRubberLeaves,0);
 	Item::addCreativeItem(IC::Blocks::ID::mIronFence,0);
 	Item::addCreativeItem(IC::Blocks::ID::mIronFurnace,0);
+	Item::addCreativeItem(IC::Blocks::ID::mMetal,0);
+	Item::addCreativeItem(IC::Blocks::ID::mMetal,1);
+	Item::addCreativeItem(IC::Blocks::ID::mMetal,2);
+	Item::addCreativeItem(IC::Blocks::ID::mMetal,3);
+	Item::addCreativeItem(IC::Blocks::ID::mMetal,4);
+	Item::addCreativeItem(IC::Blocks::ID::mMetal,5);
 	
-	Item::addCreativeItem(ID::mUranium,0);
-	Item::addCreativeItem(ID::mUranium,1);
-	Item::addCreativeItem(ID::mUranium,2);
-	Item::addCreativeItem(ID::mUranium,3);
-	Item::addCreativeItem(ID::mUranium,4);
-	Item::addCreativeItem(ID::mUranium,5);
-	Item::addCreativeItem(ID::mUranium,6);
-	Item::addCreativeItem(ID::mUranium,7);
-	Item::addCreativeItem(ID::mUranium,8);
-	Item::addCreativeItem(ID::mUranium,9);
-	Item::addCreativeItem(ID::mUranium,10);
-	Item::addCreativeItem(ID::mUranium,11);
-	Item::addCreativeItem(ID::mUranium,12);
-	Item::addCreativeItem(ID::mUranium,13);
-	Item::addCreativeItem(ID::mUranium,14);
-	Item::addCreativeItem(ID::mUranium,15);
-	Item::addCreativeItem(ID::mUranium,16);
+	Item::addCreativeItem(ID::mGuideBook,0);
+	Item::addCreativeItem(ID::mPainter,0);
+	Item::addCreativeItem(ID::mPainter,1);
+	Item::addCreativeItem(ID::mPainter,2);
+	Item::addCreativeItem(ID::mPainter,3);
+	Item::addCreativeItem(ID::mPainter,4);
+	Item::addCreativeItem(ID::mPainter,5);
+	Item::addCreativeItem(ID::mPainter,6);
+	Item::addCreativeItem(ID::mPainter,7);
+	Item::addCreativeItem(ID::mPainter,8);
+	Item::addCreativeItem(ID::mPainter,9);
+	Item::addCreativeItem(ID::mPainter,10);
+	Item::addCreativeItem(ID::mPainter,11);
+	Item::addCreativeItem(ID::mPainter,12);
+	Item::addCreativeItem(ID::mPainter,13);
+	Item::addCreativeItem(ID::mPainter,14);
+	Item::addCreativeItem(ID::mPainter,15);
+	Item::addCreativeItem(ID::mPainter,16);
 	Item::addCreativeItem(ID::mRubber,0);
 	Item::addCreativeItem(ID::mRubber,1);
 	Item::addCreativeItem(ID::mTreeTap,0);
@@ -272,15 +281,16 @@ void Items::initICItems()
 	Item::mItems[ID::mElectricHoe]=new ElectricHoeItem();
 	Item::mItems[ID::mElectricTreeTap]=new ElectricTreeTapItem();
 	Item::mItems[ID::mForgeHammer]=new ForgeHammerItem();
-	Item::mItems[ID::mUranium]=new UraniumItem();
 	Item::mItems[ID::mRubber]=new RubberItem();
 	Item::mItems[ID::mTreeTap]=new TreeTapItem();
 	Item::mItems[ID::mCable]=new CableItem();
+	Item::mItems[ID::mPainter]=new PainterItem();
 }
 void Items::initICBlockItems()
 {
+	Item::mItems[IC::Blocks::ID::mMetal]=new AuxDataBlockItem("ic.metal",IC::Blocks::ID::mMetal-0x100,Block::mBlocks[IC::Blocks::ID::mMetal]);
 	Item::mItems[IC::Blocks::ID::mIronFence]=new BlockItem("ic.ironfence",IC::Blocks::ID::mIronFence-0x100);
-	Item::mItems[IC::Blocks::ID::mIronFurnace]=new AuxDataBlockItem("ic.ironfurnace",IC::Blocks::ID::mIronFurnace-0x100,Block::mBlocks[IC::Blocks::ID::mIronFurnace]);;
+	Item::mItems[IC::Blocks::ID::mIronFurnace]=new AuxDataBlockItem("ic.ironfurnace",IC::Blocks::ID::mIronFurnace-0x100,Block::mBlocks[IC::Blocks::ID::mIronFurnace]);
 	Item::mItems[IC::Blocks::ID::mCable]=new AuxDataBlockItem("ic.cable",IC::Blocks::ID::mCable-0x100,Block::mBlocks[IC::Blocks::ID::mCable]);
 	Item::mItems[IC::Blocks::ID::mRubberLeaves]=new BlockItem("ic.rubber.leaves",IC::Blocks::ID::mRubberLeaves-0x100);
 	Item::mItems[IC::Blocks::ID::mResin]=new AuxDataBlockItem("ic.resin",IC::Blocks::ID::mResin-0x100,Block::mBlocks[IC::Blocks::ID::mResin]);
