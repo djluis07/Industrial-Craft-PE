@@ -61,7 +61,7 @@ obj/local/armeabi-v7a/objs/icpe_core/ICPE.o: jni/core/ICPE.cpp \
  jni/core/mcpe/entity/player/Player.h jni/core/mcpe/entity/Mob.h \
  jni/core/mcpe/entity/Entity.h jni/core/mcpe/entity/SynchedEntityData.h \
  jni/core/mcpe/entity/EntityRendererId.h \
- jni/core/mcpe/entity/EntityType.h \
+ jni/core/mcpe/entity/EntityType.h jni/core/mcpe/entity/PaletteColor.h \
  jni/core/mcpe/entity/../item/ArmorSlot.h \
  jni/core/mcpe/entity/item/ItemEntity.h jni/core/mcpe/util/FullBlock.h \
  jni/core/mcpe/level/Level.h \
@@ -246,6 +246,8 @@ jni/core/mcpe/entity/SynchedEntityData.h:
 jni/core/mcpe/entity/EntityRendererId.h:
 
 jni/core/mcpe/entity/EntityType.h:
+
+jni/core/mcpe/entity/PaletteColor.h:
 
 jni/core/mcpe/entity/../item/ArmorSlot.h:
 

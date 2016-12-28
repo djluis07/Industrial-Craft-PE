@@ -17,6 +17,7 @@ public:
 		static const short mRubber=502;
 		static const short mTreeTap=503;
 		static const short mCable=504;
+		static const short mICCoin=505;
 		static const short mSlag=510;
 		static const short mScrap=511;
 		static const short mForgeHammer=512;
@@ -112,8 +113,23 @@ public:
 		static const short mCasingSteel=604;
 		static const short mCasingTin=605;
 		static const short mPainterBlack=606;
-		
+		static const short mPainterRed=607;
+		static const short mPainterBrown=608;
+		static const short mPainterGreen=609;
+		static const short mPainterBlue=610;
+		static const short mPainterPurple=611;
+		static const short mPainterCyan=612;
+		static const short mPainterGray=613;
+		static const short mPainterLightGray=614;
+		static const short mPainterPink=615;
+		static const short mPainterLime=616;
+		static const short mPainterYellow=617;
+		static const short mPainterLightBlue=618;
+		static const short mPainterMagenta=619;
+		static const short mPainterOrange=620;
+		static const short mPainterWhite=621;
 	};
+	
 public:
 	static void initICAllItems();
 	static void addICCreativeItems();

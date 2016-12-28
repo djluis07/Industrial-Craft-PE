@@ -42,6 +42,7 @@ obj/local/armeabi-v7a/objs/icpe_core/gen/FeatureGen.o: \
  jni/core/mcpe/level/../entity/../util/Vec2.h \
  jni/core/mcpe/level/../entity/EntityRendererId.h \
  jni/core/mcpe/level/../entity/EntityType.h \
+ jni/core/mcpe/level/../entity/PaletteColor.h \
  jni/core/mcpe/level/../entity/../item/ArmorSlot.h \
  jni/core/mcpe/level/../client/AppPlatformListener.h \
  jni/core/mcpe/level/../util/Random.h \
@@ -157,6 +158,8 @@ jni/core/mcpe/level/../entity/../util/Vec2.h:
 jni/core/mcpe/level/../entity/EntityRendererId.h:
 
 jni/core/mcpe/level/../entity/EntityType.h:
+
+jni/core/mcpe/level/../entity/PaletteColor.h:
 
 jni/core/mcpe/level/../entity/../item/ArmorSlot.h:
 

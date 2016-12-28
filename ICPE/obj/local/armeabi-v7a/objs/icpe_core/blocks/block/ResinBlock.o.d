@@ -26,7 +26,7 @@ obj/local/armeabi-v7a/objs/icpe_core/blocks/block/ResinBlock.o: \
  jni/core/mcpe/entity/Entity.h jni/core/mcpe/entity/SynchedEntityData.h \
  jni/core/mcpe/entity/../util/Vec2.h \
  jni/core/mcpe/entity/EntityRendererId.h \
- jni/core/mcpe/entity/EntityType.h \
+ jni/core/mcpe/entity/EntityType.h jni/core/mcpe/entity/PaletteColor.h \
  jni/core/mcpe/entity/../item/ArmorSlot.h
 
 jni/core/blocks/block/ResinBlock.h:
@@ -104,5 +104,7 @@ jni/core/mcpe/entity/../util/Vec2.h:
 jni/core/mcpe/entity/EntityRendererId.h:
 
 jni/core/mcpe/entity/EntityType.h:
+
+jni/core/mcpe/entity/PaletteColor.h:
 
 jni/core/mcpe/entity/../item/ArmorSlot.h:

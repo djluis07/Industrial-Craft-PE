@@ -24,7 +24,7 @@ obj/local/armeabi-v7a/objs/icpe_core/items/item/ElectricHoeItem.o: \
  jni/core/mcpe/entity/../util/Vec2.h \
  jni/core/mcpe/entity/EntityRendererId.h \
  jni/core/mcpe/entity/../level/DimensionId.h \
- jni/core/mcpe/entity/EntityType.h \
+ jni/core/mcpe/entity/EntityType.h jni/core/mcpe/entity/PaletteColor.h \
  jni/core/mcpe/entity/../item/ArmorSlot.h \
  jni/core/mcpe/gamemode/GameType.h jni/core/mcpe/level/BlockSource.h \
  jni/core/mcpe/level/../blockentity/BlockEntity.h \
@@ -100,6 +100,8 @@ jni/core/mcpe/entity/EntityRendererId.h:
 jni/core/mcpe/entity/../level/DimensionId.h:
 
 jni/core/mcpe/entity/EntityType.h:
+
+jni/core/mcpe/entity/PaletteColor.h:
 
 jni/core/mcpe/entity/../item/ArmorSlot.h:
 

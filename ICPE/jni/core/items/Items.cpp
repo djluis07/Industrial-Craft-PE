@@ -19,6 +19,7 @@
 #include "item/ChainsawItem.h"
 #include "item/GuideBookItem.h"
 #include "item/PainterItem.h"
+#include "item/EmptyPainterItem.h"
 
 bool IC::Items::mICItems[4096];
 
@@ -53,23 +54,23 @@ void Items::addICCreativeItems()
 	Item::addCreativeItem(IC::Blocks::ID::mMetal,5);
 	
 	Item::addCreativeItem(ID::mGuideBook,0);
+	Item::addCreativeItem(ID::mPainterBlack,0);
+	Item::addCreativeItem(ID::mPainterRed,0);
+	Item::addCreativeItem(ID::mPainterBrown,0);
+	Item::addCreativeItem(ID::mPainterGreen,0);
+	Item::addCreativeItem(ID::mPainterBlue,0);
+	Item::addCreativeItem(ID::mPainterPurple,0);
+	Item::addCreativeItem(ID::mPainterCyan,0);
+	Item::addCreativeItem(ID::mPainterGray,0);
+	Item::addCreativeItem(ID::mPainterLightGray,0);
+	Item::addCreativeItem(ID::mPainterPink,0);
+	Item::addCreativeItem(ID::mPainterLime,0);
+	Item::addCreativeItem(ID::mPainterYellow,0);
+	Item::addCreativeItem(ID::mPainterLightBlue,0);
+	Item::addCreativeItem(ID::mPainterMagenta,0);
+	Item::addCreativeItem(ID::mPainterOrange,0);
+	Item::addCreativeItem(ID::mPainterWhite,0);
 	Item::addCreativeItem(ID::mPainter,0);
-	Item::addCreativeItem(ID::mPainter,1);
-	Item::addCreativeItem(ID::mPainter,2);
-	Item::addCreativeItem(ID::mPainter,3);
-	Item::addCreativeItem(ID::mPainter,4);
-	Item::addCreativeItem(ID::mPainter,5);
-	Item::addCreativeItem(ID::mPainter,6);
-	Item::addCreativeItem(ID::mPainter,7);
-	Item::addCreativeItem(ID::mPainter,8);
-	Item::addCreativeItem(ID::mPainter,9);
-	Item::addCreativeItem(ID::mPainter,10);
-	Item::addCreativeItem(ID::mPainter,11);
-	Item::addCreativeItem(ID::mPainter,12);
-	Item::addCreativeItem(ID::mPainter,13);
-	Item::addCreativeItem(ID::mPainter,14);
-	Item::addCreativeItem(ID::mPainter,15);
-	Item::addCreativeItem(ID::mPainter,16);
 	Item::addCreativeItem(ID::mRubber,0);
 	Item::addCreativeItem(ID::mRubber,1);
 	Item::addCreativeItem(ID::mTreeTap,0);
@@ -274,7 +275,24 @@ void Items::initICItems()
 	registerItem(ID::mCasingLead,"ic.casing.lead","icpe_ca_lead",0);
 	registerItem(ID::mCasingSteel,"ic.casing.steel","icpe_ca_steel",0);
 	registerItem(ID::mCasingTin,"ic.casing.tin","icpe_ca_tin",0);
-	
+
+	Item::mItems[ID::mPainterMagenta]=new PainterItem("ic.painter.magenta",ID::mPainterMagenta-0x100,"icpe_painter_magenta");
+	Item::mItems[ID::mPainterPurple]=new PainterItem("ic.painter.purple",ID::mPainterPurple-0x100,"icpe_painter_purple");
+	Item::mItems[ID::mPainterBrown]=new PainterItem("ic.painter.brown",ID::mPainterBrown-0x100,"icpe_painter_brown");
+	Item::mItems[ID::mPainterCyan]=new PainterItem("ic.painter.cyan",ID::mPainterCyan-0x100,"icpe_painter_cyan");
+	Item::mItems[ID::mPainterLime]=new PainterItem("ic.painter.lime",ID::mPainterLime-0x100,"icpe_painter_lime");
+	Item::mItems[ID::mPainterLightGray]=new PainterItem("ic.painter.light_gray",ID::mPainterLightGray-0x100,"icpe_painter_light_gray");
+	Item::mItems[ID::mPainterLightBlue]=new PainterItem("ic.painter.light_blue",ID::mPainterLightBlue-0x100,"icpe_painter_light_blue");
+	Item::mItems[ID::mPainterRed]=new PainterItem("ic.painter.red",ID::mPainterRed-0x100,"icpe_painter_red");
+	Item::mItems[ID::mPainterYellow]=new PainterItem("ic.painter.yellow",ID::mPainterYellow-0x100,"icpe_painter_yellow");
+	Item::mItems[ID::mPainterGray]=new PainterItem("ic.painter.gray",ID::mPainterGray-0x100,"icpe_painter_gray");
+	Item::mItems[ID::mPainterWhite]=new PainterItem("ic.painter.white",ID::mPainterWhite-0x100,"icpe_painter");
+	Item::mItems[ID::mPainterPink]=new PainterItem("ic.painter.pink",ID::mPainterPink-0x100,"icpe_painter_pink");
+	Item::mItems[ID::mPainterGreen]=new PainterItem("ic.painter.green",ID::mPainterGreen-0x100,"icpe_painter_green");
+	Item::mItems[ID::mPainterOrange]=new PainterItem("ic.painter.orange",ID::mPainterOrange-0x100,"icpe_painter_orange");
+	Item::mItems[ID::mPainterBlue]=new PainterItem("ic.painter.blue",ID::mPainterBlue-0x100,"icpe_painter_blue");
+	Item::mItems[ID::mPainterBlack]=new PainterItem("ic.painter.black",ID::mPainterBlack-0x100,"icpe_painter_black");
+	Item::mItems[ID::mPainter]=new EmptyPainterItem();
 	Item::mItems[ID::mGuideBook]=new GuideBookItem();
 	Item::mItems[ID::mSingleUseBattery]=new SingleUseBatteryItem();
 	Item::mItems[ID::mChainsaw]=new ChainsawItem();
@@ -284,7 +302,6 @@ void Items::initICItems()
 	Item::mItems[ID::mRubber]=new RubberItem();
 	Item::mItems[ID::mTreeTap]=new TreeTapItem();
 	Item::mItems[ID::mCable]=new CableItem();
-	Item::mItems[ID::mPainter]=new PainterItem();
 }
 void Items::initICBlockItems()
 {

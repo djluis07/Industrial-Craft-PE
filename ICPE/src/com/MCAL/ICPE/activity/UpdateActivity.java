@@ -121,8 +121,8 @@ public class UpdateActivity extends Activity
 		do
 		{
 			int numread = is.read(buf);  
-			if (numread == -1)  
-				break;  
+			if (numread == -1)
+				break;
 			fos.write(buf, 0, numread);  
 			progress += numread;  
 			sendMsg(1);

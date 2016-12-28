@@ -28,7 +28,7 @@ obj/local/armeabi-v7a/objs/icpe_core/blocks/block/CableBlock.o: \
  jni/core/mcpe/entity/Entity.h jni/core/mcpe/entity/SynchedEntityData.h \
  jni/core/mcpe/entity/../util/Vec2.h \
  jni/core/mcpe/entity/EntityRendererId.h \
- jni/core/mcpe/entity/EntityType.h \
+ jni/core/mcpe/entity/EntityType.h jni/core/mcpe/entity/PaletteColor.h \
  jni/core/mcpe/entity/../item/ArmorSlot.h jni/core/mcpe/entity/Mob.h \
  jni/core/mcpe/entity/EntityClassTree.h \
  jni/core/mcpe/util/EntityDamageSource.h jni/core/util/ICOptions.h \
@@ -126,6 +126,8 @@ jni/core/mcpe/entity/../util/Vec2.h:
 jni/core/mcpe/entity/EntityRendererId.h:
 
 jni/core/mcpe/entity/EntityType.h:
+
+jni/core/mcpe/entity/PaletteColor.h:
 
 jni/core/mcpe/entity/../item/ArmorSlot.h:
 

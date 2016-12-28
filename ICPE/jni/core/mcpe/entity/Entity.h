@@ -10,6 +10,7 @@
 #include "EntityRendererId.h"
 #include "../level/DimensionId.h"
 #include "EntityType.h"
+#include "PaletteColor.h"
 #include "../item/ArmorSlot.h"
 
 class Level;
@@ -247,4 +248,5 @@ public:
 	EntityUniqueID* getUniqueID()const;
 	bool isRemoved()const;
 	bool isInWorld()const;
+	void setColor(PaletteColor);
 };

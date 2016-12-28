@@ -52,17 +52,17 @@ public class MainActivity extends Activity
 					startActivity(intent);
 			}
 		});
-		dialog.addButtonAccept(getString(R.string.launch_by_self),new View.OnClickListener()
-		{
-
-			@Override
-			public void onClick(View p1)
-			{
-				Intent intent=new Intent(MainActivity.this,LauncherActivity.class);
-				startActivity(intent);
-				finish();
-			}
-		});
+//		dialog.addButtonAccept(getString(R.string.launch_by_self),new View.OnClickListener()
+//		{
+//
+//			@Override
+//			public void onClick(View p1)
+//			{
+//				Intent intent=new Intent(MainActivity.this,LauncherActivity.class);
+//				startActivity(intent);
+//				finish();
+//			}
+//		});
 		dialog.show();
 	}
 	
