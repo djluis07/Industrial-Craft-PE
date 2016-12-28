@@ -68,7 +68,7 @@ void ICPE::setupMSHookFunctions()
 	MSHookFunction((void*)&BlockTessellator::tessellateInWorld,(void*)&tessellateInWorld,(void**)&tessellateInWorld_);
 	MSHookFunction((void*)&MinecraftClient::init,(void*)&initMCClient,(void**)&initMCClient_);
 	MSHookFunction((void*)&Item::initCreativeItems,(void*)&initCreativeItems,(void**)&initCreativeItems_);
-	MSHookFunction((void*)&Item::initClientData,(void*)&initItems,(void**)&initItems_);
+	MSHookFunction((void*)&Item::registerItems,(void*)&initItems,(void**)&initItems_);
 	MSHookFunction((void*)&MCPEBlockGraphics::initBlocks,(void*)&initBlockGraphics,(void**)&initBlockGraphics_);
 	MSHookFunction((void*)&Block::initBlocks,(void*)&initBlocks,(void**)&initBlocks_);
 }

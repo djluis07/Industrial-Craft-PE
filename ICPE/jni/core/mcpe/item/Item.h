@@ -15,6 +15,8 @@ class TextureUVCoordinateSet;
 class SeedItemComponent;
 class FoodItemComponent;
 class CameraItemComponent;
+class TextureAtlas;
+class ResourcePackManager;
 class Block;
 class ItemInstance;
 class Entity;
@@ -108,9 +110,22 @@ public:
     virtual int getIconYOffset() const;
     virtual bool isMirroredArt() const;
 	
+	void initClient(Json::Value&, Json::Value&);
+	void initServer(Json::Value&);
+	void setTextureAtlas(std::shared_ptr<TextureAtlas>);
+	void setIsMirroredArt(bool);
+	
+	static void addBlockItems();
+	static void registerItems();
+	static void teardownItems();
 	static void initClientData();
+	static void initServerData(ResourcePackManager&);
+	static void addCreativeItem(Block const*, short);
+	static void addCreativeItem(Item*, short);
+	static void addCreativeItem(ItemInstance const&);
+	static void addCreativeItem(short, short);
 	static void initCreativeItems();
-	static void addCreativeItem(short,short);
+	
 	static TextureUVCoordinateSet getTextureUVCoordinateSet(std::string const&,int);
 	
 	static Item *mApple;
