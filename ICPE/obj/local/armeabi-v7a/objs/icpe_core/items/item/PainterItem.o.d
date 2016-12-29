@@ -23,7 +23,19 @@ obj/local/armeabi-v7a/objs/icpe_core/items/item/PainterItem.o: \
  jni/core/mcpe/entity/../level/DimensionId.h \
  jni/core/mcpe/entity/EntityType.h jni/core/mcpe/entity/PaletteColor.h \
  jni/core/mcpe/entity/../item/ArmorSlot.h \
- jni/core/mcpe/entity/EntityClassTree.h
+ jni/core/mcpe/entity/EntityClassTree.h \
+ jni/core/mcpe/entity/player/Player.h jni/core/mcpe/gamemode/GameType.h \
+ jni/core/mcpe/level/BlockSource.h \
+ jni/core/mcpe/level/../blockentity/BlockEntity.h \
+ jni/core/mcpe/level/../blockentity/BlockEntityType.h \
+ jni/core/mcpe/level/../blockentity/../inventory/FillingContainer.h \
+ jni/core/mcpe/level/../blockentity/../inventory/Container.h \
+ jni/core/mcpe/level/../util/Brightness.h \
+ jni/core/mcpe/level/LightLayer.h jni/core/mcpe/block/Block.h \
+ jni/core/mcpe/block/material/Material.h \
+ jni/core/mcpe/block/material/MaterialType.h \
+ jni/core/mcpe/block/BlockSoundType.h \
+ jni/core/mcpe/block/BlockSupportType.h
 
 jni/core/items/item/PainterItem.h:
 
@@ -88,3 +100,31 @@ jni/core/mcpe/entity/PaletteColor.h:
 jni/core/mcpe/entity/../item/ArmorSlot.h:
 
 jni/core/mcpe/entity/EntityClassTree.h:
+
+jni/core/mcpe/entity/player/Player.h:
+
+jni/core/mcpe/gamemode/GameType.h:
+
+jni/core/mcpe/level/BlockSource.h:
+
+jni/core/mcpe/level/../blockentity/BlockEntity.h:
+
+jni/core/mcpe/level/../blockentity/BlockEntityType.h:
+
+jni/core/mcpe/level/../blockentity/../inventory/FillingContainer.h:
+
+jni/core/mcpe/level/../blockentity/../inventory/Container.h:
+
+jni/core/mcpe/level/../util/Brightness.h:
+
+jni/core/mcpe/level/LightLayer.h:
+
+jni/core/mcpe/block/Block.h:
+
+jni/core/mcpe/block/material/Material.h:
+
+jni/core/mcpe/block/material/MaterialType.h:
+
+jni/core/mcpe/block/BlockSoundType.h:
+
+jni/core/mcpe/block/BlockSupportType.h:
