@@ -9,9 +9,9 @@ public:
 
 public:
 	BlockID id;
-	unsigned char damage;
+	unsigned char aux;
 
 public:
-	FullBlock() : id(0), damage(0) {};
-	FullBlock(BlockID tileId, unsigned char damage) : id(tileId), damage(damage) {}
+	FullBlock() : id(0), aux(0) {};
+	FullBlock(BlockID tileId, unsigned char aux_) : id(tileId), aux(aux_) {}
 };

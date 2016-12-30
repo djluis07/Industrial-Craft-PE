@@ -95,6 +95,7 @@ obj/local/armeabi-v7a/objs/icpe_core/ICPE.o: jni/core/ICPE.cpp \
  /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/platforms/android-19/arch-arm/usr/include/endian.h \
  /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/platforms/android-19/arch-arm/usr/include/sys/endian.h \
  /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/platforms/android-19/arch-arm/usr/include/machine/endian.h \
+ jni/core/util/Log.h jni/core/mcpe/util/Util.h \
  jni/core/util/language/zh_CN.h jni/core/util/language/en_US.h
 
 jni/core/ICPE.h:
@@ -332,6 +333,10 @@ jni/core/mca/data/worker/DatabaseWriter.h:
 /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/platforms/android-19/arch-arm/usr/include/sys/endian.h:
 
 /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/platforms/android-19/arch-arm/usr/include/machine/endian.h:
+
+jni/core/util/Log.h:
+
+jni/core/mcpe/util/Util.h:
 
 jni/core/util/language/zh_CN.h:
 

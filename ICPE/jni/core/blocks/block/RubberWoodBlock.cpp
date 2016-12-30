@@ -44,7 +44,7 @@ bool RubberWoodBlock::use(Player&p, BlockPos const&pos) const
 			p.getRegion().setBlockAndData(pos,FullBlock(Blocks::ID::mRubberWood,p.getRegion().getData(pos)-1),3,0);
 			if(!p.isCreative())
 				p.getSelectedItem()->hurtAndBreak(1,0);
-			popResource(p.getRegion(),pos,ItemInstance(IC::Items::ID::mRubber,1+ICPE::mRandom.nextInt(3),0));
+			popResource(p.getRegion(),pos,ItemInstance(IC::Items::ID::mResin,1+ICPE::mRandom.nextInt(3),0));
 		}
 	}
 	else if(p.getSelectedItem()&&p.getSelectedItem()->getId()==IC::Items::ID::mElectricTreeTap)
@@ -54,7 +54,7 @@ bool RubberWoodBlock::use(Player&p, BlockPos const&pos) const
 			p.getRegion().setBlockAndData(pos,FullBlock(Blocks::ID::mRubberWood,p.getRegion().getData(pos)-1),3,0);
 			if(!p.isCreative())
 				p.getSelectedItem()->hurtAndBreak(1,0);
-			popResource(p.getRegion(),pos,ItemInstance(IC::Items::ID::mRubber,1+ICPE::mRandom.nextInt(3),0));
+			popResource(p.getRegion(),pos,ItemInstance(IC::Items::ID::mResin,1+ICPE::mRandom.nextInt(3),0));
 		}
 	}
 	else

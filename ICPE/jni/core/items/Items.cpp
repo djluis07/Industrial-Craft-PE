@@ -6,11 +6,13 @@
 #include "mcpe/client/resources/I18n.h"
 
 #include "blocks/Blocks.h"
+#include "util/Log.h"
 
 #include "item/base/ICDefaultItem.h"
 #include "item/battery/SingleUseBatteryItem.h"
 #include "item/UraniumItem.h"
 #include "item/RubberItem.h"
+#include "item/ResinItem.h"
 #include "item/TreeTapItem.h"
 #include "item/CableItem.h"
 #include "item/ForgeHammerItem.h"
@@ -54,40 +56,25 @@ void Items::addICCreativeItems()
 	Item::addCreativeItem(IC::Blocks::ID::mMetal,5);
 	
 	Item::addCreativeItem(ID::mGuideBook,0);
-	Item::addCreativeItem(ID::mPainterBlack,0);
-	Item::addCreativeItem(ID::mPainterRed,0);
-	Item::addCreativeItem(ID::mPainterBrown,0);
-	Item::addCreativeItem(ID::mPainterGreen,0);
-	Item::addCreativeItem(ID::mPainterBlue,0);
-	Item::addCreativeItem(ID::mPainterPurple,0);
-	Item::addCreativeItem(ID::mPainterCyan,0);
-	Item::addCreativeItem(ID::mPainterGray,0);
-	Item::addCreativeItem(ID::mPainterLightGray,0);
-	Item::addCreativeItem(ID::mPainterPink,0);
-	Item::addCreativeItem(ID::mPainterLime,0);
-	Item::addCreativeItem(ID::mPainterYellow,0);
-	Item::addCreativeItem(ID::mPainterLightBlue,0);
-	Item::addCreativeItem(ID::mPainterMagenta,0);
-	Item::addCreativeItem(ID::mPainterOrange,0);
-	Item::addCreativeItem(ID::mPainterWhite,0);
 	Item::addCreativeItem(ID::mPainter,0);
+	Item::addCreativeItem(ID::mResin,0);
 	Item::addCreativeItem(ID::mRubber,0);
-	Item::addCreativeItem(ID::mRubber,1);
 	Item::addCreativeItem(ID::mTreeTap,0);
-	Item::addCreativeItem(ID::mCable,0);
-	Item::addCreativeItem(ID::mCable,1);
-	Item::addCreativeItem(ID::mCable,2);
-	Item::addCreativeItem(ID::mCable,3);
-	Item::addCreativeItem(ID::mCable,4);
-	Item::addCreativeItem(ID::mCable,5);
-	Item::addCreativeItem(ID::mCable,6);
-	Item::addCreativeItem(ID::mCable,7);
-	Item::addCreativeItem(ID::mCable,8);
-	Item::addCreativeItem(ID::mCable,9);
-	Item::addCreativeItem(ID::mCable,10);
-	Item::addCreativeItem(ID::mCable,11);
-	Item::addCreativeItem(ID::mCable,12);
-	Item::addCreativeItem(ID::mCable,13);
+	Item::addCreativeItem(ID::mICCoin,0);
+	Item::addCreativeItem(ID::mTinCable0,0);
+	Item::addCreativeItem(ID::mTinCable1,0);
+	Item::addCreativeItem(ID::mIronCable0,0);
+	Item::addCreativeItem(ID::mIronCable1,0);
+	Item::addCreativeItem(ID::mIronCable2,0);
+	Item::addCreativeItem(ID::mIronCable3,0);
+	Item::addCreativeItem(ID::mGoldCable0,0);
+	Item::addCreativeItem(ID::mGoldCable1,0);
+	Item::addCreativeItem(ID::mGoldCable2,0);
+	Item::addCreativeItem(ID::mCopperCable0,0);
+	Item::addCreativeItem(ID::mCopperCable1,0);
+	Item::addCreativeItem(ID::mDetectorCable,0);
+	Item::addCreativeItem(ID::mGlassCable,0);
+	Item::addCreativeItem(ID::mSplitterCable,0);
 	Item::addCreativeItem(ID::mScrap,0);
 	Item::addCreativeItem(ID::mSlag,0);
 	Item::addCreativeItem(ID::mForgeHammer,0);
@@ -184,6 +171,22 @@ void Items::addICCreativeItems()
 	Item::addCreativeItem(ID::mCasingLead,0);
 	Item::addCreativeItem(ID::mCasingSteel,0);
 	Item::addCreativeItem(ID::mCasingTin,0);
+	Item::addCreativeItem(ID::mPainterBlack,0);
+	Item::addCreativeItem(ID::mPainterRed,0);
+	Item::addCreativeItem(ID::mPainterBrown,0);
+	Item::addCreativeItem(ID::mPainterGreen,0);
+	Item::addCreativeItem(ID::mPainterBlue,0);
+	Item::addCreativeItem(ID::mPainterPurple,0);
+	Item::addCreativeItem(ID::mPainterCyan,0);
+	Item::addCreativeItem(ID::mPainterGray,0);
+	Item::addCreativeItem(ID::mPainterLightGray,0);
+	Item::addCreativeItem(ID::mPainterPink,0);
+	Item::addCreativeItem(ID::mPainterLime,0);
+	Item::addCreativeItem(ID::mPainterYellow,0);
+	Item::addCreativeItem(ID::mPainterLightBlue,0);
+	Item::addCreativeItem(ID::mPainterMagenta,0);
+	Item::addCreativeItem(ID::mPainterOrange,0);
+	Item::addCreativeItem(ID::mPainterWhite,0);
 }
 void Items::initICItems()
 {
@@ -192,6 +195,7 @@ void Items::initICItems()
 	registerItem(ID::mElectricMotor,"ic.electricmotor","icpe_electric_motor",0);
 	registerItem(ID::mPowerUnitSmall,"ic.power.unit.small","icpe_small_power_unit",0);
 	registerItem(ID::mCoil,"ic.coil","icpe_coil",0);
+	registerItem(ID::mICCoin,"ic.coin","icpe_ic_coin",0);
 	registerItem(ID::mScrap,"ic.scrap","icpe_scrap",0);
 	registerItem(ID::mSlag,"ic.slag","icpe_slag",0);
 	registerItem(ID::mTinIngot,"ic.ingot.tin","icpe_tin",0);
@@ -300,8 +304,22 @@ void Items::initICItems()
 	Item::mItems[ID::mElectricTreeTap]=new ElectricTreeTapItem();
 	Item::mItems[ID::mForgeHammer]=new ForgeHammerItem();
 	Item::mItems[ID::mRubber]=new RubberItem();
+	Item::mItems[ID::mResin]=new ResinItem();
 	Item::mItems[ID::mTreeTap]=new TreeTapItem();
-	Item::mItems[ID::mCable]=new CableItem();
+	Item::mItems[ID::mTinCable0]=new CableItem("ic.cable.tin",ID::mTinCable0-0x100,FullBlock(Blocks::ID::mCable,0),"icpe_tin_cable",0);
+	Item::mItems[ID::mTinCable1]=new CableItem("ic.cable.tin",ID::mTinCable1-0x100,FullBlock(Blocks::ID::mCable,1),"icpe_tin_cable",1);
+	Item::mItems[ID::mIronCable0]=new CableItem("ic.cable.iron",ID::mIronCable0-0x100,FullBlock(Blocks::ID::mCable,2),"icpe_iron_cable",0);
+	Item::mItems[ID::mIronCable1]=new CableItem("ic.cable.iron",ID::mIronCable1-0x100,FullBlock(Blocks::ID::mCable,3),"icpe_iron_cable",1);
+	Item::mItems[ID::mIronCable2]=new CableItem("ic.cable.iron",ID::mIronCable2-0x100,FullBlock(Blocks::ID::mCable,4),"icpe_iron_cable",2);
+	Item::mItems[ID::mIronCable3]=new CableItem("ic.cable.iron",ID::mIronCable3-0x100,FullBlock(Blocks::ID::mCable,5),"icpe_iron_cable",3);
+	Item::mItems[ID::mGoldCable0]=new CableItem("ic.cable.gold",ID::mGoldCable0-0x100,FullBlock(Blocks::ID::mCable,6),"icpe_gold_cable",0);
+	Item::mItems[ID::mGoldCable1]=new CableItem("ic.cable.gold",ID::mGoldCable1-0x100,FullBlock(Blocks::ID::mCable,7),"icpe_gold_cable",1);
+	Item::mItems[ID::mGoldCable2]=new CableItem("ic.cable.gold",ID::mGoldCable2-0x100,FullBlock(Blocks::ID::mCable,8),"icpe_gold_cable",2);
+	Item::mItems[ID::mCopperCable0]=new CableItem("ic.cable.copper",ID::mCopperCable0-0x100,FullBlock(Blocks::ID::mCable,9),"icpe_copper_cable",0);
+	Item::mItems[ID::mCopperCable1]=new CableItem("ic.cable.copper",ID::mCopperCable1-0x100,FullBlock(Blocks::ID::mCable,10),"icpe_copper_cable",1);
+	Item::mItems[ID::mDetectorCable]=new CableItem("ic.cable.detector",ID::mDetectorCable-0x100,FullBlock(Blocks::ID::mCable,11),"icpe_detector_cable",0);
+	Item::mItems[ID::mGlassCable]=new CableItem("ic.cable.glass",ID::mGlassCable-0x100,FullBlock(Blocks::ID::mCable,12),"icpe_glass_cable",0);
+	Item::mItems[ID::mSplitterCable]=new CableItem("ic.cable.splitter",ID::mSplitterCable-0x100,FullBlock(Blocks::ID::mCable,13),"icpe_splitter_cable",0);
 }
 void Items::initICBlockItems()
 {
@@ -318,6 +336,8 @@ void Items::initICBlockItems()
 }
 Items::Items(std::string const&name,short id):Item(name,id)
 {
+	LOG_P("Item defined:name="+name+",id="+Util::toString(id+0x100));
+	
 	mICItems[id]=true;
 }
 bool Items::isBatteryItem()const

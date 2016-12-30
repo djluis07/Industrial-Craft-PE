@@ -15,8 +15,11 @@ obj/local/armeabi-v7a/objs/icpe_core/blocks/Blocks.o: \
  jni/core/mcpe/item/CreativeItemCategory.h \
  jni/core/mcpe/block/BlockSoundType.h \
  jni/core/mcpe/block/BlockSupportType.h \
- jni/core/mcpe/client/resources/I18n.h jni/core/blocks/block/ICOreBlock.h \
- jni/core/blocks/block/base/OreBlock.h \
+ jni/core/mcpe/client/resources/I18n.h jni/core/util/Log.h \
+ /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/sources/cxx-stl/gnu-libstdc++/4.9/include/fstream \
+ jni/core/mcpe/util/Util.h \
+ /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/sources/cxx-stl/gnu-libstdc++/4.9/include/sstream \
+ jni/core/blocks/block/ICOreBlock.h jni/core/blocks/block/base/OreBlock.h \
  jni/core/blocks/block/RubberSaplingBlock.h \
  jni/core/blocks/block/MetalBlock.h jni/core/blocks/block/ITNTBlock.h \
  jni/core/blocks/block/base/TntBlock.h \
@@ -71,6 +74,14 @@ jni/core/mcpe/block/BlockSoundType.h:
 jni/core/mcpe/block/BlockSupportType.h:
 
 jni/core/mcpe/client/resources/I18n.h:
+
+jni/core/util/Log.h:
+
+/data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/sources/cxx-stl/gnu-libstdc++/4.9/include/fstream:
+
+jni/core/mcpe/util/Util.h:
+
+/data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/sources/cxx-stl/gnu-libstdc++/4.9/include/sstream:
 
 jni/core/blocks/block/ICOreBlock.h:
 

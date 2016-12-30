@@ -3,6 +3,7 @@
 #include <stdlib.h>
 
 #include "blocks/Blocks.h"
+#include "util/Log.h"
 
 #include "feature/RubTreeFeature.h"
 
@@ -28,6 +29,8 @@ std::unique_ptr<Feature> FeatureGen::leadOre;
 void FeatureGen::decorateChunk(BiomeDecorator*bd,BlockSource&s, Random&random,Biome*biome,BlockPos const&pos)
 {
 	prepare();
+	
+	LOG_P("Started decorating Chunk");
 	
 	//rubber trees
 	{
@@ -62,6 +65,8 @@ void FeatureGen::decorateChunk(BiomeDecorator*bd,BlockSource&s, Random&random,Bi
 			for(int z=pos.z;z<pos.z+16;++z)
 				if(random.nextBool(2000))
 					bd->_placeFeature(&s,leadOre,BlockPos(x,y,z),random);
+	
+	LOG_P("Finished decorating Chunk");
 }
 unsigned int FeatureGen::getRubGenChance(Biome&b)
 {

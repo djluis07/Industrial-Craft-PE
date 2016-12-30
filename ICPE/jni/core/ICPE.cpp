@@ -49,15 +49,18 @@
 #include "gen/FeatureGen.h"
 #include "ui/UIScreenChooser.h"
 #include "util/ICOptions.h"
+#include "util/Log.h"
 #include "util/language/zh_CN.h"
 #include "util/language/en_US.h"
 
 void ICPE::launch(JavaVM*,void*)
 {
+	LOG_P("ICPE loaded.");
 	setupMSHookFunctions();
 }
 void ICPE::setupMSHookFunctions()
 {
+	LOG_P("Start setting up MSHookFunctions.");
 	MSHookFunction((void*)&Recipe::isAnyAuxValue,(void*)&isAnyAuxValue,(void**)&isAnyAuxValue_);
 	MSHookFunction((void*)&FlowerPotBlock::isSupportedBlock,(void*)&isSupportedFlower,(void**)&isSupportedFlower_);
 	MSHookFunction((void*)&Localization::_load,(void*)&loadLocalization,(void**)&loadLocalization_);
@@ -71,6 +74,7 @@ void ICPE::setupMSHookFunctions()
 	MSHookFunction((void*)&Item::initClientData,(void*)&initItems,(void**)&initItems_);
 	MSHookFunction((void*)&MCPEBlockGraphics::initBlocks,(void*)&initBlockGraphics,(void**)&initBlockGraphics_);
 	MSHookFunction((void*)&Block::initBlocks,(void*)&initBlocks,(void**)&initBlocks_);
+	LOG_P("MSHookFunctions have been set up.");
 }
 
 void (*ICPE::loadLocalization_)(Localization*, const std::string&)=0;
@@ -102,6 +106,8 @@ void ICPE::loadLocalization(Localization *self, const std::string &languageName)
 	
 	std::vector<std::string> languageList;
 	
+	LOG_P("Load localization:"+languageName);
+	
 	if(languageName=="en_US")
 		languageList=ICLangauge::en_US;
 	else if(languageName=="zh_CN")
@@ -117,12 +123,15 @@ void ICPE::decorateChunk(BiomeDecorator*decorator,BlockSource*s, Random&r, Biome
 {
 	decorateChunk_(decorator,s,r,biome,pos,b,f);
 	
+	LOG_P("Decorating chunk:"+Util::toString(pos.x)+","+Util::toString(pos.y)+","+Util::toString(pos.z));
+	
 	if(s)
 		IC::FeatureGen::decorateChunk(decorator,*s,r,biome,pos);
 }
 void ICPE::initRecipes(Recipes*self)
 {
 	initRecipes_(self);
+	LOG_P("Adding recipes.");
 	ICRecipes::addRecipes(*self,*FurnaceRecipes::getInstance());
 }
 bool ICPE::tessellateInWorld(BlockTessellator*tessellator,Block const&block,BlockPos const&pos,uchar aux,bool wtf)
@@ -134,6 +143,7 @@ bool ICPE::tessellateInWorld(BlockTessellator*tessellator,Block const&block,Bloc
 void ICPE::initMCClient(MinecraftClient*self)
 {
 	initMCClient_(self);
+	LOG_P("Client inited.");
 	pMinecraftClient=self;
 	mUIScreenChooser=UIScreenChooser(*self);
 	mRandom=Random((unsigned long int)time(0));
@@ -141,26 +151,31 @@ void ICPE::initMCClient(MinecraftClient*self)
 void ICPE::initCreativeItems()
 {
 	initCreativeItems_();
+	LOG_P("Initing creative items");
 	IC::Items::addICCreativeItems();
 }
 void ICPE::initItems()
 {
 	initItems_();
+	LOG_P("Initing items.");
 	IC::Items::initICAllItems();
 }
 void ICPE::initBlockGraphics()
 {
 	initBlockGraphics_();
+	LOG_P("Initing block graphics.");
 	IC::BlockGraphics::initBlockGraphics();
 }
 void ICPE::initBlocks()
 {
 	initBlocks_();
+	LOG_P("Initing Blocks.");
 	IC::Blocks::initICBlocks();
 }
 void ICPE::createLevel(Minecraft*self,void*v,std::string const&path,std::string const&name,LevelSettings const &settings,ResourcePackManager&manager)
 {
 	createLevel_(self,v,path,name,settings,manager);
+	LOG_P("Level created.");
 	mLevelFolder=path;
 }
 void ICPE::tickLevel(Level*self)

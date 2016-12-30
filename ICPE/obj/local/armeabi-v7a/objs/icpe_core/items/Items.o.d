@@ -20,11 +20,16 @@ obj/local/armeabi-v7a/objs/icpe_core/items/Items.o: \
  jni/core/mcpe/block/BlockSoundType.h \
  jni/core/mcpe/block/BlockSupportType.h \
  jni/core/mcpe/client/resources/I18n.h jni/core/blocks/Blocks.h \
+ jni/core/util/Log.h \
+ /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/sources/cxx-stl/gnu-libstdc++/4.9/include/fstream \
+ jni/core/mcpe/util/Util.h \
+ /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/sources/cxx-stl/gnu-libstdc++/4.9/include/sstream \
  jni/core/items/item/base/ICDefaultItem.h \
  jni/core/items/item/battery/SingleUseBatteryItem.h \
  jni/core/items/item/base/BatteryItem.h jni/core/items/item/UraniumItem.h \
- jni/core/items/item/RubberItem.h jni/core/items/item/TreeTapItem.h \
- jni/core/items/item/CableItem.h jni/core/items/item/ForgeHammerItem.h \
+ jni/core/items/item/RubberItem.h jni/core/items/item/ResinItem.h \
+ jni/core/items/item/TreeTapItem.h jni/core/items/item/CableItem.h \
+ jni/core/mcpe/util/FullBlock.h jni/core/items/item/ForgeHammerItem.h \
  jni/core/items/item/ElectricTreeTapItem.h \
  jni/core/items/item/ElectricHoeItem.h jni/core/items/item/ChainsawItem.h \
  jni/core/items/item/GuideBookItem.h jni/core/items/item/PainterItem.h \
@@ -84,6 +89,14 @@ jni/core/mcpe/client/resources/I18n.h:
 
 jni/core/blocks/Blocks.h:
 
+jni/core/util/Log.h:
+
+/data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/sources/cxx-stl/gnu-libstdc++/4.9/include/fstream:
+
+jni/core/mcpe/util/Util.h:
+
+/data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/sources/cxx-stl/gnu-libstdc++/4.9/include/sstream:
+
 jni/core/items/item/base/ICDefaultItem.h:
 
 jni/core/items/item/battery/SingleUseBatteryItem.h:
@@ -94,9 +107,13 @@ jni/core/items/item/UraniumItem.h:
 
 jni/core/items/item/RubberItem.h:
 
+jni/core/items/item/ResinItem.h:
+
 jni/core/items/item/TreeTapItem.h:
 
 jni/core/items/item/CableItem.h:
+
+jni/core/mcpe/util/FullBlock.h:
 
 jni/core/items/item/ForgeHammerItem.h:
 

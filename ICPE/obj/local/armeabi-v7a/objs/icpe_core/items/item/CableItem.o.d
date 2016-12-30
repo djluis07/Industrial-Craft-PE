@@ -10,7 +10,7 @@ obj/local/armeabi-v7a/objs/icpe_core/items/item/CableItem.o: \
  jni/core/mcpe/item/../Util/../block/BlockProperty.h \
  jni/core/mcpe/block/BlockShape.h \
  jni/core/mcpe/item/../client/renderer/texture/TextureUVCoordinateSet.h \
- jni/core/mcpe/util/ResourceLocation.h \
+ jni/core/mcpe/util/ResourceLocation.h jni/core/mcpe/util/FullBlock.h \
  jni/core/mcpe/client/resources/I18n.h jni/core/blocks/Blocks.h \
  jni/core/mcpe/block/Block.h jni/core/mcpe/util/Color.h \
  jni/core/mcpe/util/AABB.h jni/core/mcpe/util/Vec3.h \
@@ -47,6 +47,8 @@ jni/core/mcpe/block/BlockShape.h:
 jni/core/mcpe/item/../client/renderer/texture/TextureUVCoordinateSet.h:
 
 jni/core/mcpe/util/ResourceLocation.h:
+
+jni/core/mcpe/util/FullBlock.h:
 
 jni/core/mcpe/client/resources/I18n.h:
 

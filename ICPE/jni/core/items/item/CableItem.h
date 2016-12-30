@@ -1,20 +1,15 @@
 #pragma once
 
 #include "items/Items.h"
+#include "mcpe/util/FullBlock.h"
 
 class CableItem : public IC::Items
 {
 private:
-	TextureUVCoordinateSet tinTextures[2];
-	TextureUVCoordinateSet ironTextures[4];
-	TextureUVCoordinateSet goldTextures[3];
-	TextureUVCoordinateSet copperTextures[2];
-	TextureUVCoordinateSet utilTextures[3];
+	FullBlock placeBlock;
 public:
-	CableItem();
+	CableItem(std::string const&,short,FullBlock const&,std::string const&,int);
 public:
 	virtual std::string buildEffectDescriptionName(const ItemInstance&) const;
-	virtual std::string buildDescriptionName(const ItemInstance&) const;
-	virtual const TextureUVCoordinateSet& getIcon(int, int, bool) const;
 	virtual void useOn(ItemInstance&instance, Entity&p, int x, int y, int z, signed char side, float pixelx, float pixely, float pixelz);
 };

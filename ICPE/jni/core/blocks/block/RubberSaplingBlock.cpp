@@ -26,7 +26,8 @@ void RubberSaplingBlock::tick(BlockSource&s, BlockPos const&pos, Random&r)const
 }
 void RubberSaplingBlock::onFertilized(BlockSource&s, BlockPos const&pos, Entity*e)const
 {
-	grow(s,pos,ICPE::mRandom);
+	if(ICPE::mRandom.nextBool(7))
+		grow(s,pos,ICPE::mRandom);
 }
 bool RubberSaplingBlock::mayPlaceOn(Block const&b)const
 {

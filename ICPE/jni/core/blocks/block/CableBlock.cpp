@@ -24,9 +24,40 @@ bool CableBlock::detachesOnPistonMove(BlockSource&, BlockPos const&)const
 {
 	return true;
 }
-int CableBlock::getResource(Random&, int, int)const
+int CableBlock::getResource(Random&, int, int aux)const
 {
-	return IC::Items::ID::mCable;
+	switch(aux)
+	{
+	case 0:
+	default:
+		return IC::Items::ID::mTinCable0;
+	case 1:
+		return IC::Items::ID::mTinCable1;
+	case 2:
+		return IC::Items::ID::mIronCable0;
+	case 3:
+		return IC::Items::ID::mIronCable1;
+	case 4:
+		return IC::Items::ID::mIronCable2;
+	case 5:
+		return IC::Items::ID::mIronCable3;
+	case 6:
+		return IC::Items::ID::mGoldCable0;
+	case 7:
+		return IC::Items::ID::mGoldCable1;
+	case 8:
+		return IC::Items::ID::mGoldCable2;
+	case 9:
+		return IC::Items::ID::mCopperCable0;
+	case 10:
+		return IC::Items::ID::mCopperCable1;
+	case 11:
+		return IC::Items::ID::mDetectorCable;
+	case 12:
+		return IC::Items::ID::mGlassCable;
+	case 13:
+		return IC::Items::ID::mSplitterCable;
+	}
 }
 int CableBlock::getResourceCount(Random&, int, int)const
 {
@@ -38,11 +69,11 @@ bool CableBlock::canBeSilkTouched() const
 }
 int CableBlock::getSpawnResourcesAuxValue(unsigned char i)const
 {
-	return i;
+	return 0;
 }
 std::string CableBlock::buildDescriptionName(unsigned char aux) const
 {
-	return Item::mItems[IC::Items::ID::mCable]->buildDescriptionName(ItemInstance(this->blockId,1,aux));
+	return "ic.cable";
 }
 void CableBlock::neighborChanged(BlockSource&, BlockPos const&, BlockPos const&)const
 {

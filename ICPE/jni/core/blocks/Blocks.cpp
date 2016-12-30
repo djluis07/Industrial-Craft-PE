@@ -2,6 +2,8 @@
 
 #include "mcpe/client/resources/I18n.h"
 
+#include "util/Log.h"
+
 #include "block/ICOreBlock.h"
 #include "block/RubberSaplingBlock.h"
 #include "block/MetalBlock.h"
@@ -69,6 +71,7 @@ int Blocks::getNowVoltage(BlockSource&,BlockPos const&)const
 Blocks::Blocks(std::string const&name,int id,Material const&m):Block(name,id,m)
 {
 	mICBlocks[id]=true;
+	LOG_P("Block defined:name="+name+",id="+Util::toString(id));
 }
 bool Blocks::isAnyAuxValueInRecipe()const
 {

@@ -70,17 +70,15 @@ void PainterItem::useOn(ItemInstance&item, Entity&ent, int x, int y, int z, sign
 		colorType=PaletteColor::BLACK;
 	break;
 	}
-	
-	if(ent.getRegion().getBlock(x,y,z)==Block::mBlocks[20])
-		ent.getRegion().setBlockAndData(x,y,z,95,(unsigned char)colorType,3);
-	else if(ent.getRegion().getBlock(x,y,z)==Block::mBlocks[102])
-		ent.getRegion().setBlockAndData(x,y,z,160,(unsigned char)colorType,3);
-	else if(ent.getRegion().getBlock(x,y,z)==Block::mBlocks[35])
+
+	if(ent.getRegion().getBlock(x,y,z)==Block::mBlocks[35])
 		ent.getRegion().setBlockAndData(x,y,z,35,(unsigned char)colorType,3);
 	else if(ent.getRegion().getBlock(x,y,z)==Block::mBlocks[171])
 		ent.getRegion().setBlockAndData(x,y,z,171,(unsigned char)colorType,3);
 	else if(ent.getRegion().getBlock(x,y,z)==Block::mBlocks[172])
-		ent.getRegion().setBlockAndData(x,y,z,172,(unsigned char)colorType,3);
+		ent.getRegion().setBlockAndData(x,y,z,159,(unsigned char)colorType,3);
+	else if(ent.getRegion().getBlock(x,y,z)==Block::mBlocks[159])
+		ent.getRegion().setBlockAndData(x,y,z,159,(unsigned char)colorType,3);
 	else return;
 	if(item.aux<(getMaxDamage()-1))
 		item.hurtAndBreak(1,0);

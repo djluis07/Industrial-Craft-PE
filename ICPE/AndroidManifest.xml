@@ -49,49 +49,49 @@
         <activity 
 			android:name="com.MCAL.ICPE.activity.MainActivity"
 			android:theme="@style/AppTheme"
-			android:screenOrientation="landscape">
+			android:screenOrientation="user">
         </activity>
 		
 		<activity
 			android:name="com.MCAL.ICPE.activity.LicenseActivity"
 			android:theme="@style/AppTheme"
-			android:screenOrientation="landscape">
+			android:screenOrientation="user">
         </activity>
 		
 		<activity
 			android:name="com.MCAL.ICPE.activity.JoinUSActivity"
 			android:theme="@style/AppTheme"
-			android:screenOrientation="landscape">
+			android:screenOrientation="user">
         </activity>
 		
 		<activity
 			android:name="com.MCAL.ICPE.activity.SettingsActivity"
 			android:theme="@style/AppTheme"
-			android:screenOrientation="landscape">
+			android:screenOrientation="user">
         </activity>
 		
 		<activity
 			android:name="com.MCAL.ICPE.activity.UpdateActivity"
 			android:theme="@style/AppTheme"
-			android:screenOrientation="landscape">
+			android:screenOrientation="user">
         </activity>
 		
 		<activity
 			android:name="com.MCAL.ICPE.activity.NoAPIActivity"
 			android:theme="@style/AppTheme"
-			android:screenOrientation="landscape">
+			android:screenOrientation="user">
         </activity>
 		
 		<activity
 			android:name="com.MCAL.ICPE.activity.OptionsActivity"
 			android:theme="@style/AppTheme"
-			android:screenOrientation="landscape">
+			android:screenOrientation="user">
         </activity>
 		
 		<activity
 			android:name="com.MCAL.ICPE.activity.GuideActivity"
 			android:theme="@style/FullScreen"
-			android:screenOrientation="landscape"
+			android:screenOrientation="user"
 			android:label="@string/app_name">
 			
             <intent-filter>

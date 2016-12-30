@@ -16,7 +16,7 @@ public:
 		static const short mPainter=501;
 		static const short mRubber=502;
 		static const short mTreeTap=503;
-		static const short mCable=504;
+		static const short mResin=504;
 		static const short mICCoin=505;
 		static const short mSlag=510;
 		static const short mScrap=511;
@@ -128,6 +128,20 @@ public:
 		static const short mPainterMagenta=619;
 		static const short mPainterOrange=620;
 		static const short mPainterWhite=621;
+		static const short mTinCable0=622;
+		static const short mTinCable1=623;
+		static const short mIronCable0=624;
+		static const short mIronCable1=625;
+		static const short mIronCable2=626;
+		static const short mIronCable3=627;
+		static const short mGoldCable0=628;
+		static const short mGoldCable1=629;
+		static const short mGoldCable2=630;
+		static const short mCopperCable0=631;
+		static const short mCopperCable1=632;
+		static const short mDetectorCable=633;
+		static const short mGlassCable=634;
+		static const short mSplitterCable=635;
 	};
 	
 public:
