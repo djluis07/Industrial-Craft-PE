@@ -77,4 +77,8 @@ bool Blocks::isAnyAuxValueInRecipe()const
 {
 	return true;
 }
+bool Blocks::isICEntityBlock()const
+{
+	return false;
+}
 }

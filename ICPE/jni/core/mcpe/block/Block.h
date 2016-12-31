@@ -188,7 +188,7 @@ public:
 	virtual int getSpawnResourcesAuxValue(unsigned char) const;
 	
 	const std::string& getDescriptionId() const;
-	void addAABB(const AABB&, const AABB*, std::vector<AABB, std::allocator<AABB>>&);
+	void addAABB(const AABB&, const AABB*, std::vector<AABB, std::allocator<AABB>>&)const;
 	void addAABB(const AABB&);
 	void popResource(BlockSource&, const BlockPos&, const ItemInstance&)const;
 	Block* setCategory(CreativeItemCategory);

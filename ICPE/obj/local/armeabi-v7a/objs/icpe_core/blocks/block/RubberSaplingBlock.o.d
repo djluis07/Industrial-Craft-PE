@@ -24,15 +24,30 @@ obj/local/armeabi-v7a/objs/icpe_core/blocks/block/RubberSaplingBlock.o: \
  jni/core/mcpe/level/../blockentity/../inventory/../item/UseAnimation.h \
  jni/core/mcpe/level/../util/Brightness.h \
  jni/core/mcpe/level/LightLayer.h jni/core/mcpe/level/DimensionId.h \
- jni/core/mcpe/entity/player/Player.h jni/core/mcpe/entity/Mob.h \
- jni/core/mcpe/entity/Entity.h jni/core/mcpe/entity/SynchedEntityData.h \
- jni/core/mcpe/entity/../util/Vec2.h \
- jni/core/mcpe/entity/EntityRendererId.h \
- jni/core/mcpe/entity/EntityType.h jni/core/mcpe/entity/PaletteColor.h \
- jni/core/mcpe/entity/../item/ArmorSlot.h \
- jni/core/mcpe/gamemode/GameType.h jni/core/mcpe/util/Random.h \
- jni/core/gen/feature/RubTreeFeature.h jni/core/mcpe/util/FullBlock.h \
- jni/core/mcpe/level/gen/Feature.h jni/core/ICPE.h \
+ jni/core/mcpe/level/Level.h \
+ /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/sources/cxx-stl/gnu-libstdc++/4.9/include/unordered_set \
+ jni/core/mcpe/level/LevelStorage.h jni/core/mcpe/level/ParticleType.h \
+ jni/core/mcpe/level/BlockSourceListener.h jni/core/mcpe/util/FullBlock.h \
+ jni/core/mcpe/level/GeneratorType.h \
+ jni/core/mcpe/level/storage/LevelData.h \
+ jni/core/mcpe/level/../entity/Entity.h \
+ jni/core/mcpe/level/../entity/SynchedEntityData.h \
+ jni/core/mcpe/level/../entity/../util/Vec2.h \
+ jni/core/mcpe/level/../entity/EntityRendererId.h \
+ jni/core/mcpe/level/../entity/EntityType.h \
+ jni/core/mcpe/level/../entity/PaletteColor.h \
+ jni/core/mcpe/level/../entity/../item/ArmorSlot.h \
+ jni/core/mcpe/level/../client/AppPlatformListener.h \
+ jni/core/mcpe/level/../util/Random.h \
+ jni/core/mcpe/level/../entity/player/LocalPlayer.h \
+ jni/core/mcpe/level/../entity/player/Player.h jni/core/mcpe/entity/Mob.h \
+ jni/core/mcpe/gamemode/GameType.h \
+ jni/core/mcpe/level/../entity/player/../../inventory/IContainerListener.h \
+ jni/core/mcpe/level/../entity/player/../../inventory/InventoryMenu.h \
+ jni/core/mcpe/level/../entity/player/../../inventory/BaseContainerMenu.h \
+ jni/core/mcpe/entity/EntityClassTree.h \
+ jni/core/gen/feature/RubTreeFeature.h jni/core/mcpe/level/gen/Feature.h \
+ jni/core/ICPE.h \
  /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/platforms/android-19/arch-arm/usr/include/jni.h
 
 jni/core/blocks/block/RubberSaplingBlock.h:
@@ -97,31 +112,57 @@ jni/core/mcpe/level/LightLayer.h:
 
 jni/core/mcpe/level/DimensionId.h:
 
-jni/core/mcpe/entity/player/Player.h:
+jni/core/mcpe/level/Level.h:
+
+/data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/sources/cxx-stl/gnu-libstdc++/4.9/include/unordered_set:
+
+jni/core/mcpe/level/LevelStorage.h:
+
+jni/core/mcpe/level/ParticleType.h:
+
+jni/core/mcpe/level/BlockSourceListener.h:
+
+jni/core/mcpe/util/FullBlock.h:
+
+jni/core/mcpe/level/GeneratorType.h:
+
+jni/core/mcpe/level/storage/LevelData.h:
+
+jni/core/mcpe/level/../entity/Entity.h:
+
+jni/core/mcpe/level/../entity/SynchedEntityData.h:
+
+jni/core/mcpe/level/../entity/../util/Vec2.h:
+
+jni/core/mcpe/level/../entity/EntityRendererId.h:
+
+jni/core/mcpe/level/../entity/EntityType.h:
+
+jni/core/mcpe/level/../entity/PaletteColor.h:
+
+jni/core/mcpe/level/../entity/../item/ArmorSlot.h:
+
+jni/core/mcpe/level/../client/AppPlatformListener.h:
+
+jni/core/mcpe/level/../util/Random.h:
+
+jni/core/mcpe/level/../entity/player/LocalPlayer.h:
+
+jni/core/mcpe/level/../entity/player/Player.h:
 
 jni/core/mcpe/entity/Mob.h:
 
-jni/core/mcpe/entity/Entity.h:
-
-jni/core/mcpe/entity/SynchedEntityData.h:
-
-jni/core/mcpe/entity/../util/Vec2.h:
-
-jni/core/mcpe/entity/EntityRendererId.h:
-
-jni/core/mcpe/entity/EntityType.h:
-
-jni/core/mcpe/entity/PaletteColor.h:
-
-jni/core/mcpe/entity/../item/ArmorSlot.h:
-
 jni/core/mcpe/gamemode/GameType.h:
 
-jni/core/mcpe/util/Random.h:
+jni/core/mcpe/level/../entity/player/../../inventory/IContainerListener.h:
+
+jni/core/mcpe/level/../entity/player/../../inventory/InventoryMenu.h:
+
+jni/core/mcpe/level/../entity/player/../../inventory/BaseContainerMenu.h:
+
+jni/core/mcpe/entity/EntityClassTree.h:
 
 jni/core/gen/feature/RubTreeFeature.h:
-
-jni/core/mcpe/util/FullBlock.h:
 
 jni/core/mcpe/level/gen/Feature.h:
 

@@ -83,7 +83,7 @@ bool RubTreeFeature::grow(BlockSource&world,BlockPos const&pos_,Random&random)co
 		if (random.nextInt(100) <= treeholechance) 
 		{
 			treeholechance -= 10;
-			world.setBlockAndData(cPos,log2,3,0);
+			world.setBlockAndData(cPos,{log2.id,7+random.nextInt(3)},3,0);
 		}
 		else
 			world.setBlockAndData(cPos,log,3,0);

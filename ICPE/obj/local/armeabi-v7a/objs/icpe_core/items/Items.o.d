@@ -33,7 +33,12 @@ obj/local/armeabi-v7a/objs/icpe_core/items/Items.o: \
  jni/core/items/item/ElectricTreeTapItem.h \
  jni/core/items/item/ElectricHoeItem.h jni/core/items/item/ChainsawItem.h \
  jni/core/items/item/GuideBookItem.h jni/core/items/item/PainterItem.h \
- jni/core/items/item/EmptyPainterItem.h
+ jni/core/items/item/EmptyPainterItem.h \
+ jni/core/items/item/BronzeShovelItem.h \
+ jni/core/items/item/BronzeHoeItem.h \
+ jni/core/items/item/BronzeSwordItem.h \
+ jni/core/items/item/BronzePickAxeItem.h \
+ jni/core/items/item/BronzeAxeItem.h
 
 jni/core/items/Items.h:
 
@@ -128,3 +133,13 @@ jni/core/items/item/GuideBookItem.h:
 jni/core/items/item/PainterItem.h:
 
 jni/core/items/item/EmptyPainterItem.h:
+
+jni/core/items/item/BronzeShovelItem.h:
+
+jni/core/items/item/BronzeHoeItem.h:
+
+jni/core/items/item/BronzeSwordItem.h:
+
+jni/core/items/item/BronzePickAxeItem.h:
+
+jni/core/items/item/BronzeAxeItem.h:

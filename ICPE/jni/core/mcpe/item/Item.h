@@ -40,7 +40,7 @@ public:
 	Item(const std::string&, short);
 
 	/* fields */
-	char filler[200];//56
+	char filler[200];
 
 	/* list */
 	static Item* mItems[4096];

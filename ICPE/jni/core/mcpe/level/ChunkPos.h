@@ -18,5 +18,6 @@ public:
 	ChunkPos(const Vec3 &);
 	ChunkPos(float, float, float);
 	ChunkPos(int, int, int);
+	ChunkPos()=default;
 	float distanceToSqr(const Entity *) const;
 };

@@ -39,5 +39,6 @@ public:
 	virtual int getMaxVoltage()const;
 	virtual int getNowVoltage(BlockSource&,BlockPos const&)const;
 	virtual bool isAnyAuxValueInRecipe()const;
+	virtual bool isICEntityBlock()const;
 };
 }

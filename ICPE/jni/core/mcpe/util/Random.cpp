@@ -1,4 +1,5 @@
 #include <cstdint>
+#include <math.h>
 
 #include "Random.h"
 
@@ -28,7 +29,7 @@ void Random::setSeed(long unsigned int seed)
 
 float Random::nextFloat()
 {
-	return ((float)genrand_int32()) * 2.32830644F;
+	return ((float)nextInt(1000))/((float)1000);
 }
 
 int Random::nextInt(int max)

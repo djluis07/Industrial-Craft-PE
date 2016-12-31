@@ -19,4 +19,5 @@ public:
 	virtual int getExtraRenderLayers() const;
 protected:
 	bool grow(BlockSource&,BlockPos const&,Random&)const;
+	void makeParticles(BlockSource&,BlockPos const&,Random&)const;
 };

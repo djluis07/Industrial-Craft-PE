@@ -5,7 +5,7 @@
 class CableTessellator : public BlockTessellator
 {
 public:
-	bool tessellate(Block const&,BlockPos const&,unsigned char,bool,bool (*)(BlockTessellator*,Block const&,BlockPos const&,uchar,bool));
+	bool tessellate(Block const&,BlockPos const&,unsigned char,bool);
 private:
-	bool isElectricBlockAt(BlockPos const&);
+	bool isElectricBlockAt(BlockPos const&,BlockPos const&);
 };

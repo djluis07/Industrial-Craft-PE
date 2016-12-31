@@ -10,15 +10,12 @@
 
 #include "ICPE.h"
 
-ICBlockEntity::ICBlockEntity(BlockPos pos,BlockSource&s,Block*b,std::string p)
+ICBlockEntity::ICBlockEntity(BlockPos pos,BlockSource&s,Block*b)
 {
 	position=pos;
-	path=p;
 	block=b;
 	changed=false;
 	source=&s;
-	
-	ICPE::mBlockEntityManager.addNew(this);
 }
 void ICBlockEntity::tick(Level&l)
 {
@@ -34,7 +31,7 @@ void ICBlockEntity::save()
 }
 void ICBlockEntity::remove()
 {
-	::remove(("/sdcard/games/com.mojang/minecraftWorlds/"+path+"/db/exnihilo/BE"+Util::toString(position.x)+"_"+Util::toString(position.y)+"_"+Util::toString(position.z)+".BEdb").c_str());
+	
 }
 void ICBlockEntity::create()
 {
@@ -47,9 +44,8 @@ void ICBlockEntity::moveTo(BlockPos const&pos)
 void ICBlockEntity::setChanged()
 {
 	changed=true;
-	ICPE::pMinecraftClient->getLevelRenderer()->onAreaChanged(*source,position,position);
 }
-void ICBlockEntity::onRemove()
+void ICBlockEntity::update()
 {
-	
+	ICPE::pMinecraftClient->getLevelRenderer()->onAreaChanged(*source,position,position);
 }

@@ -57,4 +57,6 @@ public:
 	void setForceOpaque(bool);
 	void tex1(unsigned int);
 	void blend(int, int, int, int);
+	void _occlusion(BlockPos const&) const;
+	void _setShapeAndTessellate(Vec3 const&, Vec3 const&, Block const&, BlockPos const&, int);
 };

@@ -17,7 +17,7 @@ public:
 	bool changed;
 	BlockSource* source;
 public:
-	ICBlockEntity(BlockPos,BlockSource&,Block*,std::string);
+	ICBlockEntity(BlockPos,BlockSource&,Block*);
 	~ICBlockEntity()=default;
 public:
 	virtual void tick(Level&);
@@ -27,7 +27,7 @@ public:
 	virtual void remove();
 	virtual void create();
 	virtual void moveTo(BlockPos const&);
-	virtual void onRemove();
 protected:
 	void setChanged();
+	void update();
 };

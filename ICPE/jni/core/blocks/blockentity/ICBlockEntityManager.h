@@ -2,24 +2,32 @@
 
 #include <vector>
 #include <string>
+#include <memory>
+
+#include "BlockEntityChunkContainer.h"
 
 class ICBlockEntity;
 class BlockPos;
 class Level;
+class BlockSource;
 
 class ICBlockEntityManager
 {
 public:
-	std::vector<ICBlockEntity*>icBlockEntityList;
+	std::vector<BlockEntityChunkContainer>list;
+	BlockSource*s;
+	std::string path;
 public:
-	ICBlockEntityManager();
-	~ICBlockEntityManager();
+	ICBlockEntityManager()=default;
+	ICBlockEntityManager(std::string const&,BlockSource&);
+	~ICBlockEntityManager()=default;
 public:
-	ICBlockEntity *getBlockEntity(BlockPos const&);
+	std::unique_ptr<ICBlockEntity>& getBlockEntity(BlockPos const&);
 	void removeBlockEntity(BlockPos const&);
-	void addNew(ICBlockEntity*);
+	void addNew(std::unique_ptr<ICBlockEntity>);
 	void tick(Level&);
 	void save();
+	void load();
 protected:	
 	int getBlockEntityPos(BlockPos const&);
 };

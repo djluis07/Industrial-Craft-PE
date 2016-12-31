@@ -22,6 +22,11 @@
 #include "item/GuideBookItem.h"
 #include "item/PainterItem.h"
 #include "item/EmptyPainterItem.h"
+#include "item/BronzeShovelItem.h"
+#include "item/BronzeHoeItem.h"
+#include "item/BronzeSwordItem.h"
+#include "item/BronzePickAxeItem.h"
+#include "item/BronzeAxeItem.h"
 
 bool IC::Items::mICItems[4096];
 
@@ -187,6 +192,11 @@ void Items::addICCreativeItems()
 	Item::addCreativeItem(ID::mPainterMagenta,0);
 	Item::addCreativeItem(ID::mPainterOrange,0);
 	Item::addCreativeItem(ID::mPainterWhite,0);
+	Item::addCreativeItem(ID::mBronzeShovel,0);
+	Item::addCreativeItem(ID::mBronzePickAxe,0);
+	Item::addCreativeItem(ID::mBronzeAxe,0);
+	Item::addCreativeItem(ID::mBronzeSword,0);
+	Item::addCreativeItem(ID::mBronzeHoe,0);
 }
 void Items::initICItems()
 {
@@ -306,20 +316,25 @@ void Items::initICItems()
 	Item::mItems[ID::mRubber]=new RubberItem();
 	Item::mItems[ID::mResin]=new ResinItem();
 	Item::mItems[ID::mTreeTap]=new TreeTapItem();
-	Item::mItems[ID::mTinCable0]=new CableItem("ic.cable.tin",ID::mTinCable0-0x100,FullBlock(Blocks::ID::mCable,0),"icpe_tin_cable",0);
-	Item::mItems[ID::mTinCable1]=new CableItem("ic.cable.tin",ID::mTinCable1-0x100,FullBlock(Blocks::ID::mCable,1),"icpe_tin_cable",1);
-	Item::mItems[ID::mIronCable0]=new CableItem("ic.cable.iron",ID::mIronCable0-0x100,FullBlock(Blocks::ID::mCable,2),"icpe_iron_cable",0);
-	Item::mItems[ID::mIronCable1]=new CableItem("ic.cable.iron",ID::mIronCable1-0x100,FullBlock(Blocks::ID::mCable,3),"icpe_iron_cable",1);
-	Item::mItems[ID::mIronCable2]=new CableItem("ic.cable.iron",ID::mIronCable2-0x100,FullBlock(Blocks::ID::mCable,4),"icpe_iron_cable",2);
-	Item::mItems[ID::mIronCable3]=new CableItem("ic.cable.iron",ID::mIronCable3-0x100,FullBlock(Blocks::ID::mCable,5),"icpe_iron_cable",3);
-	Item::mItems[ID::mGoldCable0]=new CableItem("ic.cable.gold",ID::mGoldCable0-0x100,FullBlock(Blocks::ID::mCable,6),"icpe_gold_cable",0);
-	Item::mItems[ID::mGoldCable1]=new CableItem("ic.cable.gold",ID::mGoldCable1-0x100,FullBlock(Blocks::ID::mCable,7),"icpe_gold_cable",1);
-	Item::mItems[ID::mGoldCable2]=new CableItem("ic.cable.gold",ID::mGoldCable2-0x100,FullBlock(Blocks::ID::mCable,8),"icpe_gold_cable",2);
-	Item::mItems[ID::mCopperCable0]=new CableItem("ic.cable.copper",ID::mCopperCable0-0x100,FullBlock(Blocks::ID::mCable,9),"icpe_copper_cable",0);
-	Item::mItems[ID::mCopperCable1]=new CableItem("ic.cable.copper",ID::mCopperCable1-0x100,FullBlock(Blocks::ID::mCable,10),"icpe_copper_cable",1);
-	Item::mItems[ID::mDetectorCable]=new CableItem("ic.cable.detector",ID::mDetectorCable-0x100,FullBlock(Blocks::ID::mCable,11),"icpe_detector_cable",0);
-	Item::mItems[ID::mGlassCable]=new CableItem("ic.cable.glass",ID::mGlassCable-0x100,FullBlock(Blocks::ID::mCable,12),"icpe_glass_cable",0);
-	Item::mItems[ID::mSplitterCable]=new CableItem("ic.cable.splitter",ID::mSplitterCable-0x100,FullBlock(Blocks::ID::mCable,13),"icpe_splitter_cable",0);
+	Item::mItems[ID::mBronzeShovel]=new BronzeShovelItem();
+	Item::mItems[ID::mBronzeHoe]=new BronzeHoeItem();
+	Item::mItems[ID::mBronzeSword]=new BronzeSwordItem();
+	Item::mItems[ID::mBronzePickAxe]=new BronzePickAxeItem();
+	Item::mItems[ID::mBronzeAxe]=new BronzeAxeItem();
+	Item::mItems[ID::mTinCable0]=new CableItem("ic.cable.tin",ID::mTinCable0-0x100,"icpe_tin_cable",0);
+	Item::mItems[ID::mTinCable1]=new CableItem("ic.cable.tin",ID::mTinCable1-0x100,"icpe_tin_cable",1);
+	Item::mItems[ID::mIronCable0]=new CableItem("ic.cable.iron",ID::mIronCable0-0x100,"icpe_iron_cable",0);
+	Item::mItems[ID::mIronCable1]=new CableItem("ic.cable.iron",ID::mIronCable1-0x100,"icpe_iron_cable",1);
+	Item::mItems[ID::mIronCable2]=new CableItem("ic.cable.iron",ID::mIronCable2-0x100,"icpe_iron_cable",2);
+	Item::mItems[ID::mIronCable3]=new CableItem("ic.cable.iron",ID::mIronCable3-0x100,"icpe_iron_cable",3);
+	Item::mItems[ID::mGoldCable0]=new CableItem("ic.cable.gold",ID::mGoldCable0-0x100,"icpe_gold_cable",0);
+	Item::mItems[ID::mGoldCable1]=new CableItem("ic.cable.gold",ID::mGoldCable1-0x100,"icpe_gold_cable",1);
+	Item::mItems[ID::mGoldCable2]=new CableItem("ic.cable.gold",ID::mGoldCable2-0x100,"icpe_gold_cable",2);
+	Item::mItems[ID::mCopperCable0]=new CableItem("ic.cable.copper",ID::mCopperCable0-0x100,"icpe_copper_cable",0);
+	Item::mItems[ID::mCopperCable1]=new CableItem("ic.cable.copper",ID::mCopperCable1-0x100,"icpe_copper_cable",1);
+	Item::mItems[ID::mDetectorCable]=new CableItem("ic.cable.detector",ID::mDetectorCable-0x100,"icpe_detector_cable",0);
+	Item::mItems[ID::mGlassCable]=new CableItem("ic.cable.glass",ID::mGlassCable-0x100,"icpe_glass_cable",0);
+	Item::mItems[ID::mSplitterCable]=new CableItem("ic.cable.splitter",ID::mSplitterCable-0x100,"icpe_splitter_cable",0);
 }
 void Items::initICBlockItems()
 {

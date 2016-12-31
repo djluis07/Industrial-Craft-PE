@@ -62,7 +62,6 @@ public:
 	virtual void setDifficulty(Difficulty);
 	virtual void runLightUpdates(BlockSource &, LightLayer const &, BlockPos const &, BlockPos const &);
 	virtual void onNewChunkFor(Player &, LevelChunk &);
-	virtual void onChunkLoaded(LevelChunk &);
 	virtual void removeEntity(std::unique_ptr<Entity> &, bool);
 	virtual void removeEntity(Entity &, bool);
 	virtual void onAppSuspended();
@@ -96,7 +95,6 @@ public:
 	void getDefaultSpawn();
 	int getDifficulty()const;
 	void getDimension(DimensionId);
-	//void getEntities(DimensionId, EntityType, AABB const &, std::vector<Entity *> &);
 	void getEntity(EntityUniqueID, bool);
 	void getGlobalEntities();
 	void getHitResult();
@@ -115,7 +113,6 @@ public:
 	void getNumRemotePlayers();
 	void getPacketSender();
 	void getPlayer(EntityUniqueID);
-	//void getPlayer(mce::UUID const &);
 	void getPlayer(std::string const &);
 	void getPlayerList();
 	void getPlayerNames();
@@ -141,12 +138,11 @@ public:
 	void loadPlayer(std::unique_ptr<Player>);
 	void mayInteract(Player &, int, int, int);
 	void onChunkDiscarded(LevelChunk &);
+	void onChunkLoaded(LevelChunk &);
 	void playSound(Entity *, std::string const &, float, float);
 	void playSound(Vec3 const &, std::string const &, float, float);
 	void potionSplash(Vec3 const &, int, bool);
-	//void registerTemporaryPointer(_TickPtr &);
 	void removeListener(LevelListener &);
-	//void requestPlayerChangeDimension(Player &, std::unique_ptr<ChangeDimensionRequest>);
 	void saveBiomeData();
 	void saveDirtyChunks();
 	void saveGameData();
@@ -155,14 +151,11 @@ public:
 	void setDayCycleActive(bool);
 	void setDefaultSpawn(BlockPos const &);
 	void setIsClientSide(bool);
-	//void setNetEventCallback(NetEventCallback *);
 	void setNightMode(bool);
-	//void setPacketSender(PacketSender *);
 	void setSpawnSettings(bool, bool);
 	void setStopTime(int);
 	void tickEntities();
-	//void unregisterTemporaryPointer(_TickPtr &);
 	void updateLights();
-	LevelStorage*getLevelStorage();
+	LevelStorage* getLevelStorage();
 	void upgradeStorageVersion(StorageVersion);
 };

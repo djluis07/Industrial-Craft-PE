@@ -4,12 +4,14 @@
 #include "mcpe/client/resources/I18n.h"
 
 #include "blocks/Blocks.h"
+#include "util/CableUtil.h"
 
-CableItem::CableItem(std::string const&name,short id,FullBlock const&b,std::string const&texture,int textaux):IC::Items(name,id)
+CableItem::CableItem(std::string const&name,short id,std::string const&texture,int textaux):IC::Items(name,id)
 {
 	setCategory(CreativeItemCategory::ITEMS);
 	setIcon(texture,textaux);
-	placeBlock=b;
+	
+	mID=id+0x100;
 }
 std::string CableItem::buildEffectDescriptionName(const ItemInstance&i) const
 {
@@ -48,7 +50,7 @@ std::string CableItem::buildEffectDescriptionName(const ItemInstance&i) const
 }
 void CableItem::useOn(ItemInstance&instance, Entity&p, int x, int y, int z, signed char side, float pixelx, float pixely, float pixelz)
 {
-	ItemInstance cableItem(placeBlock.id.id,instance.count,placeBlock.aux);
+	ItemInstance cableItem(IC::Blocks::ID::mCable,instance.count,CableUtil::getPlaceBlockAux(mID));
 	cableItem.useOn(p,x,y,z,side,pixelx,pixely,pixelz);
 	
 	instance.count=cableItem.count;

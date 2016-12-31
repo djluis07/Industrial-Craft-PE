@@ -1,6 +1,11 @@
 #pragma once
 
-class ICLevel;
+#include <memory>
+
+#include "ICBlockEntity.h"
+#include "mca/data/Database.h"
+#include "mcpe/level/ChunkPos.h"
+
 class ICBlockEntity;
 class ChunkBlockPos;
 class BlockPos;
@@ -11,15 +16,18 @@ class Level;
 class BlockEntityChunkContainer
 {
 public:
-	ICBlockEntity* mBlockEntities[16][128][16];
+	std::unique_ptr<ICBlockEntity> mBlockEntities[16][256][16];
+	BlockSource*s;
+	ChunkPos pos;
+	mca::Database localTag;
 public:
-	BlockEntityChunkContainer(ICLevel&,ChunkPos const&,BlockSource&);
-	~BlockEntityChunkContainer();
+	BlockEntityChunkContainer(std::string const&,ChunkPos const&,BlockSource&);
+	~BlockEntityChunkContainer()=default;
 public:
 	void tick(Level&);
 	void load();
 	void save();
-	void addNew(ChunkBlockPos const&,ICBlockEntity*);
+	void addNew(ChunkBlockPos const&,std::unique_ptr<ICBlockEntity>);
 	void remove(ChunkBlockPos const&);
-	ICBlockEntity* getICBlockEntity(ChunkBlockPos const&);
+	std::unique_ptr<ICBlockEntity>& getICBlockEntity(ChunkBlockPos const&);
 };

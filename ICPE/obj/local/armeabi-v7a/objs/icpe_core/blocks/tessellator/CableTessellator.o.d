@@ -31,7 +31,11 @@ obj/local/armeabi-v7a/objs/icpe_core/blocks/tessellator/CableTessellator.o: \
  jni/core/mcpe/client/renderer/../MemoryTracker.h \
  jni/core/mcpe/util/Vec2.h jni/core/mcpe/block/BlockGraphics.h \
  jni/core/mcpe/block/../client/renderer/texture/TextureAtlasTextureItem.h \
- jni/core/blocks/Blocks.h
+ jni/core/blocks/Blocks.h jni/core/util/CableUtil.h \
+ jni/core/mcpe/entity/PaletteColor.h jni/core/util/Log.h \
+ /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/sources/cxx-stl/gnu-libstdc++/4.9/include/fstream \
+ jni/core/mcpe/util/Util.h \
+ /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/sources/cxx-stl/gnu-libstdc++/4.9/include/sstream
 
 jni/core/blocks/tessellator/CableTessellator.h:
 
@@ -108,3 +112,15 @@ jni/core/mcpe/block/BlockGraphics.h:
 jni/core/mcpe/block/../client/renderer/texture/TextureAtlasTextureItem.h:
 
 jni/core/blocks/Blocks.h:
+
+jni/core/util/CableUtil.h:
+
+jni/core/mcpe/entity/PaletteColor.h:
+
+jni/core/util/Log.h:
+
+/data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/sources/cxx-stl/gnu-libstdc++/4.9/include/fstream:
+
+jni/core/mcpe/util/Util.h:
+
+/data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/sources/cxx-stl/gnu-libstdc++/4.9/include/sstream:

@@ -4,6 +4,7 @@
 #include "mcpe/item/ItemInstance.h"
 #include "mcpe/block/blocks/FireBlock.h"
 #include "mcpe/util/Random.h"
+#include "mcpe/entity/player/Player.h"
 
 #include "blocks/Blocks.h"
 #include "util/Math.h"
@@ -24,13 +25,13 @@ RubberLeavesBlock::RubberLeavesBlock():IC::Blocks("ic.rubber.leaves",IC::Blocks:
 	
 	((FireBlock*)mFire)->setFlammable(BlockID(IC::Blocks::ID::mRubberLeaves),65,25);
 }
-int RubberLeavesBlock::getResource(Random&, int id, int)const
+int RubberLeavesBlock::getResource(Random&, int, int)const
 {
-	return id==359?IC::Blocks::ID::mRubberLeaves:IC::Blocks::ID::mRubberSapling;
+	return IC::Blocks::ID::mRubberSapling;
 }
-int RubberLeavesBlock::getResourceCount(Random&r, int id, int)const
+int RubberLeavesBlock::getResourceCount(Random&r, int, int)const
 {
-	return id==359?1:(r.nextInt(10)==9?1:0);
+	return r.nextInt(10)==9?1:0;
 }
 ItemInstance RubberLeavesBlock::getSilkTouchItemInstance(unsigned char)const
 {
@@ -43,10 +44,6 @@ void RubberLeavesBlock::onGraphicsModeChanged(bool, bool, bool)
 int RubberLeavesBlock::getRenderLayer(BlockSource&s, BlockPos const&pos) const
 {
 	return mLeaves->getRenderLayer(s,pos);
-}
-int RubberLeavesBlock::getExtraRenderLayers() const
-{
-	return mLeaves->getExtraRenderLayers();
 }
 void RubberLeavesBlock::tick(BlockSource&s, BlockPos const&pos, Random&r)const
 {
@@ -70,7 +67,7 @@ int RubberLeavesBlock::getPlacementDataValue(Entity&, BlockPos const&, signed ch
 void RubberLeavesBlock::die(BlockSource&s,BlockPos const&pos,Random&r)const
 {
 	s.removeBlock(pos);
-	if(r.nextBool(12))
+	if(r.nextBool(10))
 		popResource(s,pos,ItemInstance(ID::mRubberSapling,1,0));
 }
 bool RubberLeavesBlock::isValidDistance(BlockSource&s,BlockPos const&pos1,BlockPos const&pos2)const
@@ -91,4 +88,11 @@ bool RubberLeavesBlock::isValidDistance(BlockSource&s,BlockPos const&pos1,BlockP
 				if(s.getBlock(posX,posY,posZ)!=this&&s.getBlock(posX,posY,posZ)!=mBlocks[ID::mRubberWood])
 					return false;
 	return true;
+}
+void RubberLeavesBlock::playerDestroy(Player*p, BlockPos const&pos, int aux)const
+{
+	if(p&&p->getSelectedItem()&&p->getSelectedItem()->getId()==359)
+		popResource(p->getRegion(),pos,ItemInstance(ID::mRubberLeaves,1,0));
+	else
+		Block::playerDestroy(p,pos,aux);
 }

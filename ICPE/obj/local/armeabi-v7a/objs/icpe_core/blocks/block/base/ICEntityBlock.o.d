@@ -15,9 +15,7 @@ obj/local/armeabi-v7a/objs/icpe_core/blocks/block/base/ICEntityBlock.o: \
  jni/core/mcpe/block/BlockShape.h \
  jni/core/mcpe/item/CreativeItemCategory.h \
  jni/core/mcpe/block/BlockSoundType.h \
- jni/core/mcpe/block/BlockSupportType.h \
- jni/core/blocks/blockentity/ICBlockEntity.h \
- jni/core/blocks/blockentity/ICBlockEntityManager.h jni/core/ICPE.h \
+ jni/core/mcpe/block/BlockSupportType.h jni/core/ICPE.h \
  /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/platforms/android-19/arch-arm/usr/include/jni.h
 
 jni/core/blocks/block/base/ICEntityBlock.h:
@@ -61,10 +59,6 @@ jni/core/mcpe/item/CreativeItemCategory.h:
 jni/core/mcpe/block/BlockSoundType.h:
 
 jni/core/mcpe/block/BlockSupportType.h:
-
-jni/core/blocks/blockentity/ICBlockEntity.h:
-
-jni/core/blocks/blockentity/ICBlockEntityManager.h:
 
 jni/core/ICPE.h:
 

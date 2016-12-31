@@ -137,7 +137,7 @@ void ICPE::initRecipes(Recipes*self)
 bool ICPE::tessellateInWorld(BlockTessellator*tessellator,Block const&block,BlockPos const&pos,uchar aux,bool wtf)
 {
 	if(&block==Block::mBlocks[IC::Blocks::ID::mCable])
-		return ((CableTessellator*)tessellator)->tessellate(block,pos,aux,wtf,tessellateInWorld_);
+		return ((CableTessellator*)tessellator)->tessellate(block,pos,aux,wtf);
 	return tessellateInWorld_(tessellator,block,pos,aux,wtf);
 }
 void ICPE::initMCClient(MinecraftClient*self)

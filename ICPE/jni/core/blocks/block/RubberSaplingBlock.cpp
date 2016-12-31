@@ -1,7 +1,9 @@
 #include "RubberSaplingBlock.h"
 
 #include "mcpe/level/BlockSource.h"
+#include "mcpe/level/Level.h"
 #include "mcpe/entity/player/Player.h"
+#include "mcpe/entity/EntityClassTree.h"
 #include "mcpe/util/Random.h"
 
 #include "gen/feature/RubTreeFeature.h"
@@ -26,8 +28,22 @@ void RubberSaplingBlock::tick(BlockSource&s, BlockPos const&pos, Random&r)const
 }
 void RubberSaplingBlock::onFertilized(BlockSource&s, BlockPos const&pos, Entity*e)const
 {
-	if(ICPE::mRandom.nextBool(7))
+	if(!(e&&EntityClassTree::isInstanceOf(*e,EntityType::PLAYER)))
+		return;
+	if(((Player*)e)->isCreative())
+	{
 		grow(s,pos,ICPE::mRandom);
+		return;
+	}
+	else if(ICPE::mRandom.nextBool(7))
+		grow(s,pos,ICPE::mRandom);
+	makeParticles(s,pos,ICPE::mRandom);
+	if(((Player*)e)->getSelectedItem())
+	{
+		--((Player*)e)->getSelectedItem()->count;
+		if(((Player*)e)->getSelectedItem()->count==0)
+			((Player*)e)->getSelectedItem()->setNull();
+	}
 }
 bool RubberSaplingBlock::mayPlaceOn(Block const&b)const
 {
@@ -65,4 +81,10 @@ bool RubberSaplingBlock::grow(BlockSource&s,BlockPos const&pos,Random&r)const
 {
 	IC::RubTreeFeature tree(FullBlock(ID::mRubberWood,0),FullBlock(ID::mRubberWood,2),FullBlock(ID::mRubberLeaves,0),15);
 	tree.place(s,pos,r);
+}
+void RubberSaplingBlock::makeParticles(BlockSource&s,BlockPos const&pos,Random&r)const
+{
+	unsigned char particlesCount=10+r.nextInt(5);
+	for(unsigned char mPos=0;mPos<particlesCount;++mPos)
+		s.getLevel().addParticle((ParticleType)33,Vec3(pos.x+r.nextFloat(),pos.y+r.nextFloat(),pos.z+r.nextFloat()),Vec3(0,0,0),0);
 }

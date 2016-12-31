@@ -11,6 +11,7 @@
 #include "mcpe/util/EntityDamageSource.h"
 
 #include "util/ICOptions.h"
+#include "util/CableUtil.h"
 
 #include "ICPE.h"
 
@@ -18,46 +19,33 @@ CableBlock::CableBlock():ElectricConductorBlock("ic.cable.tin",IC::Blocks::ID::m
 {
 	init();
 	setSolid(false);
-	setVisualShape({0.25,0.25,0.25,0.75,0.75,0.75});
+}
+void CableBlock::addCollisionShapes(BlockSource&s, BlockPos const&pos, AABB const*pAABB, std::vector<AABB, std::allocator<AABB> >&list,Entity*) const
+{
+	float defaultDistance=CableUtil::isGlassCable(s.getData(pos))?0.375:0.3125;
+	
+	if(CableUtil::canConnectTo(s,pos,{pos.x,pos.y+1,pos.z}))
+		list.push_back({pos.x+defaultDistance,pos.y+1-defaultDistance,pos.z+defaultDistance,pos.x+1-defaultDistance,pos.y+1,pos.z+1-defaultDistance});
+	if(CableUtil::canConnectTo(s,pos,{pos.x,pos.y-1,pos.z}))
+		list.push_back({pos.x+defaultDistance,pos.y+0,pos.z+defaultDistance,pos.z+1-defaultDistance,pos.y+defaultDistance,pos.z+1-defaultDistance});
+	if(CableUtil::canConnectTo(s,pos,{pos.x,pos.y,pos.z+1}))
+		list.push_back({pos.x+defaultDistance,pos.y+defaultDistance,pos.z+1-defaultDistance,pos.y+1-defaultDistance,pos.z+1-defaultDistance,1});
+	if(CableUtil::canConnectTo(s,pos,{pos.x,pos.y,pos.z-1}))
+		list.push_back({pos.x+defaultDistance,pos.y+defaultDistance,pos.z+0,pos.x+1-defaultDistance,pos.y+1-defaultDistance,pos.z+defaultDistance});
+	if(CableUtil::canConnectTo(s,pos,{pos.x+1,pos.y,pos.z}))
+		list.push_back({pos.x+1-defaultDistance,pos.y+defaultDistance,pos.z+defaultDistance,pos.x+1,pos.y+1-defaultDistance,pos.z+1-defaultDistance});
+	if(CableUtil::canConnectTo(s,pos,{pos.x-1,pos.y,pos.z}))
+		list.push_back({pos.x+0,pos.y+defaultDistance,pos.z+defaultDistance,pos.x+defaultDistance,pos.y+1-defaultDistance,pos.z+1-defaultDistance});
+	list.push_back({pos.x+defaultDistance,pos.y+defaultDistance,pos.z+defaultDistance,pos.x+1-defaultDistance,pos.y+1-defaultDistance,pos.z+1-defaultDistance});
+	Block::addAABBs(s,pos,pAABB,list);
 }
 bool CableBlock::detachesOnPistonMove(BlockSource&, BlockPos const&)const
 {
 	return true;
 }
-int CableBlock::getResource(Random&, int, int aux)const
+int CableBlock::getResource(Random&, int aux,int)const
 {
-	switch(aux)
-	{
-	case 0:
-	default:
-		return IC::Items::ID::mTinCable0;
-	case 1:
-		return IC::Items::ID::mTinCable1;
-	case 2:
-		return IC::Items::ID::mIronCable0;
-	case 3:
-		return IC::Items::ID::mIronCable1;
-	case 4:
-		return IC::Items::ID::mIronCable2;
-	case 5:
-		return IC::Items::ID::mIronCable3;
-	case 6:
-		return IC::Items::ID::mGoldCable0;
-	case 7:
-		return IC::Items::ID::mGoldCable1;
-	case 8:
-		return IC::Items::ID::mGoldCable2;
-	case 9:
-		return IC::Items::ID::mCopperCable0;
-	case 10:
-		return IC::Items::ID::mCopperCable1;
-	case 11:
-		return IC::Items::ID::mDetectorCable;
-	case 12:
-		return IC::Items::ID::mGlassCable;
-	case 13:
-		return IC::Items::ID::mSplitterCable;
-	}
+	return CableUtil::getDropItemID(aux);
 }
 int CableBlock::getResourceCount(Random&, int, int)const
 {
@@ -84,11 +72,11 @@ bool CableBlock::entityInside(BlockSource&s, BlockPos const&pos, Entity&e)const
 	//uncompleted
 	//if(!ICPE::mICOptions.getElectricityHurt())
 		//return false;
-	if(!(s.getData(pos)==0||s.getData(pos.x,pos.y,pos.z)==2||s.getData(pos.x,pos.y,pos.z)==6||s.getData(pos.x,pos.y,pos.z)==9))
+	if(!(s.getData(pos)==0||s.getData(pos)==2||s.getData(pos)==6||s.getData(pos)==9))
 		return false;
 	
-	e.doFireHurt(1);
-	e.setOnFire(20);
+	e.doFireHurt(CableUtil::getHurt(s.getData(pos)));
+	e.setOnFire(CableUtil::getFire(s.getData(pos)));
 
 	return true;
 }
@@ -103,4 +91,18 @@ int CableBlock::getComparatorSignal(BlockSource&, BlockPos const&, signed char, 
 int CableBlock::getRenderLayer(BlockSource&s, BlockPos const&pos) const
 {
 	return mGlass->getRenderLayer(s,pos);
+}
+int CableBlock::getPlacementDataValue(Entity&, BlockPos const&, signed char, Vec3 const&, int aux) const
+{
+	return aux;
+}
+AABB const& CableBlock::getVisualShape(BlockSource&s, BlockPos const&pos, AABB&, bool) const
+{
+	float defaultDistance=CableUtil::isGlassCable(s.getData(pos))?0.375:0.3125;
+	return {defaultDistance,defaultDistance,defaultDistance,1-defaultDistance,1-defaultDistance,1-defaultDistance};
+}
+AABB const& CableBlock::getVisualShape(unsigned char aux, AABB&, bool) const
+{
+	float defaultDistance=CableUtil::isGlassCable(aux)?0.375:0.3125;
+	return {defaultDistance,defaultDistance,defaultDistance,1-defaultDistance,1-defaultDistance,1-defaultDistance};
 }

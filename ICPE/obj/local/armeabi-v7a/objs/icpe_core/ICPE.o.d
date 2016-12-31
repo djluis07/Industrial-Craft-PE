@@ -82,11 +82,10 @@ obj/local/armeabi-v7a/objs/icpe_core/ICPE.o: jni/core/ICPE.cpp \
  jni/core/items/recipe/ICRecipes.h jni/core/blocks/Blocks.h \
  jni/core/blocks/BlockGraphics.h \
  jni/core/blocks/blockentity/ICBlockEntityManager.h \
- jni/core/blocks/tessellator/CableTessellator.h jni/core/gen/FeatureGen.h \
- jni/core/ui/UIScreenChooser.h jni/core/util/ICOptions.h \
- jni/core/mca/data/Database.h jni/core/mca/data/tag/ComposedTag.h \
- jni/core/mca/data/tag/ListTag.h jni/core/mca/data/tag/Tag.h \
- jni/core/mca/data/worker/DatabaseReader.h \
+ jni/core/blocks/blockentity/BlockEntityChunkContainer.h \
+ jni/core/blocks/blockentity/ICBlockEntity.h jni/core/mca/data/Database.h \
+ jni/core/mca/data/tag/ComposedTag.h jni/core/mca/data/tag/ListTag.h \
+ jni/core/mca/data/tag/Tag.h jni/core/mca/data/worker/DatabaseReader.h \
  jni/core/mca/data/worker/DatabaseWorker.h \
  /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/sources/cxx-stl/gnu-libstdc++/4.9/include/sstream \
  jni/core/mca/data/worker/DatabaseWriter.h \
@@ -95,6 +94,8 @@ obj/local/armeabi-v7a/objs/icpe_core/ICPE.o: jni/core/ICPE.cpp \
  /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/platforms/android-19/arch-arm/usr/include/endian.h \
  /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/platforms/android-19/arch-arm/usr/include/sys/endian.h \
  /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/platforms/android-19/arch-arm/usr/include/machine/endian.h \
+ jni/core/blocks/tessellator/CableTessellator.h jni/core/gen/FeatureGen.h \
+ jni/core/ui/UIScreenChooser.h jni/core/util/ICOptions.h \
  jni/core/util/Log.h jni/core/mcpe/util/Util.h \
  jni/core/util/language/zh_CN.h jni/core/util/language/en_US.h
 
@@ -300,13 +301,9 @@ jni/core/blocks/BlockGraphics.h:
 
 jni/core/blocks/blockentity/ICBlockEntityManager.h:
 
-jni/core/blocks/tessellator/CableTessellator.h:
+jni/core/blocks/blockentity/BlockEntityChunkContainer.h:
 
-jni/core/gen/FeatureGen.h:
-
-jni/core/ui/UIScreenChooser.h:
-
-jni/core/util/ICOptions.h:
+jni/core/blocks/blockentity/ICBlockEntity.h:
 
 jni/core/mca/data/Database.h:
 
@@ -333,6 +330,14 @@ jni/core/mca/data/worker/DatabaseWriter.h:
 /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/platforms/android-19/arch-arm/usr/include/sys/endian.h:
 
 /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/platforms/android-19/arch-arm/usr/include/machine/endian.h:
+
+jni/core/blocks/tessellator/CableTessellator.h:
+
+jni/core/gen/FeatureGen.h:
+
+jni/core/ui/UIScreenChooser.h:
+
+jni/core/util/ICOptions.h:
 
 jni/core/util/Log.h:
 

@@ -13,7 +13,7 @@ public:
 	virtual ItemInstance getSilkTouchItemInstance(unsigned char)const;
 	virtual void onGraphicsModeChanged(bool, bool, bool);
 	virtual int getRenderLayer(BlockSource&, BlockPos const&) const;
-	virtual int getExtraRenderLayers() const;
+	virtual void playerDestroy(Player*, BlockPos const&, int) const;
 	virtual int getPlacementDataValue(Entity&, BlockPos const&, signed char, Vec3 const&, int) const;
 protected:
 	void die(BlockSource&, BlockPos const&, Random&)const;

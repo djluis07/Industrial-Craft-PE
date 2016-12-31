@@ -142,8 +142,12 @@ public:
 		static const short mDetectorCable=633;
 		static const short mGlassCable=634;
 		static const short mSplitterCable=635;
+		static const short mBronzeShovel=636;
+		static const short mBronzeHoe=637;
+		static const short mBronzePickAxe=638;
+		static const short mBronzeAxe=639;
+		static const short mBronzeSword=640;
 	};
-	
 public:
 	static void initICAllItems();
 	static void addICCreativeItems();

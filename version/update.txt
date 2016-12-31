@@ -1,0 +1,5 @@
+#3
+#version-2
+https://raw.githubusercontent.com/ModelPart/Industrial-Craft-PE/master/version/2/ICPE.apk
+#version-3
+https://raw.githubusercontent.com/ModelPart/Industrial-Craft-PE/master/version/3/ICPE.apk

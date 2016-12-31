@@ -25,7 +25,7 @@ void BlockGraphics::initBlockGraphics()
 	MCPEBlockGraphics::mBlocks[IC::Blocks::ID::mITNT]->setSoundType(BlockSoundType::GRASS);
 	
 	MCPEBlockGraphics::mBlocks[IC::Blocks::ID::mRubberWood]=new MCPEBlockGraphics("dirt");
-	MCPEBlockGraphics::mBlocks[IC::Blocks::ID::mRubberWood]->setTextureItem("icpe_rubber_wood_bottom","icpe_rubber_wood_bottom","icpe_rubber_wood");
+	MCPEBlockGraphics::mBlocks[IC::Blocks::ID::mRubberWood]->setTextureItem("icpe_rubber_wood_bottom","icpe_rubber_wood_bottom","icpe_rubber_side0","icpe_rubber_side2","icpe_rubber_side1","icpe_rubber_side3");
 	MCPEBlockGraphics::mBlocks[IC::Blocks::ID::mRubberWood]->setSoundType(BlockSoundType::WOOD);
 	
 	MCPEBlockGraphics::mBlocks[IC::Blocks::ID::mResin]=new MCPEBlockGraphics("portal");

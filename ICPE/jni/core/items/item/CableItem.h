@@ -6,9 +6,9 @@
 class CableItem : public IC::Items
 {
 private:
-	FullBlock placeBlock;
+	int mID;
 public:
-	CableItem(std::string const&,short,FullBlock const&,std::string const&,int);
+	CableItem(std::string const&,short,std::string const&,int);
 public:
 	virtual std::string buildEffectDescriptionName(const ItemInstance&) const;
 	virtual void useOn(ItemInstance&instance, Entity&p, int x, int y, int z, signed char side, float pixelx, float pixely, float pixelz);
