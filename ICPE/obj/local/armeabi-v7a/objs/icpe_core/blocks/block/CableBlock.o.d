@@ -1,11 +1,10 @@
 obj/local/armeabi-v7a/objs/icpe_core/blocks/block/CableBlock.o: \
  jni/core/blocks/block/CableBlock.cpp jni/core/blocks/block/CableBlock.h \
+ /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/sources/cxx-stl/gnu-libstdc++/4.9/include/memory \
  jni/core/blocks/block/base/ElectricConductorBlock.h \
  jni/core/blocks/block/base/ElectricBlock.h jni/core/blocks/Blocks.h \
  jni/core/mcpe/block/Block.h \
- /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/sources/cxx-stl/gnu-libstdc++/4.9/include/string \
  /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/sources/cxx-stl/gnu-libstdc++/4.9/include/vector \
- /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/sources/cxx-stl/gnu-libstdc++/4.9/include/memory \
  jni/core/mcpe/block/../client/renderer/texture/TextureUVCoordinateSet.h \
  jni/core/mcpe/util/ResourceLocation.h jni/core/mcpe/util/Color.h \
  jni/core/mcpe/util/BlockID.h jni/core/mcpe/util/../block/BlockProperty.h \
@@ -16,7 +15,8 @@ obj/local/armeabi-v7a/objs/icpe_core/blocks/block/CableBlock.o: \
  jni/core/mcpe/block/BlockShape.h \
  jni/core/mcpe/item/CreativeItemCategory.h \
  jni/core/mcpe/block/BlockSoundType.h \
- jni/core/mcpe/block/BlockSupportType.h jni/core/items/Items.h \
+ jni/core/mcpe/block/BlockSupportType.h \
+ jni/core/blocks/block/base/ICEntityBlock.h jni/core/items/Items.h \
  jni/core/mcpe/item/Item.h jni/core/mcpe/item/UseAnimation.h \
  jni/core/mcpe/item/ItemInstance.h jni/core/mcpe/level/BlockSource.h \
  jni/core/mcpe/level/../blockentity/BlockEntity.h \
@@ -34,20 +34,24 @@ obj/local/armeabi-v7a/objs/icpe_core/blocks/block/CableBlock.o: \
  jni/core/mcpe/util/EntityDamageSource.h jni/core/util/ICOptions.h \
  jni/core/mca/data/Database.h jni/core/mca/data/tag/ComposedTag.h \
  jni/core/mca/data/tag/ListTag.h jni/core/mca/data/tag/Tag.h \
+ /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/sources/cxx-stl/gnu-libstdc++/4.9/include/fstream \
  jni/core/mca/data/worker/DatabaseReader.h \
  jni/core/mca/data/worker/DatabaseWorker.h \
  /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/sources/cxx-stl/gnu-libstdc++/4.9/include/sstream \
- /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/sources/cxx-stl/gnu-libstdc++/4.9/include/fstream \
- jni/core/mca/data/worker/DatabaseWriter.h \
+ jni/core/mca/data/worker/DatabaseWriter.h jni/core/util/log.h \
+ jni/core/mcpe/util/Util.h \
  /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/platforms/android-19/arch-arm/usr/include/sys/stat.h \
  /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/platforms/android-19/arch-arm/usr/include/linux/stat.h \
  /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/platforms/android-19/arch-arm/usr/include/endian.h \
  /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/platforms/android-19/arch-arm/usr/include/sys/endian.h \
  /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/platforms/android-19/arch-arm/usr/include/machine/endian.h \
- jni/core/util/CableUtil.h jni/core/ICPE.h \
+ jni/core/util/CableUtil.h jni/core/blocks/blockentity/CableBlockEntity.h \
+ jni/core/blocks/blockentity/ICBlockEntity.h jni/core/ICPE.h \
  /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/platforms/android-19/arch-arm/usr/include/jni.h
 
 jni/core/blocks/block/CableBlock.h:
+
+/data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/sources/cxx-stl/gnu-libstdc++/4.9/include/memory:
 
 jni/core/blocks/block/base/ElectricConductorBlock.h:
 
@@ -57,11 +61,7 @@ jni/core/blocks/Blocks.h:
 
 jni/core/mcpe/block/Block.h:
 
-/data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/sources/cxx-stl/gnu-libstdc++/4.9/include/string:
-
 /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/sources/cxx-stl/gnu-libstdc++/4.9/include/vector:
-
-/data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/sources/cxx-stl/gnu-libstdc++/4.9/include/memory:
 
 jni/core/mcpe/block/../client/renderer/texture/TextureUVCoordinateSet.h:
 
@@ -92,6 +92,8 @@ jni/core/mcpe/item/CreativeItemCategory.h:
 jni/core/mcpe/block/BlockSoundType.h:
 
 jni/core/mcpe/block/BlockSupportType.h:
+
+jni/core/blocks/block/base/ICEntityBlock.h:
 
 jni/core/items/Items.h:
 
@@ -147,15 +149,19 @@ jni/core/mca/data/tag/ListTag.h:
 
 jni/core/mca/data/tag/Tag.h:
 
+/data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/sources/cxx-stl/gnu-libstdc++/4.9/include/fstream:
+
 jni/core/mca/data/worker/DatabaseReader.h:
 
 jni/core/mca/data/worker/DatabaseWorker.h:
 
 /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/sources/cxx-stl/gnu-libstdc++/4.9/include/sstream:
 
-/data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/sources/cxx-stl/gnu-libstdc++/4.9/include/fstream:
-
 jni/core/mca/data/worker/DatabaseWriter.h:
+
+jni/core/util/log.h:
+
+jni/core/mcpe/util/Util.h:
 
 /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/platforms/android-19/arch-arm/usr/include/sys/stat.h:
 
@@ -168,6 +174,10 @@ jni/core/mca/data/worker/DatabaseWriter.h:
 /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/platforms/android-19/arch-arm/usr/include/machine/endian.h:
 
 jni/core/util/CableUtil.h:
+
+jni/core/blocks/blockentity/CableBlockEntity.h:
+
+jni/core/blocks/blockentity/ICBlockEntity.h:
 
 jni/core/ICPE.h:
 

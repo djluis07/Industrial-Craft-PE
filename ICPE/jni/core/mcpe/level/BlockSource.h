@@ -26,6 +26,7 @@ class Dimension;
 class BlockSourceListener;
 class Biome;
 class Entity;
+class ICBlockEntity;
 
 class BlockSource
 {
@@ -135,4 +136,7 @@ public:
 	void updateLightIfOtherThan(LightLayer const &, BlockPos const &, Brightness);
 	void updateNeighborsAt(BlockPos const &);
 	bool shouldFreezeIgnoreNeighbors(BlockPos const&);
+public:
+	ICBlockEntity* getICBlockEntity(int,int,int);
+	ICBlockEntity* getICBlockEntity(BlockPos const&);
 };

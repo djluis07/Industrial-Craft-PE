@@ -32,7 +32,7 @@
 #include "mcpe/recipe/Recipe.h"
 #include "mcpe/recipe/FurnaceRecipes.h"
 #include "mcpe/gamemode/GameMode.h"
-#include "mcpe/entity/player/Player.h"
+#include "mcpe/entity/player/LocalPlayer.h"
 #include "mcpe/entity/item/ItemEntity.h"
 #include "mcpe/util/FullBlock.h"
 #include "mcpe/level/Level.h"
@@ -61,6 +61,10 @@ void ICPE::launch(JavaVM*,void*)
 void ICPE::setupMSHookFunctions()
 {
 	LOG_P("Start setting up MSHookFunctions.");
+	//MSHookFunction((void*)&Level::saveGameData,(void*)&saveLevel,(void**)&saveLevel_);
+	MSHookFunction((void*)&MinecraftClient::leaveGame,(void*)&leaveGame,(void**)&leaveGame_);
+	MSHookFunction((void*)&Level::onNewChunkFor,(void*)&onChunkLoaded,(void**)&onChunkLoaded_);
+	MSHookFunction((void*)&BlockSource::onChunkDiscarded,(void*)&onChunkDiscarded,(void**)&onChunkDiscarded_);
 	MSHookFunction((void*)&Recipe::isAnyAuxValue,(void*)&isAnyAuxValue,(void**)&isAnyAuxValue_);
 	MSHookFunction((void*)&FlowerPotBlock::isSupportedBlock,(void*)&isSupportedFlower,(void**)&isSupportedFlower_);
 	MSHookFunction((void*)&Localization::_load,(void*)&loadLocalization,(void**)&loadLocalization_);
@@ -90,15 +94,20 @@ bool (*ICPE::isSupportedFlower_)(FlowerPotBlock const*const,Block const*,short)=
 void (*ICPE::createLevel_)(Minecraft*,void*,std::string const&,std::string const&,LevelSettings const &,ResourcePackManager&)=0;
 void (*ICPE::tickLevel_)(Level*)=0;
 bool (*ICPE::isAnyAuxValue_)(int)=0;
+void (*ICPE::saveLevel_)(Level*)=0;
+void (*ICPE::leaveGame_)(MinecraftClient*,bool)=0;
+void (*ICPE::onChunkDiscarded_)(BlockSource*,LevelChunk&)=0;
+void (*ICPE::onChunkLoaded_)(Level*,Player&,LevelChunk&)=0;
 
 MinecraftClient* ICPE::pMinecraftClient=0;
 Level* ICPE::pLevel=0;
+bool ICPE::enterLevel=false;
 std::string ICPE::mLevelFolder;
 ICBlockEntityManager ICPE::mBlockEntityManager;
 ICOptions ICPE::mICOptions;
 UIScreenChooser ICPE::mUIScreenChooser;
 Random ICPE::mRandom;
-const int ICPE::localKeyCode=137624695;
+const int ICPE::localKeyCode=3497615802;
 
 void ICPE::loadLocalization(Localization *self, const std::string &languageName)
 {
@@ -177,11 +186,42 @@ void ICPE::createLevel(Minecraft*self,void*v,std::string const&path,std::string 
 	createLevel_(self,v,path,name,settings,manager);
 	LOG_P("Level created.");
 	mLevelFolder=path;
+	enterLevel=true;
 }
 void ICPE::tickLevel(Level*self)
 {
 	tickLevel_(self);
 	pLevel=self;
+	
+	mBlockEntityManager.tick(*self);
+}
+void ICPE::saveLevel(Level*self)
+{
+	saveLevel_(self);
+	
+	mBlockEntityManager.save();
+	LOG_P("Level saved!");
+}
+void ICPE::onChunkLoaded(Level*self,Player&p,LevelChunk&chunk)
+{
+	onChunkLoaded_(self,p,chunk);
+	if(enterLevel)
+	{
+		enterLevel=false;
+		mBlockEntityManager=ICBlockEntityManager(mLevelFolder);
+		LOG_P("Created block entity manager");
+	}
+}
+void ICPE::onChunkDiscarded(BlockSource*self,LevelChunk&chunk)
+{
+	onChunkDiscarded_(self,chunk);
+}
+void ICPE::leaveGame(MinecraftClient*self,bool b)
+{
+	leaveGame_(self,b);
+	LOG_P("LEAVE GAME");
+	mBlockEntityManager.save();
+	mBlockEntityManager=ICBlockEntityManager();
 }
 bool ICPE::isAnyAuxValue(int id)
 {

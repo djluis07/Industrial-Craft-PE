@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Industrial Craft:Pocket-Edition</string>
-	<string name="app_version">beta 0.2</string>
+	<string name="app_version">beta 0.3</string>
 	<string name="agree_license">Start</string>
 	<string name="agree_user_license">I Follow the  </string>
 	<string name="user_legal">ICPE EULA</string>
@@ -30,16 +30,7 @@
 		- 开放源代码许可:\n
 		Uses Cydia Substrate library.\n
 		Uses IC2 textures.\n
-		Uses FMOD library.\n
-		Uses Simpleframework library.\n
-		Uses Hockeyapp library.\n
-		Uses Micrsoft SDK library.\n
-		Uses facebook SDK library.\n
-		Uses XBOX SDK library.\n
-		Uses GooglePlay SDK library.\n
 		Uses PGYER SDK library.\n
-		Uses Google Gson library.\n
-		Uses amazon SDK library.\n
 		Uses gc MaterialDesign library.\n
 		Uses android support v4 library.\n
 		Uses android support v7 library.\n
@@ -48,6 +39,9 @@
 		\n
 		- Developers\n
 		ModelPart\n
+		一个废人.\n
+		砍树落叶\n
+		迪莫队长\n
 		\n
 		- Trailers\n
 		kokic\n

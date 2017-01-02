@@ -3,7 +3,7 @@
 #include <vector>
 
 #include "Tag.h"
-
+#include <fstream>
 namespace mca
 {
 template <typename Type>
@@ -20,6 +20,9 @@ public:
 public:
 	void addElement(mca::Tag<Type> t)
 	{
+		for(mca::Tag<Type>& tt : tagList)
+			if(tt.getKey()==t.getKey())
+				return;
 		tagList.push_back(t);
 	}
 	mca::Tag<Type>& read(std::string const&key)
@@ -28,9 +31,10 @@ public:
 			if(t.getKey()==key)
 				return t;
 		mca::Tag<Type> newTag(key);
+		addElement(newTag);
 		return newTag;
 	}
-	const std::vector<mca::Tag<Type>> readAll()const
+	std::vector<mca::Tag<Type>> readAll()const
 	{
 		return tagList;
 	}

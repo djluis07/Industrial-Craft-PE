@@ -22,8 +22,10 @@ obj/local/armeabi-v7a/objs/icpe_core/gen/FeatureGen.o: \
  jni/core/mcpe/util/Util.h \
  /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/sources/cxx-stl/gnu-libstdc++/4.9/include/sstream \
  jni/core/gen/feature/RubTreeFeature.h jni/core/mcpe/util/FullBlock.h \
- jni/core/mcpe/level/gen/Feature.h jni/core/mcpe/level/gen/OreFeature.h \
- jni/core/mcpe/level/ChunkPos.h jni/core/mcpe/level/biome/Biome.h \
+ jni/core/mcpe/level/gen/Feature.h \
+ jni/core/gen/feature/FallenRubTreeFeature.h \
+ jni/core/mcpe/level/gen/OreFeature.h jni/core/mcpe/level/ChunkPos.h \
+ jni/core/mcpe/level/biome/Biome.h \
  jni/core/mcpe/level/biome/BiomeDecorator.h \
  jni/core/mcpe/level/BlockSource.h \
  jni/core/mcpe/level/../blockentity/BlockEntity.h \
@@ -117,6 +119,8 @@ jni/core/gen/feature/RubTreeFeature.h:
 jni/core/mcpe/util/FullBlock.h:
 
 jni/core/mcpe/level/gen/Feature.h:
+
+jni/core/gen/feature/FallenRubTreeFeature.h:
 
 jni/core/mcpe/level/gen/OreFeature.h:
 

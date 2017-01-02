@@ -6,6 +6,7 @@
 #include "util/Log.h"
 
 #include "feature/RubTreeFeature.h"
+#include "feature/FallenRubTreeFeature.h"
 
 #include "mcpe/level/gen/Feature.h"
 #include "mcpe/level/gen/OreFeature.h"
@@ -21,6 +22,7 @@ namespace IC
 
 bool FeatureGen::inited=false;
 std::unique_ptr<Feature> FeatureGen::rubTree;
+std::unique_ptr<Feature> FeatureGen::fallenRubTree;
 std::unique_ptr<Feature> FeatureGen::tinOre;
 std::unique_ptr<Feature> FeatureGen::copperOre;
 std::unique_ptr<Feature> FeatureGen::uraniumOre;
@@ -33,13 +35,18 @@ void FeatureGen::decorateChunk(BiomeDecorator*bd,BlockSource&s, Random&random,Bi
 	LOG_P("Started decorating Chunk");
 	
 	//rubber trees
-	{
-		for(int x=pos.x;x<pos.x+16;++x)
-			for(int z=pos.z;z<pos.z+16;++z)
-				for(int y=256;y>50;--y)
-					if(s.getBlock(x,y,z)==Block::mGrass&&getRubGenChance(*biome)!=0&&random.nextBool(getRubGenChance(*biome)))
-						bd->_placeFeature(&s,rubTree,BlockPos(x,y+1,z),random);
-	}
+	for(int x=pos.x;x<pos.x+16;++x)
+		for(int z=pos.z;z<pos.z+16;++z)
+			for(int y=256;y>50;--y)
+				if(s.getBlock(x,y,z)==Block::mGrass&&getRubGenChance(*biome)!=0&&random.nextBool(getRubGenChance(*biome)))
+					bd->_placeFeature(&s,rubTree,BlockPos(x,y+1,z),random);
+	
+	for(int x=pos.x;x<pos.x+16;++x)
+		for(int z=pos.z;z<pos.z+16;++z)
+			for(int y=256;y>50;--y)
+				if(s.getBlock(x,y,z)==Block::mGrass&&getRubGenChance(*biome)!=0&&random.nextBool(getRubGenChance(*biome)))
+					bd->_placeFeature(&s,fallenRubTree,BlockPos(x,y+1,z),random);
+	
 	
 	//uranium ore
 	for(int x=pos.x;x<pos.x+16;++x)
@@ -86,6 +93,7 @@ void FeatureGen::prepare()
 	copperOre=std::unique_ptr<OreFeature>(new OreFeature(Blocks::ID::mOre,1,10));
 	leadOre=std::unique_ptr<OreFeature>(new OreFeature(Blocks::ID::mOre,2,6));
 	uraniumOre=std::unique_ptr<OreFeature>(new OreFeature(Blocks::ID::mOre,3,4));
+	fallenRubTree=std::unique_ptr<FallenRubTreeFeature>(new FallenRubTreeFeature(FullBlock(Blocks::ID::mRubberWood,0)));
 	rubTree=std::unique_ptr<RubTreeFeature>(new RubTreeFeature(FullBlock(Blocks::ID::mRubberWood,0),FullBlock(Blocks::ID::mRubberWood,2),FullBlock(Blocks::ID::mRubberLeaves,0),15));
 }
 }

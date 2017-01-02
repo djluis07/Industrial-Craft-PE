@@ -6,39 +6,65 @@
 #include "items/Items.h"
 #include "blocks/Blocks.h"
 
+#include "blocks/blockentity/CableBlockEntity.h"
+
 bool CableUtil::isTinCable(unsigned char aux)
 {
-	return aux>=0&&aux<=16;
+	return aux==0||aux==1;
+}
+bool CableUtil::isGlassCable(unsigned char aux)
+{
+	return aux==11;
+}
+bool CableUtil::isCopperCable(unsigned char aux)
+{
+	return aux==2||aux==3;
+}
+bool CableUtil::isGoldCable(unsigned char aux)
+{
+	return aux==4||aux==5||aux==6;
+}
+bool CableUtil::isIronCable(unsigned char aux)
+{
+	return aux==7||aux==8||aux==9||aux==10;
+}
+bool CableUtil::isDetectorCable(unsigned char aux)
+{
+	return aux==12||aux==13;
+}
+bool CableUtil::isSplitterCable(unsigned char aux)
+{
+	return aux==14||aux==15;
 }
 int CableUtil::getDropItemID(unsigned char aux)
 {
 	if(aux==0)
 		return IC::Items::ID::mTinCable0;
-	else if(aux>=1&&aux<=16)
+	else if(aux==1)
 		return IC::Items::ID::mTinCable1;
-	else if(aux==17)
+	else if(aux==2)
 		return IC::Items::ID::mCopperCable0;
-	else if(aux>=18&&aux<=33)
+	else if(aux==3)
 		return IC::Items::ID::mCopperCable1;
-	else if(aux==34)
+	else if(aux==4)
 		return IC::Items::ID::mGoldCable0;
-	else if(aux>=35&&aux<=50)
+	else if(aux==5)
 		return IC::Items::ID::mGoldCable1;
-	else if(aux>=51&&aux<=66)
+	else if(aux==6)
 		return IC::Items::ID::mGoldCable2;
-	else if(aux==67)
+	else if(aux==7)
 		return IC::Items::ID::mIronCable0;
-	else if(aux>=68&&aux<=83)
+	else if(aux==8)
 		return IC::Items::ID::mIronCable1;
-	else if(aux>=84&&aux<=99)
+	else if(aux==9)
 		return IC::Items::ID::mIronCable2;
-	else if(aux>=100&&aux<=115)
+	else if(aux==10)
 		return IC::Items::ID::mIronCable3;
-	else if(aux>=116&&aux<=131)
+	else if(aux==11)
 		return IC::Items::ID::mGlassCable;
-	else if(aux==132&&aux==133)
+	else if(aux==12||aux==13)
 		return IC::Items::ID::mDetectorCable;
-	else if(aux==134&&aux==135)
+	else if(aux==14||aux==15)
 		return IC::Items::ID::mSplitterCable;
 	return IC::Items::ID::mTinCable0;
 }
@@ -50,69 +76,74 @@ unsigned char CableUtil::getPlaceBlockAux(int id)
 	default:
 		return 0;
 	case IC::Items::ID::mTinCable1:
-		return 16;
+		return 1;
 	case IC::Items::ID::mCopperCable0:
-		return 17;
+		return 2;
 	case IC::Items::ID::mCopperCable1:
-		return 33;
+		return 3;
 	case IC::Items::ID::mGoldCable0:
-		return 34;
+		return 4;
 	case IC::Items::ID::mGoldCable1:
-		return 50;
+		return 5;
 	case IC::Items::ID::mGoldCable2:
-		return 66;
+		return 6;
 	case IC::Items::ID::mIronCable0:
-		return 67;
+		return 7;
 	case IC::Items::ID::mIronCable1:
-		return 83;
+		return 8;
 	case IC::Items::ID::mIronCable2:
-		return 99;
+		return 9;
 	case IC::Items::ID::mIronCable3:
-		return 115;
+		return 10;
 	case IC::Items::ID::mGlassCable:
-		return 131;
+		return 11;
 	case IC::Items::ID::mDetectorCable:
-		return 132;
+		return 12;
 	case IC::Items::ID::mSplitterCable:
-		return 134;
+		return 14;
 	}
 	return 0;
 }
-bool CableUtil::isGlassCable(unsigned char aux)
+bool CableUtil::canDye(unsigned char aux)
 {
-	return aux>=116&&aux<=131;
+	return aux==1||aux==3||aux==5||aux==6||aux==8||aux==9||aux==10||aux==11;
 }
-bool CableUtil::isCopperCable(unsigned char aux)
+unsigned char CableUtil::dye(unsigned char aux,unsigned char colorType)
 {
-	return aux>=17&&aux<=33;
-}
-bool CableUtil::isGoldCable(unsigned char aux)
-{
-	return aux>=34&&aux<=66;
-}
-bool CableUtil::isIronCable(unsigned char aux)
-{
-	return aux>=67&&aux<=115;
-}
-unsigned char CableUtil::dye(unsigned char aux,PaletteColor colorType)
-{
-	unsigned char addAux=(unsigned char)colorType;
-	if(aux>=1&&aux<=16)
-		return 1+addAux;
-	if(aux>=18&&aux<=33)
-		return 18+addAux;
-	if(aux>=35&&aux<=50)
-		return 35+addAux;
-	if(aux>=51&&aux<=66)
-		return 51+addAux;
-	if(aux>=68&&aux<=83)
-		return 68+addAux;
-	if(aux>=84&&aux<=99)
-		return 84+addAux;
-	if(aux>=100&&aux<=115)
-		return 100+addAux;
-	if(aux>=116&&aux<=131)
-		return 116+addAux;
+	unsigned char addAux=colorType;
+	
+	if(aux==0)
+		return 0;//tin
+	if(aux==1)
+		return 1+addAux;//tin
+	if(aux==2)
+		return 17;//copper
+	if(aux==3)
+		return 18+addAux;//copper
+	if(aux==4)
+		return 34;//gold
+	if(aux==5)
+		return 35+addAux;//gold
+	if(aux==6)
+		return 51+addAux;//gold
+	if(aux==7)
+		return 67;//iron
+	if(aux==8)
+		return 68+addAux;//iron
+	if(aux==9)
+		return 84+addAux;//iron
+	if(aux==10)
+		return 100+addAux;//iron
+	if(aux==11)
+		return 116+addAux;//glass
+	if(aux==12)
+		return 132;
+	if(aux==13)
+		return 133;
+	if(aux==14)
+		return 134;
+	if(aux==15)
+		return 135;
 	return aux;
 }
 int CableUtil::getMaxVoltage(unsigned char aux)
@@ -147,15 +178,15 @@ float CableUtil::getResistance(unsigned char aux)
 		return 0.2;
 	else if(isIronCable(aux))
 	{
-		if(aux>=68&&aux<=83)
+		if(aux==8)
 			return 0.95;
-		else if(aux>=84&&aux<=99)
+		else if(aux==9)
 			return 0.9;
 		return 0.8;
 	}
 	else if(isGoldCable(aux))
 	{
-		if(aux>=35&&aux<=50)
+		if(aux==5)
 			return 0.45;
 		return 0.4;
 	}
@@ -171,11 +202,7 @@ int CableUtil::getFire(int voltage)
 }
 bool CableUtil::isUninsulated(unsigned char aux)
 {
-	return aux==0||aux==17||aux==34||aux==67;
-}
-void CableUtil::doDye(BlockSource&s,BlockPos const&pos,PaletteColor color)
-{
-	s.setBlockAndData(pos,s.getBlockID(pos),dye(s.getData(pos),color),3,0);
+	return aux==0||aux==2||aux==4||aux==8;
 }
 bool CableUtil::canConnectTo(BlockSource&s,BlockPos const&pos1,BlockPos const&pos2)
 {
@@ -185,38 +212,7 @@ bool CableUtil::canConnectTo(BlockSource&s,BlockPos const&pos1,BlockPos const&po
 		else
 			return false;
 	
-	unsigned char aux1=s.getData(pos1);
-	unsigned char aux2=s.getData(pos2);
-	
-	if(getColor(aux1)==getColor(aux2))
+	if(((CableBlockEntity*)s.getICBlockEntity(pos1))->getColor()==((CableBlockEntity*)s.getICBlockEntity(pos2))->getColor())
 		return true;
 	return false;
-}
-bool CableUtil::isDetectorCable(unsigned char aux)
-{
-	return aux==132||aux==133;
-}
-bool CableUtil::isSplitterCable(unsigned char aux)
-{
-	return aux==134||aux==135;
-}
-PaletteColor CableUtil::getColor(unsigned char aux)
-{
-	if(aux>=1&&aux<=16)
-		return (PaletteColor)(aux-1);
-	else if(aux>=18&&aux<=33)
-		return (PaletteColor)(aux-18);
-	else if(aux>=35&&aux<=50)
-		return (PaletteColor)(aux-35);
-	else if(aux>=51&&aux<=66)
-		return (PaletteColor)(aux-51);
-	else if(aux>=68&&aux<=83)
-		return (PaletteColor)(aux-68);
-	else if(aux>=84&&aux<=99)
-		return (PaletteColor)(aux-84);
-	else if(aux>=100&&aux<=115)
-		return (PaletteColor)(aux-100);
-	else if(aux>=116&&aux<=131)
-		return (PaletteColor)(aux-116);
-	return PaletteColor::BLACK;
 }

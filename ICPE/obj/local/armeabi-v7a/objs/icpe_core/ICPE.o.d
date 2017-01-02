@@ -58,11 +58,15 @@ obj/local/armeabi-v7a/objs/icpe_core/ICPE.o: jni/core/ICPE.cpp \
  jni/core/mcpe/client/gui/screen/ScreenChooser.h \
  jni/core/mcpe/recipe/Recipes.h jni/core/mcpe/recipe/Recipe.h \
  jni/core/mcpe/recipe/FurnaceRecipes.h jni/core/mcpe/gamemode/GameMode.h \
+ jni/core/mcpe/entity/player/LocalPlayer.h \
  jni/core/mcpe/entity/player/Player.h jni/core/mcpe/entity/Mob.h \
  jni/core/mcpe/entity/Entity.h jni/core/mcpe/entity/SynchedEntityData.h \
  jni/core/mcpe/entity/EntityRendererId.h \
  jni/core/mcpe/entity/EntityType.h jni/core/mcpe/entity/PaletteColor.h \
  jni/core/mcpe/entity/../item/ArmorSlot.h \
+ jni/core/mcpe/entity/player/../../inventory/IContainerListener.h \
+ jni/core/mcpe/entity/player/../../inventory/InventoryMenu.h \
+ jni/core/mcpe/entity/player/../../inventory/BaseContainerMenu.h \
  jni/core/mcpe/entity/item/ItemEntity.h jni/core/mcpe/util/FullBlock.h \
  jni/core/mcpe/level/Level.h \
  /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/sources/cxx-stl/gnu-libstdc++/4.9/include/unordered_set \
@@ -71,10 +75,6 @@ obj/local/armeabi-v7a/objs/icpe_core/ICPE.o: jni/core/ICPE.cpp \
  jni/core/mcpe/level/GeneratorType.h \
  jni/core/mcpe/level/storage/LevelData.h \
  jni/core/mcpe/level/../util/Random.h \
- jni/core/mcpe/level/../entity/player/LocalPlayer.h \
- jni/core/mcpe/level/../entity/player/../../inventory/IContainerListener.h \
- jni/core/mcpe/level/../entity/player/../../inventory/InventoryMenu.h \
- jni/core/mcpe/level/../entity/player/../../inventory/BaseContainerMenu.h \
  jni/core/mcpe/level/chunk/LevelChunk.h \
  jni/core/mcpe/util/ChunkBlockPos.h jni/core/mcpe/level/biome/Biome.h \
  jni/core/mcpe/level/ChunkPos.h \
@@ -82,13 +82,13 @@ obj/local/armeabi-v7a/objs/icpe_core/ICPE.o: jni/core/ICPE.cpp \
  jni/core/items/recipe/ICRecipes.h jni/core/blocks/Blocks.h \
  jni/core/blocks/BlockGraphics.h \
  jni/core/blocks/blockentity/ICBlockEntityManager.h \
- jni/core/blocks/blockentity/BlockEntityChunkContainer.h \
  jni/core/blocks/blockentity/ICBlockEntity.h jni/core/mca/data/Database.h \
  jni/core/mca/data/tag/ComposedTag.h jni/core/mca/data/tag/ListTag.h \
  jni/core/mca/data/tag/Tag.h jni/core/mca/data/worker/DatabaseReader.h \
  jni/core/mca/data/worker/DatabaseWorker.h \
  /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/sources/cxx-stl/gnu-libstdc++/4.9/include/sstream \
- jni/core/mca/data/worker/DatabaseWriter.h \
+ jni/core/mca/data/worker/DatabaseWriter.h jni/core/util/log.h \
+ jni/core/mcpe/util/Util.h \
  /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/platforms/android-19/arch-arm/usr/include/sys/stat.h \
  /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/platforms/android-19/arch-arm/usr/include/linux/stat.h \
  /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/platforms/android-19/arch-arm/usr/include/endian.h \
@@ -96,7 +96,6 @@ obj/local/armeabi-v7a/objs/icpe_core/ICPE.o: jni/core/ICPE.cpp \
  /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/platforms/android-19/arch-arm/usr/include/machine/endian.h \
  jni/core/blocks/tessellator/CableTessellator.h jni/core/gen/FeatureGen.h \
  jni/core/ui/UIScreenChooser.h jni/core/util/ICOptions.h \
- jni/core/util/Log.h jni/core/mcpe/util/Util.h \
  jni/core/util/language/zh_CN.h jni/core/util/language/en_US.h
 
 jni/core/ICPE.h:
@@ -237,6 +236,8 @@ jni/core/mcpe/recipe/FurnaceRecipes.h:
 
 jni/core/mcpe/gamemode/GameMode.h:
 
+jni/core/mcpe/entity/player/LocalPlayer.h:
+
 jni/core/mcpe/entity/player/Player.h:
 
 jni/core/mcpe/entity/Mob.h:
@@ -252,6 +253,12 @@ jni/core/mcpe/entity/EntityType.h:
 jni/core/mcpe/entity/PaletteColor.h:
 
 jni/core/mcpe/entity/../item/ArmorSlot.h:
+
+jni/core/mcpe/entity/player/../../inventory/IContainerListener.h:
+
+jni/core/mcpe/entity/player/../../inventory/InventoryMenu.h:
+
+jni/core/mcpe/entity/player/../../inventory/BaseContainerMenu.h:
 
 jni/core/mcpe/entity/item/ItemEntity.h:
 
@@ -273,14 +280,6 @@ jni/core/mcpe/level/storage/LevelData.h:
 
 jni/core/mcpe/level/../util/Random.h:
 
-jni/core/mcpe/level/../entity/player/LocalPlayer.h:
-
-jni/core/mcpe/level/../entity/player/../../inventory/IContainerListener.h:
-
-jni/core/mcpe/level/../entity/player/../../inventory/InventoryMenu.h:
-
-jni/core/mcpe/level/../entity/player/../../inventory/BaseContainerMenu.h:
-
 jni/core/mcpe/level/chunk/LevelChunk.h:
 
 jni/core/mcpe/util/ChunkBlockPos.h:
@@ -301,8 +300,6 @@ jni/core/blocks/BlockGraphics.h:
 
 jni/core/blocks/blockentity/ICBlockEntityManager.h:
 
-jni/core/blocks/blockentity/BlockEntityChunkContainer.h:
-
 jni/core/blocks/blockentity/ICBlockEntity.h:
 
 jni/core/mca/data/Database.h:
@@ -321,6 +318,10 @@ jni/core/mca/data/worker/DatabaseWorker.h:
 
 jni/core/mca/data/worker/DatabaseWriter.h:
 
+jni/core/util/log.h:
+
+jni/core/mcpe/util/Util.h:
+
 /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/platforms/android-19/arch-arm/usr/include/sys/stat.h:
 
 /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/platforms/android-19/arch-arm/usr/include/linux/stat.h:
@@ -338,10 +339,6 @@ jni/core/gen/FeatureGen.h:
 jni/core/ui/UIScreenChooser.h:
 
 jni/core/util/ICOptions.h:
-
-jni/core/util/Log.h:
-
-jni/core/mcpe/util/Util.h:
 
 jni/core/util/language/zh_CN.h:
 

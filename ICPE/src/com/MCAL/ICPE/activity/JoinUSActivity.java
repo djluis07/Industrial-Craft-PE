@@ -33,7 +33,7 @@ public class JoinUSActivity extends Activity
 	{
 		try
 		{
-			joinQQGroup("_jbrPze9XRfZUJuc88WVSoxSlabSWpAY");
+			joinQQGroup("FOIuKmzudsYcr4iBSDX50j7EKPlKKg0l");
 		}
 		catch(Exception e)
 		{

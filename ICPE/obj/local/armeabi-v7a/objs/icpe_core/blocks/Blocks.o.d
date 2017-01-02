@@ -29,6 +29,7 @@ obj/local/armeabi-v7a/objs/icpe_core/blocks/Blocks.o: \
  jni/core/blocks/block/CableBlock.h \
  jni/core/blocks/block/base/ElectricConductorBlock.h \
  jni/core/blocks/block/base/ElectricBlock.h \
+ jni/core/blocks/block/base/ICEntityBlock.h \
  jni/core/blocks/block/IronFurnaceBlock.h \
  jni/core/blocks/block/IronFenceBlock.h \
  jni/core/blocks/block/base/FenceBlock.h
@@ -106,6 +107,8 @@ jni/core/blocks/block/CableBlock.h:
 jni/core/blocks/block/base/ElectricConductorBlock.h:
 
 jni/core/blocks/block/base/ElectricBlock.h:
+
+jni/core/blocks/block/base/ICEntityBlock.h:
 
 jni/core/blocks/block/IronFurnaceBlock.h:
 

@@ -4,30 +4,36 @@
 #include <string>
 #include <memory>
 
-#include "BlockEntityChunkContainer.h"
+#include "ICBlockEntity.h"
+#include "mca/data/Database.h"
 
 class ICBlockEntity;
 class BlockPos;
 class Level;
 class BlockSource;
+class ChunkPos;
 
 class ICBlockEntityManager
 {
 public:
-	std::vector<BlockEntityChunkContainer>list;
-	BlockSource*s;
-	std::string path;
+	std::vector<std::shared_ptr<ICBlockEntity>>mBlockEntities;
+	mca::Database localTag;
 public:
 	ICBlockEntityManager()=default;
-	ICBlockEntityManager(std::string const&,BlockSource&);
-	~ICBlockEntityManager()=default;
+	ICBlockEntityManager(std::string const&);
+	~ICBlockEntityManager();
 public:
-	std::unique_ptr<ICBlockEntity>& getBlockEntity(BlockPos const&);
+	ICBlockEntity* getBlockEntity(BlockSource&,BlockPos const&);
 	void removeBlockEntity(BlockPos const&);
-	void addNew(std::unique_ptr<ICBlockEntity>);
-	void tick(Level&);
+	void addNew(std::shared_ptr<ICBlockEntity>);
 	void save();
-	void load();
-protected:	
-	int getBlockEntityPos(BlockPos const&);
+	void load(BlockSource&,BlockPos const&);
+public:
+	inline void tick(Level&l)
+	{
+		for(std::shared_ptr<ICBlockEntity> bd : mBlockEntities)
+			if(bd)bd->tick(l);
+	}
+	static std::string getLocalPath();
+	static bool access(std::string const&);
 };

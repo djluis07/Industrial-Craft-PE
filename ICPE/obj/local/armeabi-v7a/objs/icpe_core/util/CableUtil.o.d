@@ -25,7 +25,9 @@ obj/local/armeabi-v7a/objs/icpe_core/util/CableUtil.o: \
  jni/core/mcpe/util/BlockPos.h jni/core/mcpe/block/material/Material.h \
  jni/core/mcpe/block/material/MaterialType.h \
  jni/core/mcpe/block/BlockSoundType.h \
- jni/core/mcpe/block/BlockSupportType.h
+ jni/core/mcpe/block/BlockSupportType.h \
+ jni/core/blocks/blockentity/CableBlockEntity.h \
+ jni/core/blocks/blockentity/ICBlockEntity.h
 
 jni/core/util/CableUtil.h:
 
@@ -96,3 +98,7 @@ jni/core/mcpe/block/material/MaterialType.h:
 jni/core/mcpe/block/BlockSoundType.h:
 
 jni/core/mcpe/block/BlockSupportType.h:
+
+jni/core/blocks/blockentity/CableBlockEntity.h:
+
+jni/core/blocks/blockentity/ICBlockEntity.h:

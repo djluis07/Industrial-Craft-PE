@@ -1,6 +1,6 @@
 #pragma once
 
-enum class PaletteColor
+enum class PaletteColor : unsigned char
 {
 	WHITE,
 	ORANGE,

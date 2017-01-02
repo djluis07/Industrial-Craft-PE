@@ -16,16 +16,15 @@ public:
 	static bool isCopperCable(unsigned char);
 	static bool isGoldCable(unsigned char);
 	static bool isIronCable(unsigned char);
-	static unsigned char dye(unsigned char,PaletteColor);
+	static unsigned char dye(unsigned char,unsigned char);
 	static int getMaxVoltage(unsigned char);
 	static float getResistance(unsigned char);
 	static int getHurt(int);
 	static int getFire(int);
+	static bool canDye(unsigned char);
 	static bool isUninsulated(unsigned char);
-	static void doDye(BlockSource&,BlockPos const&,PaletteColor);
 	static bool canConnectTo(BlockSource&,BlockPos const&,BlockPos const&);
 	static bool isDetectorCable(unsigned char);
 	static bool isSplitterCable(unsigned char);
-	static PaletteColor getColor(unsigned char);
 	static unsigned char getPlaceBlockAux(int);
 };

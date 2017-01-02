@@ -32,7 +32,7 @@ public:
 		key=ke;
 		typeSelf=t;
 	}
-	void reset(std::string const& t)
+	void resetKey(std::string const& t)
 	{
 		key=t;
 	}
@@ -44,11 +44,11 @@ public:
 	{
 		typeSelf=t;
 	}
-	Type const getConst()const
+	Type getConst()const
 	{
 		return typeSelf;
 	}
-	const std::string getKey()const
+	std::string getKey()const
 	{
 		return key;
 	}

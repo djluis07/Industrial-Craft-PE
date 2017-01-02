@@ -13,9 +13,12 @@
 #include "util/ICOptions.h"
 #include "util/CableUtil.h"
 
+#include "blocks/blockentity/CableBlockEntity.h"
+
 #include "ICPE.h"
 
-CableBlock::CableBlock():ElectricConductorBlock("ic.cable.tin",IC::Blocks::ID::mCable,Material::getMaterial(MaterialType::DEVICE))
+CableBlock::CableBlock():
+ICEntityBlock("ic.cable.tin",IC::Blocks::ID::mCable,Material::getMaterial(MaterialType::DEVICE))
 {
 	init();
 	setSolid(false);
@@ -105,4 +108,12 @@ AABB const& CableBlock::getVisualShape(unsigned char aux, AABB&, bool) const
 {
 	float defaultDistance=CableUtil::isGlassCable(aux)?0.375:0.3125;
 	return {defaultDistance,defaultDistance,defaultDistance,1-defaultDistance,1-defaultDistance,1-defaultDistance};
+}
+bool CableBlock::isElectricConductor()const
+{
+	return true;
+}
+std::shared_ptr<ICBlockEntity> CableBlock::getBlockEntity(BlockSource&s,BlockPos const&pos)const
+{
+	return std::make_shared<CableBlockEntity>(s,pos,this);
 }

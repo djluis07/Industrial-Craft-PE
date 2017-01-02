@@ -10,42 +10,27 @@
 
 #include "ICPE.h"
 
-ICBlockEntity::ICBlockEntity(BlockPos pos,BlockSource&s,Block*b)
+ICBlockEntity::ICBlockEntity(BlockSource&s,BlockPos const&pos_,Block const*b):block(b),source(s)
 {
-	position=pos;
-	block=b;
-	changed=false;
-	source=&s;
+	pos=pos_;
 }
-void ICBlockEntity::tick(Level&l)
+void ICBlockEntity::load(mca::ComposedTag &)
 {
 	
 }
-void ICBlockEntity::load()
+void ICBlockEntity::save(mca::ComposedTag&)
 {
 	
-}
-void ICBlockEntity::save()
-{
-	changed=false;
 }
 void ICBlockEntity::remove()
 {
 	
 }
-void ICBlockEntity::create()
-{
-	setChanged();
-}
 void ICBlockEntity::moveTo(BlockPos const&pos)
 {
-	setChanged();
-}
-void ICBlockEntity::setChanged()
-{
-	changed=true;
+	
 }
 void ICBlockEntity::update()
 {
-	ICPE::pMinecraftClient->getLevelRenderer()->onAreaChanged(*source,position,position);
+	ICPE::pMinecraftClient->getLevelRenderer()->onAreaChanged(source,{pos.x-8,pos.y-8,pos.z-8},{pos.x+8,pos.y+8,pos.z+8});
 }

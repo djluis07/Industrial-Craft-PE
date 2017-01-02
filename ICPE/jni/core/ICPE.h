@@ -56,15 +56,24 @@ public:
 	static void initBlockGraphics();
 	static void (*initBlocks_)();
 	static void initBlocks();
+	static void (*leaveGame_)(MinecraftClient*,bool);
+	static void leaveGame(MinecraftClient*,bool);
 	static void (*createLevel_)(Minecraft*,void*,std::string const&,std::string const&,LevelSettings const &,ResourcePackManager&);
 	static void createLevel(Minecraft*,void*,std::string const&,std::string const&,LevelSettings const &,ResourcePackManager&);
 	static void (*tickLevel_)(Level*);
 	static void tickLevel(Level*);
+	static void (*saveLevel_)(Level*);
+	static void saveLevel(Level*);
 	static bool (*isAnyAuxValue_)(int);
 	static bool isAnyAuxValue(int);
+	static void (*onChunkLoaded_)(Level*,Player&,LevelChunk&);
+	static void onChunkLoaded(Level*,Player&,LevelChunk&);
+	static void (*onChunkDiscarded_)(BlockSource*,LevelChunk&);
+	static void onChunkDiscarded(BlockSource*,LevelChunk&);
 public:
 	static MinecraftClient* pMinecraftClient;
 	static Level* pLevel;
+	static bool enterLevel;
 	static std::string mLevelFolder;
 	static ICBlockEntityManager mBlockEntityManager;
 	static ICOptions mICOptions;

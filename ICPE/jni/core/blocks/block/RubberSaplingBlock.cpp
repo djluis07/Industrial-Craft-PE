@@ -10,7 +10,7 @@
 
 #include "ICPE.h"
 
-RubberSaplingBlock::RubberSaplingBlock():IC::Blocks("ic.rubber.sapling",IC::Blocks::ID::mRubberSapling,Material::getMaterial(MaterialType::PLANT))
+RubberSaplingBlock::RubberSaplingBlock():IC::Blocks("ic.rubber.sapling",IC::Blocks::ID::mRubberSapling,Material::getMaterial(MaterialType::DEVICE))
 {
 	setCategory(CreativeItemCategory::DECORATIONS);
 	setTicking(true);
@@ -87,4 +87,8 @@ void RubberSaplingBlock::makeParticles(BlockSource&s,BlockPos const&pos,Random&r
 	unsigned char particlesCount=10+r.nextInt(5);
 	for(unsigned char mPos=0;mPos<particlesCount;++mPos)
 		s.getLevel().addParticle((ParticleType)33,Vec3(pos.x+r.nextFloat(),pos.y+r.nextFloat(),pos.z+r.nextFloat()),Vec3(0,0,0),0);
+}
+bool RubberSaplingBlock::waterSpreadCausesSpawn() const
+{
+	return true;
 }

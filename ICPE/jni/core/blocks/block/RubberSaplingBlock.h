@@ -17,6 +17,7 @@ public:
 	virtual void onGraphicsModeChanged(bool, bool, bool);
 	virtual int getRenderLayer(BlockSource&, BlockPos const&) const;
 	virtual int getExtraRenderLayers() const;
+	virtual bool waterSpreadCausesSpawn() const;
 protected:
 	bool grow(BlockSource&,BlockPos const&,Random&)const;
 	void makeParticles(BlockSource&,BlockPos const&,Random&)const;

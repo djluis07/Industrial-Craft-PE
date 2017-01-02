@@ -82,7 +82,7 @@
 				<ImageView
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
-					android:src="@drawable/image_1"
+					android:src="@drawable/image_2"
 					android:layout_marginLeft="20dp"
 					android:layout_marginRight="20dp"
 					android:layout_marginTop="20dp"/>
@@ -90,7 +90,10 @@
 				<TextView
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
-					android:text="update_msg"/>
+					android:text="
+					彩色的导线!你现在可以为导线染色了!\n
+					更加精细的橡胶树，橡胶不再四面生长。\n
+					橡胶树苗可以被水冲走了!"/>
 
 			</LinearLayout>
 

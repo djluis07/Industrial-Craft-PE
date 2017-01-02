@@ -4,6 +4,10 @@
 
 #include "mcpe/util/BlockPos.h"
 
+namespace mca
+{
+	class ComposedTag;
+}
 class Block;
 class Level;
 class BlockSource;
@@ -11,23 +15,20 @@ class BlockSource;
 class ICBlockEntity
 {
 public:
-	BlockPos position;
-	Block*block;
+	BlockPos pos;
+	Block const*block;
 	std::string path;
 	bool changed;
-	BlockSource* source;
+	BlockSource& source;
 public:
-	ICBlockEntity(BlockPos,BlockSource&,Block*);
+	ICBlockEntity(BlockSource&,BlockPos const&,Block const*);
 	~ICBlockEntity()=default;
 public:
-	virtual void tick(Level&);
-public:
-	virtual void load();
-	virtual void save();
+	virtual inline void tick(Level&){}
+	virtual void load(mca::ComposedTag &);
+	virtual void save(mca::ComposedTag &);
 	virtual void remove();
-	virtual void create();
 	virtual void moveTo(BlockPos const&);
 protected:
-	void setChanged();
 	void update();
 };

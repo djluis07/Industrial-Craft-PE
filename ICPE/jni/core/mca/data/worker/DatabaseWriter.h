@@ -2,6 +2,8 @@
 
 #include "DatabaseWorker.h"
 
+#include "util/log.h"
+
 namespace mca
 {
 class DatabaseWriter : protected DatabaseWorker
@@ -47,12 +49,94 @@ public:
 		}
 	}
 protected:
-	template<typename Type>
-	std::string toString(Type t)
+	std::string toString(unsigned char t)
 	{
 		std::stringstream str_stream;
 		str_stream<<t;
-		return str_stream.str();
+		std::string out;
+		str_stream>>out;
+		return out;
+	}
+	std::string toString(char t)
+	{
+		std::stringstream str_stream;
+		str_stream<<t;
+		std::string out;
+		str_stream>>out;
+		return out;
+	}
+	std::string toString(int t)
+	{
+		std::stringstream str_stream;
+		str_stream<<t;
+		std::string out;
+		str_stream>>out;
+		return out;
+	}
+	std::string toString(unsigned int t)
+	{
+		std::stringstream str_stream;
+		str_stream<<t;
+		std::string out;
+		str_stream>>out;
+		return out;
+	}
+	std::string toString(unsigned short t)
+	{
+		std::stringstream str_stream;
+		str_stream<<t;
+		std::string out;
+		str_stream>>out;
+		return out;
+	}
+	std::string toString( short t)
+	{
+		std::stringstream str_stream;
+		str_stream<<t;
+		std::string out;
+		str_stream>>out;
+		return out;
+	}
+	std::string toString(unsigned long t)
+	{
+		std::stringstream str_stream;
+		str_stream<<t;
+		std::string out;
+		str_stream>>out;
+		return out;
+	}
+	std::string toString( long t)
+	{
+		std::stringstream str_stream;
+		str_stream<<t;
+		std::string out;
+		str_stream>>out;
+		return out;
+	}
+	std::string toString(bool t)
+	{
+		std::string out=t?"1":"0";
+		return out;
+	}
+	std::string toString(std::string t)
+	{
+		return t;
+	}
+	std::string toString(double t)
+	{
+		std::stringstream str_stream;
+		str_stream<<t;
+		std::string out;
+		str_stream>>out;
+		return out;
+	}
+	std::string toString(float t)
+	{
+		std::stringstream str_stream;
+		str_stream<<t;
+		std::string out;
+		str_stream>>out;
+		return out;
 	}
 };
 }

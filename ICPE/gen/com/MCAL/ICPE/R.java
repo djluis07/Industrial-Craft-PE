@@ -201,7 +201,7 @@ containing a value of this type.
         public static final int icn_widget=0x7f02001b;
         public static final int icon=0x7f02001c;
         public static final int icpedevteam=0x7f02001d;
-        public static final int image_1=0x7f02001e;
+        public static final int image_2=0x7f02001e;
         public static final int mcalteam=0x7f02001f;
         public static final int scroll_bar=0x7f020020;
         public static final int selector_list=0x7f020021;

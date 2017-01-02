@@ -1,12 +1,17 @@
 #pragma once
 
-#include "base/ElectricConductorBlock.h"
+#include <memory>
 
-class CableBlock : public ElectricConductorBlock
+#include "base/ElectricConductorBlock.h"
+#include "base/ICEntityBlock.h"
+
+class CableBlock : public ICEntityBlock
 {
 public:
 	CableBlock();
 public:
+	virtual std::shared_ptr<ICBlockEntity> getBlockEntity(BlockSource&,BlockPos const&)const;
+	virtual bool isElectricConductor()const;
 	virtual AABB const& getVisualShape(BlockSource&, BlockPos const&, AABB&, bool) const;
 	virtual AABB const& getVisualShape(unsigned char, AABB&, bool) const;
 	virtual void addCollisionShapes(BlockSource&, BlockPos const&, AABB const*, std::vector<AABB, std::allocator<AABB> >&,Entity*) const;

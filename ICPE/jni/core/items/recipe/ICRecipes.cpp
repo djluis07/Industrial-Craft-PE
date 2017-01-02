@@ -37,3 +37,15 @@ void ICRecipes::addFurnaceRecipes(FurnaceRecipes&fr)
 	ru.addFurnaceRecipe(IC::Blocks::ID::mOre,3,IC::Items::ID::mUranium,0);
 	ru.addFurnaceRecipe(IC::Items::ID::mRubber,0,IC::Items::ID::mRubber,1);*/
 }
+void ICRecipes::addShapelessRecipe(ItemInstance const&,std::vector<ShapelessItemInstance> const&)
+{
+	
+}
+void ICRecipes::addShapedecipe(ItemInstance const&,std::vector<ShapedItemInstance> const&)
+{
+	
+}
+void ICRecipes::addFurnaceRecipe(short,short,short,short)
+{
+	
+}

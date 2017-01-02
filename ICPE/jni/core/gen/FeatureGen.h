@@ -16,6 +16,7 @@ class FeatureGen
 private:
 	static bool inited;
 	static std::unique_ptr<Feature> rubTree;
+	static std::unique_ptr<Feature> fallenRubTree;
 	static std::unique_ptr<Feature> tinOre;
 	static std::unique_ptr<Feature> copperOre;
 	static std::unique_ptr<Feature> leadOre;

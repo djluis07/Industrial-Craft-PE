@@ -8,6 +8,9 @@
 #include "mcpe/entity/player/Player.h"
 #include "mcpe/level/BlockSource.h"
 #include "mcpe/block/Block.h"
+#include "blocks/blockentity/CableBlockEntity.h"
+#include "blocks/blocks.h"
+#include "util/CableUtil.h"
 
 PainterItem::PainterItem(std::string const&name,int id,std::string const&tex):IC::Items(name,id)
 {
@@ -79,7 +82,10 @@ void PainterItem::useOn(ItemInstance&item, Entity&ent, int x, int y, int z, sign
 		ent.getRegion().setBlockAndData(x,y,z,159,(unsigned char)colorType,3);
 	else if(ent.getRegion().getBlock(x,y,z)==Block::mBlocks[159])
 		ent.getRegion().setBlockAndData(x,y,z,159,(unsigned char)colorType,3);
-	else return;
+	else if(ent.getRegion().getBlock(x,y,z)==Block::mBlocks[IC::Blocks::ID::mCable]&&CableUtil::canDye(ent.getRegion().getData(x,y,z)))
+		((CableBlockEntity*)ent.getRegion().getICBlockEntity(x,y,z))->setColor((unsigned char)colorType);
+	else
+		return;
 	if(item.aux<(getMaxDamage()-1))
 		item.hurtAndBreak(1,0);
 	else
