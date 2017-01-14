@@ -141,7 +141,8 @@ void ICPE::initRecipes(Recipes*self)
 {
 	initRecipes_(self);
 	LOG_P("Adding recipes.");
-	ICRecipes::addRecipes(*self,*FurnaceRecipes::getInstance());
+	ICRecipes recipes(*self,*FurnaceRecipes::getInstance());
+	recipes.addRecipes();
 }
 bool ICPE::tessellateInWorld(BlockTessellator*tessellator,Block const&block,BlockPos const&pos,uchar aux,bool wtf)
 {

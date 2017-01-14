@@ -2,6 +2,8 @@
 
 #include <vector>
 
+#include "RecipeUtil.h"
+
 class FurnaceRecipes;
 class Recipes;
 class ItemInstance;
@@ -11,22 +13,26 @@ class ICRecipes
 public:
 	struct ShapelessItemInstance
 	{
-		unsigned short id;
-		unsigned char aux;
+		short id;
+		short aux;
 	};
 	struct ShapedItemInstance
 	{
 		char letter;
-		unsigned short id;
-		unsigned char aux;
-	}; 
-public:
-	static void addRecipes(Recipes&,FurnaceRecipes&);
+		short id;
+		short aux;
+	};
 private:
-	static void addItemRecipes(Recipes&);
-	static void addFurnaceRecipes(FurnaceRecipes&);
+	RecipeUtil ru;
 public:
-	static void addShapelessRecipe(ItemInstance const&,std::vector<ShapelessItemInstance> const&);
-	static void addShapedecipe(ItemInstance const&,std::vector<ShapedItemInstance> const&);
-	static void addFurnaceRecipe(short,short,short,short);
+	ICRecipes(Recipes&,FurnaceRecipes&);
+	~ICRecipes()=default;
+	void addRecipes();
+private:
+	void addItemRecipes();
+	void addFurnaceRecipes();
+public:
+	void addShapelessRecipe(ItemInstance const&,std::vector<ShapelessItemInstance> const&);
+	void addShapedRecipe(ItemInstance const&,std::vector<std::string>const&,std::vector<ShapedItemInstance> const&);
+	void addFurnaceRecipe(short,short,short,short);
 };

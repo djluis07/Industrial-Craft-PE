@@ -25,6 +25,6 @@ public:
 	void addRecipeTypeAuxValue(short itemId,short itemAux,char letter);
 	void addFurnaceRecipe(short id,short aux,short toId,short toAux);
 	void addShapedRecipe(ItemInstance const & ,std::vector<std::string> const&);
-	void addShapelessRecipe(short,short,short);
+	void addShapelessRecipe(ItemInstance const&);
 	void clearAllRecipeTypes();
 };

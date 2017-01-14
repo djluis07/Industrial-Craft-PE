@@ -34,6 +34,7 @@ obj/local/armeabi-v7a/objs/icpe_core/ICPE.o: jni/core/ICPE.cpp \
  jni/core/mcpe/client/MinecraftClient.h jni/core/mcpe/client/App.h \
  jni/core/mcpe/client/AppPlatformListener.h \
  jni/core/mcpe/client/../gamemode/GameType.h \
+ jni/core/mcpe/client/Realms.h \
  jni/core/mcpe/client/renderer/LevelRenderer.h \
  jni/core/mcpe/client/Minecraft.h \
  jni/core/mcpe/client/resources/Localization.h \
@@ -45,6 +46,7 @@ obj/local/armeabi-v7a/objs/icpe_core/ICPE.o: jni/core/ICPE.cpp \
  jni/core/mcpe/level/../blockentity/../inventory/FillingContainer.h \
  jni/core/mcpe/level/../blockentity/../inventory/Container.h \
  jni/core/mcpe/level/../util/Brightness.h \
+ jni/core/mcpe/level/../entity/EntityType.h \
  jni/core/mcpe/level/LightLayer.h jni/core/mcpe/level/DimensionId.h \
  jni/core/mcpe/client/renderer/Tessellator.h \
  jni/core/mcpe/client/renderer/../MemoryTracker.h \
@@ -62,13 +64,15 @@ obj/local/armeabi-v7a/objs/icpe_core/ICPE.o: jni/core/ICPE.cpp \
  jni/core/mcpe/entity/player/Player.h jni/core/mcpe/entity/Mob.h \
  jni/core/mcpe/entity/Entity.h jni/core/mcpe/entity/SynchedEntityData.h \
  jni/core/mcpe/entity/EntityRendererId.h \
- jni/core/mcpe/entity/EntityType.h jni/core/mcpe/entity/PaletteColor.h \
+ jni/core/mcpe/entity/EntityCategory.h \
+ jni/core/mcpe/entity/PaletteColor.h \
  jni/core/mcpe/entity/../item/ArmorSlot.h \
+ jni/core/mcpe/entity/../util/FullBlock.h \
+ jni/core/mcpe/entity/EquipmentSlot.h \
  jni/core/mcpe/entity/player/../../inventory/IContainerListener.h \
  jni/core/mcpe/entity/player/../../inventory/InventoryMenu.h \
  jni/core/mcpe/entity/player/../../inventory/BaseContainerMenu.h \
- jni/core/mcpe/entity/item/ItemEntity.h jni/core/mcpe/util/FullBlock.h \
- jni/core/mcpe/level/Level.h \
+ jni/core/mcpe/entity/item/ItemEntity.h jni/core/mcpe/level/Level.h \
  /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/sources/cxx-stl/gnu-libstdc++/4.9/include/unordered_set \
  jni/core/mcpe/level/LevelStorage.h jni/core/mcpe/level/ParticleType.h \
  jni/core/mcpe/level/BlockSourceListener.h \
@@ -79,14 +83,14 @@ obj/local/armeabi-v7a/objs/icpe_core/ICPE.o: jni/core/ICPE.cpp \
  jni/core/mcpe/util/ChunkBlockPos.h jni/core/mcpe/level/biome/Biome.h \
  jni/core/mcpe/level/ChunkPos.h \
  jni/core/mcpe/level/biome/BiomeDecorator.h jni/core/items/Items.h \
- jni/core/items/recipe/ICRecipes.h jni/core/blocks/Blocks.h \
- jni/core/blocks/BlockGraphics.h \
+ jni/core/items/recipe/ICRecipes.h jni/core/items/recipe/RecipeUtil.h \
+ /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/sources/cxx-stl/gnu-libstdc++/4.9/include/sstream \
+ jni/core/blocks/Blocks.h jni/core/blocks/BlockGraphics.h \
  jni/core/blocks/blockentity/ICBlockEntityManager.h \
  jni/core/blocks/blockentity/ICBlockEntity.h jni/core/mca/data/Database.h \
  jni/core/mca/data/tag/ComposedTag.h jni/core/mca/data/tag/ListTag.h \
  jni/core/mca/data/tag/Tag.h jni/core/mca/data/worker/DatabaseReader.h \
  jni/core/mca/data/worker/DatabaseWorker.h \
- /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/sources/cxx-stl/gnu-libstdc++/4.9/include/sstream \
  jni/core/mca/data/worker/DatabaseWriter.h jni/core/util/log.h \
  jni/core/mcpe/util/Util.h \
  /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/platforms/android-19/arch-arm/usr/include/sys/stat.h \
@@ -180,6 +184,8 @@ jni/core/mcpe/client/AppPlatformListener.h:
 
 jni/core/mcpe/client/../gamemode/GameType.h:
 
+jni/core/mcpe/client/Realms.h:
+
 jni/core/mcpe/client/renderer/LevelRenderer.h:
 
 jni/core/mcpe/client/Minecraft.h:
@@ -201,6 +207,8 @@ jni/core/mcpe/level/../blockentity/../inventory/FillingContainer.h:
 jni/core/mcpe/level/../blockentity/../inventory/Container.h:
 
 jni/core/mcpe/level/../util/Brightness.h:
+
+jni/core/mcpe/level/../entity/EntityType.h:
 
 jni/core/mcpe/level/LightLayer.h:
 
@@ -248,11 +256,15 @@ jni/core/mcpe/entity/SynchedEntityData.h:
 
 jni/core/mcpe/entity/EntityRendererId.h:
 
-jni/core/mcpe/entity/EntityType.h:
+jni/core/mcpe/entity/EntityCategory.h:
 
 jni/core/mcpe/entity/PaletteColor.h:
 
 jni/core/mcpe/entity/../item/ArmorSlot.h:
+
+jni/core/mcpe/entity/../util/FullBlock.h:
+
+jni/core/mcpe/entity/EquipmentSlot.h:
 
 jni/core/mcpe/entity/player/../../inventory/IContainerListener.h:
 
@@ -261,8 +273,6 @@ jni/core/mcpe/entity/player/../../inventory/InventoryMenu.h:
 jni/core/mcpe/entity/player/../../inventory/BaseContainerMenu.h:
 
 jni/core/mcpe/entity/item/ItemEntity.h:
-
-jni/core/mcpe/util/FullBlock.h:
 
 jni/core/mcpe/level/Level.h:
 
@@ -294,6 +304,10 @@ jni/core/items/Items.h:
 
 jni/core/items/recipe/ICRecipes.h:
 
+jni/core/items/recipe/RecipeUtil.h:
+
+/data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/sources/cxx-stl/gnu-libstdc++/4.9/include/sstream:
+
 jni/core/blocks/Blocks.h:
 
 jni/core/blocks/BlockGraphics.h:
@@ -313,8 +327,6 @@ jni/core/mca/data/tag/Tag.h:
 jni/core/mca/data/worker/DatabaseReader.h:
 
 jni/core/mca/data/worker/DatabaseWorker.h:
-
-/data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/sources/cxx-stl/gnu-libstdc++/4.9/include/sstream:
 
 jni/core/mca/data/worker/DatabaseWriter.h:
 

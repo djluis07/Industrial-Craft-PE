@@ -19,6 +19,10 @@ obj/local/armeabi-v7a/objs/icpe_core/blocks/blockentity/CableBlockEntity.o: \
  jni/core/mcpe/level/../blockentity/../inventory/../item/../Util/BlockID.h \
  jni/core/mcpe/level/../blockentity/../inventory/../item/../Util/../block/BlockProperty.h \
  jni/core/mcpe/level/../util/Brightness.h \
+ jni/core/mcpe/level/../block/material/MaterialType.h \
+ jni/core/mcpe/level/../block/material/Material.h \
+ jni/core/mcpe/level/../block/BlockSupportType.h \
+ jni/core/mcpe/level/../entity/EntityType.h \
  jni/core/mcpe/level/LightLayer.h jni/core/mcpe/level/DimensionId.h
 
 jni/core/blocks/blockentity/CableBlockEntity.h:
@@ -64,6 +68,14 @@ jni/core/mcpe/level/../blockentity/../inventory/../item/../Util/BlockID.h:
 jni/core/mcpe/level/../blockentity/../inventory/../item/../Util/../block/BlockProperty.h:
 
 jni/core/mcpe/level/../util/Brightness.h:
+
+jni/core/mcpe/level/../block/material/MaterialType.h:
+
+jni/core/mcpe/level/../block/material/Material.h:
+
+jni/core/mcpe/level/../block/BlockSupportType.h:
+
+jni/core/mcpe/level/../entity/EntityType.h:
 
 jni/core/mcpe/level/LightLayer.h:
 

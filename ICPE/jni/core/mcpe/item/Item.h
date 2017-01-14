@@ -36,17 +36,8 @@ namespace Json
 class Item 
 {
 public:
-	/* constructor */
-	Item(const std::string&, short);
-
-	/* fields */
 	char filler[200];
-
-	/* list */
-	static Item* mItems[4096];
-	static std::vector<ItemInstance> mCreativeList;
-
-	/* vtable */
+public:
 	virtual ~Item();
     virtual Item* setIcon(std::string const&, int);
     virtual Item* setIcon(TextureUVCoordinateSet const&);
@@ -109,12 +100,12 @@ public:
     virtual TextureUVCoordinateSet const& getIcon(int, int, bool) const;
     virtual int getIconYOffset() const;
     virtual bool isMirroredArt() const;
-	
-	void initClient(Json::Value&, Json::Value&);
-	void initServer(Json::Value&);
-	void setTextureAtlas(std::shared_ptr<TextureAtlas>);
-	void setIsMirroredArt(bool);
-	
+public:
+	Item(std::string const&, short);
+public:
+	static Item* lookupByName(std::string const&, bool);
+	static TextureUVCoordinateSet getTextureUVCoordinateSet(std::string const&, int);
+	static TextureUVCoordinateSet getTextureItem(std::string const&);
 	static void addBlockItems();
 	static void registerItems();
 	static void teardownItems();
@@ -125,158 +116,204 @@ public:
 	static void addCreativeItem(ItemInstance const&);
 	static void addCreativeItem(short, short);
 	static void initCreativeItems();
-	
-	static TextureUVCoordinateSet getTextureUVCoordinateSet(std::string const&,int);
-	
-	static Item *mApple;
-	static Item *mApple_enchanted;
-	static Item *mApple_gold;
-	static Item *mArrow;
-	static Item *mBed;
-	static Item *mBeef_cooked;
-	static Item *mBeef_raw;
-	static Item *mBeetroot;
-	static Item *mBeetrootSoup;
-	static Item *mBlazePowder;
-	static Item *mBlazeRod;
-	static Item *mBoat;
-	static Item *mBone;
-	static Item *mBook;
-	static Item *mBoots_chain;
-	static Item *mBoots_cloth;
-	static Item *mBoots_diamond;
-	static Item *mBoots_gold;
-	static Item *mBoots_iron;
-	static Item *mBow;
-	static Item *mBowl;
-	static Item *mBread;
-	static Item *mBrewing_stand;
-	static Item *mBrick;
-	static Item *mBucket;
-	static Item *mCake;
-	static Item *mCamera;
-	static Item *mCarrot;
-	static Item *mChestplate_chain;
-	static Item *mChestplate_cloth;
-	static Item *mChestplate_diamond;
-	static Item *mChestplate_gold;
-	static Item *mChestplate_iron;
-	static Item *mChicken_cooked;
-	static Item *mChicken_raw;
-	static Item *mClay;
-	static Item *mClock;
-	static Item *mCoal;
-	static Item *mCompass;
-	static Item *mCookie;
-	static Item *mDiamond;
-	static Item *mDoor_acacia;
-	static Item *mDoor_birch;
-	static Item *mDoor_darkoak;
-	static Item *mDoor_iron;
-	static Item *mDoor_jungle;
-	static Item *mDoor_spruce;
-	static Item *mDoor_wood;
-	static Item *mDye_powder;
-	static Item *mEgg;
-	static Item *mEmerald;
-	static Item *mEnchanted_book;
-	static Item *mExperiencePotionItem;
-	static Item *mFeather;
-	static Item *mFermented_spider_eye;
-	static Item *mFish_cooked_cod;
-	static Item *mFish_cooked_salmon;
-	static Item *mFish_raw_clownfish;
-	static Item *mFish_raw_cod;
-	static Item *mFish_raw_pufferfish;
-	static Item *mFish_raw_salmon;
-	static Item *mFishingRod;
-	static Item *mFlint;
-	static Item *mFlintAndSteel;
-	static Item *mFlowerPot;
-	static Item *mGhast_tear;
-	static Item *mGlass_bottle;
-	static Item *mGoldIngot;
-	static Item *mGold_nugget;
-	static Item *mGoldenCarrot;
-	static Item *mHatchet_diamond;
-	static Item *mHatchet_gold;
-	static Item *mHatchet_iron;
-	static Item *mHatchet_stone;
-	static Item *mHatchet_wood;
-	static Item *mHelmet_chain;
-	static Item *mHelmet_cloth;
-	static Item *mHelmet_diamond;
-	static Item *mHelmet_gold;
-	static Item *mHelmet_iron;
-	static Item *mHoe_diamond;
-	static Item *mHoe_gold;
-	static Item *mHoe_iron;
-	static Item *mHoe_stone;
-	static Item *mHoe_wood;
-	static Item *mIronIngot;
-	static Item *mLeather;
-	static Item *mLeggings_chain;
-	static Item *mLeggings_cloth;
-	static Item *mLeggings_diamond;
-	static Item *mLeggings_gold;
-	static Item *mLeggings_iron;
-	static Item *mMagma_cream;
-	static Item *mMelon;
-	static Item *mMinecart;
-	static Item *mMobPlacer;
-	static Item *mMushroomStew;
-	static Item *mNetherQuartz;
-	static Item *mNether_wart;
-	static Item *mNetherbrick;
-	static Item *mPainting;
-	static Item *mPaper;
-	static Item *mPickAxe_diamond;
-	static Item *mPickAxe_gold;
-	static Item *mPickAxe_iron;
-	static Item *mPickAxe_stone;
-	static Item *mPickAxe_wood;
-	static Item *mPoisonous_potato;
-	static Item *mPorkChop_cooked;
-	static Item *mPorkChop_raw;
-	static Item *mPotato;
-	static Item *mPotatoBaked;
-	static Item *mPotion;
-	static Item *mPumpkinPie;
-	static Item *mRabbitCooked;
-	static Item *mRabbitFoot;
-	static Item *mRabbitHide;
-	static Item *mRabbitRaw;
-	static Item *mRabbitStew;
-	static Item *mRedStone;
-	static Item *mReeds;
-	static Item *mRotten_flesh;
-	static Item *mSaddle;
-	static Item *mSeeds_beetroot;
-	static Item *mSeeds_melon;
-	static Item *mSeeds_pumpkin;
-	static Item *mSeeds_wheat;
-	static Item *mShears;
-	static Item *mShovel_diamond;
-	static Item *mShovel_gold;
-	static Item *mShovel_iron;
-	static Item *mShovel_stone;
-	static Item *mShovel_wood;
-	static Item *mSign;
-	static Item *mSkull;
-	static Item *mSlimeBall;
-	static Item *mSnowBall;
-	static Item *mSpeckled_melon;
-	static Item *mSpider_eye;
-	static Item *mSplash_potion;
-	static Item *mStick;
-	static Item *mString;
-	static Item *mSugar;
-	static Item *mSulphur;
-	static Item *mSword_diamond;
-	static Item *mSword_gold;
-	static Item *mSword_iron;
-	static Item *mSword_stone;
-	static Item *mSword_wood;
-	static Item *mWheat;
-	static Item *mYellowDust;
+public:
+	void destroySpeedBonus(ItemInstance const*) const;
+	void _textMatch(std::string const&, std::string const&, bool);
+	void initClient(Json::Value&, Json::Value&);
+	void initServer(Json::Value&);
+	void setTextureAtlas(std::shared_ptr<TextureAtlas>);
+	void setIsMirroredArt(bool);
+public:
+	static Item * mItems[4096];
+	static std::vector<ItemInstance> mCreativeList;
+public:
+	static Item * mDye_powder;	//_ZN4Item11mDye_powderE
+	static Item * mBucket;	//_ZN4Item7mBucketE
+	static Item * mGoldHorseArmor;	//_ZN4Item15mGoldHorseArmorE
+	static Item * mIronHorseArmor;	//_ZN4Item15mIronHorseArmorE
+	static Item * mDiamondHorseArmor;	//_ZN4Item18mDiamondHorseArmorE
+	static Item * mLeatherHorseArmor;	//_ZN4Item18mLeatherHorseArmorE
+	static Item * mSaddle;	//_ZN4Item7mSaddleE
+	static Item * mFilledMap;	//_ZN4Item10mFilledMapE
+	static Item * mPaper;	//_ZN4Item6mPaperE
+	static Item * mGoldIngot;	//_ZN4Item10mGoldIngotE
+	static Item * mIronIngot;	//_ZN4Item10mIronIngotE
+	static Item * mBeef_cooked;	//_ZN4Item12mBeef_cookedE
+	static Item * mNetherbrick;	//_ZN4Item12mNetherbrickE
+	static Item * mPotatoBaked;	//_ZN4Item12mPotatoBakedE
+	static Item * mNetherQuartz;	//_ZN4Item13mNetherQuartzE
+	static Item * mRabbitCooked;	//_ZN4Item13mRabbitCookedE
+	static Item * mMutton_cooked;	//_ZN4Item14mMutton_cookedE
+	static Item * mChicken_cooked;	//_ZN4Item15mChicken_cookedE
+	static Item * mFish_cooked_cod;	//_ZN4Item16mFish_cooked_codE
+	static Item * mFish_cooked_salmon;	//_ZN4Item19mFish_cooked_salmonE
+	static Item * mCoal;	//_ZN4Item5mCoalE
+	static Item * mBrick;	//_ZN4Item6mBrickE
+	static Item * mDiamond;	//_ZN4Item8mDiamondE
+	static Item * mEmerald;	//_ZN4Item8mEmeraldE
+	static Item * mRedStone;	//_ZN4Item9mRedStoneE
+	static Item * mSeeds_wheat;	//_ZN4Item12mSeeds_wheatE
+	static Item * mSeeds_beetroot;	//_ZN4Item15mSeeds_beetrootE
+	static Item * mCarrot;	//_ZN4Item7mCarrotE
+	static Item * mPotato;	//_ZN4Item7mPotatoE
+	static Item * mHelmet_iron;	//_ZN4Item12mHelmet_ironE
+	static Item * mWheat;	//_ZN4Item6mWheatE
+	static Item * mEgg;	//_ZN4Item4mEggE
+	static Item * mApple_gold;	//_ZN4Item11mApple_goldE
+	static Item * mGoldenCarrot;	//_ZN4Item13mGoldenCarrotE
+	static Item * mApple;	//_ZN4Item6mAppleE
+	static Item * mBread;	//_ZN4Item6mBreadE
+	static Item * mSugar;	//_ZN4Item6mSugarE
+	static Item * mFish_raw_cod;	//_ZN4Item13mFish_raw_codE
+	static Item * mFish_raw_salmon;	//_ZN4Item16mFish_raw_salmonE
+	static Item * mBeetroot;	//_ZN4Item9mBeetrootE
+	static Item * mFlintAndSteel;	//_ZN4Item14mFlintAndSteelE
+	static Item * mShears;	//_ZN4Item7mShearsE
+	static Item * mLead;	//_ZN4Item5mLeadE
+	static Item * mNameTag;	//_ZN4Item8mNameTagE
+	static Item * mFishingRod;	//_ZN4Item11mFishingRodE
+	static Item * mRotten_flesh;	//_ZN4Item13mRotten_fleshE
+	static Item * mLeggings_cloth;	//_ZN4Item15mLeggings_clothE
+	static Item * mFish_raw_clownfish;	//_ZN4Item19mFish_raw_clownfishE
+	static Item * mFish_raw_pufferfish;	//_ZN4Item20mFish_raw_pufferfishE
+	static Item * mBow;	//_ZN4Item4mBowE
+	static Item * mBone;	//_ZN4Item5mBoneE
+	static Item * mBook;	//_ZN4Item5mBookE
+	static Item * mBowl;	//_ZN4Item5mBowlE
+	static Item * mStick;	//_ZN4Item6mStickE
+	static Item * mPotion;	//_ZN4Item7mPotionE
+	static Item * mString;	//_ZN4Item7mStringE
+	static Item * mLeather;	//_ZN4Item8mLeatherE
+	static Item * mBoat;	//_ZN4Item5mBoatE
+	static Item * mEnderEye;	//_ZN4Item9mEnderEyeE
+	static Item * mMinecart;	//_ZN4Item9mMinecartE
+	static Item * mHopper;	//_ZN4Item7mHopperE
+	static Item * mHelmet_cloth;	//_ZN4Item13mHelmet_clothE
+	static Item * mEnchanted_book;	//_ZN4Item15mEnchanted_bookE
+	static Item * mSkull;	//_ZN4Item6mSkullE
+	static Item * mPainting;	//_ZN4Item9mPaintingE
+	static Item * mArrow;	//_ZN4Item6mArrowE
+	static Item * mGhast_tear;	//_ZN4Item11mGhast_tearE
+	static Item * mRabbitFoot;	//_ZN4Item11mRabbitFootE
+	static Item * mSpider_eye;	//_ZN4Item11mSpider_eyeE
+	static Item * mYellowDust;	//_ZN4Item11mYellowDustE
+	static Item * mBlazePowder;	//_ZN4Item12mBlazePowderE
+	static Item * mMagma_cream;	//_ZN4Item12mMagma_creamE
+	static Item * mNether_wart;	//_ZN4Item12mNether_wartE
+	static Item * mDragon_breath;	//_ZN4Item14mDragon_breathE
+	static Item * mSplash_potion;	//_ZN4Item14mSplash_potionE
+	static Item * mSpeckled_melon;	//_ZN4Item15mSpeckled_melonE
+	static Item * mLingering_potion;	//_ZN4Item17mLingering_potionE
+	static Item * mFermented_spider_eye;	//_ZN4Item21mFermented_spider_eyeE
+	static Item * mSulphur;	//_ZN4Item8mSulphurE
+	static Item * mBoots_gold;	//_ZN4Item11mBoots_goldE
+	static Item * mBoots_iron;	//_ZN4Item11mBoots_ironE
+	static Item * mBoots_chain;	//_ZN4Item12mBoots_chainE
+	static Item * mBoots_cloth;	//_ZN4Item12mBoots_clothE
+	static Item * mHelmet_gold;	//_ZN4Item12mHelmet_goldE
+	static Item * mHelmet_chain;	//_ZN4Item13mHelmet_chainE
+	static Item * mBoots_diamond;	//_ZN4Item14mBoots_diamondE
+	static Item * mLeggings_gold;	//_ZN4Item14mLeggings_goldE
+	static Item * mLeggings_iron;	//_ZN4Item14mLeggings_ironE
+	static Item * mHelmet_diamond;	//_ZN4Item15mHelmet_diamondE
+	static Item * mLeggings_chain;	//_ZN4Item15mLeggings_chainE
+	static Item * mChestplate_gold;	//_ZN4Item16mChestplate_goldE
+	static Item * mChestplate_iron;	//_ZN4Item16mChestplate_ironE
+	static Item * mChestplate_chain;	//_ZN4Item17mChestplate_chainE
+	static Item * mChestplate_cloth;	//_ZN4Item17mChestplate_clothE
+	static Item * mLeggings_diamond;	//_ZN4Item17mLeggings_diamondE
+	static Item * mChestplate_diamond;	//_ZN4Item19mChestplate_diamondE
+	static Item * mElytra;	//_ZN4Item7mElytraE
+	static Item * ICON_DESCRIPTION_PREFIX;	//_ZN4Item23ICON_DESCRIPTION_PREFIXE
+	static Item * mPumpkinPie;	//_ZN4Item11mPumpkinPieE
+	static Item * mSeeds_melon;	//_ZN4Item12mSeeds_melonE
+	static Item * mBeetrootSoup;	//_ZN4Item13mBeetrootSoupE
+	static Item * mMushroomStew;	//_ZN4Item13mMushroomStewE
+	static Item * mSeeds_pumpkin;	//_ZN4Item14mSeeds_pumpkinE
+	static Item * mMelon;	//_ZN4Item6mMelonE
+	static Item * mCookie;	//_ZN4Item7mCookieE
+	static Item * mRabbitRaw;	//_ZN4Item10mRabbitRawE
+	static Item * mMutton_raw;	//_ZN4Item11mMutton_rawE
+	static Item * mChicken_raw;	//_ZN4Item12mChicken_rawE
+	static Item * mChorusFruit;	//_ZN4Item12mChorusFruitE
+	static Item * mPorkChop_raw;	//_ZN4Item13mPorkChop_rawE
+	static Item * mPorkChop_cooked;	//_ZN4Item16mPorkChop_cookedE
+	static Item * mChorusFruitPopped;	//_ZN4Item18mChorusFruitPoppedE
+	static Item * mClay;	//_ZN4Item5mClayE
+	static Item * mBeef_raw;	//_ZN4Item9mBeef_rawE
+	static Item * mEmptyMap;	//_ZN4Item9mEmptyMapE
+	static Item * mCompass;	//_ZN4Item8mCompassE
+	static Item * mGold_nugget;	//_ZN4Item12mGold_nuggetE
+	static Item * mDoor_iron;	//_ZN4Item10mDoor_ironE
+	static Item * mDoor_wood;	//_ZN4Item10mDoor_woodE
+	static Item * mFlowerPot;	//_ZN4Item10mFlowerPotE
+	static Item * mItemFrame;	//_ZN4Item10mItemFrameE
+	static Item * mSlimeBall;	//_ZN4Item10mSlimeBallE
+	static Item * mComparator;	//_ZN4Item11mComparatorE
+	static Item * mDoor_birch;	//_ZN4Item11mDoor_birchE
+	static Item * mEndCrystal;	//_ZN4Item11mEndCrystalE
+	static Item * mEnderpearl;	//_ZN4Item11mEnderpearlE
+	static Item * mFireCharge;	//_ZN4Item11mFireChargeE
+	static Item * mRabbitHide;	//_ZN4Item11mRabbitHideE
+	static Item * mRabbitStew;	//_ZN4Item11mRabbitStewE
+	static Item * mDoor_acacia;	//_ZN4Item12mDoor_acaciaE
+	static Item * mDoor_jungle;	//_ZN4Item12mDoor_jungleE
+	static Item * mDoor_spruce;	//_ZN4Item12mDoor_spruceE
+	static Item * mShovel_wood;	//_ZN4Item12mShovel_woodE
+	static Item * mTNTMinecart;	//_ZN4Item12mTNTMinecartE
+	static Item * mDoor_darkoak;	//_ZN4Item13mDoor_darkoakE
+	static Item * mGlass_bottle;	//_ZN4Item13mGlass_bottleE
+	static Item * mBrewing_stand;	//_ZN4Item14mBrewing_standE
+	static Item * mChestMinecart;	//_ZN4Item14mChestMinecartE
+	static Item * mCarrotOnAStick;	//_ZN4Item15mCarrotOnAStickE
+	static Item * mHopperMinecart;	//_ZN4Item15mHopperMinecartE
+	static Item * mApple_enchanted;	//_ZN4Item16mApple_enchantedE
+	static Item * mPrismarineShard;	//_ZN4Item16mPrismarineShardE
+	static Item * mPrismarineCrystals;	//_ZN4Item19mPrismarineCrystalsE
+	static Item * mBed;	//_ZN4Item4mBedE
+	static Item * mCake;	//_ZN4Item5mCakeE
+	static Item * mSign;	//_ZN4Item5mSignE
+	static Item * mClock;	//_ZN4Item6mClockE
+	static Item * mFlint;	//_ZN4Item6mFlintE
+	static Item * mReeds;	//_ZN4Item6mReedsE
+	static Item * mBlazeRod;	//_ZN4Item9mBlazeRodE
+	static Item * mCauldron;	//_ZN4Item9mCauldronE
+	static Item * mRepeater;	//_ZN4Item9mRepeaterE
+	static Item * mSnowBall;	//_ZN4Item9mSnowBallE
+	static Item * mNetherStar;	//_ZN4Item11mNetherStarE
+	static Item * mHoe_stone;	//_ZN4Item10mHoe_stoneE
+	static Item * mHoe_diamond;	//_ZN4Item12mHoe_diamondE
+	static Item * mShovel_gold;	//_ZN4Item12mShovel_goldE
+	static Item * mShovel_iron;	//_ZN4Item12mShovel_ironE
+	static Item * mHatchet_gold;	//_ZN4Item13mHatchet_goldE
+	static Item * mHatchet_iron;	//_ZN4Item13mHatchet_ironE
+	static Item * mHatchet_wood;	//_ZN4Item13mHatchet_woodE
+	static Item * mPickAxe_gold;	//_ZN4Item13mPickAxe_goldE
+	static Item * mPickAxe_iron;	//_ZN4Item13mPickAxe_ironE
+	static Item * mPickAxe_wood;	//_ZN4Item13mPickAxe_woodE
+	static Item * mShovel_stone;	//_ZN4Item13mShovel_stoneE
+	static Item * mHatchet_stone;	//_ZN4Item14mHatchet_stoneE
+	static Item * mPickAxe_stone;	//_ZN4Item14mPickAxe_stoneE
+	static Item * mShovel_diamond;	//_ZN4Item15mShovel_diamondE
+	static Item * mHatchet_diamond;	//_ZN4Item16mHatchet_diamondE
+	static Item * mPickAxe_diamond;	//_ZN4Item16mPickAxe_diamondE
+	static Item * mHoe_gold;	//_ZN4Item9mHoe_goldE
+	static Item * mHoe_iron;	//_ZN4Item9mHoe_ironE
+	static Item * mHoe_wood;	//_ZN4Item9mHoe_woodE
+	static Item * mSword_gold;	//_ZN4Item11mSword_goldE
+	static Item * mSword_iron;	//_ZN4Item11mSword_ironE
+	static Item * mSword_wood;	//_ZN4Item11mSword_woodE
+	static Item * mSword_stone;	//_ZN4Item12mSword_stoneE
+	static Item * mSword_diamond;	//_ZN4Item14mSword_diamondE
+	static Item * mFeather;	//_ZN4Item8mFeatherE
+	static Item * mRandom;	//_ZN4Item7mRandomE
+	static Item * mMobPlacer;	//_ZN4Item10mMobPlacerE
+	static Item * mChalkboard;	//_ZN4Item11mChalkboardE
+	static Item * mShulkerShell;	//_ZN4Item13mShulkerShellE
+	static Item * mItemLookupMap;	//_ZN4Item14mItemLookupMapE
+	static Item * mPortfolioBook;	//_ZN4Item14mPortfolioBookE
+	static Item * mItemTextureAtlas;	//_ZN4Item17mItemTextureAtlasE
+	static Item * mPoisonous_potato;	//_ZN4Item17mPoisonous_potatoE
+	static Item * mExperiencePotionItem;	//_ZN4Item21mExperiencePotionItemE
+	static Item * mCamera;	//_ZN4Item7mCameraE
 };

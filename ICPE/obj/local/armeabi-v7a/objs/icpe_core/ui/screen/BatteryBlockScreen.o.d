@@ -26,6 +26,7 @@ obj/local/armeabi-v7a/objs/icpe_core/ui/screen/BatteryBlockScreen.o: \
  jni/core/mcpe/client/../gamemode/GameType.h \
  jni/core/mcpe/client/../util/Vec3.h \
  /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/sources/cxx-stl/gnu-libstdc++/4.9/include/cmath \
+ jni/core/mcpe/client/Realms.h \
  jni/core/mcpe/client/renderer/LevelRenderer.h
 
 jni/core/ui/screen/BatteryBlockScreen.h:
@@ -89,5 +90,7 @@ jni/core/mcpe/client/../gamemode/GameType.h:
 jni/core/mcpe/client/../util/Vec3.h:
 
 /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/sources/cxx-stl/gnu-libstdc++/4.9/include/cmath:
+
+jni/core/mcpe/client/Realms.h:
 
 jni/core/mcpe/client/renderer/LevelRenderer.h:

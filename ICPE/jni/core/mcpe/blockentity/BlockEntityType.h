@@ -1,22 +1,23 @@
 #pragma once
 
-enum BlockEntityType : int {
+enum BlockEntityType : int
+{
 	BLOCKENTITY_NONE,
-	Furnace,
-	Chest,
-	NetherReactor,
-	Sign,
-	MobSpawner,
-	Skull,
-	FlowerPot,
-	BrewingStand,
-	EnchantTable,
-	DaylightDetector,
-	NoteBlock,
-	Comparator,
-	Dispenser,
-	Dropper,
-	Hopper,
-	Cauldron,
-	ItemFrame
+	FURNACE,
+	CHEST,
+	NETHERREACTOR,
+	SIGN,
+	MOBSPAWNER,
+	SKULL,
+	FLOWERPOT,
+	BREWINGSTAND,
+	ENCHANTTABLE,
+	DAYLIGJTDETECTOR,
+	NOTE,
+	COMPARATOR,
+	DISPENSER,
+	DROPPER,
+	HOPPER,
+	CAULDRON,
+	ITEMFRAME
 };

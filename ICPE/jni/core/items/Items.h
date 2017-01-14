@@ -28,7 +28,6 @@ public:
 		static const short mElectricHoe=518;
 		static const short mChainsaw=519;
 		static const short mSingleUseBattery=520;
-		static const short mGuideBook=521;
 		static const short mTinIngot=522;
 		static const short mSteelIngot=523;
 		static const short mCopperIngot=524;

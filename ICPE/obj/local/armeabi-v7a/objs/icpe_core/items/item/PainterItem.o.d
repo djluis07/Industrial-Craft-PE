@@ -21,8 +21,13 @@ obj/local/armeabi-v7a/objs/icpe_core/items/item/PainterItem.o: \
  jni/core/mcpe/entity/../util/Vec2.h jni/core/mcpe/entity/../util/Color.h \
  jni/core/mcpe/entity/EntityRendererId.h \
  jni/core/mcpe/entity/../level/DimensionId.h \
- jni/core/mcpe/entity/EntityType.h jni/core/mcpe/entity/PaletteColor.h \
+ jni/core/mcpe/entity/EntityType.h jni/core/mcpe/entity/EntityCategory.h \
+ jni/core/mcpe/entity/PaletteColor.h \
  jni/core/mcpe/entity/../item/ArmorSlot.h \
+ jni/core/mcpe/entity/../block/material/MaterialType.h \
+ jni/core/mcpe/entity/../util/FullBlock.h \
+ jni/core/mcpe/entity/../util/Brightness.h \
+ jni/core/mcpe/entity/EquipmentSlot.h \
  jni/core/mcpe/entity/EntityClassTree.h \
  jni/core/mcpe/entity/player/Player.h jni/core/mcpe/gamemode/GameType.h \
  jni/core/mcpe/level/BlockSource.h \
@@ -30,12 +35,10 @@ obj/local/armeabi-v7a/objs/icpe_core/items/item/PainterItem.o: \
  jni/core/mcpe/level/../blockentity/BlockEntityType.h \
  jni/core/mcpe/level/../blockentity/../inventory/FillingContainer.h \
  jni/core/mcpe/level/../blockentity/../inventory/Container.h \
- jni/core/mcpe/level/../util/Brightness.h \
+ jni/core/mcpe/level/../block/material/Material.h \
+ jni/core/mcpe/level/../block/BlockSupportType.h \
  jni/core/mcpe/level/LightLayer.h jni/core/mcpe/block/Block.h \
- jni/core/mcpe/block/material/Material.h \
- jni/core/mcpe/block/material/MaterialType.h \
  jni/core/mcpe/block/BlockSoundType.h \
- jni/core/mcpe/block/BlockSupportType.h \
  jni/core/blocks/blockentity/CableBlockEntity.h \
  jni/core/blocks/blockentity/ICBlockEntity.h jni/core/blocks/blocks.h \
  jni/core/util/CableUtil.h
@@ -98,9 +101,19 @@ jni/core/mcpe/entity/../level/DimensionId.h:
 
 jni/core/mcpe/entity/EntityType.h:
 
+jni/core/mcpe/entity/EntityCategory.h:
+
 jni/core/mcpe/entity/PaletteColor.h:
 
 jni/core/mcpe/entity/../item/ArmorSlot.h:
+
+jni/core/mcpe/entity/../block/material/MaterialType.h:
+
+jni/core/mcpe/entity/../util/FullBlock.h:
+
+jni/core/mcpe/entity/../util/Brightness.h:
+
+jni/core/mcpe/entity/EquipmentSlot.h:
 
 jni/core/mcpe/entity/EntityClassTree.h:
 
@@ -118,19 +131,15 @@ jni/core/mcpe/level/../blockentity/../inventory/FillingContainer.h:
 
 jni/core/mcpe/level/../blockentity/../inventory/Container.h:
 
-jni/core/mcpe/level/../util/Brightness.h:
+jni/core/mcpe/level/../block/material/Material.h:
+
+jni/core/mcpe/level/../block/BlockSupportType.h:
 
 jni/core/mcpe/level/LightLayer.h:
 
 jni/core/mcpe/block/Block.h:
 
-jni/core/mcpe/block/material/Material.h:
-
-jni/core/mcpe/block/material/MaterialType.h:
-
 jni/core/mcpe/block/BlockSoundType.h:
-
-jni/core/mcpe/block/BlockSupportType.h:
 
 jni/core/blocks/blockentity/CableBlockEntity.h:
 

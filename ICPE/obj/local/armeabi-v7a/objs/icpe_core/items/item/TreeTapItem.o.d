@@ -23,16 +23,19 @@ obj/local/armeabi-v7a/objs/icpe_core/items/item/TreeTapItem.o: \
  jni/core/mcpe/entity/../util/Vec2.h \
  jni/core/mcpe/entity/EntityRendererId.h \
  jni/core/mcpe/entity/../level/DimensionId.h \
- jni/core/mcpe/entity/EntityType.h jni/core/mcpe/entity/PaletteColor.h \
+ jni/core/mcpe/entity/EntityType.h jni/core/mcpe/entity/EntityCategory.h \
+ jni/core/mcpe/entity/PaletteColor.h \
  jni/core/mcpe/entity/../item/ArmorSlot.h \
- jni/core/mcpe/gamemode/GameType.h jni/core/mcpe/level/BlockSource.h \
+ jni/core/mcpe/entity/../util/FullBlock.h \
+ jni/core/mcpe/entity/../util/Brightness.h \
+ jni/core/mcpe/entity/EquipmentSlot.h jni/core/mcpe/gamemode/GameType.h \
+ jni/core/mcpe/level/BlockSource.h \
  jni/core/mcpe/level/../blockentity/BlockEntity.h \
  jni/core/mcpe/level/../blockentity/BlockEntityType.h \
  jni/core/mcpe/level/../blockentity/../inventory/FillingContainer.h \
  jni/core/mcpe/level/../blockentity/../inventory/Container.h \
- jni/core/mcpe/level/../util/Brightness.h \
- jni/core/mcpe/level/LightLayer.h jni/core/mcpe/util/FullBlock.h \
- jni/core/mcpe/util/Random.h jni/core/blocks/Blocks.h jni/core/ICPE.h \
+ jni/core/mcpe/level/LightLayer.h jni/core/mcpe/util/Random.h \
+ jni/core/blocks/Blocks.h jni/core/ICPE.h \
  /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/platforms/android-19/arch-arm/usr/include/jni.h
 
 jni/core/items/item/TreeTapItem.h:
@@ -99,9 +102,17 @@ jni/core/mcpe/entity/../level/DimensionId.h:
 
 jni/core/mcpe/entity/EntityType.h:
 
+jni/core/mcpe/entity/EntityCategory.h:
+
 jni/core/mcpe/entity/PaletteColor.h:
 
 jni/core/mcpe/entity/../item/ArmorSlot.h:
+
+jni/core/mcpe/entity/../util/FullBlock.h:
+
+jni/core/mcpe/entity/../util/Brightness.h:
+
+jni/core/mcpe/entity/EquipmentSlot.h:
 
 jni/core/mcpe/gamemode/GameType.h:
 
@@ -115,11 +126,7 @@ jni/core/mcpe/level/../blockentity/../inventory/FillingContainer.h:
 
 jni/core/mcpe/level/../blockentity/../inventory/Container.h:
 
-jni/core/mcpe/level/../util/Brightness.h:
-
 jni/core/mcpe/level/LightLayer.h:
-
-jni/core/mcpe/util/FullBlock.h:
 
 jni/core/mcpe/util/Random.h:
 

@@ -38,11 +38,8 @@ void RecipeUtil::addFurnaceRecipe(short id,short idaux,short toId,short toaux)
 	ItemInstance const i(toId,1,toaux);
 	fr -> addFurnaceRecipeAuxData(id,idaux,i);
 }
-void RecipeUtil::addShapelessRecipe(short id,short count,short aux)
+void RecipeUtil::addShapelessRecipe(ItemInstance const&res)
 {
-	ItemInstance res(Item::mItems[id]);
-	res.count = count;
-	res.aux=aux;
 	r -> addShapelessRecipe(res,ingredients);
 }
 void RecipeUtil::addShapedRecipe(ItemInstance const & res,std::vector<std::string> const&v)

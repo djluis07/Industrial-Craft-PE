@@ -24,12 +24,16 @@ obj/local/armeabi-v7a/objs/icpe_core/blocks/block/CableBlock.o: \
  jni/core/mcpe/level/../blockentity/../inventory/FillingContainer.h \
  jni/core/mcpe/level/../blockentity/../inventory/Container.h \
  jni/core/mcpe/level/../util/Brightness.h \
+ jni/core/mcpe/level/../entity/EntityType.h \
  jni/core/mcpe/level/LightLayer.h jni/core/mcpe/level/DimensionId.h \
  jni/core/mcpe/entity/Entity.h jni/core/mcpe/entity/SynchedEntityData.h \
  jni/core/mcpe/entity/../util/Vec2.h \
  jni/core/mcpe/entity/EntityRendererId.h \
- jni/core/mcpe/entity/EntityType.h jni/core/mcpe/entity/PaletteColor.h \
- jni/core/mcpe/entity/../item/ArmorSlot.h jni/core/mcpe/entity/Mob.h \
+ jni/core/mcpe/entity/EntityCategory.h \
+ jni/core/mcpe/entity/PaletteColor.h \
+ jni/core/mcpe/entity/../item/ArmorSlot.h \
+ jni/core/mcpe/entity/../util/FullBlock.h jni/core/mcpe/entity/Mob.h \
+ jni/core/mcpe/entity/EquipmentSlot.h \
  jni/core/mcpe/entity/EntityClassTree.h \
  jni/core/mcpe/util/EntityDamageSource.h jni/core/util/ICOptions.h \
  jni/core/mca/data/Database.h jni/core/mca/data/tag/ComposedTag.h \
@@ -115,6 +119,8 @@ jni/core/mcpe/level/../blockentity/../inventory/Container.h:
 
 jni/core/mcpe/level/../util/Brightness.h:
 
+jni/core/mcpe/level/../entity/EntityType.h:
+
 jni/core/mcpe/level/LightLayer.h:
 
 jni/core/mcpe/level/DimensionId.h:
@@ -127,13 +133,17 @@ jni/core/mcpe/entity/../util/Vec2.h:
 
 jni/core/mcpe/entity/EntityRendererId.h:
 
-jni/core/mcpe/entity/EntityType.h:
+jni/core/mcpe/entity/EntityCategory.h:
 
 jni/core/mcpe/entity/PaletteColor.h:
 
 jni/core/mcpe/entity/../item/ArmorSlot.h:
 
+jni/core/mcpe/entity/../util/FullBlock.h:
+
 jni/core/mcpe/entity/Mob.h:
+
+jni/core/mcpe/entity/EquipmentSlot.h:
 
 jni/core/mcpe/entity/EntityClassTree.h:
 

@@ -19,7 +19,6 @@
 #include "item/ElectricTreeTapItem.h"
 #include "item/ElectricHoeItem.h"
 #include "item/ChainsawItem.h"
-#include "item/GuideBookItem.h"
 #include "item/PainterItem.h"
 #include "item/EmptyPainterItem.h"
 #include "item/BronzeShovelItem.h"
@@ -60,7 +59,6 @@ void Items::addICCreativeItems()
 	Item::addCreativeItem(IC::Blocks::ID::mMetal,4);
 	Item::addCreativeItem(IC::Blocks::ID::mMetal,5);
 	
-	Item::addCreativeItem(ID::mGuideBook,0);
 	Item::addCreativeItem(ID::mPainter,0);
 	Item::addCreativeItem(ID::mResin,0);
 	Item::addCreativeItem(ID::mRubber,0);
@@ -307,7 +305,6 @@ void Items::initICItems()
 	Item::mItems[ID::mPainterBlue]=new PainterItem("ic.painter.blue",ID::mPainterBlue-0x100,"icpe_painter_blue");
 	Item::mItems[ID::mPainterBlack]=new PainterItem("ic.painter.black",ID::mPainterBlack-0x100,"icpe_painter_black");
 	Item::mItems[ID::mPainter]=new EmptyPainterItem();
-	Item::mItems[ID::mGuideBook]=new GuideBookItem();
 	Item::mItems[ID::mSingleUseBattery]=new SingleUseBatteryItem();
 	Item::mItems[ID::mChainsaw]=new ChainsawItem();
 	Item::mItems[ID::mElectricHoe]=new ElectricHoeItem();

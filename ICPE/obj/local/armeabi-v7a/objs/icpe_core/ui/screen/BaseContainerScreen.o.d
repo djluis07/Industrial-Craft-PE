@@ -20,6 +20,7 @@ obj/local/armeabi-v7a/objs/icpe_core/ui/screen/BaseContainerScreen.o: \
  jni/core/mcpe/client/../gamemode/GameType.h \
  jni/core/mcpe/client/../util/Vec3.h \
  /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/sources/cxx-stl/gnu-libstdc++/4.9/include/cmath \
+ jni/core/mcpe/client/Realms.h \
  jni/core/mcpe/client/renderer/LevelRenderer.h \
  jni/core/mcpe/client/gui/GuiData.h \
  jni/core/mcpe/client/gui/../settings/IConfigListener.h \
@@ -41,8 +42,13 @@ obj/local/armeabi-v7a/objs/icpe_core/ui/screen/BaseContainerScreen.o: \
  jni/core/mcpe/entity/../util/AABB.h jni/core/mcpe/entity/../util/Vec2.h \
  jni/core/mcpe/entity/EntityRendererId.h \
  jni/core/mcpe/entity/../level/DimensionId.h \
- jni/core/mcpe/entity/EntityType.h jni/core/mcpe/entity/PaletteColor.h \
+ jni/core/mcpe/entity/EntityType.h jni/core/mcpe/entity/EntityCategory.h \
+ jni/core/mcpe/entity/PaletteColor.h \
  jni/core/mcpe/entity/../item/ArmorSlot.h \
+ jni/core/mcpe/entity/../block/material/MaterialType.h \
+ jni/core/mcpe/entity/../util/FullBlock.h \
+ jni/core/mcpe/entity/../util/Brightness.h \
+ jni/core/mcpe/entity/EquipmentSlot.h \
  jni/core/mcpe/entity/player/../../inventory/IContainerListener.h \
  jni/core/mcpe/entity/player/../../inventory/InventoryMenu.h \
  jni/core/mcpe/entity/player/../../inventory/BaseContainerMenu.h \
@@ -52,9 +58,7 @@ obj/local/armeabi-v7a/objs/icpe_core/ui/screen/BaseContainerScreen.o: \
  jni/core/mcpe/block/Block.h \
  jni/core/mcpe/block/../client/renderer/texture/TextureUVCoordinateSet.h \
  jni/core/mcpe/util/ResourceLocation.h \
- jni/core/mcpe/block/material/Material.h \
- jni/core/mcpe/block/material/MaterialType.h \
- jni/core/mcpe/block/BlockShape.h \
+ jni/core/mcpe/block/material/Material.h jni/core/mcpe/block/BlockShape.h \
  jni/core/mcpe/item/CreativeItemCategory.h \
  jni/core/mcpe/block/BlockSoundType.h \
  jni/core/mcpe/block/BlockSupportType.h
@@ -108,6 +112,8 @@ jni/core/mcpe/client/../gamemode/GameType.h:
 jni/core/mcpe/client/../util/Vec3.h:
 
 /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/sources/cxx-stl/gnu-libstdc++/4.9/include/cmath:
+
+jni/core/mcpe/client/Realms.h:
 
 jni/core/mcpe/client/renderer/LevelRenderer.h:
 
@@ -165,9 +171,19 @@ jni/core/mcpe/entity/../level/DimensionId.h:
 
 jni/core/mcpe/entity/EntityType.h:
 
+jni/core/mcpe/entity/EntityCategory.h:
+
 jni/core/mcpe/entity/PaletteColor.h:
 
 jni/core/mcpe/entity/../item/ArmorSlot.h:
+
+jni/core/mcpe/entity/../block/material/MaterialType.h:
+
+jni/core/mcpe/entity/../util/FullBlock.h:
+
+jni/core/mcpe/entity/../util/Brightness.h:
+
+jni/core/mcpe/entity/EquipmentSlot.h:
 
 jni/core/mcpe/entity/player/../../inventory/IContainerListener.h:
 
@@ -188,8 +204,6 @@ jni/core/mcpe/block/../client/renderer/texture/TextureUVCoordinateSet.h:
 jni/core/mcpe/util/ResourceLocation.h:
 
 jni/core/mcpe/block/material/Material.h:
-
-jni/core/mcpe/block/material/MaterialType.h:
 
 jni/core/mcpe/block/BlockShape.h:
 
