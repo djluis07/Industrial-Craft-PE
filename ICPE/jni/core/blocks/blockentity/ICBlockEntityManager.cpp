@@ -5,6 +5,7 @@
 #include "mcpe/util/BlockPos.h"
 #include "mcpe/level/ChunkPos.h"
 #include "mcpe/level/BlockSource.h"
+#include "mcpe/client/MinecraftClient.h"
 #include "UTIL/LOG.H"
 #include "blocks/block/base/ICEntityBlock.h"
 #include "blocks/Blocks.h"

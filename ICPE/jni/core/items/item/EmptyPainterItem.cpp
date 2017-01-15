@@ -1,6 +1,6 @@
 #include "EmptyPainterItem.h"
 
-EmptyPainterItem::EmptyPainterItem():IC::Items("ic.painter.empty",IC::Items::ID::mPainter-0x100)
+EmptyPainterItem::EmptyPainterItem():IC::Items("ic.painter",IC::Items::ID::mPainter-0x100)
 {
 	setCategory(CreativeItemCategory::TOOLS);
 	setMaxStackSize(1);

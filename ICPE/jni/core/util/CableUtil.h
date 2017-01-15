@@ -22,6 +22,7 @@ public:
 	static int getHurt(int);
 	static int getFire(int);
 	static bool canDye(unsigned char);
+	static bool isHeavyCable(unsigned char);
 	static bool isUninsulated(unsigned char);
 	static bool canConnectTo(BlockSource&,BlockPos const&,BlockPos const&);
 	static bool isDetectorCable(unsigned char);

@@ -128,20 +128,74 @@ void ICRecipes::addItemRecipes()
 	addShapelessRecipe(ItemInstance(5,4,0),
 	{{Blocks::ID::mRubberWood,-1}});
 	//Tree tap
-	addShapedRecipe(ItemInstance(Items::ID::mTreeTap,0,1),{
+	addShapedRecipe(ItemInstance(Items::ID::mTreeTap,1,0),{
 	" w ",
 	"www",
 	"w  "},{{'w',5,-1}});
+	//Metal blocks
+	addShapedRecipe(ItemInstance(Blocks::ID::mMetal,1,0),{
+	"aaa",
+	"aaa",
+	"aaa"},{{'a',Items::ID::mTinIngot,0}});
+	addShapedRecipe(ItemInstance(Blocks::ID::mMetal,1,1),{
+	"aaa",
+	"aaa",
+	"aaa"},{{'a',Items::ID::mSteelIngot,0}});
+	addShapedRecipe(ItemInstance(Blocks::ID::mMetal,1,2),{
+	"aaa",
+	"aaa",
+	"aaa"},{{'a',Items::ID::mCopperIngot,0}});
+	addShapedRecipe(ItemInstance(Blocks::ID::mMetal,1,3),{
+	"aaa",
+	"aaa",
+	"aaa"},{{'a',Items::ID::mLeadIngot,0}});
+	//Ingots
+	addShapelessRecipe(ItemInstance(Items::ID::mTinIngot,9,0),
+	{{Blocks::ID::mMetal,0}});
+	addShapelessRecipe(ItemInstance(Items::ID::mSteelIngot,9,0),
+	{{Blocks::ID::mMetal,1}});
+	addShapelessRecipe(ItemInstance(Items::ID::mCopperIngot,9,0),
+	{{Blocks::ID::mMetal,2}});
+	addShapelessRecipe(ItemInstance(Items::ID::mLeadIngot,9,0),
+	{{Blocks::ID::mMetal,3}});
 	//Bronze plate
-	addShapelessRecipe(ItemInstance(Items::ID::mBronzePlate,0,1),
-	{{Items::ID::mBronzeIngot,-1}});
+	addShapelessRecipe(ItemInstance(Items::ID::mBronzePlate,1,0),
+	{{Items::ID::mBronzeIngot,-1},{Items::ID::mForgeHammer,-1}});
+	//Steel plate
+	addShapelessRecipe(ItemInstance(Items::ID::mSteelPlate,1,0),
+	{{Items::ID::mSteelIngot,-1},{Items::ID::mForgeHammer,-1}});
+	//Iron plate
+	addShapelessRecipe(ItemInstance(Items::ID::mIronPlate,1,0),
+	{{265,-1},{Items::ID::mForgeHammer,-1}});
+	//Tin plate
+	addShapelessRecipe(ItemInstance(Items::ID::mTinPlate,1,0),
+	{{Items::ID::mTinIngot,-1},{Items::ID::mForgeHammer,-1}});
+	//Lead plate
+	addShapelessRecipe(ItemInstance(Items::ID::mLeadPlate,1,0),
+	{{Items::ID::mLeadIngot,-1},{Items::ID::mForgeHammer,-1}});
+	//Gold plate
+	addShapelessRecipe(ItemInstance(Items::ID::mGoldPlate,1,0),
+	{{266,-1},{Items::ID::mForgeHammer,-1}});
+	//Copper plate
+	addShapelessRecipe(ItemInstance(Items::ID::mCopperPlate,1,0),
+	{{Items::ID::mCopperIngot,-1},{Items::ID::mForgeHammer,-1}});
+	//Lapis plate
+	addShapelessRecipe(ItemInstance(Items::ID::mLapisPlate,1,0),
+	{{351,4},{Items::ID::mForgeHammer,-1}});
+	//Obsidian plate
+	addShapelessRecipe(ItemInstance(Items::ID::mObsidianPlate,1,0),
+	{{49,-1},{Items::ID::mForgeHammer,-1}});
+	
 }
 void ICRecipes::addFurnaceRecipes()
 {
 	using namespace IC;
 	
-	addFurnaceRecipe(Items::ID::mResin,0,Items::ID::mRubber,0);
-	
+	addFurnaceRecipe(Items::ID::mResin,-1,Items::ID::mRubber,0);
+	addFurnaceRecipe(Blocks::ID::mRubberWood,-1,263,1);
+	addFurnaceRecipe(Blocks::ID::mOre,0,Items::ID::mTinIngot,0);
+	addFurnaceRecipe(Blocks::ID::mOre,1,Items::ID::mCopperIngot,0);
+	addFurnaceRecipe(Blocks::ID::mOre,2,Items::ID::mLeadIngot,0);
 }
 void ICRecipes::addShapelessRecipe(ItemInstance const&item,std::vector<ShapelessItemInstance> const&items)
 {
@@ -166,5 +220,8 @@ void ICRecipes::addShapedRecipe(ItemInstance const&item,std::vector<std::string>
 }
 void ICRecipes::addFurnaceRecipe(short id,short aux,short toid,short toaux)
 {
-	ru.addFurnaceRecipe(id,aux,toid,toaux);
+	if(aux==-1)
+		ru.addFurnaceRecipe(id,toid,toaux);
+	else
+		ru.addFurnaceRecipe(id,aux,toid,toaux);
 }

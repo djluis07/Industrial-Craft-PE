@@ -8,7 +8,11 @@
 
 bool CableTessellator::tessellate(Block const&b,BlockPos const&pos,unsigned char aux,bool wtf)
 {
-	float defaultDistance=CableUtil::isGlassCable(aux)?0.375:0.3125;
+	float defaultDistance=0.3125;
+	if(CableUtil::isGlassCable(aux))
+		defaultDistance=0.375;
+	else if(CableUtil::isHeavyCable(aux))
+		defaultDistance=0.25;
 	
 	unsigned char maux=((CableBlockEntity*)blockSource->getICBlockEntity(pos))->getTextureAux();
 	

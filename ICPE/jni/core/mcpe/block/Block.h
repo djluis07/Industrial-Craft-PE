@@ -34,11 +34,7 @@ typedef unsigned char uchar;
 class Block
 {
 public:
-	
-	
 	//unknow fields,just keep 0.16's
-	
-	
 	uint8_t blockId; // 4
 	std::string name; // 12
 	bool replaceable;

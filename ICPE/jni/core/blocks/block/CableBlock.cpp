@@ -18,14 +18,18 @@
 #include "ICPE.h"
 
 CableBlock::CableBlock():
-ICEntityBlock("ic.cable.tin",IC::Blocks::ID::mCable,Material::getMaterial(MaterialType::DEVICE))
+ICEntityBlock("ic.cable",IC::Blocks::ID::mCable,Material::getMaterial(MaterialType::DEVICE))
 {
 	init();
 	setSolid(false);
 }
 void CableBlock::addCollisionShapes(BlockSource&s, BlockPos const&pos, AABB const*pAABB, std::vector<AABB, std::allocator<AABB> >&list,Entity*) const
 {
-	float defaultDistance=CableUtil::isGlassCable(s.getData(pos))?0.375:0.3125;
+	float defaultDistance=0.3125;
+	if(CableUtil::isGlassCable(s.getData(pos)))
+		defaultDistance=0.375;
+	else if(CableUtil::isHeavyCable(s.getData(pos)))
+		defaultDistance=0.25;
 	
 	if(CableUtil::canConnectTo(s,pos,{pos.x,pos.y+1,pos.z}))
 		list.push_back({pos.x+defaultDistance,pos.y+1-defaultDistance,pos.z+defaultDistance,pos.x+1-defaultDistance,pos.y+1,pos.z+1-defaultDistance});

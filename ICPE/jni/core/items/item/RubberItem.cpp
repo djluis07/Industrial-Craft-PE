@@ -4,7 +4,7 @@
 
 #include "blocks/Blocks.h"
 
-RubberItem::RubberItem():IC::Items("ic.rubber.0",IC::Items::ID::mRubber-0x100)
+RubberItem::RubberItem():IC::Items("ic.rubber",IC::Items::ID::mRubber-0x100)
 {
 	setCategory(CreativeItemCategory::ITEMS);
 	setIcon("icpe_rubber",0);

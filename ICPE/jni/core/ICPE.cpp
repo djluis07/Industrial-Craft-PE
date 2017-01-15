@@ -20,6 +20,7 @@
 #include "mcpe/block/Block.h"
 #include "mcpe/block/BlockGraphics.h"
 #include "mcpe/block/blocks/FlowerPotBlock.h"
+#include "mcpe/blockentity/FurnaceBlockEntity.h"
 #include "mcpe/client/MinecraftClient.h"
 #include "mcpe/client/Minecraft.h"
 #include "mcpe/client/resources/Localization.h"
@@ -98,6 +99,7 @@ void (*ICPE::saveLevel_)(Level*)=0;
 void (*ICPE::leaveGame_)(MinecraftClient*,bool)=0;
 void (*ICPE::onChunkDiscarded_)(BlockSource*,LevelChunk&)=0;
 void (*ICPE::onChunkLoaded_)(Level*,Player&,LevelChunk&)=0;
+float (*ICPE::getBurnDuration_)(ItemInstance const*)=0;
 
 MinecraftClient* ICPE::pMinecraftClient=0;
 Level* ICPE::pLevel=0;
@@ -109,6 +111,28 @@ UIScreenChooser ICPE::mUIScreenChooser;
 Random ICPE::mRandom;
 const int ICPE::localKeyCode=3497615802;
 
+float ICPE::getBurnDuration(ItemInstance const*item)
+{
+	if(item)
+	{
+		if(item->getId()==IC::Blocks::ID::mRubberSapling)
+		{
+			ItemInstance saplingitem(6,1,0);
+			return getBurnDuration_(&saplingitem);
+		}
+		else if(item->getId()==IC::Blocks::ID::mRubberWood)
+		{
+			ItemInstance wooditem(17,1,0);
+			return getBurnDuration_(&wooditem);
+		}
+		else if(item->getId()==IC::Items::ID::mTreeTap)
+		{
+			ItemInstance wooditem(269,1,0);
+			return getBurnDuration_(&wooditem);
+		}
+	}
+	return getBurnDuration_(item);
+}
 void ICPE::loadLocalization(Localization *self, const std::string &languageName)
 {
 	loadLocalization_(self,languageName);

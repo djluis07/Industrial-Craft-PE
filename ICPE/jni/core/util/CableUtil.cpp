@@ -36,6 +36,10 @@ bool CableUtil::isSplitterCable(unsigned char aux)
 {
 	return aux==14||aux==15;
 }
+bool CableUtil::isHeavyCable(unsigned char aux)
+{
+	return aux==10;
+}
 int CableUtil::getDropItemID(unsigned char aux)
 {
 	if(aux==0)

@@ -8,4 +8,5 @@ public:
 	MetalBlock();
 public:
 	virtual bool isAnyAuxValueInRecipe()const;
+	virtual std::string buildDescriptionName(unsigned char) const;
 };

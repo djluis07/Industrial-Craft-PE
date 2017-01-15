@@ -14,7 +14,8 @@ obj/local/armeabi-v7a/objs/icpe_core/blocks/block/MetalBlock.o: \
  jni/core/mcpe/block/BlockShape.h \
  jni/core/mcpe/item/CreativeItemCategory.h \
  jni/core/mcpe/block/BlockSoundType.h \
- jni/core/mcpe/block/BlockSupportType.h
+ jni/core/mcpe/block/BlockSupportType.h \
+ jni/core/mcpe/client/resources/I18n.h
 
 jni/core/blocks/block/MetalBlock.h:
 
@@ -57,3 +58,5 @@ jni/core/mcpe/item/CreativeItemCategory.h:
 jni/core/mcpe/block/BlockSoundType.h:
 
 jni/core/mcpe/block/BlockSupportType.h:
+
+jni/core/mcpe/client/resources/I18n.h:

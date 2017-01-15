@@ -12,7 +12,6 @@ public:
 	class ID
 	{
 	public:
-		static const short mUranium=500;
 		static const short mPainter=501;
 		static const short mRubber=502;
 		static const short mTreeTap=503;

@@ -38,6 +38,11 @@ void RecipeUtil::addFurnaceRecipe(short id,short idaux,short toId,short toaux)
 	ItemInstance const i(toId,1,toaux);
 	fr -> addFurnaceRecipeAuxData(id,idaux,i);
 }
+void RecipeUtil::addFurnaceRecipe(short id,short toId,short toaux)
+{
+	ItemInstance const i(toId,1,toaux);
+	fr -> addFurnaceRecipe(id,i);
+}
 void RecipeUtil::addShapelessRecipe(ItemInstance const&res)
 {
 	r -> addShapelessRecipe(res,ingredients);

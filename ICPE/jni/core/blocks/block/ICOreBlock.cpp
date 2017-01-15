@@ -17,13 +17,15 @@ std::string ICOreBlock::buildDescriptionName(unsigned char aux) const
 	{
 	case 0:
 	default:
-		return I18n::get("ic.ore.tin");
+		return I18n::get("tile.ic.ore.tin.name");
 	case 1:
-		return I18n::get("ic.ore.copper");
+		return I18n::get("tile.ic.ore.copper.name");
 	case 2:
-		return I18n::get("ic.ore.lead");
+		return I18n::get("tile.ic.ore.lead.name");
 	case 3:
-		return I18n::get("ic.ore.uranium");
+		return I18n::get("tile.ic.ore.uranium.name");
+	case 4:
+		return I18n::get("tile.ic.basalt.name");
 	}
 }
 int ICOreBlock::getSpawnResourcesAuxValue(unsigned char aux)const

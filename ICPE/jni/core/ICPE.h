@@ -22,6 +22,7 @@ class ICOptions;
 class UIScreenChooser;
 class Random;
 class BiomeDecorator;
+class ItemInstance;
 class Biome;
 class BlockSource;
 class FlowerPotBlock;
@@ -54,6 +55,8 @@ public:
 	static void initItems();
 	static void (*initBlockGraphics_)();
 	static void initBlockGraphics();
+	static float (*getBurnDuration_)(ItemInstance const*);
+	static float getBurnDuration(ItemInstance const*);
 	static void (*initBlocks_)();
 	static void initBlocks();
 	static void (*leaveGame_)(MinecraftClient*,bool);

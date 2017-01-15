@@ -10,7 +10,6 @@
 
 #include "item/base/ICDefaultItem.h"
 #include "item/battery/SingleUseBatteryItem.h"
-#include "item/UraniumItem.h"
 #include "item/RubberItem.h"
 #include "item/ResinItem.h"
 #include "item/TreeTapItem.h"
@@ -44,11 +43,10 @@ void Items::addICCreativeItems()
 	Item::addCreativeItem(IC::Blocks::ID::mOre,1);
 	Item::addCreativeItem(IC::Blocks::ID::mOre,2);
 	Item::addCreativeItem(IC::Blocks::ID::mOre,3);
+	Item::addCreativeItem(IC::Blocks::ID::mOre,4);
 	Item::addCreativeItem(IC::Blocks::ID::mRubberSapling,0);
 	Item::addCreativeItem(IC::Blocks::ID::mITNT,0);
 	Item::addCreativeItem(IC::Blocks::ID::mRubberWood,0);
-	Item::addCreativeItem(IC::Blocks::ID::mRubberWood,1);
-	Item::addCreativeItem(IC::Blocks::ID::mRubberWood,2);
 	Item::addCreativeItem(IC::Blocks::ID::mRubberLeaves,0);
 	Item::addCreativeItem(IC::Blocks::ID::mIronFence,0);
 	Item::addCreativeItem(IC::Blocks::ID::mIronFurnace,0);
@@ -256,14 +254,14 @@ void Items::initICItems()
 	registerItem(ID::mSmallLeadDust,"ic.dust.small.lead","icpe_small_du_lead",0);
 	registerItem(ID::mSmallObsidianDust,"ic.dust.small.obsidian","icpe_small_du_obsidian",0);
 	registerItem(ID::mSmallLithiumDust,"ic.dust.small.lithium","icpe_small_du_lithium",0);
-	registerItem(ID::mSmallSilverDust,"ic.dust.small.sliver","icpe_small_du_silver",0);
+	registerItem(ID::mSmallSilverDust,"ic.dust.small.silver","icpe_small_du_silver",0);
 	registerItem(ID::mSmallSulfurDust,"ic.dust.small.sulfur","icpe_small_du_sulfur",0);
 	registerItem(ID::mSmallTinDust,"ic.dust.small.tin","icpe_small_du_tin",0);
 	registerItem(ID::mBlankTFBP,"ic.tfbp.blank","icpe_tfbp_blank",0);
 	registerItem(ID::mChillingTFBP,"ic.tfbp.chilling","icpe_tfbp_chilling",0);
 	registerItem(ID::mCultivationTFBP,"ic.tfbp.cultivation","icpe_tfbp_cultivation",0);
 	registerItem(ID::mDesertificationTFBP,"ic.tfbp.desertification","icpe_tfbp_desertification",0);
-	registerItem(ID::mFlatificationTFBP,"ic.tfbp.flatfication","icpe_tfbp_flatification",0);
+	registerItem(ID::mFlatificationTFBP,"ic.tfbp.flatification","icpe_tfbp_flatification",0);
 	registerItem(ID::mIrrigationTFBP,"ic.tfbp.irrigation","icpe_tfbp_irrigation",0);
 	registerItem(ID::mMushroomTFBP,"ic.tfbp.mushroom","icpe_tfbp_mushroom",0);
 	registerItem(ID::mCrushedCopper,"ic.crushed.copper","icpe_cr_copper",0);
@@ -318,17 +316,17 @@ void Items::initICItems()
 	Item::mItems[ID::mBronzeSword]=new BronzeSwordItem();
 	Item::mItems[ID::mBronzePickAxe]=new BronzePickAxeItem();
 	Item::mItems[ID::mBronzeAxe]=new BronzeAxeItem();
-	Item::mItems[ID::mTinCable0]=new CableItem("ic.cable.tin",ID::mTinCable0-0x100,"icpe_tin_cable",0);
-	Item::mItems[ID::mTinCable1]=new CableItem("ic.cable.tin",ID::mTinCable1-0x100,"icpe_tin_cable",1);
-	Item::mItems[ID::mIronCable0]=new CableItem("ic.cable.iron",ID::mIronCable0-0x100,"icpe_iron_cable",0);
-	Item::mItems[ID::mIronCable1]=new CableItem("ic.cable.iron",ID::mIronCable1-0x100,"icpe_iron_cable",1);
-	Item::mItems[ID::mIronCable2]=new CableItem("ic.cable.iron",ID::mIronCable2-0x100,"icpe_iron_cable",2);
-	Item::mItems[ID::mIronCable3]=new CableItem("ic.cable.iron",ID::mIronCable3-0x100,"icpe_iron_cable",3);
-	Item::mItems[ID::mGoldCable0]=new CableItem("ic.cable.gold",ID::mGoldCable0-0x100,"icpe_gold_cable",0);
-	Item::mItems[ID::mGoldCable1]=new CableItem("ic.cable.gold",ID::mGoldCable1-0x100,"icpe_gold_cable",1);
-	Item::mItems[ID::mGoldCable2]=new CableItem("ic.cable.gold",ID::mGoldCable2-0x100,"icpe_gold_cable",2);
-	Item::mItems[ID::mCopperCable0]=new CableItem("ic.cable.copper",ID::mCopperCable0-0x100,"icpe_copper_cable",0);
-	Item::mItems[ID::mCopperCable1]=new CableItem("ic.cable.copper",ID::mCopperCable1-0x100,"icpe_copper_cable",1);
+	Item::mItems[ID::mTinCable0]=new CableItem("ic.cable.tin.0",ID::mTinCable0-0x100,"icpe_tin_cable",0);
+	Item::mItems[ID::mTinCable1]=new CableItem("ic.cable.tin.1",ID::mTinCable1-0x100,"icpe_tin_cable",1);
+	Item::mItems[ID::mIronCable0]=new CableItem("ic.cable.iron.0",ID::mIronCable0-0x100,"icpe_iron_cable",0);
+	Item::mItems[ID::mIronCable1]=new CableItem("ic.cable.iron.1",ID::mIronCable1-0x100,"icpe_iron_cable",1);
+	Item::mItems[ID::mIronCable2]=new CableItem("ic.cable.iron.2",ID::mIronCable2-0x100,"icpe_iron_cable",2);
+	Item::mItems[ID::mIronCable3]=new CableItem("ic.cable.iron.3",ID::mIronCable3-0x100,"icpe_iron_cable",3);
+	Item::mItems[ID::mGoldCable0]=new CableItem("ic.cable.gold.0",ID::mGoldCable0-0x100,"icpe_gold_cable",0);
+	Item::mItems[ID::mGoldCable1]=new CableItem("ic.cable.gold.1",ID::mGoldCable1-0x100,"icpe_gold_cable",1);
+	Item::mItems[ID::mGoldCable2]=new CableItem("ic.cable.gold.2",ID::mGoldCable2-0x100,"icpe_gold_cable",2);
+	Item::mItems[ID::mCopperCable0]=new CableItem("ic.cable.copper.0",ID::mCopperCable0-0x100,"icpe_copper_cable",0);
+	Item::mItems[ID::mCopperCable1]=new CableItem("ic.cable.copper.1",ID::mCopperCable1-0x100,"icpe_copper_cable",1);
 	Item::mItems[ID::mDetectorCable]=new CableItem("ic.cable.detector",ID::mDetectorCable-0x100,"icpe_detector_cable",0);
 	Item::mItems[ID::mGlassCable]=new CableItem("ic.cable.glass",ID::mGlassCable-0x100,"icpe_glass_cable",0);
 	Item::mItems[ID::mSplitterCable]=new CableItem("ic.cable.splitter",ID::mSplitterCable-0x100,"icpe_splitter_cable",0);
