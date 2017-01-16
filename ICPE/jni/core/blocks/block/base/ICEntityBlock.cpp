@@ -16,7 +16,6 @@ bool ICEntityBlock::isICEntityBlock()const
 void ICEntityBlock::onLoaded(BlockSource&s, BlockPos const&pos) const
 {
 	ICPE::mBlockEntityManager.load(s,pos);
-	
 }
 void ICEntityBlock::onPlace(BlockSource&s, BlockPos const&pos) const
 {

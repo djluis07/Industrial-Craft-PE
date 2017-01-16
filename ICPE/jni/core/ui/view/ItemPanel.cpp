@@ -3,7 +3,7 @@
 #include "mcpe/client/MinecraftClient.h"
 #include "mcpe/client/gui/IntRectangle.h"
 #include "mcpe/client/gui/Font.h"
-#include "mcpe/client/gui/PackedScrollContainer.h"
+#include "mcpe/client/gui/GuiElement.h"
 #include "mcpe/client/renderer/ItemRenderer.h"
 #include "mcpe/util/Util.h"
 
@@ -19,7 +19,7 @@ ItemPanel::ItemPanel(int ID,ItemInstance const&i,int x,int y,MinecraftClient&c)
 	selectedProgress=0;
 	selected=false;
 	
-	background=std::make_shared<PackedScrollContainer>(false,false);
+	background=std::make_shared<GuiElement>(false,false,0,0,0,0);
 	background->xPosition=xPosition;
 	background->yPosition=yPosition;
 	background->width=30;
@@ -44,7 +44,7 @@ bool ItemPanel::getSelected()const
 {
 	return selected;
 }
-std::shared_ptr<PackedScrollContainer> ItemPanel::getBackground()
+std::shared_ptr<GuiElement> ItemPanel::getBackground()
 {
 	return background;
 }
@@ -75,5 +75,13 @@ void ItemPanel::render(MinecraftClient&client)
 void ItemPanel::setSelected(bool b)
 {
 	selected=b;
+}
+int ItemPanel::getID()const
+{
+	return id;
+}
+ItemInstance ItemPanel::getItem()const
+{
+	return item;
 }
 }

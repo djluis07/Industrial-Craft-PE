@@ -18,8 +18,6 @@ obj/local/armeabi-v7a/objs/icpe_core/ui/view/ItemPanel.o: \
  jni/core/mcpe/client/../util/BlockPos.h jni/core/mcpe/client/Realms.h \
  jni/core/mcpe/client/renderer/LevelRenderer.h \
  jni/core/mcpe/client/gui/IntRectangle.h jni/core/mcpe/client/gui/Font.h \
- jni/core/mcpe/client/gui/PackedScrollContainer.h \
- jni/core/mcpe/client/gui/GuiElementContainer.h \
  jni/core/mcpe/client/renderer/ItemRenderer.h \
  jni/core/mcpe/client/renderer/entity/EntityRenderer.h \
  jni/core/mcpe/client/renderer/entity/EntityShaderManager.h \
@@ -75,10 +73,6 @@ jni/core/mcpe/client/renderer/LevelRenderer.h:
 jni/core/mcpe/client/gui/IntRectangle.h:
 
 jni/core/mcpe/client/gui/Font.h:
-
-jni/core/mcpe/client/gui/PackedScrollContainer.h:
-
-jni/core/mcpe/client/gui/GuiElementContainer.h:
 
 jni/core/mcpe/client/renderer/ItemRenderer.h:
 

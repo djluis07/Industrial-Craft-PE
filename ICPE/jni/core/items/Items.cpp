@@ -49,7 +49,7 @@ void Items::addICCreativeItems()
 	Item::addCreativeItem(IC::Blocks::ID::mRubberWood,0);
 	Item::addCreativeItem(IC::Blocks::ID::mRubberLeaves,0);
 	Item::addCreativeItem(IC::Blocks::ID::mIronFence,0);
-	Item::addCreativeItem(IC::Blocks::ID::mIronFurnace,0);
+	Item::addCreativeItem(IC::Blocks::ID::mFurnace,0);
 	Item::addCreativeItem(IC::Blocks::ID::mMetal,0);
 	Item::addCreativeItem(IC::Blocks::ID::mMetal,1);
 	Item::addCreativeItem(IC::Blocks::ID::mMetal,2);
@@ -335,7 +335,7 @@ void Items::initICBlockItems()
 {
 	Item::mItems[IC::Blocks::ID::mMetal]=new AuxDataBlockItem("ic.metal",IC::Blocks::ID::mMetal-0x100,Block::mBlocks[IC::Blocks::ID::mMetal]);
 	Item::mItems[IC::Blocks::ID::mIronFence]=new BlockItem("ic.ironfence",IC::Blocks::ID::mIronFence-0x100);
-	Item::mItems[IC::Blocks::ID::mIronFurnace]=new AuxDataBlockItem("ic.ironfurnace",IC::Blocks::ID::mIronFurnace-0x100,Block::mBlocks[IC::Blocks::ID::mIronFurnace]);
+	Item::mItems[IC::Blocks::ID::mFurnace]=new AuxDataBlockItem("ic.ironfurnace",IC::Blocks::ID::mFurnace-0x100,Block::mBlocks[IC::Blocks::ID::mFurnace]);
 	Item::mItems[IC::Blocks::ID::mCable]=new AuxDataBlockItem("ic.cable",IC::Blocks::ID::mCable-0x100,Block::mBlocks[IC::Blocks::ID::mCable]);
 	Item::mItems[IC::Blocks::ID::mRubberLeaves]=new BlockItem("ic.rubber.leaves",IC::Blocks::ID::mRubberLeaves-0x100);
 	Item::mItems[IC::Blocks::ID::mResin]=new AuxDataBlockItem("ic.resin",IC::Blocks::ID::mResin-0x100,Block::mBlocks[IC::Blocks::ID::mResin]);

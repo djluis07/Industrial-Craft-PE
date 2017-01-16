@@ -19,7 +19,7 @@ public:
 		static const unsigned char mITNT=215;
 		static const unsigned char mResin=216;
 		static const unsigned char mCable=220;
-		static const unsigned char mIronFurnace=218;
+		static const unsigned char mFurnace=218;
 		static const unsigned char mIronFence=219;
 		static const unsigned char mMetal=221;
 	};

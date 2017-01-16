@@ -24,7 +24,7 @@ public:
 	ICBlockEntity(BlockSource&,BlockPos const&,Block const*);
 	~ICBlockEntity()=default;
 public:
-	virtual inline void tick(Level&){}
+	virtual void tick(Level&);
 	virtual void load(mca::ComposedTag &);
 	virtual void save(mca::ComposedTag &);
 	virtual void remove();

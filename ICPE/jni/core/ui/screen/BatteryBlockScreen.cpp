@@ -24,7 +24,7 @@ void BatteryBlockScreen::onInit()
 	int width=mcClient->getGuiData()->getScreenWidth();
 	int height=mcClient->getGuiData()->getScreenHeight();
 	
-	electricityBackground=std::make_shared<PackedScrollContainer>(false,false);
+	electricityBackground=std::make_shared<GuiElement>(false,false,0,0,0,0);
 	electricityBackground->width=width;
 	electricityBackground->height=height;
 	electricityBackground->xPosition=0;

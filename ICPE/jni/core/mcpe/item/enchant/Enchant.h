@@ -12,30 +12,32 @@ class Enchant
 public:
 	void ** vtable;  //0
 public:
-	static Enchant* mEnchants[100];
+	virtual ~Enchant();
+	virtual int getMinCost(int) const;
+	virtual int getMaxCost(int) const;
+	virtual int getMinLevel() const;
+	virtual int getMaxLevel() const;
+	virtual void getDamageProtection(int, EntityDamageSource const&) const;
+	virtual void getDamageBonus(int, Entity const&) const;
+	virtual void doPostAttack(Mob&, Mob&, int) const;
+	virtual void doPostHurt(ItemInstance&, Mob&, Mob&, int) const;
+	virtual bool isMeleeDamageEnchant() const;
+	virtual bool isProtectionEnchant() const;
 public:
-	Enchant(int,int,std::string const&,int,int);
-	~Enchant();
+	Enchant(int, int, std::string const&, std::string const&, int, int);
+	std::string getStringId() const;
+	bool canEnchant(ItemInstance const&) const;
+	bool canEnchant(int) const;
+	int getFrequency() const;
+	std::string getDescription() const;
+	bool isCompatibleWith(int) const;
+	bool canPrimaryEnchant(ItemInstance const&) const;
+	bool canPrimaryEnchant(int) const;
+	bool canSecondaryEnchant(ItemInstance const&) const;
+	bool canSecondaryEnchant(int) const;
+public:
 	static void initEnchants();
+	static void teardownEnchants();
 public:
-	virtual bool canEnchant(int)const;
-	virtual bool canEnchant(ItemInstance const&)const;
-	virtual int getMinCost(int)const;
-	virtual int getMaxCost(int)const;
-	virtual int getMinLevel()const;
-	virtual int getMaxLevel()const;
-	virtual void /*?*/ getDamageBonus(int,Entity const&)const; 
-	virtual void doPostAttack(Mob&,Mob&,int)const; 
-	virtual bool isMeleeDamageEnchant()const;
-	virtual void /*?*/ getDamageProtection(int,EntityDamageSource const&)const; 
-	virtual void doPostHurt(ItemInstance&,Mob&,Mob&,int)const; 
-	virtual bool isProtectionEnchant()const;
-	virtual void /*?*/ getFrequency()const; 
-	virtual bool isCompatibleWith(int)const; 
-	virtual void /*?*/ getDescription()const; 
-	virtual bool canPrimaryEnchant(int)const; 
-	virtual bool canPrimaryEnchant(ItemInstance const&)const; 
-	virtual bool canSecondaryEnchant(int)const; 
-	virtual bool canSecondaryEnchant(ItemInstance const&)const;
-	virtual void teardownEnchants();
+	static Enchant* mEnchants[72];
 };

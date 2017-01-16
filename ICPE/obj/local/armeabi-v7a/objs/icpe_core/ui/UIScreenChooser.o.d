@@ -24,7 +24,7 @@ obj/local/armeabi-v7a/objs/icpe_core/ui/UIScreenChooser.o: \
  jni/core/ui/view/ItemPanel.h jni/core/mcpe/client/gui/TButton.h \
  jni/core/mcpe/client/gui/Button.h jni/core/mcpe/client/gui/GuiElement.h \
  jni/core/mcpe/client/gui/../../util/Color.h \
- jni/core/ui/screen/GuideBookScreen.h
+ jni/core/ui/screen/IronFurnaceScreen.h
 
 jni/core/ui/UIScreenChooser.h:
 
@@ -86,4 +86,4 @@ jni/core/mcpe/client/gui/GuiElement.h:
 
 jni/core/mcpe/client/gui/../../util/Color.h:
 
-jni/core/ui/screen/GuideBookScreen.h:
+jni/core/ui/screen/IronFurnaceScreen.h:

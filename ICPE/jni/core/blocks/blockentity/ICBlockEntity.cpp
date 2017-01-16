@@ -34,3 +34,7 @@ void ICBlockEntity::update()
 {
 	ICPE::pMinecraftClient->getLevelRenderer()->onAreaChanged(source,{pos.x-8,pos.y-8,pos.z-8},{pos.x+8,pos.y+8,pos.z+8});
 }
+void ICBlockEntity::tick(Level&)
+{
+	
+}

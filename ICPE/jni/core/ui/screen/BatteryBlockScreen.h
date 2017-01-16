@@ -5,7 +5,7 @@
 class BatteryBlockScreen : public BaseContainerScreen
 {
 protected:
-	std::shared_ptr<PackedScrollContainer> electricityBackground;
+	std::shared_ptr<GuiElement> electricityBackground;
 	BlockPos blockPos;
 public:
 	BatteryBlockScreen(MinecraftClient&,BlockSource&,BlockPos const&,Player&);

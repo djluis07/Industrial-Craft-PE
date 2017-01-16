@@ -12,7 +12,7 @@
 #include "block/ResinBlock.h"
 #include "block/RubberLeavesBlock.h"
 #include "block/CableBlock.h"
-#include "block/IronFurnaceBlock.h"
+#include "block/ICFurnaceBlock.h"
 #include "block/IronFenceBlock.h"
 
 bool IC::Blocks::mICBlocks[256];
@@ -24,7 +24,7 @@ void Blocks::initICBlocks()
 	for(bool & block : mICBlocks)
 		block=false;
 	
-	Block::mBlocks[ID::mIronFurnace]=new IronFurnaceBlock();
+	Block::mBlocks[ID::mFurnace]=new ICFurnaceBlock();
 	Block::mBlocks[ID::mCable]=new CableBlock();
 	Block::mBlocks[ID::mRubberLeaves]=new RubberLeavesBlock();
 	Block::mBlocks[ID::mResin]=new ResinBlock();

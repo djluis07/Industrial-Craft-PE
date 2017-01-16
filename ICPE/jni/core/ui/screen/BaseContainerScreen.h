@@ -13,7 +13,7 @@ class BlockSource;
 class Button;
 class Label;
 class Player;
-class PackedScrollContainer;
+class GuiElement;
 class ItemInstance;
 class MovingItemRenderer;
 
@@ -26,11 +26,11 @@ protected:
 	std::string headerName;
 	std::shared_ptr<Touch::THeader> header;
 	std::shared_ptr<Touch::TButton> buttonClose;
-	std::shared_ptr<PackedScrollContainer> background;
-	std::shared_ptr<PackedScrollContainer> closeBackground;
-	std::shared_ptr<PackedScrollContainer> closeBackground_pressed;
-	std::shared_ptr<PackedScrollContainer> backgroundSelected;
-	std::shared_ptr<PackedScrollContainer> itemSlotDarkBackground;
+	std::shared_ptr<GuiElement> background;
+	std::shared_ptr<GuiElement> closeBackground;
+	std::shared_ptr<GuiElement> closeBackground_pressed;
+	std::shared_ptr<GuiElement> backgroundSelected;
+	std::shared_ptr<GuiElement> itemSlotDarkBackground;
 protected:
 	std::vector<std::shared_ptr<MovingItemRenderer> > movingItems;
 	std::vector<std::shared_ptr<IC::ItemPanel> > itemPanels;
@@ -40,8 +40,8 @@ protected:
 	float itemTextTimer;
 	ItemInstance itemTextInstance;
 public:
-	BlockSource*source;
-	Player*player;
+	BlockSource&source;
+	Player&player;
 public:
 	BaseContainerScreen(MinecraftClient&,BlockSource&,Player&,std::string const&);
 	~BaseContainerScreen()=default;

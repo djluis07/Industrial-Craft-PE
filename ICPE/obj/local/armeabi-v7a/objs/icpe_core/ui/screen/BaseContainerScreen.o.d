@@ -25,8 +25,6 @@ obj/local/armeabi-v7a/objs/icpe_core/ui/screen/BaseContainerScreen.o: \
  jni/core/mcpe/client/gui/GuiData.h \
  jni/core/mcpe/client/gui/../settings/IConfigListener.h \
  jni/core/mcpe/client/gui/THeader.h jni/core/mcpe/client/gui/Label.h \
- jni/core/mcpe/client/gui/PackedScrollContainer.h \
- jni/core/mcpe/client/gui/GuiElementContainer.h \
  jni/core/mcpe/client/gui/IntRectangle.h jni/core/mcpe/client/gui/Font.h \
  jni/core/mcpe/client/gui/screen/ScreenChooser.h \
  jni/core/mcpe/client/renderer/ItemRenderer.h \
@@ -124,10 +122,6 @@ jni/core/mcpe/client/gui/../settings/IConfigListener.h:
 jni/core/mcpe/client/gui/THeader.h:
 
 jni/core/mcpe/client/gui/Label.h:
-
-jni/core/mcpe/client/gui/PackedScrollContainer.h:
-
-jni/core/mcpe/client/gui/GuiElementContainer.h:
 
 jni/core/mcpe/client/gui/IntRectangle.h:
 

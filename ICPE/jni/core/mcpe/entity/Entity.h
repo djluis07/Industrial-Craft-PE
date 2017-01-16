@@ -234,7 +234,7 @@ public:
 	virtual void saveWithoutId(CompoundTag&);
 	virtual void load(CompoundTag const&);
 	virtual void loadLinks(CompoundTag const&, std::vector<EntityLink, std::allocator<EntityLink> >&);
-	//pure virtual method
+	virtual EntityType getEntityTypeId()const=0;
 	virtual void acceptClientsideEntityData(Player&, SetEntityDataPacket const&);
 	virtual void queryEntityRenderer();
 	virtual void getSourceUniqueID() const;

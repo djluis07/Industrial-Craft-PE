@@ -2,7 +2,8 @@
 
 #include "GuiElement.h"
 
-class Button : public GuiElement {
+class Button : public GuiElement
+{
 public:
 	char filler [96 - 46]; // 46
 	std::string msg; // 96

@@ -14,6 +14,6 @@ public:
 	UIScreenChooser(MinecraftClient&);
 	~UIScreenChooser()=default;
 public:
-	void pushGuideBookScreen();
-	void pushBatteryBlockScreen(BlockSource&,BlockPos const&,Player&);
+	void pushIronFurnaceScreen(Player&,BlockPos const&);
+	void pushBatBoxScreen(BlockSource&,BlockPos const&,Player&);
 };

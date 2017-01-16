@@ -115,7 +115,7 @@ void ICRecipes::addItemRecipes()
 	"aba",
 	"aaa"},{{'a',Items::ID::mCopperCable0,0},{'b',265,0}});
 	//Iron furnace
-	addShapedRecipe(ItemInstance(Blocks::ID::mIronFurnace,1,0),{
+	addShapedRecipe(ItemInstance(Blocks::ID::mFurnace,1,0),{
 	" a ",
 	"a a",
 	"aba"},{{'a',Items::ID::mIronPlate,0},{'b',61,0}});
