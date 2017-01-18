@@ -25,7 +25,7 @@ void BlockGraphics::initBlockGraphics()
 	MCPEBlockGraphics::mBlocks[IC::Blocks::ID::mITNT]->setSoundType(BlockSoundType::GRASS);
 	
 	MCPEBlockGraphics::mBlocks[IC::Blocks::ID::mRubberWood]=new MCPEBlockGraphics("dirt");
-	MCPEBlockGraphics::mBlocks[IC::Blocks::ID::mRubberWood]->setTextureItem("icpe_rubber_wood_bottom","icpe_rubber_wood_bottom","icpe_rubber_side0","icpe_rubber_side2","icpe_rubber_side1","icpe_rubber_side3");
+	MCPEBlockGraphics::mBlocks[IC::Blocks::ID::mRubberWood]->setTextureItem("icpe_rubberwood_top","icpe_rubberwood_top","icpe_rubberwood_side","icpe_rubberwood_side","icpe_rubberwood_side","icpe_rubberwood_side");
 	MCPEBlockGraphics::mBlocks[IC::Blocks::ID::mRubberWood]->setSoundType(BlockSoundType::WOOD);
 	
 	MCPEBlockGraphics::mBlocks[IC::Blocks::ID::mResin]=new MCPEBlockGraphics("portal");
@@ -53,7 +53,7 @@ void BlockGraphics::initBlockGraphics()
 	MCPEBlockGraphics::mBlocks[IC::Blocks::ID::mIronFence]->setSoundType(BlockSoundType::STONE);
 	
 	MCPEBlockGraphics::mBlocks[IC::Blocks::ID::mMetal]=new MCPEBlockGraphics("dirt");
-	MCPEBlockGraphics::mBlocks[IC::Blocks::ID::mMetal]->setTextureItem("icpe_metal_block");
+	MCPEBlockGraphics::mBlocks[IC::Blocks::ID::mMetal]->setTextureItem("icpe_metal_block","icpe_metal_block","icpe_metal_block_side");
 	MCPEBlockGraphics::mBlocks[IC::Blocks::ID::mMetal]->setSoundType(BlockSoundType::STONE);
 }
 }

@@ -31,5 +31,9 @@ std::string MetalBlock::buildDescriptionName(unsigned char aux) const
 		return I18n::get("tile.ic.machine.name");
 	case 5:
 		return I18n::get("tile.ic.advanced_machine.name");
+	case 6:
+		return I18n::get("tile.ic.metal.bronze.name");
+	case 7:
+		return I18n::get("tile.ic.metal.uranium.name");
 	}
 }

@@ -56,6 +56,8 @@ void Items::addICCreativeItems()
 	Item::addCreativeItem(IC::Blocks::ID::mMetal,3);
 	Item::addCreativeItem(IC::Blocks::ID::mMetal,4);
 	Item::addCreativeItem(IC::Blocks::ID::mMetal,5);
+	Item::addCreativeItem(IC::Blocks::ID::mMetal,6);
+	Item::addCreativeItem(IC::Blocks::ID::mMetal,7);
 	
 	Item::addCreativeItem(ID::mPainter,0);
 	Item::addCreativeItem(ID::mResin,0);
@@ -193,6 +195,38 @@ void Items::addICCreativeItems()
 	Item::addCreativeItem(ID::mBronzeAxe,0);
 	Item::addCreativeItem(ID::mBronzeSword,0);
 	Item::addCreativeItem(ID::mBronzeHoe,0);
+	Item::addCreativeItem(ID::mEjector,0);
+	Item::addCreativeItem(ID::mEjectorUp,0);
+	Item::addCreativeItem(ID::mEjectorDown,0);
+	Item::addCreativeItem(ID::mEjectorEast,0);
+	Item::addCreativeItem(ID::mEjectorWest,0);
+	Item::addCreativeItem(ID::mEjectorNorth,0);
+	Item::addCreativeItem(ID::mEjectorSouth,0);
+	Item::addCreativeItem(ID::mFluidEjector,0);
+	Item::addCreativeItem(ID::mFluidEjectorUp,0);
+	Item::addCreativeItem(ID::mFluidEjectorDown,0);
+	Item::addCreativeItem(ID::mFluidEjectorEast,0);
+	Item::addCreativeItem(ID::mFluidEjectorWest,0);
+	Item::addCreativeItem(ID::mFluidEjectorNorth,0);
+	Item::addCreativeItem(ID::mFluidEjectorSouth,0);
+	Item::addCreativeItem(ID::mPulling,0);
+	Item::addCreativeItem(ID::mPullingUp,0);
+	Item::addCreativeItem(ID::mPullingDown,0);
+	Item::addCreativeItem(ID::mPullingEast,0);
+	Item::addCreativeItem(ID::mPullingWest,0);
+	Item::addCreativeItem(ID::mPullingNorth,0);
+	Item::addCreativeItem(ID::mPullingSouth,0);
+	Item::addCreativeItem(ID::mFluidPulling,0);
+	Item::addCreativeItem(ID::mFluidPullingUp,0);
+	Item::addCreativeItem(ID::mFluidPullingDown,0);
+	Item::addCreativeItem(ID::mFluidPullingEast,0);
+	Item::addCreativeItem(ID::mFluidPullingWest,0);
+	Item::addCreativeItem(ID::mFluidPullingNorth,0);
+	Item::addCreativeItem(ID::mFluidPullingSouth,0);
+	Item::addCreativeItem(ID::mTransformer,0);
+	Item::addCreativeItem(ID::mRedstoneInverter,0);
+	Item::addCreativeItem(ID::mOverclocker,0);
+	Item::addCreativeItem(ID::mEnergyStorage,0);
 }
 void Items::initICItems()
 {
@@ -285,7 +319,39 @@ void Items::initICItems()
 	registerItem(ID::mCasingLead,"ic.casing.lead","icpe_ca_lead",0);
 	registerItem(ID::mCasingSteel,"ic.casing.steel","icpe_ca_steel",0);
 	registerItem(ID::mCasingTin,"ic.casing.tin","icpe_ca_tin",0);
-
+	registerItem(ID::mEjector,"ic.ejector","icpe_ejector",0);
+	registerItem(ID::mEjectorUp,"ic.ejector.up","icpe_ejector_up",0);
+	registerItem(ID::mEjectorDown,"ic.ejector.down","icpe_ejector_down",0);
+	registerItem(ID::mEjectorWest,"ic.ejector.west","icpe_ejector_west",0);
+	registerItem(ID::mEjectorNorth,"ic.ejector.north","icpe_ejector_north",0);
+	registerItem(ID::mEjectorSouth,"ic.ejector.south","icpe_ejector_south",0);
+	registerItem(ID::mEjectorEast,"ic.ejector.east","icpe_ejector_east",0);
+	registerItem(ID::mFluidEjector,"ic.ejector.fluid","icpe_fluid_ejector",0);
+	registerItem(ID::mFluidEjectorUp,"ic.ejector.fluid.up","icpe_fluid_ejector_up",0);
+	registerItem(ID::mFluidEjectorDown,"ic.ejector.fluid.down","icpe_fluid_ejector_down",0);
+	registerItem(ID::mFluidEjectorWest,"ic.ejector.fluid.west","icpe_fluid_ejector_west",0);
+	registerItem(ID::mFluidEjectorNorth,"ic.ejector.fluid.north","icpe_fluid_ejector_north",0);
+	registerItem(ID::mFluidEjectorSouth,"ic.ejector.fluid.south","icpe_fluid_ejector_south",0);
+	registerItem(ID::mFluidEjectorEast,"ic.ejector.fluid.east","icpe_fluid_ejector_east",0);
+	registerItem(ID::mFluidPulling,"ic.pulling.fluid","icpe_fluid_pulling",0);
+	registerItem(ID::mFluidPullingUp,"ic.pulling.fluid.up","icpe_fluid_pulling_up",0);
+	registerItem(ID::mFluidPullingDown,"ic.pulling.fluid.down","icpe_fluid_pulling_down",0);
+	registerItem(ID::mFluidPullingWest,"ic.pulling.fluid.west","icpe_fluid_pulling_west",0);
+	registerItem(ID::mFluidPullingNorth,"ic.pulling.fluid.north","icpe_fluid_pulling_north",0);
+	registerItem(ID::mFluidPullingSouth,"ic.pulling.fluid.south","icpe_fluid_pulling_south",0);
+	registerItem(ID::mFluidPullingEast,"ic.pulling.fluid.east","icpe_fluid_pulling_east",0);
+	registerItem(ID::mPulling,"ic.pulling","icpe_pulling",0);
+	registerItem(ID::mPullingUp,"ic.pulling.up","icpe_pulling_up",0);
+	registerItem(ID::mPullingDown,"ic.pulling.down","icpe_pulling_down",0);
+	registerItem(ID::mPullingWest,"ic.pulling.west","icpe_pulling_west",0);
+	registerItem(ID::mPullingNorth,"ic.pulling.north","icpe_pulling_north",0);
+	registerItem(ID::mPullingSouth,"ic.pulling.south","icpe_pulling_south",0);
+	registerItem(ID::mPullingEast,"ic.pulling.east","icpe_pulling_east",0);
+	registerItem(ID::mTransformer,"ic.transformer","icpe_transformer",0);
+	registerItem(ID::mRedstoneInverter,"ic.redstone_inverter","icpe_redstone_inverter",0);
+	registerItem(ID::mOverclocker,"ic.overclocker","icpe_overclocker",0);
+	registerItem(ID::mEnergyStorage,"ic.energy_storage","icpe_energy_storage",0);
+	
 	Item::mItems[ID::mPainterMagenta]=new PainterItem("ic.painter.magenta",ID::mPainterMagenta-0x100,"icpe_painter_magenta");
 	Item::mItems[ID::mPainterPurple]=new PainterItem("ic.painter.purple",ID::mPainterPurple-0x100,"icpe_painter_purple");
 	Item::mItems[ID::mPainterBrown]=new PainterItem("ic.painter.brown",ID::mPainterBrown-0x100,"icpe_painter_brown");

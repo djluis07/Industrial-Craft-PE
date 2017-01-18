@@ -101,6 +101,7 @@ obj/local/armeabi-v7a/objs/icpe_core/ICPE.o: jni/core/ICPE.cpp \
  /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/platforms/android-19/arch-arm/usr/include/machine/endian.h \
  jni/core/blocks/tessellator/CableTessellator.h \
  jni/core/blocks/tessellator/ICFurnaceTessellator.h \
+ jni/core/blocks/tessellator/RubberWoodTessellator.h \
  jni/core/blocks/texture/TextureManager.h jni/core/gen/FeatureGen.h \
  jni/core/ui/UIScreenChooser.h jni/core/util/ICOptions.h \
  jni/core/util/language/zh_CN.h jni/core/util/language/en_US.h
@@ -352,6 +353,8 @@ jni/core/mcpe/util/Util.h:
 jni/core/blocks/tessellator/CableTessellator.h:
 
 jni/core/blocks/tessellator/ICFurnaceTessellator.h:
+
+jni/core/blocks/tessellator/RubberWoodTessellator.h:
 
 jni/core/blocks/texture/TextureManager.h:
 

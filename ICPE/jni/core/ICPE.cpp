@@ -48,6 +48,7 @@
 #include "blocks/blockentity/ICBlockEntityManager.h"
 #include "blocks/tessellator/CableTessellator.h"
 #include "blocks/tessellator/ICFurnaceTessellator.h"
+#include "blocks/tessellator/RubberWoodTessellator.h"
 #include "blocks/texture/TextureManager.h"
 #include "gen/FeatureGen.h"
 #include "ui/UIScreenChooser.h"
@@ -69,7 +70,7 @@ void ICPE::setupMSHookFunctions()
 	
 	MSHookFunction(dlsym(imageRef,"_ZN16BlockTessellator17tessellateInWorldERK5BlockRK8BlockPoshb"),(void*)&tessellateInWorld,(void**)&tessellateInWorld_);
 	MSHookFunction((void*)&MinecraftClient::leaveGame,(void*)&leaveGame,(void**)&leaveGame_);
-	//MSHookFunction((void*)&FurnaceBlockEntity::getBurnDuration,(void*)&getBurnDuration,(void**)&getBurnDuration_);
+	MSHookFunction((void*)&FurnaceBlockEntity::getBurnDuration,(void*)&getBurnDuration,(void**)&getBurnDuration_);
 	MSHookFunction((void*)&Level::onNewChunkFor,(void*)&onChunkLoaded,(void**)&onChunkLoaded_);
 	MSHookFunction((void*)&BlockSource::onChunkDiscarded,(void*)&onChunkDiscarded,(void**)&onChunkDiscarded_);
 	MSHookFunction((void*)&Recipe::isAnyAuxValue,(void*)&isAnyAuxValue,(void**)&isAnyAuxValue_);
@@ -120,7 +121,6 @@ const int ICPE::localKeyCode=3497615802;
 
 float ICPE::getBurnDuration(ItemInstance const*item)
 {
-	LOG_P(Util::toFloatString(getBurnDuration_(item)));
 	if(item)
 	{
 		if(item->getId()==IC::Blocks::ID::mRubberSapling)
@@ -180,6 +180,8 @@ bool ICPE::tessellateInWorld(BlockTessellator*tessellator,Block const&block,Bloc
 {
 	if(&block==Block::mBlocks[IC::Blocks::ID::mCable])
 		return ((CableTessellator*)tessellator)->tessellate(block,pos,aux,wtf);
+	if(&block==Block::mBlocks[IC::Blocks::ID::mRubberWood])
+		return ((RubberWoodTessellator*)tessellator)->tessellate(block,pos,aux,wtf);
 	if(&block==Block::mBlocks[IC::Blocks::ID::mFurnace])
 		return ((ICFurnaceTessellator*)tessellator)->tessellate(block,pos,aux,wtf);
 	return tessellateInWorld_(tessellator,block,pos,aux,wtf);

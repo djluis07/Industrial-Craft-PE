@@ -2,43 +2,55 @@
 
 #include "mcpe/block/BlockGraphics.h"
 
-BlockGraphics* TextureManager::ironFurnaceUnLit0;
-BlockGraphics* TextureManager::ironFurnaceUnLit1;
-BlockGraphics* TextureManager::ironFurnaceUnLit2;
-BlockGraphics* TextureManager::ironFurnaceUnLit3;
-BlockGraphics* TextureManager::ironFurnaceLit0;
-BlockGraphics* TextureManager::ironFurnaceLit1;
-BlockGraphics* TextureManager::ironFurnaceLit2;
-BlockGraphics* TextureManager::ironFurnaceLit3;
+BlockGraphics* TextureManager::ironFurnaceUnLit[4];
+BlockGraphics* TextureManager::ironFurnaceLit[4];
+BlockGraphics* TextureManager::rubberWood[11];
 
 void TextureManager::init()
 {
-	ironFurnaceUnLit0=new BlockGraphics("dirt");
-	ironFurnaceUnLit1=new BlockGraphics("dirt");
-	ironFurnaceUnLit2=new BlockGraphics("dirt");
-	ironFurnaceUnLit3=new BlockGraphics("dirt");
-	ironFurnaceLit0=new BlockGraphics("dirt");
-	ironFurnaceLit1=new BlockGraphics("dirt");
-	ironFurnaceLit2=new BlockGraphics("dirt");
-	ironFurnaceLit3=new BlockGraphics("dirt");
+	ironFurnaceUnLit[0]=new BlockGraphics("dirt");
+	ironFurnaceUnLit[1]=new BlockGraphics("dirt");
+	ironFurnaceUnLit[2]=new BlockGraphics("dirt");
+	ironFurnaceUnLit[3]=new BlockGraphics("dirt");
+	ironFurnaceLit[0]=new BlockGraphics("dirt");
+	ironFurnaceLit[1]=new BlockGraphics("dirt");
+	ironFurnaceLit[2]=new BlockGraphics("dirt");
+	ironFurnaceLit[3]=new BlockGraphics("dirt");
+	rubberWood[0]=new BlockGraphics("dirt");
+	rubberWood[1]=new BlockGraphics("dirt");
+	rubberWood[2]=new BlockGraphics("dirt");
+	rubberWood[3]=new BlockGraphics("dirt");
+	rubberWood[4]=new BlockGraphics("dirt");
+	rubberWood[5]=new BlockGraphics("dirt");
+	rubberWood[6]=new BlockGraphics("dirt");
+	rubberWood[7]=new BlockGraphics("dirt");
+	rubberWood[8]=new BlockGraphics("dirt");
+	rubberWood[9]=new BlockGraphics("dirt");
+	rubberWood[10]=new BlockGraphics("dirt");
 	
-	ironFurnaceUnLit0->setTextureItem("icpe_ironFurnace_top","icpe_ironFurnace_bottom","icpe_ironFurnace_unlit","icpe_ironFurnace_side","icpe_ironFurnace_side","icpe_ironFurnace_side");
-	ironFurnaceUnLit1->setTextureItem("icpe_ironFurnace_top","icpe_ironFurnace_bottom","icpe_ironFurnace_side","icpe_ironFurnace_unlit","icpe_ironFurnace_side","icpe_ironFurnace_side");
-	ironFurnaceUnLit2->setTextureItem("icpe_ironFurnace_top","icpe_ironFurnace_bottom","icpe_ironFurnace_side","icpe_ironFurnace_side","icpe_ironFurnace_unlit","icpe_ironFurnace_side");
-	ironFurnaceUnLit3->setTextureItem("icpe_ironFurnace_top","icpe_ironFurnace_bottom","icpe_ironFurnace_side","icpe_ironFurnace_side","icpe_ironFurnace_side","icpe_ironFurnace_unlit");
-	ironFurnaceLit0->setTextureItem("icpe_ironFurnace_top","icpe_ironFurnace_bottom","icpe_ironFurnace_lit","icpe_ironFurnace_side","icpe_ironFurnace_side","icpe_ironFurnace_side");
-	ironFurnaceLit1->setTextureItem("icpe_ironFurnace_top","icpe_ironFurnace_bottom","icpe_ironFurnace_side","icpe_ironFurnace_lit","icpe_ironFurnace_side","icpe_ironFurnace_side");
-	ironFurnaceLit2->setTextureItem("icpe_ironFurnace_top","icpe_ironFurnace_bottom","icpe_ironFurnace_side","icpe_ironFurnace_side","icpe_ironFurnace_lit","icpe_ironFurnace_side");
-	ironFurnaceLit3->setTextureItem("icpe_ironFurnace_top","icpe_ironFurnace_bottom","icpe_ironFurnace_side","icpe_ironFurnace_side","icpe_ironFurnace_side","icpe_ironFurnace_lit");
+	ironFurnaceUnLit[0]->setTextureItem("icpe_ironFurnace_top","icpe_ironFurnace_bottom","icpe_ironFurnace_unlit","icpe_ironFurnace_side","icpe_ironFurnace_side","icpe_ironFurnace_side");
+	ironFurnaceUnLit[1]->setTextureItem("icpe_ironFurnace_top","icpe_ironFurnace_bottom","icpe_ironFurnace_side","icpe_ironFurnace_unlit","icpe_ironFurnace_side","icpe_ironFurnace_side");
+	ironFurnaceUnLit[2]->setTextureItem("icpe_ironFurnace_top","icpe_ironFurnace_bottom","icpe_ironFurnace_side","icpe_ironFurnace_side","icpe_ironFurnace_unlit","icpe_ironFurnace_side");
+	ironFurnaceUnLit[3]->setTextureItem("icpe_ironFurnace_top","icpe_ironFurnace_bottom","icpe_ironFurnace_side","icpe_ironFurnace_side","icpe_ironFurnace_side","icpe_ironFurnace_unlit");
+	ironFurnaceLit[0]->setTextureItem("icpe_ironFurnace_top","icpe_ironFurnace_bottom","icpe_ironFurnace_lit","icpe_ironFurnace_side","icpe_ironFurnace_side","icpe_ironFurnace_side");
+	ironFurnaceLit[1]->setTextureItem("icpe_ironFurnace_top","icpe_ironFurnace_bottom","icpe_ironFurnace_side","icpe_ironFurnace_lit","icpe_ironFurnace_side","icpe_ironFurnace_side");
+	ironFurnaceLit[2]->setTextureItem("icpe_ironFurnace_top","icpe_ironFurnace_bottom","icpe_ironFurnace_side","icpe_ironFurnace_side","icpe_ironFurnace_lit","icpe_ironFurnace_side");
+	ironFurnaceLit[3]->setTextureItem("icpe_ironFurnace_top","icpe_ironFurnace_bottom","icpe_ironFurnace_side","icpe_ironFurnace_side","icpe_ironFurnace_side","icpe_ironFurnace_lit");
+	rubberWood[0]->setTextureItem("icpe_rubberwood_top","icpe_rubberwood_top","icpe_rubberwood_side","icpe_rubberwood_side","icpe_rubberwood_side","icpe_rubberwood_side");
+	rubberWood[1]->setTextureItem("icpe_rubberwood_side","icpe_rubberwood_side","icpe_rubberwood_top","icpe_rubberwood_top","icpe_rubberwood_sidefallen","icpe_rubberwood_sidefallen");
+	rubberWood[2]->setTextureItem("icpe_rubberwood_sidefallen","icpe_rubberwood_sidefallen","icpe_rubberwood_sidefallen","icpe_rubberwood_sidefallen","icpe_rubberwood_top","icpe_rubberwood_top");
+	rubberWood[3]->setTextureItem("icpe_rubberwood_top","icpe_rubberwood_top","icpe_rubberwood_dry","icpe_rubberwood_side","icpe_rubberwood_side","icpe_rubberwood_side");
+	rubberWood[4]->setTextureItem("icpe_rubberwood_top","icpe_rubberwood_top","icpe_rubberwood_side","icpe_rubberwood_dry","icpe_rubberwood_side","icpe_rubberwood_side");
+	rubberWood[5]->setTextureItem("icpe_rubberwood_top","icpe_rubberwood_top","icpe_rubberwood_side","icpe_rubberwood_side","icpe_rubberwood_dry","icpe_rubberwood_side");
+	rubberWood[6]->setTextureItem("icpe_rubberwood_top","icpe_rubberwood_top","icpe_rubberwood_side","icpe_rubberwood_side","icpe_rubberwood_side","icpe_rubberwood_side");
+	rubberWood[7]->setTextureItem("icpe_rubberwood_top","icpe_rubberwood_top","icpe_rubberwood_wet","icpe_rubberwood_side","icpe_rubberwood_side","icpe_rubberwood_side");
+	rubberWood[8]->setTextureItem("icpe_rubberwood_top","icpe_rubberwood_top","icpe_rubberwood_side","icpe_rubberwood_wet","icpe_rubberwood_side","icpe_rubberwood_side");
+	rubberWood[9]->setTextureItem("icpe_rubberwood_top","icpe_rubberwood_top","icpe_rubberwood_side","icpe_rubberwood_side","icpe_rubberwood_wet","icpe_rubberwood_side");
+	rubberWood[10]->setTextureItem("icpe_rubberwood_top","icpe_rubberwood_top","icpe_rubberwood_side","icpe_rubberwood_side","icpe_rubberwood_side","icpe_rubberwood_wet");
 }
 void TextureManager::teardown()
 {
-	delete ironFurnaceUnLit0;
-	delete ironFurnaceUnLit1;
-	delete ironFurnaceUnLit2;
-	delete ironFurnaceUnLit3;
-	delete ironFurnaceLit0;
-	delete ironFurnaceLit1;
-	delete ironFurnaceLit2;
-	delete ironFurnaceLit3;
+	delete []ironFurnaceUnLit;
+	delete []ironFurnaceLit;
+	delete []rubberWood;
 }

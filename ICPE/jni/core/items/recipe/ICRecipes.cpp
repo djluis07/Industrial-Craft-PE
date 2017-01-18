@@ -149,6 +149,10 @@ void ICRecipes::addItemRecipes()
 	"aaa",
 	"aaa",
 	"aaa"},{{'a',Items::ID::mLeadIngot,0}});
+	addShapedRecipe(ItemInstance(Blocks::ID::mMetal,1,6),{
+	"aaa",
+	"aaa",
+	"aaa"},{{'a',Items::ID::mBronzeIngot,0}});
 	//Ingots
 	addShapelessRecipe(ItemInstance(Items::ID::mTinIngot,9,0),
 	{{Blocks::ID::mMetal,0}});
@@ -158,6 +162,8 @@ void ICRecipes::addItemRecipes()
 	{{Blocks::ID::mMetal,2}});
 	addShapelessRecipe(ItemInstance(Items::ID::mLeadIngot,9,0),
 	{{Blocks::ID::mMetal,3}});
+	addShapelessRecipe(ItemInstance(Items::ID::mBronzeIngot,9,0),
+	{{Blocks::ID::mMetal,6}});
 	//Bronze plate
 	addShapelessRecipe(ItemInstance(Items::ID::mBronzePlate,1,0),
 	{{Items::ID::mBronzeIngot,-1},{Items::ID::mForgeHammer,-1}});
