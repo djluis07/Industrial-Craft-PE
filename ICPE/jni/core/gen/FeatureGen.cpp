@@ -32,8 +32,6 @@ void FeatureGen::decorateChunk(BiomeDecorator*bd,BlockSource&s, Random&random,Bi
 {
 	prepare();
 	
-	LOG_P("Started decorating Chunk");
-	
 	//rubber trees
 	for(int x=pos.x;x<pos.x+16;++x)
 		for(int z=pos.z;z<pos.z+16;++z)
@@ -72,8 +70,6 @@ void FeatureGen::decorateChunk(BiomeDecorator*bd,BlockSource&s, Random&random,Bi
 			for(int z=pos.z;z<pos.z+16;++z)
 				if(random.nextBool(2000))
 					bd->_placeFeature(&s,leadOre,BlockPos(x,y,z),random);
-	
-	LOG_P("Finished decorating Chunk");
 }
 unsigned int FeatureGen::getRubGenChance(Biome&b)
 {

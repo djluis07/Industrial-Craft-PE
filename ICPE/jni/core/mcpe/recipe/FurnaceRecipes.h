@@ -2,20 +2,22 @@
 
 #include <string>
 #include <vector>
-#include "mcpe/item/ItemInstance.h"
-#include "./Recipes.h"
 
-class FurnaceRecipes : public Recipes
+#include "mcpe/item/ItemInstance.h"
+
+class FurnaceRecipes
 {
-	public:
-    static FurnaceRecipes *mInstance;
-    
-	void addFurnaceRecipeAuxData(short,short,ItemInstance const&);
-	bool isFurnaceItem(ItemInstance*);
-	void *getResult(ItemInstance const*);
-	void addFurnaceRecipe(int,ItemInstance const&);
-	void teardownFurnaceRecipes(void);
-	void clearFurnaceRecipes(void);
-	FurnaceRecipes(void);
-	static FurnaceRecipes *getInstance(void);
+public:
+	FurnaceRecipes();
+	void addFurnaceRecipe(int, ItemInstance const&);
+	void addFurnaceRecipeAuxData(short, short, ItemInstance const&);
+	bool isFurnaceItem(ItemInstance const*) const;
+	ItemInstance getResult(ItemInstance const*) const;
+	void clearFurnaceRecipes();
+	void teardownFurnaceRecipes();
+	void init();
+	void _init();
+public:
+	static FurnaceRecipes * mInstance;
+	static FurnaceRecipes * getInstance();
 };

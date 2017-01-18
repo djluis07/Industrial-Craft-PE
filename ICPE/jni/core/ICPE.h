@@ -59,6 +59,8 @@ public:
 	static float getBurnDuration(ItemInstance const*);
 	static void (*initBlocks_)();
 	static void initBlocks();
+	static void (*teardownBlocks_)();
+	static void teardownBlocks();
 	static void (*leaveGame_)(MinecraftClient*,bool);
 	static void leaveGame(MinecraftClient*,bool);
 	static void (*createLevel_)(Minecraft*,void*,std::string const&,std::string const&,LevelSettings const &,ResourcePackManager&);

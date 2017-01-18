@@ -40,7 +40,7 @@ void BlockGraphics::initBlockGraphics()
 	MCPEBlockGraphics::mBlocks[IC::Blocks::ID::mRubberLeaves]->setSoundType(BlockSoundType::GRASS);
 	
 	MCPEBlockGraphics::mBlocks[IC::Blocks::ID::mFurnace]=new MCPEBlockGraphics("dirt");
-	MCPEBlockGraphics::mBlocks[IC::Blocks::ID::mFurnace]->setTextureItem("icpe_ironFurnace_top","icpe_ironFurnace_bottom","icpe_ironFurnace_1","icpe_ironFurnace_2","icpe_ironFurnace_3","icpe_ironFurnace_4");
+	MCPEBlockGraphics::mBlocks[IC::Blocks::ID::mFurnace]->setTextureItem("icpe_icFurnace_carried_top","icpe_icFurnace_carried_top","icpe_icFurnace_carried_side","icpe_icFurnace_carried_front","icpe_icFurnace_carried_side","icpe_icFurnace_carried_side");
 	MCPEBlockGraphics::mBlocks[IC::Blocks::ID::mFurnace]->setSoundType(BlockSoundType::STONE);
 	
 	MCPEBlockGraphics::mBlocks[IC::Blocks::ID::mCable]=new MCPEBlockGraphics("portal");

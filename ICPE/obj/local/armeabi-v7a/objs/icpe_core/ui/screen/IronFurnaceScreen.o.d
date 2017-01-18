@@ -16,6 +16,7 @@ obj/local/armeabi-v7a/objs/icpe_core/ui/screen/IronFurnaceScreen.o: \
  jni/core/ui/view/ItemPanel.h jni/core/mcpe/client/gui/TButton.h \
  jni/core/mcpe/client/gui/Button.h jni/core/mcpe/client/gui/GuiElement.h \
  jni/core/mcpe/client/gui/../../util/Color.h \
+ /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/platforms/android-19/arch-arm/usr/include/math.h \
  jni/core/mcpe/entity/player/Player.h jni/core/mcpe/entity/Mob.h \
  jni/core/mcpe/entity/Entity.h jni/core/mcpe/entity/SynchedEntityData.h \
  jni/core/mcpe/entity/../util/AABB.h jni/core/mcpe/entity/../util/Vec3.h \
@@ -47,7 +48,10 @@ obj/local/armeabi-v7a/objs/icpe_core/ui/screen/IronFurnaceScreen.o: \
  jni/core/mcpe/client/gui/IntRectangle.h \
  jni/core/blocks/blockentity/IronFurnaceBlockEntity.h \
  jni/core/blocks/blockentity/ContainerBlockEntity.h \
- jni/core/blocks/blockentity/ICBlockEntity.h
+ jni/core/blocks/blockentity/ICBlockEntity.h jni/core/util/Log.h \
+ /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/sources/cxx-stl/gnu-libstdc++/4.9/include/fstream \
+ jni/core/mcpe/util/Util.h \
+ /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/sources/cxx-stl/gnu-libstdc++/4.9/include/sstream
 
 jni/core/ui/screen/IronFurnaceScreen.h:
 
@@ -88,6 +92,8 @@ jni/core/mcpe/client/gui/Button.h:
 jni/core/mcpe/client/gui/GuiElement.h:
 
 jni/core/mcpe/client/gui/../../util/Color.h:
+
+/data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/platforms/android-19/arch-arm/usr/include/math.h:
 
 jni/core/mcpe/entity/player/Player.h:
 
@@ -168,3 +174,11 @@ jni/core/blocks/blockentity/IronFurnaceBlockEntity.h:
 jni/core/blocks/blockentity/ContainerBlockEntity.h:
 
 jni/core/blocks/blockentity/ICBlockEntity.h:
+
+jni/core/util/Log.h:
+
+/data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/sources/cxx-stl/gnu-libstdc++/4.9/include/fstream:
+
+jni/core/mcpe/util/Util.h:
+
+/data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/sources/cxx-stl/gnu-libstdc++/4.9/include/sstream:

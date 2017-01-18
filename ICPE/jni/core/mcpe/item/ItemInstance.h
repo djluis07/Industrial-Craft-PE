@@ -75,7 +75,6 @@ public:
 	bool sameItemAndAux(ItemInstance const*) const;
 	int getIdAuxEnchanted() const;
 	std::string getEffectName() const;
-	void matches(ItemInstance const*, ItemInstance const*);
 	void inventoryTick(Level&, Entity&, int, bool);
 	void set(int);
 	bool useOn(Entity&, int, int, int, signed char, float, float, float);
@@ -132,6 +131,7 @@ public:
 	std::string toString() const;
 public:
 	static bool isItem(ItemInstance const*);
+	static bool matches(ItemInstance const*, ItemInstance const*);
 	static ItemInstance* clone(ItemInstance const*);
 public:
 	static std::string const TAG_ENCHANTS;

@@ -32,6 +32,10 @@ obj/local/armeabi-v7a/objs/icpe_core/ICPE.o: jni/core/ICPE.cpp \
  jni/core/mcpe/block/../client/renderer/texture/TextureAtlasTextureItem.h \
  jni/core/mcpe/block/blocks/FlowerPotBlock.h \
  jni/core/mcpe/blockentity/FurnaceBlockEntity.h \
+ jni/core/mcpe/blockentity/BlockEntity.h \
+ jni/core/mcpe/blockentity/BlockEntityType.h \
+ jni/core/mcpe/blockentity/../inventory/FillingContainer.h \
+ jni/core/mcpe/blockentity/../inventory/Container.h \
  jni/core/mcpe/client/MinecraftClient.h jni/core/mcpe/client/App.h \
  jni/core/mcpe/client/AppPlatformListener.h \
  jni/core/mcpe/client/../gamemode/GameType.h \
@@ -42,10 +46,6 @@ obj/local/armeabi-v7a/objs/icpe_core/ICPE.o: jni/core/ICPE.cpp \
  jni/core/mcpe/client/renderer/BlockTessellator.h \
  jni/core/mcpe/client/renderer/MaterialPtr.h \
  jni/core/mcpe/level/BlockSource.h \
- jni/core/mcpe/level/../blockentity/BlockEntity.h \
- jni/core/mcpe/level/../blockentity/BlockEntityType.h \
- jni/core/mcpe/level/../blockentity/../inventory/FillingContainer.h \
- jni/core/mcpe/level/../blockentity/../inventory/Container.h \
  jni/core/mcpe/level/../util/Brightness.h \
  jni/core/mcpe/level/../entity/EntityType.h \
  jni/core/mcpe/level/LightLayer.h jni/core/mcpe/level/DimensionId.h \
@@ -99,7 +99,9 @@ obj/local/armeabi-v7a/objs/icpe_core/ICPE.o: jni/core/ICPE.cpp \
  /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/platforms/android-19/arch-arm/usr/include/endian.h \
  /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/platforms/android-19/arch-arm/usr/include/sys/endian.h \
  /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/platforms/android-19/arch-arm/usr/include/machine/endian.h \
- jni/core/blocks/tessellator/CableTessellator.h jni/core/gen/FeatureGen.h \
+ jni/core/blocks/tessellator/CableTessellator.h \
+ jni/core/blocks/tessellator/ICFurnaceTessellator.h \
+ jni/core/blocks/texture/TextureManager.h jni/core/gen/FeatureGen.h \
  jni/core/ui/UIScreenChooser.h jni/core/util/ICOptions.h \
  jni/core/util/language/zh_CN.h jni/core/util/language/en_US.h
 
@@ -179,6 +181,14 @@ jni/core/mcpe/block/blocks/FlowerPotBlock.h:
 
 jni/core/mcpe/blockentity/FurnaceBlockEntity.h:
 
+jni/core/mcpe/blockentity/BlockEntity.h:
+
+jni/core/mcpe/blockentity/BlockEntityType.h:
+
+jni/core/mcpe/blockentity/../inventory/FillingContainer.h:
+
+jni/core/mcpe/blockentity/../inventory/Container.h:
+
 jni/core/mcpe/client/MinecraftClient.h:
 
 jni/core/mcpe/client/App.h:
@@ -200,14 +210,6 @@ jni/core/mcpe/client/renderer/BlockTessellator.h:
 jni/core/mcpe/client/renderer/MaterialPtr.h:
 
 jni/core/mcpe/level/BlockSource.h:
-
-jni/core/mcpe/level/../blockentity/BlockEntity.h:
-
-jni/core/mcpe/level/../blockentity/BlockEntityType.h:
-
-jni/core/mcpe/level/../blockentity/../inventory/FillingContainer.h:
-
-jni/core/mcpe/level/../blockentity/../inventory/Container.h:
 
 jni/core/mcpe/level/../util/Brightness.h:
 
@@ -348,6 +350,10 @@ jni/core/mcpe/util/Util.h:
 /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/platforms/android-19/arch-arm/usr/include/machine/endian.h:
 
 jni/core/blocks/tessellator/CableTessellator.h:
+
+jni/core/blocks/tessellator/ICFurnaceTessellator.h:
+
+jni/core/blocks/texture/TextureManager.h:
 
 jni/core/gen/FeatureGen.h:
 

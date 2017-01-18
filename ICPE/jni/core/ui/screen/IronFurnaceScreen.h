@@ -28,4 +28,6 @@ public:
 	virtual void onItemPanelChanged(IC::ItemPanel&);
 	virtual void onRegisterPanels(int,int);
 	virtual unsigned char getAddItemToItemPanelCount(ItemInstance const&,IC::ItemPanel&);
+public:
+	void setUIProgress();
 };

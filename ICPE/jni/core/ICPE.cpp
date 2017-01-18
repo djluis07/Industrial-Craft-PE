@@ -47,6 +47,8 @@
 #include "blocks/BlockGraphics.h"
 #include "blocks/blockentity/ICBlockEntityManager.h"
 #include "blocks/tessellator/CableTessellator.h"
+#include "blocks/tessellator/ICFurnaceTessellator.h"
+#include "blocks/texture/TextureManager.h"
 #include "gen/FeatureGen.h"
 #include "ui/UIScreenChooser.h"
 #include "util/ICOptions.h"
@@ -62,8 +64,12 @@ void ICPE::launch(JavaVM*,void*)
 void ICPE::setupMSHookFunctions()
 {
 	LOG_P("Start setting up MSHookFunctions.");
-	//MSHookFunction((void*)&Level::saveGameData,(void*)&saveLevel,(void**)&saveLevel_);
+	
+	void* imageRef=dlopen("libminecraftpe.so",RTLD_LAZY);
+	
+	MSHookFunction(dlsym(imageRef,"_ZN16BlockTessellator17tessellateInWorldERK5BlockRK8BlockPoshb"),(void*)&tessellateInWorld,(void**)&tessellateInWorld_);
 	MSHookFunction((void*)&MinecraftClient::leaveGame,(void*)&leaveGame,(void**)&leaveGame_);
+	//MSHookFunction((void*)&FurnaceBlockEntity::getBurnDuration,(void*)&getBurnDuration,(void**)&getBurnDuration_);
 	MSHookFunction((void*)&Level::onNewChunkFor,(void*)&onChunkLoaded,(void**)&onChunkLoaded_);
 	MSHookFunction((void*)&BlockSource::onChunkDiscarded,(void*)&onChunkDiscarded,(void**)&onChunkDiscarded_);
 	MSHookFunction((void*)&Recipe::isAnyAuxValue,(void*)&isAnyAuxValue,(void**)&isAnyAuxValue_);
@@ -73,11 +79,11 @@ void ICPE::setupMSHookFunctions()
 	MSHookFunction((void*)&Minecraft::createLevel,(void*)&createLevel,(void**)&createLevel_);
 	MSHookFunction((void*)&BiomeDecorator::decorate,(void*)&decorateChunk,(void**)&decorateChunk_);
 	MSHookFunction((void*)&Recipes::init,(void*)&initRecipes,(void**)&initRecipes_);
-	MSHookFunction((void*)&BlockTessellator::tessellateInWorld,(void*)&tessellateInWorld,(void**)&tessellateInWorld_);
 	MSHookFunction((void*)&MinecraftClient::init,(void*)&initMCClient,(void**)&initMCClient_);
 	MSHookFunction((void*)&Item::initCreativeItems,(void*)&initCreativeItems,(void**)&initCreativeItems_);
 	MSHookFunction((void*)&Item::initClientData,(void*)&initItems,(void**)&initItems_);
 	MSHookFunction((void*)&MCPEBlockGraphics::initBlocks,(void*)&initBlockGraphics,(void**)&initBlockGraphics_);
+	MSHookFunction((void*)&MCPEBlockGraphics::teardownBlocks,(void*)&teardownBlocks,(void**)&teardownBlocks_);
 	MSHookFunction((void*)&Block::initBlocks,(void*)&initBlocks,(void**)&initBlocks_);
 	LOG_P("MSHookFunctions have been set up.");
 }
@@ -91,6 +97,7 @@ void (*ICPE::initCreativeItems_)()=0;
 void (*ICPE::initItems_)()=0;
 void (*ICPE::initBlockGraphics_)()=0;
 void (*ICPE::initBlocks_)()=0;
+void (*ICPE::teardownBlocks_)()=0;
 bool (*ICPE::isSupportedFlower_)(FlowerPotBlock const*const,Block const*,short)=0;
 void (*ICPE::createLevel_)(Minecraft*,void*,std::string const&,std::string const&,LevelSettings const &,ResourcePackManager&)=0;
 void (*ICPE::tickLevel_)(Level*)=0;
@@ -113,6 +120,7 @@ const int ICPE::localKeyCode=3497615802;
 
 float ICPE::getBurnDuration(ItemInstance const*item)
 {
+	LOG_P(Util::toFloatString(getBurnDuration_(item)));
 	if(item)
 	{
 		if(item->getId()==IC::Blocks::ID::mRubberSapling)
@@ -172,6 +180,8 @@ bool ICPE::tessellateInWorld(BlockTessellator*tessellator,Block const&block,Bloc
 {
 	if(&block==Block::mBlocks[IC::Blocks::ID::mCable])
 		return ((CableTessellator*)tessellator)->tessellate(block,pos,aux,wtf);
+	if(&block==Block::mBlocks[IC::Blocks::ID::mFurnace])
+		return ((ICFurnaceTessellator*)tessellator)->tessellate(block,pos,aux,wtf);
 	return tessellateInWorld_(tessellator,block,pos,aux,wtf);
 }
 void ICPE::initMCClient(MinecraftClient*self)
@@ -199,6 +209,13 @@ void ICPE::initBlockGraphics()
 	initBlockGraphics_();
 	LOG_P("Initing block graphics.");
 	IC::BlockGraphics::initBlockGraphics();
+	TextureManager::init();
+}
+void ICPE::teardownBlocks()
+{
+	teardownBlocks_();
+	LOG_P("Teardowning block graphics.");
+	TextureManager::teardown();
 }
 void ICPE::initBlocks()
 {

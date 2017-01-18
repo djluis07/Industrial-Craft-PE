@@ -1,22 +1,56 @@
 #pragma once
 
-class ItemInstance;
+#include <string>
+#include "BlockEntity.h"
 
-class FurnaceBlockEntity
+class ItemInstance;
+class CompoundTag;
+class BlockSource;
+class BlockPos;
+class Player;
+
+class FurnaceBlockEntity : public BlockEntity
 {
 public:
-	FurnaceBlockEntity();
-    ~FurnaceBlockEntity();
-	float getBurnDuration(ItemInstance const*);
-    ItemInstance* getItem(int)const;
-    bool isFinished();
-    void removeItem(int,int);
-    bool canPullOutItem(int,int,ItemInstance*);
-    bool isIngredient(ItemInstance const*);
-    bool isFuel(ItemInstance const*);
-    void setItem(int,ItemInstance*);
-    void tick(BlockSource&);
-    bool canPushInItem(int,int,ItemInstance*);
-    int getBurnProgress(int);
-    void resetBurnProgress(void);
+	virtual ~FurnaceBlockEntity();
+	virtual void load(CompoundTag const&);
+	virtual void save(CompoundTag&);
+	virtual void tick(BlockSource&);
+	virtual void isFinished();
+	virtual void onMove();
+	virtual void onNeighborChanged(BlockSource&, BlockPos const&);
+	virtual void getItem(int) const;
+	virtual void setItem(int, ItemInstance const*);
+	virtual void removeItem(int, int);
+	virtual void getName() const;
+	virtual void getMaxStackSize() const;
+	virtual void getContainerSize() const;
+	virtual void startOpen(Player&);
+	virtual void stopOpen(Player&);
+	virtual void canPushInItem(BlockSource&, int, int, ItemInstance*);
+	virtual void canPullOutItem(BlockSource&, int, int, ItemInstance*);
+public:
+	FurnaceBlockEntity(BlockPos const&);
+	void setLitTime(int);
+	void setTickCount(int);
+	int getLitProgress(int);
+	void setLitDuration(int);
+	int getBurnProgress(int);
+	void getLastFuelSource();
+	int getLitTime() const;
+	int getTickCount() const;
+	float getLitDuration() const;
+	bool isSlotDirty(int);
+	bool isSlotEmpty(int);
+	void resetSlotsDirty();
+	void resetBurnProgress();
+	void _getPositionOfNeighbor(int);
+	void checkForSmeltEverythingAchievement(BlockSource&);
+	void burn();
+	bool isLit();
+	bool canBurn();
+public:
+	static bool isFuel(ItemInstance const*);
+	static bool isIngredient(ItemInstance const*);
+	static float getBurnDuration(ItemInstance const*);
 };

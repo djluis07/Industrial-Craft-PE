@@ -50,6 +50,7 @@ public:
 	virtual std::string getScreenNameW()const;
 	virtual void _buttonClicked(Button&);
 	virtual void init();
+	virtual void tick();
 	virtual void render(int,int,float);
 public:
 	void drawSlotItemAt(int,int,ItemInstance*);
@@ -67,4 +68,6 @@ public:
 protected:
 	void registerNewItemPanel(int x,int y,ItemInstance const&);
 	std::shared_ptr<Button> getButtonByID(int);
+	int getItemSlotsStartPos()const;
+	static bool isSameItemInstance(ItemInstance const*,ItemInstance const*);
 };
