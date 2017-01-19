@@ -37,7 +37,7 @@ void FeatureGen::decorateRavine(BiomeDecorator*bd,BlockSource&s, Random&random,B
 	for(int x=pos.x;x<pos.x+16;++x)
 		for(int y=10;y<50;++y)
 			for(int z=pos.z;z<pos.z+16;++z)
-				if(random.nextBool(5E4))
+				if(random.nextBool(25E4))
 					bd->_placeFeature(&s,ravine,BlockPos(x,y,z),random);
 }
 

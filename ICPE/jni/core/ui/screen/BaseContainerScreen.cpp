@@ -1,5 +1,7 @@
 #include "BaseContainerScreen.h"
 
+#include <sstream>
+
 #include "mcpe/client/MinecraftClient.h"
 #include "mcpe/client/gui/GuiData.h"
 #include "mcpe/client/gui/THeader.h"
@@ -19,13 +21,15 @@
 #include "mcpe/entity/player/Inventory.h"
 #include "mcpe/inventory/InventoryMenu.h"
 #include "mcpe/item/ItemInstance.h"
+#include "mcpe/item/Item.h"
 #include "mcpe/block/Block.h"
 
 BaseContainerScreen::BaseContainerScreen(MinecraftClient&c,BlockSource&s,Player&p,std::string const&n):Screen(c),source(s),player(p)
 {
 	headerName=n;
 	itemTextTimer=0;
-	itemTextInstance=ItemInstance();
+	itemTextHover="";
+	itemTextEffect="";
 	nowPanelID=0;
 	for(int &progress : progressInSlot)
 		progress=-10;
@@ -35,9 +39,6 @@ BaseContainerScreen::BaseContainerScreen(MinecraftClient&c,BlockSource&s,Player&
 void BaseContainerScreen::init()
 {
 	Screen::init();
-	
-	int width=mcClient->getGuiData()->getScreenWidth();
-	int height=mcClient->getGuiData()->getScreenHeight();
 	
 	unsigned int posInInv=0;
 	for(unsigned int yPos=35;posInInv<36;yPos+=25)
@@ -298,74 +299,79 @@ void BaseContainerScreen::onSlotMove(float startPosX,float startPosY,int startSl
 			itemPanels[endSlot]->item=addItem;
 			startRenderMovingItem(&copyItem,startPosX,startPosY,endPosX,endPosY,0.05,1.5);
 		}
-		startRenderItemText(copyItem);
+		startRenderItemText(copyItem.getHoverName(),copyItem.getEffectName());
 		onItemPanelChanged(*itemPanels[endSlot].get());
 	}
 	else
 	{
-		if(itemPanels[startSlot]->item.count==0)
+		if(itemPanels[startSlot]->item.isNull())
 			return;
-		ItemInstance* item=&itemPanels[startSlot]->item;
+		ItemInstance& item=itemPanels[startSlot]->item;
 		ItemInstance copyItem;
 		copyItem=*ItemInstance::clone(&itemPanels[startSlot]->item);
 		copyItem.count=count;
 		InventoryMenu* invMenu=mcClient->getLocalPlayer()->getInventoryMenu();
-		ItemInstance *itemsInv[36];
+		ItemInstance* itemsInv[36];
 		int itemsLeft=count;
-		for(unsigned char pos=0;pos<36;++pos)
-			itemsInv[pos]=invMenu->getSlot(pos);
-		for(unsigned char pos=0;pos<36&&itemsLeft>0;++pos)
+		for(unsigned char i=0;i<36;++i)
+			itemsInv[i]=invMenu->getSlot(i);
+		for(unsigned char i=0;i<36&&itemsLeft>0;++i)
 		{
-			if(itemsInv[pos]&&!itemsInv[pos]->isNull()&&isSameItemInstance(itemsInv[pos],&copyItem))
+			if(itemsInv[i]&&!itemsInv[i]->isNull()&&isSameItemInstance(itemsInv[i],&copyItem))
 			{
-				if(itemsInv[pos]->count<copyItem.getMaxStackSize())
+				if(itemsInv[i]->count<copyItem.getMaxStackSize())
 				{
-					itemsLeft-=copyItem.getMaxStackSize()-itemsInv[pos]->count;
-					startRenderMovingItem(&copyItem,startPosX,startPosY,getButtonByID(pos)->xPosition,getButtonByID(pos)->yPosition,0.05,1.5);
+					itemsLeft-=copyItem.getMaxStackSize()-itemsInv[i]->count;
+					startRenderMovingItem(&copyItem,startPosX,startPosY,getButtonByID(i)->xPosition,getButtonByID(i)->yPosition,0.05,1.5);
 				}
 			}
 		}
-		for(unsigned char pos=0;pos<36&&itemsLeft>0;++pos)
+		for(unsigned char i=0;i<36&&itemsLeft>0;++i)
 		{
-			if(!itemsInv[pos])
+			if(!itemsInv[i])
 			{
 				itemsLeft-=copyItem.getMaxStackSize()>itemsLeft?itemsLeft:copyItem.getMaxStackSize();
-				startRenderMovingItem(&copyItem,startPosX,startPosY,getButtonByID(pos)->xPosition,getButtonByID(pos)->yPosition,0.05,1.5);
+				startRenderMovingItem(&copyItem,startPosX,startPosY,getButtonByID(i)->xPosition,getButtonByID(i)->yPosition,0.05,1.5);
 			}
 		}
-		item->count-=count;
-		if(item->count==0)item->setNull();
+		item.remove(count);
 		ItemInstance item_=copyItem;
 		item_.count=count;
 		player.add(item_);
 		if(!item_.isNull())
 			player.drop(item_,false);
-		startRenderItemText(copyItem);
+		startRenderItemText(copyItem.getHoverName(),copyItem.getEffectName());
 		onItemPanelChanged(*itemPanels[startSlot].get());
 	}
 }
 void BaseContainerScreen::onRenderItemText()
 {
 	if(itemTextTimer<=0.0F)
+	{
+		itemTextTimer=0.0F;
+		itemTextHover="";
+		itemTextEffect="";
 		return;
+	}
 	itemTextTimer-=0.02F;
 	
-	int width=mcClient->getGuiData()->getScreenWidth();
-	int height=mcClient->getGuiData()->getScreenHeight();
-	
-	ScreenRenderer::singletonPtr->drawCenteredString(mcClient->getFont(),itemTextInstance.getHoverName(),width/2,height/5*4,Color::WHITE);
-	ScreenRenderer::singletonPtr->drawCenteredString(mcClient->getFont(),itemTextInstance.getEffectName(),width/2,height/5*4+10,Color::WHITE);
+	ScreenRenderer::singletonPtr->drawCenteredString(mcClient->getFont(),itemTextHover,width/2,height/5*4,Color::WHITE);
+	ScreenRenderer::singletonPtr->drawCenteredString(mcClient->getFont(),itemTextEffect,width/2,height/5*4+10,Color::WHITE);
 }
-void BaseContainerScreen::startRenderItemText(ItemInstance const&item)
+void BaseContainerScreen::startRenderItemText(std::string const&hover,std::string const&effect)
 {
-	itemTextInstance=item;
+	itemTextHover=hover;
+	if(&effect!=0)
+		itemTextEffect=effect;
+	else
+		itemTextEffect="";
 	itemTextTimer=1.0F;
 }
 void BaseContainerScreen::onItemPanelChanged(IC::ItemPanel&)
 {
 	
 }
-bool BaseContainerScreen::isSameItemInstance(ItemInstance const*i,ItemInstance const*ii)
+bool BaseContainerScreen::isSameItemInstance(ItemInstance const*i,ItemInstance const*ii)const
 {
 	if(!i->sameItemAndAux(ii))
 		return false;

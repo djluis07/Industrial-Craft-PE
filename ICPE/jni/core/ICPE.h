@@ -75,6 +75,7 @@ public:
 	static void onChunkLoaded(Level*,Player&,LevelChunk&);
 	static void (*onChunkDiscarded_)(BlockSource*,LevelChunk&);
 	static void onChunkDiscarded(BlockSource*,LevelChunk&);
+	static std::string getEffectName();
 public:
 	static MinecraftClient* pMinecraftClient;
 	static Level* pLevel;

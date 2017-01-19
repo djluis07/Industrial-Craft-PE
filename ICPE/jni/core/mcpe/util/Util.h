@@ -8,7 +8,7 @@ class Util
 {
 public:
 	static std::string EMPTY_STRING;
-
+	static std::string EMPTY_GUID;
 public:
 	static std::vector<std::string> split(const std::string &, char);
 	static void splitString(std::string const &, char, std::vector<std::string> &);

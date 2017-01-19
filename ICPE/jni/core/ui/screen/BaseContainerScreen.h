@@ -38,7 +38,8 @@ protected:
 	int progressInSlot[36];
 	float itemSelectProgressInSlot[36];
 	float itemTextTimer;
-	ItemInstance itemTextInstance;
+	std::string itemTextHover;
+	std::string itemTextEffect;
 public:
 	BlockSource&source;
 	Player&player;
@@ -58,16 +59,15 @@ public:
 	void onRenderMovingItem();
 	void onSlotMove(float,float,int,float,float,int,unsigned char,bool);
 	void onRenderItemText();
-	void startRenderItemText(ItemInstance const&);
+	void startRenderItemText(std::string const&,std::string const&);
+	void registerNewItemPanel(int x,int y,ItemInstance const&);
+	std::shared_ptr<Button> getButtonByID(int);
+	int getItemSlotsStartPos()const;
+	bool isSameItemInstance(ItemInstance const*,ItemInstance const*)const;
 public:
 	virtual void onInit();
 	virtual void onRender();
 	virtual void onItemPanelChanged(IC::ItemPanel&);
 	virtual void onRegisterPanels(int,int);
 	virtual unsigned char getAddItemToItemPanelCount(ItemInstance const&,IC::ItemPanel&);
-protected:
-	void registerNewItemPanel(int x,int y,ItemInstance const&);
-	std::shared_ptr<Button> getButtonByID(int);
-	int getItemSlotsStartPos()const;
-	static bool isSameItemInstance(ItemInstance const*,ItemInstance const*);
 };
