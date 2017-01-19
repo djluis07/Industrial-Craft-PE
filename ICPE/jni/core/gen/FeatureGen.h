@@ -21,7 +21,9 @@ private:
 	static std::unique_ptr<Feature> copperOre;
 	static std::unique_ptr<Feature> leadOre;
 	static std::unique_ptr<Feature> uraniumOre;
+	static std::unique_ptr<Feature> ravine;
 public:
+	static void decorateRavine(BiomeDecorator*,BlockSource&, Random&,Biome*,BlockPos const&);
 	static void decorateChunk(BiomeDecorator*,BlockSource&, Random&,Biome*,BlockPos const&);
 private:
 	static unsigned int getRubGenChance(Biome&);

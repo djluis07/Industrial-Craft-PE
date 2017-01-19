@@ -162,12 +162,9 @@ bool ICPE::isSupportedFlower(FlowerPotBlock const*const self,Block const*block,s
 }
 void ICPE::decorateChunk(BiomeDecorator*decorator,BlockSource*s, Random&r, Biome*biome, BlockPos const&pos, bool b, float f)
 {
+	if(s)IC::FeatureGen::decorateRavine(decorator,*s,r,biome,pos);
 	decorateChunk_(decorator,s,r,biome,pos,b,f);
-	
-	LOG_P("Decorating chunk:"+Util::toString(pos.x)+","+Util::toString(pos.y)+","+Util::toString(pos.z));
-	
-	if(s)
-		IC::FeatureGen::decorateChunk(decorator,*s,r,biome,pos);
+	if(s)IC::FeatureGen::decorateChunk(decorator,*s,r,biome,pos);
 }
 void ICPE::initRecipes(Recipes*self)
 {

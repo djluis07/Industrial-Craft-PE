@@ -38,6 +38,7 @@ obj/local/armeabi-v7a/objs/icpe_core/items/item/PainterItem.o: \
  jni/core/mcpe/level/../block/material/Material.h \
  jni/core/mcpe/level/../block/BlockSupportType.h \
  jni/core/mcpe/level/LightLayer.h jni/core/mcpe/block/Block.h \
+ /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/sources/cxx-stl/gnu-libstdc++/4.9/include/map \
  jni/core/mcpe/block/BlockSoundType.h \
  jni/core/blocks/blockentity/CableBlockEntity.h \
  jni/core/blocks/blockentity/ICBlockEntity.h jni/core/blocks/blocks.h \
@@ -138,6 +139,8 @@ jni/core/mcpe/level/../block/BlockSupportType.h:
 jni/core/mcpe/level/LightLayer.h:
 
 jni/core/mcpe/block/Block.h:
+
+/data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/sources/cxx-stl/gnu-libstdc++/4.9/include/map:
 
 jni/core/mcpe/block/BlockSoundType.h:
 

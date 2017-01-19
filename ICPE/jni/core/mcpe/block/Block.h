@@ -3,6 +3,7 @@
 #include <string>
 #include <vector>
 #include <memory>
+#include <map>
 
 #include "../client/renderer/texture/TextureUVCoordinateSet.h"
 #include "mcpe/util/Color.h"
@@ -13,6 +14,8 @@
 #include "mcpe/item/CreativeItemCategory.h"
 #include "BlockSoundType.h"
 #include "BlockSupportType.h"
+#include "../entity/EntityType.h"
+#include "../blockentity/BlockEntityType.h"
 
 struct Material;
 struct BlockEntity;
@@ -182,21 +185,50 @@ public:
 	virtual Block* setMapColor(Color const&);
 	virtual Block* addProperty(BlockProperty);
 	virtual int getSpawnResourcesAuxValue(unsigned char) const;
-	
-	const std::string& getDescriptionId() const;
-	void addAABB(const AABB&, const AABB*, std::vector<AABB, std::allocator<AABB>>&)const;
-	void addAABB(const AABB&);
-	void popResource(BlockSource&, const BlockPos&, const ItemInstance&)const;
-	Block* setCategory(CreativeItemCategory);
-	CreativeItemCategory getCreativeCategory()const;
-	void setSolid(bool);
-	bool isSolid() const;
-	bool hasProperty(BlockProperty) const;
-	float getFriction()const;
-	
+public:
+	static Block* lookupByName(std::string const&, bool);
 	static void initBlocks();
 	static void teardownBlocks();
-
+	static float getLightEmission(BlockID);
+	static signed char getPlacementFacingAll(Entity&, BlockPos const&, float);
+	static BlockID transformToValidBlockId(BlockID);
+	static BlockID transformToValidBlockId(BlockID, BlockPos const&);
+	static signed char getPlacementFacingAllExceptAxisY(Entity&, BlockPos const&, float);
+public:
+	std::vector<BlockProperty> getProperties() const;
+	bool isType(Block const*) const;
+	bool hasProperty(BlockProperty) const;
+	CreativeItemCategory getCreativeCategory() const;
+	bool isSolid() const;
+	float getDestroySpeed() const;
+	float getFriction() const;
+	Material const& getMaterial() const;
+	bool isSolidBlockingBlock() const;
+	bool isHeavy() const;
+	std::string const& getDescriptionId() const;
+	void setSolid(bool);
+	void setPushesOutItems(bool);
+	void setCategory(CreativeItemCategory);
+	void DEPRECATEDcallOnGraphicsModeChanged(bool, bool, bool);
+	void setNameId(std::string const&);
+	float getGravity() const;
+	void popResource(BlockSource&, BlockPos const&, ItemInstance const&) const;
+	bool canInstatick() const;
+	void getDebugText(std::vector<std::string, std::allocator<std::string> >&) const;
+	bool canGrowChorus() const;
+	void getMobToSpawn(BlockSource&, BlockPos const&, std::map<EntityType, int, std::less<EntityType>, std::allocator<std::pair<EntityType const, int> > >, bool&) const;
+	bool isAlphaTested() const;
+	bool isUnbreakable() const;
+	int getRenderLayer() const;
+	EntityType getTypeToSpawn(BlockSource&, EntityType, BlockPos const&) const;
+	bool hasBlockEntity() const;
+	void pushesOutItems() const;
+	BlockEntityType getBlockEntityType() const;
+	float getShadeBrightness() const;
+	void clip(BlockSource&, BlockPos const&, Vec3 const&, Vec3 const&, bool, int, AABB const&) const;
+	void addAABB(AABB const&, AABB const*, std::vector<AABB, std::allocator<AABB> >&) const;
+	bool canSlide() const;
+public:
 	static Block* mAir; // 0
 	static Block* mStone; // 1
 	static Block* mGrass; // 2

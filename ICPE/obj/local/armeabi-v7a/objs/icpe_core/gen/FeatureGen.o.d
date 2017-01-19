@@ -7,6 +7,7 @@ obj/local/armeabi-v7a/objs/icpe_core/gen/FeatureGen.o: \
  /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/platforms/android-19/arch-arm/usr/include/memory.h \
  jni/core/blocks/Blocks.h jni/core/mcpe/block/Block.h \
  /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/sources/cxx-stl/gnu-libstdc++/4.9/include/vector \
+ /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/sources/cxx-stl/gnu-libstdc++/4.9/include/map \
  jni/core/mcpe/block/../client/renderer/texture/TextureUVCoordinateSet.h \
  jni/core/mcpe/util/ResourceLocation.h jni/core/mcpe/util/Color.h \
  jni/core/mcpe/util/BlockID.h jni/core/mcpe/util/../block/BlockProperty.h \
@@ -17,25 +18,26 @@ obj/local/armeabi-v7a/objs/icpe_core/gen/FeatureGen.o: \
  jni/core/mcpe/block/BlockShape.h \
  jni/core/mcpe/item/CreativeItemCategory.h \
  jni/core/mcpe/block/BlockSoundType.h \
- jni/core/mcpe/block/BlockSupportType.h jni/core/util/Log.h \
+ jni/core/mcpe/block/BlockSupportType.h \
+ jni/core/mcpe/block/../entity/EntityType.h \
+ jni/core/mcpe/block/../blockentity/BlockEntityType.h jni/core/util/Log.h \
  /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/sources/cxx-stl/gnu-libstdc++/4.9/include/fstream \
  jni/core/mcpe/util/Util.h \
  /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/sources/cxx-stl/gnu-libstdc++/4.9/include/sstream \
  jni/core/gen/feature/RubTreeFeature.h jni/core/mcpe/util/FullBlock.h \
  jni/core/mcpe/level/gen/Feature.h \
  jni/core/gen/feature/FallenRubTreeFeature.h \
+ jni/core/gen/feature/RavineFeature.h \
  jni/core/mcpe/level/gen/OreFeature.h jni/core/mcpe/level/ChunkPos.h \
  jni/core/mcpe/level/biome/Biome.h \
  jni/core/mcpe/level/biome/BiomeDecorator.h \
  jni/core/mcpe/level/BlockSource.h \
  jni/core/mcpe/level/../blockentity/BlockEntity.h \
- jni/core/mcpe/level/../blockentity/BlockEntityType.h \
  jni/core/mcpe/level/../blockentity/../inventory/FillingContainer.h \
  jni/core/mcpe/level/../blockentity/../inventory/Container.h \
  jni/core/mcpe/level/../blockentity/../inventory/../item/ItemInstance.h \
  jni/core/mcpe/level/../blockentity/../inventory/../item/UseAnimation.h \
  jni/core/mcpe/level/../util/Brightness.h \
- jni/core/mcpe/level/../entity/EntityType.h \
  jni/core/mcpe/level/LightLayer.h jni/core/mcpe/level/DimensionId.h \
  jni/core/mcpe/level/Level.h \
  /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/sources/cxx-stl/gnu-libstdc++/4.9/include/unordered_set \
@@ -77,6 +79,8 @@ jni/core/mcpe/block/Block.h:
 
 /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/sources/cxx-stl/gnu-libstdc++/4.9/include/vector:
 
+/data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/sources/cxx-stl/gnu-libstdc++/4.9/include/map:
+
 jni/core/mcpe/block/../client/renderer/texture/TextureUVCoordinateSet.h:
 
 jni/core/mcpe/util/ResourceLocation.h:
@@ -107,6 +111,10 @@ jni/core/mcpe/block/BlockSoundType.h:
 
 jni/core/mcpe/block/BlockSupportType.h:
 
+jni/core/mcpe/block/../entity/EntityType.h:
+
+jni/core/mcpe/block/../blockentity/BlockEntityType.h:
+
 jni/core/util/Log.h:
 
 /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/sources/cxx-stl/gnu-libstdc++/4.9/include/fstream:
@@ -123,6 +131,8 @@ jni/core/mcpe/level/gen/Feature.h:
 
 jni/core/gen/feature/FallenRubTreeFeature.h:
 
+jni/core/gen/feature/RavineFeature.h:
+
 jni/core/mcpe/level/gen/OreFeature.h:
 
 jni/core/mcpe/level/ChunkPos.h:
@@ -135,8 +145,6 @@ jni/core/mcpe/level/BlockSource.h:
 
 jni/core/mcpe/level/../blockentity/BlockEntity.h:
 
-jni/core/mcpe/level/../blockentity/BlockEntityType.h:
-
 jni/core/mcpe/level/../blockentity/../inventory/FillingContainer.h:
 
 jni/core/mcpe/level/../blockentity/../inventory/Container.h:
@@ -146,8 +154,6 @@ jni/core/mcpe/level/../blockentity/../inventory/../item/ItemInstance.h:
 jni/core/mcpe/level/../blockentity/../inventory/../item/UseAnimation.h:
 
 jni/core/mcpe/level/../util/Brightness.h:
-
-jni/core/mcpe/level/../entity/EntityType.h:
 
 jni/core/mcpe/level/LightLayer.h:
 

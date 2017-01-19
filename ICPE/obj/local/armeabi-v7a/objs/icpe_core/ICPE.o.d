@@ -22,18 +22,20 @@ obj/local/armeabi-v7a/objs/icpe_core/ICPE.o: jni/core/ICPE.cpp \
  jni/core/mcpe/block/BlockShape.h \
  jni/core/mcpe/item/../client/renderer/texture/TextureUVCoordinateSet.h \
  jni/core/mcpe/util/ResourceLocation.h jni/core/mcpe/block/Block.h \
+ /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/sources/cxx-stl/gnu-libstdc++/4.9/include/map \
  jni/core/mcpe/util/Color.h jni/core/mcpe/util/AABB.h \
  jni/core/mcpe/util/Vec3.h jni/core/mcpe/util/BlockPos.h \
  jni/core/mcpe/block/material/Material.h \
  jni/core/mcpe/block/material/MaterialType.h \
  jni/core/mcpe/block/BlockSoundType.h \
  jni/core/mcpe/block/BlockSupportType.h \
+ jni/core/mcpe/block/../entity/EntityType.h \
+ jni/core/mcpe/block/../blockentity/BlockEntityType.h \
  jni/core/mcpe/block/BlockGraphics.h \
  jni/core/mcpe/block/../client/renderer/texture/TextureAtlasTextureItem.h \
  jni/core/mcpe/block/blocks/FlowerPotBlock.h \
  jni/core/mcpe/blockentity/FurnaceBlockEntity.h \
  jni/core/mcpe/blockentity/BlockEntity.h \
- jni/core/mcpe/blockentity/BlockEntityType.h \
  jni/core/mcpe/blockentity/../inventory/FillingContainer.h \
  jni/core/mcpe/blockentity/../inventory/Container.h \
  jni/core/mcpe/client/MinecraftClient.h jni/core/mcpe/client/App.h \
@@ -47,7 +49,6 @@ obj/local/armeabi-v7a/objs/icpe_core/ICPE.o: jni/core/ICPE.cpp \
  jni/core/mcpe/client/renderer/MaterialPtr.h \
  jni/core/mcpe/level/BlockSource.h \
  jni/core/mcpe/level/../util/Brightness.h \
- jni/core/mcpe/level/../entity/EntityType.h \
  jni/core/mcpe/level/LightLayer.h jni/core/mcpe/level/DimensionId.h \
  jni/core/mcpe/client/renderer/Tessellator.h \
  jni/core/mcpe/client/renderer/../MemoryTracker.h \
@@ -158,6 +159,8 @@ jni/core/mcpe/util/ResourceLocation.h:
 
 jni/core/mcpe/block/Block.h:
 
+/data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/sources/cxx-stl/gnu-libstdc++/4.9/include/map:
+
 jni/core/mcpe/util/Color.h:
 
 jni/core/mcpe/util/AABB.h:
@@ -174,6 +177,10 @@ jni/core/mcpe/block/BlockSoundType.h:
 
 jni/core/mcpe/block/BlockSupportType.h:
 
+jni/core/mcpe/block/../entity/EntityType.h:
+
+jni/core/mcpe/block/../blockentity/BlockEntityType.h:
+
 jni/core/mcpe/block/BlockGraphics.h:
 
 jni/core/mcpe/block/../client/renderer/texture/TextureAtlasTextureItem.h:
@@ -183,8 +190,6 @@ jni/core/mcpe/block/blocks/FlowerPotBlock.h:
 jni/core/mcpe/blockentity/FurnaceBlockEntity.h:
 
 jni/core/mcpe/blockentity/BlockEntity.h:
-
-jni/core/mcpe/blockentity/BlockEntityType.h:
 
 jni/core/mcpe/blockentity/../inventory/FillingContainer.h:
 
@@ -213,8 +218,6 @@ jni/core/mcpe/client/renderer/MaterialPtr.h:
 jni/core/mcpe/level/BlockSource.h:
 
 jni/core/mcpe/level/../util/Brightness.h:
-
-jni/core/mcpe/level/../entity/EntityType.h:
 
 jni/core/mcpe/level/LightLayer.h:
 

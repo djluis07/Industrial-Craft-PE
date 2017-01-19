@@ -20,6 +20,7 @@ obj/local/armeabi-v7a/objs/icpe_core/gen/feature/FallenRubTreeFeature.o: \
  jni/core/mcpe/level/LightLayer.h jni/core/mcpe/level/DimensionId.h \
  jni/core/mcpe/util/BlockPos.h jni/core/mcpe/util/Random.h \
  jni/core/mcpe/block/Block.h \
+ /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/sources/cxx-stl/gnu-libstdc++/4.9/include/map \
  jni/core/mcpe/block/../client/renderer/texture/TextureUVCoordinateSet.h \
  jni/core/mcpe/util/ResourceLocation.h jni/core/mcpe/util/Color.h \
  jni/core/mcpe/util/AABB.h jni/core/mcpe/util/Vec3.h \
@@ -79,6 +80,8 @@ jni/core/mcpe/util/BlockPos.h:
 jni/core/mcpe/util/Random.h:
 
 jni/core/mcpe/block/Block.h:
+
+/data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/sources/cxx-stl/gnu-libstdc++/4.9/include/map:
 
 jni/core/mcpe/block/../client/renderer/texture/TextureUVCoordinateSet.h:
 

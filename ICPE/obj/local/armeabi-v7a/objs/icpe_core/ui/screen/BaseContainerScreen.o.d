@@ -54,12 +54,14 @@ obj/local/armeabi-v7a/objs/icpe_core/ui/screen/BaseContainerScreen.o: \
  jni/core/mcpe/entity/player/../../inventory/FillingContainer.h \
  jni/core/mcpe/entity/player/../../inventory/Container.h \
  jni/core/mcpe/block/Block.h \
+ /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/sources/cxx-stl/gnu-libstdc++/4.9/include/map \
  jni/core/mcpe/block/../client/renderer/texture/TextureUVCoordinateSet.h \
  jni/core/mcpe/util/ResourceLocation.h \
  jni/core/mcpe/block/material/Material.h jni/core/mcpe/block/BlockShape.h \
  jni/core/mcpe/item/CreativeItemCategory.h \
  jni/core/mcpe/block/BlockSoundType.h \
- jni/core/mcpe/block/BlockSupportType.h
+ jni/core/mcpe/block/BlockSupportType.h \
+ jni/core/mcpe/block/../blockentity/BlockEntityType.h
 
 jni/core/ui/screen/BaseContainerScreen.h:
 
@@ -193,6 +195,8 @@ jni/core/mcpe/entity/player/../../inventory/Container.h:
 
 jni/core/mcpe/block/Block.h:
 
+/data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/sources/cxx-stl/gnu-libstdc++/4.9/include/map:
+
 jni/core/mcpe/block/../client/renderer/texture/TextureUVCoordinateSet.h:
 
 jni/core/mcpe/util/ResourceLocation.h:
@@ -206,3 +210,5 @@ jni/core/mcpe/item/CreativeItemCategory.h:
 jni/core/mcpe/block/BlockSoundType.h:
 
 jni/core/mcpe/block/BlockSupportType.h:
+
+jni/core/mcpe/block/../blockentity/BlockEntityType.h:

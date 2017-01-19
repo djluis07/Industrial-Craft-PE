@@ -44,6 +44,7 @@ obj/local/armeabi-v7a/objs/icpe_core/blocks/blockentity/ICBlockEntityManager.o: 
  jni/core/mcpe/client/renderer/LevelRenderer.h \
  jni/core/blocks/block/base/ICEntityBlock.h jni/core/blocks/Blocks.h \
  jni/core/mcpe/block/Block.h \
+ /data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/sources/cxx-stl/gnu-libstdc++/4.9/include/map \
  jni/core/mcpe/block/../client/renderer/texture/TextureUVCoordinateSet.h \
  jni/core/mcpe/util/ResourceLocation.h jni/core/mcpe/util/Color.h \
  jni/core/mcpe/util/AABB.h jni/core/mcpe/block/BlockShape.h \
@@ -152,6 +153,8 @@ jni/core/blocks/block/base/ICEntityBlock.h:
 jni/core/blocks/Blocks.h:
 
 jni/core/mcpe/block/Block.h:
+
+/data/data/com.aide.ui/files/ndksupport-20160121/android-ndk-aide/sources/cxx-stl/gnu-libstdc++/4.9/include/map:
 
 jni/core/mcpe/block/../client/renderer/texture/TextureUVCoordinateSet.h:
 

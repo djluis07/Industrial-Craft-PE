@@ -1,7 +1,6 @@
 #pragma once
 
 #include "mcpe/util/FullBlock.h"
-
 #include "mcpe/level/gen/Feature.h"
 
 class FullBlock;

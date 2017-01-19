@@ -7,6 +7,7 @@
 
 #include "feature/RubTreeFeature.h"
 #include "feature/FallenRubTreeFeature.h"
+#include "feature/RavineFeature.h"
 
 #include "mcpe/level/gen/Feature.h"
 #include "mcpe/level/gen/OreFeature.h"
@@ -27,6 +28,18 @@ std::unique_ptr<Feature> FeatureGen::tinOre;
 std::unique_ptr<Feature> FeatureGen::copperOre;
 std::unique_ptr<Feature> FeatureGen::uraniumOre;
 std::unique_ptr<Feature> FeatureGen::leadOre;
+std::unique_ptr<Feature> FeatureGen::ravine;
+
+void FeatureGen::decorateRavine(BiomeDecorator*bd,BlockSource&s, Random&random,Biome*biome,BlockPos const&pos)
+{
+	prepare();
+	
+	for(int x=pos.x;x<pos.x+16;++x)
+		for(int y=10;y<50;++y)
+			for(int z=pos.z;z<pos.z+16;++z)
+				if(random.nextBool(5E4))
+					bd->_placeFeature(&s,ravine,BlockPos(x,y,z),random);
+}
 
 void FeatureGen::decorateChunk(BiomeDecorator*bd,BlockSource&s, Random&random,Biome*biome,BlockPos const&pos)
 {
@@ -85,6 +98,7 @@ void FeatureGen::prepare()
 		return;
 	inited=true;
 	
+	ravine=std::unique_ptr<RavineFeature>(new RavineFeature());
 	tinOre=std::unique_ptr<OreFeature>(new OreFeature(Blocks::ID::mOre,0,6));
 	copperOre=std::unique_ptr<OreFeature>(new OreFeature(Blocks::ID::mOre,1,10));
 	leadOre=std::unique_ptr<OreFeature>(new OreFeature(Blocks::ID::mOre,2,6));
