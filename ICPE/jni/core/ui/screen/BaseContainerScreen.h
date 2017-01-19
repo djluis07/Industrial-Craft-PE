@@ -58,8 +58,6 @@ public:
 	void startRenderMovingItem(ItemInstance *,float,float,float,float,float,float);
 	void onRenderMovingItem();
 	void onSlotMove(float,float,int,float,float,int,unsigned char,bool);
-	void onRenderItemText();
-	void startRenderItemText(std::string const&,std::string const&);
 	void registerNewItemPanel(int x,int y,ItemInstance const&);
 	std::shared_ptr<Button> getButtonByID(int);
 	int getItemSlotsStartPos()const;

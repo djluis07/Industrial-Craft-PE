@@ -69,7 +69,6 @@ void ICPE::setupMSHookFunctions()
 	void* imageRef=dlopen("libminecraftpe.so",RTLD_LAZY);
 	
 	MSHookFunction(dlsym(imageRef,"_ZN16BlockTessellator17tessellateInWorldERK5BlockRK8BlockPoshb"),(void*)&tessellateInWorld,(void**)&tessellateInWorld_);
-	MSHookFunction((void*)&Item::buildEffectDescriptionName,(void*)&getEffectName);
 	MSHookFunction((void*)&MinecraftClient::leaveGame,(void*)&leaveGame,(void**)&leaveGame_);
 	MSHookFunction((void*)&FurnaceBlockEntity::getBurnDuration,(void*)&getBurnDuration,(void**)&getBurnDuration_);
 	MSHookFunction((void*)&Level::onNewChunkFor,(void*)&onChunkLoaded,(void**)&onChunkLoaded_);
@@ -120,11 +119,6 @@ UIScreenChooser ICPE::mUIScreenChooser;
 Random ICPE::mRandom;
 const int ICPE::localKeyCode=3497615802;
 
-std::string ICPE::getEffectName()
-{
-	//fix crash on 5.x devices
-	return "";
-}
 float ICPE::getBurnDuration(ItemInstance const*item)
 {
 	if(item)

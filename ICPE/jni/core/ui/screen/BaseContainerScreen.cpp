@@ -228,7 +228,6 @@ void BaseContainerScreen::render(int int1,int int2,float floatvalue)
 	
 	onRender();
 	onRenderMovingItem();
-	onRenderItemText();
 }
 std::string BaseContainerScreen::getScreenName()const
 {
@@ -299,7 +298,6 @@ void BaseContainerScreen::onSlotMove(float startPosX,float startPosY,int startSl
 			itemPanels[endSlot]->item=addItem;
 			startRenderMovingItem(&copyItem,startPosX,startPosY,endPosX,endPosY,0.05,1.5);
 		}
-		startRenderItemText(copyItem.getHoverName(),copyItem.getEffectName());
 		onItemPanelChanged(*itemPanels[endSlot].get());
 	}
 	else
@@ -340,32 +338,8 @@ void BaseContainerScreen::onSlotMove(float startPosX,float startPosY,int startSl
 		player.add(item_);
 		if(!item_.isNull())
 			player.drop(item_,false);
-		startRenderItemText(copyItem.getHoverName(),copyItem.getEffectName());
 		onItemPanelChanged(*itemPanels[startSlot].get());
 	}
-}
-void BaseContainerScreen::onRenderItemText()
-{
-	if(itemTextTimer<=0.0F)
-	{
-		itemTextTimer=0.0F;
-		itemTextHover="";
-		itemTextEffect="";
-		return;
-	}
-	itemTextTimer-=0.02F;
-	
-	ScreenRenderer::singletonPtr->drawCenteredString(mcClient->getFont(),itemTextHover,width/2,height/5*4,Color::WHITE);
-	ScreenRenderer::singletonPtr->drawCenteredString(mcClient->getFont(),itemTextEffect,width/2,height/5*4+10,Color::WHITE);
-}
-void BaseContainerScreen::startRenderItemText(std::string const&hover,std::string const&effect)
-{
-	itemTextHover=hover;
-	if(&effect!=0)
-		itemTextEffect=effect;
-	else
-		itemTextEffect="";
-	itemTextTimer=1.0F;
 }
 void BaseContainerScreen::onItemPanelChanged(IC::ItemPanel&)
 {
